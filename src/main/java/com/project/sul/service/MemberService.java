@@ -19,4 +19,6 @@ public class MemberService {
        // validateDupulicateMember(member);
         return memberRepository.save(member);
     }
+
+
 }
