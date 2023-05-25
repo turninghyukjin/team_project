@@ -18,6 +18,7 @@ public class MemberService implements UserDetailsService {
 
     public Member saveMember(Member member) {
         validateDuplicateMember(member);
+        validateDuplicateNickname(member);
         return memberRepository.save(member);
     }
 
@@ -27,7 +28,12 @@ public class MemberService implements UserDetailsService {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
-
+    private void validateDuplicateNickname(Member member) {
+        Member existingMember = memberRepository.findByNickname(member.getNickname());
+        if (existingMember != null) {
+            throw new IllegalStateException("이미 사용 중인 닉네임입니다.");
+        }
+    }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberRepository.findByEmail(email);
