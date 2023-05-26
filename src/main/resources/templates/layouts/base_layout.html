@@ -3,19 +3,19 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
 
-  <head th:replace="~{fragments/config :: config}">
-  </head>
+<head th:replace="fragments/config :: config">
+</head>
 
-  <body>
-  <!-- header 영역 -->
-  <header th:replace="~{fragments/header :: header}"></header>
+<body>
+<!-- header 영역 -->
+<header th:replace="fragments/header :: header"></header>
 
-  <!-- content 영역 -->
-  <th:blcok layout:fragment="content"></th:blcok>
+<!-- content 영역 -->
+<th:block layout:fragment="content"></th:block>
 
-  <!-- footer 영역 -->
-  <footer th:replace="~{fragments/footer :: footer}"></footer>
+<!-- footer 영역 -->
+<footer th:replace="fragments/footer :: footer"></footer>
 
-  </body>
+</body>
 
 </html>

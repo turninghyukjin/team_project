@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
       layout:decorate="~{layouts/base_layout}"
-      layout:fragment="content"
-
 >
+    <head>
+        <!-- main.html 고유 css 추가 -->
+        <th:block layout:fragment="css">
+            <link rel="stylesheet" th:href="@{/css/main.css}">
+        </th:block>
 
-    <div layout:fragment="content">
-        TEST
-    </div>
-
+        <!-- main.html 고유 js 추가 -->
+        <th:block layout:fragment="script">
+            <link rel="stylesheet" th:href="@{/js/main.js}">
+        </th:block>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            술담화 메인 큰 이미지 들어올 영역
+            <div th:replace="fragments/body_slider :: slider"></div>
+        </div>
+    </body>
 </html>
