@@ -19,13 +19,16 @@ public class Member {
     @Column(name="member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
 
+    private String name;
 
     @Column(unique = true)
     private String nickname;
+
     private String email;
+
     private String password;
+
     private String phone;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -38,7 +41,6 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role;
     //관리자 아이디
-
 
     public static Member createMember(MemberFormDto memberFormDto,
                                       PasswordEncoder passwordEncoder){
