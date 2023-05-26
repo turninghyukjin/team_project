@@ -1,27 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="header">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html xmlns:th="http://www.thymeleaf.org"
+      th:fragment="header"
+>
 
-    <link rel="stylesheet" type="text/css" href="./slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
-
-    <script type="text/javascript" src="./jquery/jquery-3.7.0.min.js"></script>
-    <script type="text/javascript" src="./slick/slick.min.js"></script>
-
-    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title></title>
-
-    <script>
-        $(document).ready(function(){
-            $('.single-item').slick();
-        });
-
-    </script>
-</head>
-<body>
 <header class="p-3 bg-dark text-white">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -50,4 +31,5 @@
         </div>
     </div>
 </header>
-</body>
+
+</html>
