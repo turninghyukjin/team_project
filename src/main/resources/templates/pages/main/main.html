@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header">
-<meta charset="UTF-8">
-<title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base_layout}"
+      layout:fragment="content"
 
-<body>
-<div th:replace="fragments/body_header :: body_header"/>
+>
 
-메인 화면 출력 테스트
+    <div layout:fragment="content">
+        TEST
+    </div>
 
-<div th:replace="fragments/footer :: footer"/>
-</body>
 </html>
-
