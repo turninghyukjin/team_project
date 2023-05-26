@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header"/>
+<head th:replace="fragments/header :: header">
 <meta charset="UTF-8">
 <title>Title</title>
 </head>
 
 <body>
-<div id="testId">제이쿼리 테스트</div>
+<div th:replace="fragments/body_header :: body_header"/>
 
-<script>
-        $(document).ready(function(){
-            $('#testId').css('background-color','red');
-            $('#testId').css('width','150px');
-        });
+메인 화면 출력 테스트
 
-
-</script>
-
+<div th:replace="fragments/footer :: footer"/>
 </body>
 </html>
 
