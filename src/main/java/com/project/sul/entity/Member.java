@@ -32,7 +32,7 @@ public class Member {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    private String point;
+    private Integer point;
     //결제 포인트
 
     @Enumerated(EnumType.STRING)
