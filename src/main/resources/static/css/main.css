@@ -1,24 +1,53 @@
-      .b-divider {
-        height: 0;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+/* main header
+-------------------------------------------------- */
+
+      .container-background-main {
+          position: relative;
+          width: 100%;
+          min-height: 440px;
+          color: #fff;
+          z-index: 9
       }
 
-      /* GLOBAL STYLES
-      -------------------------------------------------- */
-      /* Padding below the footer and lighter body text */
+      @media (max-width: 768px) {
+          .container-background-main {
+              min-height:464px
+          }
+      }
+
+      .container-background-main .background-image-wrap {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden
+      }
+
+      .container-background-main .background-overlay {
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(0deg,rgba(25,27,38,.32),rgba(25,27,38,.72));
+      }
+
+
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
 
       body {
-        padding-top: 3rem;
+        /* padding-top: 3rem; */
         padding-bottom: 3rem;
         color: #5a5a5a;
       }
 
 
-      /* CUSTOMIZE THE CAROUSEL
-      -------------------------------------------------- */
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
 
       /* Carousel base class */
       .carousel {
@@ -36,8 +65,8 @@
       }
 
 
-      /* MARKETING CONTENT
-      -------------------------------------------------- */
+/* MARKETING CONTENT
+-------------------------------------------------- */
 
       /* Center align the text within the three columns below the carousel */
       .marketing .col-lg-4 {
@@ -52,8 +81,8 @@
       /* rtl:end:ignore */
 
 
-      /* Featurettes
-      ------------------------- */
+/* Featurettes
+------------------------- */
 
       .featurette-divider {
         margin: 5rem 0; /* Space out the Bootstrap <hr> more */
@@ -67,8 +96,8 @@
 
       /* rtl:end:remove */
 
-      /* RESPONSIVE CSS
-      -------------------------------------------------- */
+/* RESPONSIVE CSS
+-------------------------------------------------- */
 
       @media (min-width: 40em) {
         /* Bump up size of carousel content */
@@ -88,4 +117,6 @@
           margin-top: 7rem;
         }
       }
+
+
 
