@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout}"
+>
+<head>
+    <!-- main.html 고유 css 추가 -->
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/main.css}">
+    </th:block>
+
+    <!-- main.html 고유 js 추가 -->
+    <th:block layout:fragment="script">
+        <link rel="stylesheet" th:href="@{/js/main.js}">
+    </th:block>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container-background-main">
+        <div class="background-image-wrap">
+            <picture>
+                <source
+                        srcset="https://cdn.pixabay.com/index/2023/05/26/05-38-20-490_1920x550.jpg"
+                        media="(min-width: 1440px)"
+                />
+                <source
+                        srcset="https://cdn.pixabay.com/index/2023/05/26/05-38-20-490_640.jpg"
+                        media="(max-width: 640px)"
+                />
+                <img
+                        src="https://cdn.pixabay.com/index/2023/05/26/05-38-20-490_1440x550.jpg"
+                        class="imageBanner---h3G2"
+                        alt="backgrounds"
+                />
+            </picture>
+        </div>
+        <div class="background-overlay"></div>
+
+    </div>
+
+    <div th:replace="fragments/body_slider :: slider"></div>
+</div>
+</body>
+</html>
