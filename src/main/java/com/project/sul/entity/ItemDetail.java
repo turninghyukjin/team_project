@@ -13,7 +13,6 @@ public class ItemDetail { // 쿼리용으로 사용할 내용
     @Column(name="itemDetail_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String type;
 
     private int abv; // 알콜도수
     private int sweetness; // 단맛
