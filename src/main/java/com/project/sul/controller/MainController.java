@@ -11,9 +11,4 @@ public class MainController {
         return "pages/main/main";
     }
 
-    @GetMapping(value = "/register")
-    public String memberSignUp() {
-        return "pages/member/signUp";
-    }
-
 }

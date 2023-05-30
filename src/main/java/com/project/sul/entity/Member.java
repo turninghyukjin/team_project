@@ -46,7 +46,7 @@ public class Member {
                                       PasswordEncoder passwordEncoder){
         Member member = new Member();
 //        member.setName(memberFormDto.getName());//이름
-        member.setNickname(memberFormDto.getNickname());//닉네임
+//        member.setNickname(memberFormDto.getNickname());//닉네임
         member.setEmail(memberFormDto.getEmail());//이메일
 //        member.setAddress(memberFormDto.getAddress());//주소
 //        member.setPhone(memberFormDto.getPhone()); // 폰 번호

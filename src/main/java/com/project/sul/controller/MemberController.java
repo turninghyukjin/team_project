@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
-@RequestMapping("/members")
+@RequestMapping("/user")
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -23,16 +23,17 @@ public class MemberController {
     private final PasswordEncoder passwordEncoder;
 
     // 회원가입
-    @GetMapping(value = "/new")
+    @GetMapping(value = "/join")
     public String memberForm(Model model) {
         model.addAttribute("memberFormDto", new MemberFormDto());
-        return "member/memberForm";
+        return "pages/user/join";
     }
 
-    @PostMapping(value = "/new")
+    @PostMapping(value = "/join")
     public String memberForm(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model) {
+
         if (bindingResult.hasErrors()) {
-            return "member/memberForm";
+            return "pages/user/join";
         }
 
         try {
@@ -49,7 +50,7 @@ public class MemberController {
             memberService.saveMember(member);
         } catch (IllegalStateException e) {
             model.addAttribute("errorMessage", e.getMessage());
-            return "member/memberForm";
+            return "pages/user/join";
         }
 
         return "redirect:/";
@@ -58,18 +59,13 @@ public class MemberController {
     // 로그인
     @GetMapping(value = "/login")
     public String loginMember() {
-        return "/member/memberLoginForm";
+        return "/user/login";
     }
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model) {
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
-        return "/member/memberLoginForm";
+        return "/user/login";
     }
     
-    
-    @GetMapping(value="/hello")
-    public String detailPage(){
-        return "hello";
-    }
 }
