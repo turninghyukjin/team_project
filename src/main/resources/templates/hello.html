@@ -25,7 +25,7 @@
 <body>
 
 <!--<div class="container-fluid">-->
-<div class="col-md-9">
+<div class="col-md-9 mt-5">
     <div class="row justify-content-center">
 
         <!-- 정보 -->
@@ -38,7 +38,7 @@
 
                     <!-- 들어갈 값: item(상품명, 상세설명, 타입, 도수, 평가, 가격) -->
                     <h2>Name<span th:text="${itemNm}">soju</span></h2>
-                    <p>Detail<span th:text="${itemStory}">sweet mango sul</span></p>
+                    <p>Detail<span th:text="${itemDetail}">sweet mango sul</span></p>
                     <p>type: <span th:text="${type}">soju</span></p>
                     <p>abv: <span th:text="${abv}">10.5%</span></p>
                     <p>Star Rating: <span th:text="${starRating}">4.5</span></p>  <!--별점.. 이걸어쨰-->
@@ -56,8 +56,8 @@
 
         <!-- 주문 -->
         <div class="col-md-3 right-section">
-            <h4>Order Details</h4>
-            <div class="form-group">
+            <h4 class="mt-5">Order Details</h4>
+            <div class="form-group mt-3">
                 <label for="quantity">quantity</label>
 
 
@@ -73,8 +73,8 @@
 
             </div>
             <p>total price<th:span>100 won</th:span></p>
-            <button class="btn btn-primary">Cart</button>
-            <button class="btn btn-outline-primary">Buy Now!!</button>
+            <button class="btn btn-primary">장바구니</button>
+            <button class="btn btn-outline-primary">구매하기</button>
         </div>
 
     </div>

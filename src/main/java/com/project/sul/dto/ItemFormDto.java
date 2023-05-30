@@ -1,10 +1,10 @@
 package com.project.sul.dto;
 
 import com.project.sul.constant.ItemSellStatus;
-import com.project.sul.entity.Address;
 import com.project.sul.entity.Item;
 import lombok.Getter;
 import lombok.Setter;
+import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.*;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ItemFormDto { // 상세페이지
+public class ItemFormDto { // 주문상세페이지(관리)
     private Long id;
 
     @NotBlank(message="상품명은 필수 입력값입니다")
@@ -24,16 +24,22 @@ public class ItemFormDto { // 상세페이지
     @NotNull(message="가격은 필수 입력값입니다")
     private int price; // 가격
 
-    // 별점
-
     @NotNull(message="재고는 필수 입력값입니다")
     private Integer stockNumber; // 대표이미지 여부
 
     private ItemSellStatus itemSellStatus;
-    // private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
-    // private List<Long> itemImgIds = new ArrayList<>();
 
-    //private static ModelMapper modelMapper = new ModelMapper();
-    // 나중에 공유 자원으로 관리하려고!!!! 공통자원이니까
+    private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
+    private List<Long> itemImgIds = new ArrayList<>();
+
+    private static ModelMapper modelMapper = new ModelMapper();
+
+
+    public Item createItem(){
+        return modelMapper.map(this, Item.class);
+    }
+    public static ItemFormDto of(Item item){
+        return modelMapper.map(item, ItemFormDto.class);
+    }
 
 }
