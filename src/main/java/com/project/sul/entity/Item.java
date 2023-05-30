@@ -44,11 +44,11 @@ public class Item { // 관리자
 
     private ItemSellStatus itemSellStatus;
 
-    private LocalDateTime regTime;      //등록 시간 >> 유통기한
+    private LocalDateTime regTime;      //등록 시간 >> 유통기한과 연관?
     private LocalDateTime updateTime;   //수정 시간
 
 
-//    메서드
+// 메서드
     public void updateItem(ItemFormDto itemFormDto) {
         this.itemNm = itemFormDto.getItemNm(); // 상품명
         this.price = itemFormDto.getPrice();
@@ -57,7 +57,7 @@ public class Item { // 관리자
         this.itemSellStatus = itemFormDto.getItemSellStatus();
     }
 
-//    판매상품의 재고가 없을 때의 예외
+// 재고가 없을 때의 예외
     public void removeStock(int stockNumber){
         int restStock = this.stockNumber - stockNumber;
         if(restStock<0){
