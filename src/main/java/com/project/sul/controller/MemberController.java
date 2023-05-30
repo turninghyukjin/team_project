@@ -38,13 +38,13 @@ public class MemberController {
         try {
             Member member = Member.createMember(memberFormDto, passwordEncoder);
 
-            Address address = new Address();
-            address.setCity(memberFormDto.getAddress().getCity());
-            address.setStreet(memberFormDto.getAddress().getStreet());
-            address.setZipCode(memberFormDto.getAddress().getZipCode());
-            member.setAddress(address);
+//            Address address = new Address();
+//            address.setCity(memberFormDto.getAddress().getCity());
+//            address.setStreet(memberFormDto.getAddress().getStreet());
+//            address.setZipCode(memberFormDto.getAddress().getZipCode());
+//            member.setAddress(address);
 
-            member.setPhone(memberFormDto.getPhone());
+//            member.setPhone(memberFormDto.getPhone());
 
             memberService.saveMember(member);
         } catch (IllegalStateException e) {

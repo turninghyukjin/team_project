@@ -10,4 +10,10 @@ public class MainController {
     public String main() {
         return "pages/main/main";
     }
+
+    @GetMapping(value = "/register")
+    public String memberSignUp() {
+        return "pages/member/signUp";
+    }
+
 }

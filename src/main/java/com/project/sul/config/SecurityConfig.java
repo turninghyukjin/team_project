@@ -33,8 +33,8 @@ public class SecurityConfig  {
                 .logoutSuccessUrl("/") //로그아웃 성공시 이동할 url
         ;
         http.authorizeRequests() //시큐리티 처리에 HttpServletRequest를 이용한다는 의미
-                .mvcMatchers("/css/**", "/js/**", "/img/**").permitAll() //모든사용자가 로그인 없이 경로 접근
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**").permitAll()
+                .mvcMatchers("/css/**", "/js/**", "/images/**", "/jquery/**", "/bootstrap/**", "/slick/**").permitAll() //모든사용자가 로그인 없이 경로 접근
+                .mvcMatchers("/", "/register", "/sign-in").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")  //ADMIN Role일 경우 접근가능
                 .anyRequest().authenticated()
         ;
