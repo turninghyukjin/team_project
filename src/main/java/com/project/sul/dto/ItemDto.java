@@ -1,26 +1,17 @@
 package com.project.sul.dto;
 
-import com.project.sul.constant.ItemSellStatus;
-import com.project.sul.entity.Address;
-import com.project.sul.entity.ItemDetail;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-@ToString
-public class ItemDto { // 기본 틀 (여긴 생각 해볼게요)
+public class ItemDto { // 주문자 상세페이지로 넘어갈 dto
+
     private Long id;
     private String itemNm;          // 상품명
-    private String itemStory;       // 상세설명
+    private String itemDetail;      // 상세설명
+    private String type;            // 타입
+    private float abv;              // 도수
+    private float starRating;       // 평가
     private int price;              // 가격
-
-    private ItemSellStatus itemSellStatCd; // 상태
 }

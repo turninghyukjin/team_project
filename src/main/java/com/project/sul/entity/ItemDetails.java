@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class ItemDetail { // 쿼리용으로 사용할 내용
+public class ItemDetails { // 쿼리용으로 사용할 내용
     @Id
     @Column(name="itemDetail_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
