@@ -2,20 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
+    <head>
 
-<head th:replace="fragments/config :: config">
-</head>
+        <th:blcok th:replace="fragments/config :: config">
+        </th:blcok>
 
-<body>
-<!-- header 영역 -->
-<header th:replace="fragments/header :: header"></header>
+    </head>
 
-<!-- content 영역 -->
-<th:block layout:fragment="content"></th:block>
+    <body>
+        <!-- header 영역 -->
+        <header th:replace="fragments/header :: header"></header>
 
-<!-- footer 영역 -->
-<footer th:replace="fragments/footer :: footer"></footer>
+        <!-- content 영역 -->
+        <th:block layout:fragment="content"></th:block>
 
-</body>
+        <!-- footer 영역 -->
+        <footer th:replace="fragments/footer :: footer"></footer>
+
+    </body>
 
 </html>

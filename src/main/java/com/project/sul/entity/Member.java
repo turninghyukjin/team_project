@@ -45,11 +45,11 @@ public class Member {
     public static Member createMember(MemberFormDto memberFormDto,
                                       PasswordEncoder passwordEncoder){
         Member member = new Member();
-        member.setName(memberFormDto.getName());//이름
+//        member.setName(memberFormDto.getName());//이름
         member.setNickname(memberFormDto.getNickname());//닉네임
         member.setEmail(memberFormDto.getEmail());//이메일
-        member.setAddress(memberFormDto.getAddress());//주소
-        member.setPhone(memberFormDto.getPhone()); // 폰 번호
+//        member.setAddress(memberFormDto.getAddress());//주소
+//        member.setPhone(memberFormDto.getPhone()); // 폰 번호
         String password = passwordEncoder.encode(memberFormDto.getPassword());
         member.setPassword(password);
         member.setRole(Role.ADMIN);
