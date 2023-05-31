@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@Embeddable
 public class ItemDetails { // 쿼리용으로 사용할 내용
     @Id
     @Column(name="itemDetail_id")
