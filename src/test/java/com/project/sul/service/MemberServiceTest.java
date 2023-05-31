@@ -28,16 +28,15 @@ class MemberServiceTest {
     private Member createMember() {
         MemberFormDto memberFormDto = new MemberFormDto();
         memberFormDto.setEmail("test@email.com");
-        memberFormDto.setName("김강민");
-        memberFormDto.setNickname("네드베드");
+
         memberFormDto.setPassword("1234");
-        memberFormDto.setPhone("010-4204-3868");
+
         Address address = new Address();
         address.setCity("서울시");
 
 
         address.setStreet("합정동");
-        memberFormDto.setAddress(address);
+
 
         return Member.createMember(memberFormDto,passwordEncoder);
     }
