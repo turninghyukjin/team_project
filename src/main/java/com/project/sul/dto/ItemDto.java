@@ -2,7 +2,7 @@ package com.project.sul.dto;
 
 import com.project.sul.constant.ItemSellStatus;
 import com.project.sul.entity.Address;
-import com.project.sul.entity.ItemDetail;
+import com.project.sul.entity.ItemDetails;
 import lombok.*;
 
 import javax.persistence.*;
