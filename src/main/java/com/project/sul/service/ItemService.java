@@ -57,24 +57,24 @@ public class ItemService {
     // 이건 기본 틀 >> 나중에 완성할게요
     // 스프링 프로퍼티 이용! + https://hanke-r.tistory.com/109
     // 리뷰에 별점기능 >> https://velog.io/@hellocdpa/220305-%EB%A6%AC%EB%B7%B0-%EB%B3%84%EC%A0%90-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
-    @Scheduled(cron = "0 0 0 * * *") // 매일밤
-    public void processStarPictures() {
-        List<Double> ratingScores = getRatingScores();
-
-        for (Double ratingScore : ratingScores) {
-            String starPicture = fetchStarPicture(ratingScore);
-            saveStarPicture(starPicture, ratingScore);
-        }
-    }
-    private List<Double> getRatingScores() {
-
-        return ratingScores;
-    }
-    private String fetchStarPicture(Double ratingScore) {
-
-        return starPicture;
-    }
-    private void saveStarPicture(String starPicture, Double ratingScore) {
-
-    }
+//    @Scheduled(cron = "0 0 0 * * *") // 매일밤
+//    public void processStarPictures() {
+//        List<Double> ratingScores = getRatingScores();
+//
+//        for (Double ratingScore : ratingScores) {
+//            String starPicture = fetchStarPicture(ratingScore);
+//            saveStarPicture(starPicture, ratingScore);
+//        }
+//    }
+//    private List<Double> getRatingScores() {
+//
+//        return ratingScores;
+//    }
+//    private String fetchStarPicture(Double ratingScore) {
+//
+//        return starPicture;
+//    }
+//    private void saveStarPicture(String starPicture, Double ratingScore) {
+//
+//    }
 }
