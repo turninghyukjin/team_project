@@ -38,10 +38,11 @@ public class Item { // 관리자
     @Column(nullable = false)
     private String itemDetail; //상품상세설명
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="itemDetail_id") // 단방향 상세정보(도수, 맛)
     private ItemDetails itemDetails;
 
+    @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
 
     private LocalDateTime regTime;      //등록 시간 >> 유통기한과 연관?

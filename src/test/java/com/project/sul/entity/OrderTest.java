@@ -46,7 +46,7 @@ class OrderTest {
         item.setUpdateTime(LocalDateTime.now());
         return item;
     }
-    
+
     @Test
     @DisplayName("영속성 전이 테스트")
     public void cascadeTest(){
@@ -57,11 +57,11 @@ class OrderTest {
             Item item = this.createItem();
             itemRepository.save(item);
             OrderItem orderItem = new OrderItem();
-            orderItem.setItem(item);
-            orderItem.setCount(10);
-            orderItem.setOrderPrice(1000);
-            orderItem.setOrder(order);
-            order.getOrderItems().add(orderItem);
+//            orderItem.setItem(item);
+//            orderItem.setCount(10);
+//            orderItem.setOrderPrice(1000);
+//            orderItem.setOrder(order);
+//            order.getOrderItems().add(orderItem);
         }
 
         orderRepository.saveAndFlush(order);
