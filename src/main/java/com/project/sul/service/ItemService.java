@@ -4,6 +4,7 @@ import com.project.sul.dto.ItemFormDto;
 import com.project.sul.dto.ItemImgDto;
 import com.project.sul.entity.Item;
 import com.project.sul.entity.ItemImg;
+import com.project.sul.repository.ItemImgRepository;
 import com.project.sul.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -24,12 +25,12 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
     private final ItemImgService itemImgService;
+    private final ItemImgRepository itemImgRepository;
 
     // 등록
     public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception{
         Item item = itemFormDto.createItem();
         itemRepository.save(item);
-
 
         //최소 2장의 이미지를 넣도록 (대표이미지, 상세이미지)
         if(itemImgFileList.size()<1){

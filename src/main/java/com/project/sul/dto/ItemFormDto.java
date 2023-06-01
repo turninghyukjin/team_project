@@ -12,22 +12,23 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ItemFormDto { // 주문상세페이지(관리)
+public class ItemFormDto { // 상품등록
     private Long id;
 
     @NotBlank(message="상품명은 필수 입력값입니다")
-    private String itemNm; // 이미지파일명(동일 이름이 있을 수 있으니까)
+    private String itemNm;
 
     @NotBlank(message="상품 상세는 필수 입력값입니다")
-    private String itemDetail; // 이미지 조회경로
+    private String itemDetail;
 
     @NotNull(message="가격은 필수 입력값입니다")
     private int price; // 가격
 
     @NotNull(message="재고는 필수 입력값입니다")
-    private Integer stockNumber; // 대표이미지 여부
+    private Integer stockNumber;
 
     private ItemSellStatus itemSellStatus;
+
 
     private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
     private List<Long> itemImgIds = new ArrayList<>();
