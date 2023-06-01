@@ -34,6 +34,11 @@ public class Item { // 관리자
     @Column(nullable = false)
     private String type; //상품타입(탁주, 약주, 증류주, 과실주)
 
+    private int abv; // 알콜도수
+    private int sweetness; // 단맛
+    private int sourness; // 신맛
+    private int sparkling; // 탄산
+
     @Lob
     @Column(nullable = false)
     private String itemDetail; //상품상세설명
