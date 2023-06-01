@@ -20,7 +20,7 @@ public class Item { // 관리자
     @Id
     @Column(name = "item_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; //상품 코드
+    private Long id; //상품 코드111
 
     @Column(nullable = false,length = 100)
     private String itemNm; //상품명
