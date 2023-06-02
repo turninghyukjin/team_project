@@ -31,5 +31,9 @@ public class CalculateItemDetailsService {
         ItemDetails itemDetails = modelMapper.map(itemDetailsDto, ItemDetails.class);
         itemDetailsRepository.save(itemDetails);
     }
+//    @Autowired
+//    public CalculateItemDetailsService(ModelMapper modelMapper) {
+//        this.modelMapper = modelMapper;
+//    }
 }
 
