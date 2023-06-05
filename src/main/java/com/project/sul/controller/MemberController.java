@@ -5,13 +5,12 @@ import com.project.sul.entity.Member;
 import com.project.sul.entity.Address;
 import com.project.sul.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -19,6 +18,7 @@ import javax.validation.Valid;
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
+
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
 
@@ -39,12 +39,12 @@ public class MemberController {
         try {
             Member member = Member.createMember(memberFormDto, passwordEncoder);
 
+
 //            Address address = new Address();
 //            address.setCity(memberFormDto.getAddress().getCity());
 //            address.setStreet(memberFormDto.getAddress().getStreet());
 //            address.setZipCode(memberFormDto.getAddress().getZipCode());
 //            member.setAddress(address);
-
 //            member.setPhone(memberFormDto.getPhone());
 
             memberService.saveMember(member);
@@ -67,5 +67,5 @@ public class MemberController {
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
         return "/user/login";
     }
-    
+
 }

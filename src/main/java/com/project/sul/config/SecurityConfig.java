@@ -43,8 +43,6 @@ public class SecurityConfig  {
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
         ; //인증되지 않은 사용자가 리소스에 접근했을때 수행되는 핸들러 등록
 
-
-
         return http.build();
     }
     @Bean

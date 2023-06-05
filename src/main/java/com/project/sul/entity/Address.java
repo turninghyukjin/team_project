@@ -14,11 +14,15 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String city;
-
-    private String street;
-
     private String zipCode;
 
+    private String streetAddr;
 
+    private String detailAddr;
+
+    public Address(String zipCode, String streetAddr, String detailAddr) {
+        this.zipCode = zipCode;
+        this.streetAddr = streetAddr;
+        this.detailAddr = detailAddr;
+    }
 }
