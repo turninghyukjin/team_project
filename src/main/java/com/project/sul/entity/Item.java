@@ -20,7 +20,7 @@ public class Item { // 관리자
     @Id
     @Column(name = "item_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; //상품 코드
+    private Long id; //상품 코드111
 
     @Column(nullable = false,length = 100)
     private String itemNm; //상품명
@@ -33,6 +33,11 @@ public class Item { // 관리자
 
     @Column(nullable = false)
     private String type; //상품타입(탁주, 약주, 증류주, 과실주)
+
+    private int abv; // 알콜도수
+    private int sweetness; // 단맛
+    private int sourness; // 신맛
+    private int sparkling; // 탄산
 
     @Lob
     @Column(nullable = false)
