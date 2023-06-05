@@ -36,6 +36,10 @@
             margin-left: 10px;
             background-color: #f8f9fa;
         }
+
+        .mgt-10 {
+            margin-top: 100px;
+        }
     </style>
 
     <script th:inline="javascript">
@@ -166,49 +170,76 @@
                 </div>
             </div>
 
+
+
+            <div class="jumbotron jumbotron-fluid mgt-10">
+                <div class="container">
+                    <h4 class="display-5">tastes</h4>
+                    <hr class="my-4">
+                    <p class="lead" th:text="${item.itemDetail}"></p>
+                </div>
+            </div>
+
             <!-- 맛? -->
             <div class="row">
+
                 <div class="col-md-6">
 
                     <script th:inline="javascript">
-                        $(document).ready(function(){
+<!--                        $(document).ready(function(){-->
 
-                          var degree = $("#abv").val();
+<!--                          var degree = $("#abv").val();-->
 
-                          switch (degree) {
-                            case 1:
-                              document.getElementById("image").src = "icon_rating_one.png";
-                              break;
-                            case 2:
-                              document.getElementById("image").src = "icon_rating_two.png";
-                              break;
-                            case 3:
-                              document.getElementById("image").src = "icon_rating_three.png";
-                              break;
-                            case 4:
-                              document.getElementById("image").src = "icon_rating_four.png";
-                              break;
-                            case 5:
-                              document.getElementById("image").src = "icon_rating_five.png";
-                              break;
-                            default:
-                              document.getElementById("image").src = "default.jpg";
-                          }
-                          var imageDegree = 3;
-                          var imageUrl = "/images/rating/rate-" + imageDegree + ".png";
-                          document.getElementById("image").src = imageUrl;
-                      }
+<!--                          switch (degree) {-->
+<!--                            case 1:-->
+<!--                              document.getElementById("image").src = "icon_rating_one.png";-->
+<!--                              break;-->
+<!--                            case 2:-->
+<!--                              document.getElementById("image").src = "icon_rating_two.png";-->
+<!--                              break;-->
+<!--                            case 3:-->
+<!--                              document.getElementById("image").src = "icon_rating_three.png";-->
+<!--                              break;-->
+<!--                            case 4:-->
+<!--                              document.getElementById("image").src = "icon_rating_four.png";-->
+<!--                              break;-->
+<!--                            case 5:-->
+<!--                              document.getElementById("image").src = "icon_rating_five.png";-->
+<!--                              break;-->
+<!--                            default:-->
+<!--                              document.getElementById("image").src = "default.jpg";-->
+<!--                          }-->
+<!--                          var imageDegree = 3;-->
+<!--                          var imageUrl = "/images/rating/rate-" + imageDegree + ".png";-->
+<!--                          document.getElementById("image").src = imageUrl;-->
+
+
+                           function taste_info(){
+                              var imageUrl;
+
+                            for(var i=1; i,=5; i++){
+                              if(user_area == i) {
+                              img_src = '../images/rating/'+ 'icon_rating_' + i + '.png';
+                            }
+
+                            return imageUrl;
+                           }
+
                     </script>
 
                     <h4>Degree image</h4>
                     <!-- rating 이미지 -->
-                    <div><img id="image" src="" alt="Image" /></div>
+                    <div>
+                        <img id="image" src="" alt="Image">
+                        <script>document.getElementById('image').src = taste_info()</script>
+                    </div>
                 </div>
             </div>
 
             <!-- 이미지 -->
-            <div class="d-flex">
-                <div class="container mt-5">
+
+            <div class="jumbotron jumbotron-fluid mgt-30">
+                <div class="container">
                     <h4 class="display-5">item description</h4>
                     <hr class="my-4">
                     <p class="lead" th:text="${item.itemDetail}"></p>
