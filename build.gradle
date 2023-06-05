@@ -29,8 +29,8 @@ dependencies {
 	implementation 'com.querydsl:querydsl-jpa:5.0.0'
 	implementation 'com.querydsl:querydsl-apt:5.0.0'
 	implementation 'org.springframework.boot:spring-boot-devtools'
+	implementation 'com.github.iamport:iamport-rest-client-java:0.2.21'
 
-	implementation 'com.github.iamport:iamport-rest-client-java:0.2.22'
 
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
