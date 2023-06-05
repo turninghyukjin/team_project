@@ -17,6 +17,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven { url 'https://jitpack.io' }
 }
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -28,6 +29,12 @@ dependencies {
 	implementation 'com.querydsl:querydsl-jpa:5.0.0'
 	implementation 'com.querydsl:querydsl-apt:5.0.0'
 	implementation 'org.springframework.boot:spring-boot-devtools'
+
+	implementation 'com.github.iamport:iamport-rest-client-java:0.2.22'
+
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+	implementation 'com.google.code.gson:gson:2.8.7'
 
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
