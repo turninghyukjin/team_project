@@ -19,11 +19,11 @@ public class QAddress extends EntityPathBase<Address> {
 
     public static final QAddress address = new QAddress("address");
 
-    public final StringPath city = createString("city");
+    public final StringPath detailAddr = createString("detailAddr");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final StringPath street = createString("street");
+    public final StringPath streetAddr = createString("streetAddr");
 
     public final StringPath zipCode = createString("zipCode");
 
