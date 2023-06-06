@@ -12,4 +12,6 @@ public class ItemRepositoryCustomImpl {
         public ItemRepositoryCustomImpl(EntityManager em){
         this.queryFactory = new JPAQueryFactory(em);
     }
+
+
 }

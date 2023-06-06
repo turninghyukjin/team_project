@@ -40,6 +40,8 @@ public class QOrderItem extends EntityPathBase<OrderItem> {
 
     public final NumberPath<Integer> orderPrice = createNumber("orderPrice", Integer.class);
 
+    public final QPaymentsInfo paymentsInfo;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regTime = _super.regTime;
 
@@ -66,6 +68,7 @@ public class QOrderItem extends EntityPathBase<OrderItem> {
         super(type, metadata, inits);
         this.item = inits.isInitialized("item") ? new QItem(forProperty("item"), inits.get("item")) : null;
         this.order = inits.isInitialized("order") ? new QOrder(forProperty("order"), inits.get("order")) : null;
+        this.paymentsInfo = inits.isInitialized("paymentsInfo") ? new QPaymentsInfo(forProperty("paymentsInfo"), inits.get("paymentsInfo")) : null;
     }
 
 }

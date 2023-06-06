@@ -15,8 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class Item { // 관리자
-
+public class Item { // 관리자 상품등록
     @Id
     @Column(name = "item_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,6 +51,7 @@ public class Item { // 관리자
 
     private LocalDateTime regTime;      //등록 시간 >> 유통기한과 연관?
     private LocalDateTime updateTime;   //수정 시간
+
 
 
 // 메서드
