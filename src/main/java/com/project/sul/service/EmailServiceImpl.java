@@ -62,7 +62,7 @@ public class EmailServiceImpl implements EmailService {
 
         return message;
     }
-
+//
 //    private MimeMessage createMessage(String to) throws Exception {
 //        System.out.println("보내는 대상 : " + to);
 //        System.out.println("인증 번호 : " + ePassword);

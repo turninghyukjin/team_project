@@ -39,9 +39,14 @@ public class Order extends BaseEntity{
         orderItem.setOrder(this);
     }
 
+
+
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private PaymentsInfo paymentsInfo;
 
+
+    private String paymentMethod;  // 결제 수단
+    private double paymentAmount;  // 결제 금액
 
     public static Order createOrder(Member member,List<OrderItem> orderItemList){
         Order order = new Order();
@@ -54,6 +59,7 @@ public class Order extends BaseEntity{
         return order;
     }
 
+
     public int getTotalPrice(){
         int totalPrice = 0;
         for (OrderItem orderItem : orderItems){
@@ -62,5 +68,9 @@ public class Order extends BaseEntity{
 
         return totalPrice;
     }
+
+
+
+
 
 }
