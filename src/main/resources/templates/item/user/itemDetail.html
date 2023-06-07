@@ -161,12 +161,12 @@
                 <div class="col-md-6">
 
                     <!-- 들어갈 값: item(상품명, 상세설명, 타입, 도수, 평가, 가격) -->
-                    <h2>Name<span th:text="${itemNm}">soju</span></h2>
-                    <p>Detail<span th:text="${itemDetail}">sweet mango sul</span></p>
-                    <p>type: <span th:text="${type}">soju</span></p>
-                    <p>abv: <span th:text="${abv}">10.5%</span></p>
+                    <h2>Name<span th:text="${item.itemNm}">soju</span></h2>
+                    <p>Detail<span th:text="${item.itemDetail}">sweet mango sul</span></p>
+                    <p>type: <span th:text="${item.type}">soju</span></p>
+                    <p>abv: <span th:text="${item.abv}">10.5%</span></p>
                     <p>Star Rating <span th:text="${starRating}">4.5</span></p>  <!--별점.. 이걸어쨰-->
-                    <p>price: <br/><span th:text="${price}">3000won</span></p>
+                    <p>price: <br/><span th:text="${item.price}">3000won</span></p>
                 </div>
             </div>
 
@@ -216,12 +216,10 @@
 
                            function taste_info(){
                               var imageUrl;
-
                             for(var i=1; i,=5; i++){
                               if(user_area == i) {
                               img_src = '../images/rating/'+ 'icon_rating_' + i + '.png';
                             }
-
                             return imageUrl;
                            }
 

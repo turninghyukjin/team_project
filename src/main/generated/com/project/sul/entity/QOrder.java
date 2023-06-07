@@ -40,6 +40,8 @@ public class QOrder extends EntityPathBase<Order> {
 
     public final EnumPath<com.project.sul.constant.OrderStatus> orderStatus = createEnum("orderStatus", com.project.sul.constant.OrderStatus.class);
 
+    public final QPaymentsInfo paymentsInfo;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regTime = _super.regTime;
 
@@ -65,6 +67,7 @@ public class QOrder extends EntityPathBase<Order> {
     public QOrder(Class<? extends Order> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.member = inits.isInitialized("member") ? new QMember(forProperty("member"), inits.get("member")) : null;
+        this.paymentsInfo = inits.isInitialized("paymentsInfo") ? new QPaymentsInfo(forProperty("paymentsInfo"), inits.get("paymentsInfo")) : null;
     }
 
 }

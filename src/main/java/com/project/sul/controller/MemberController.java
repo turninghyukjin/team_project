@@ -39,7 +39,6 @@ public class MemberController {
         try {
             Member member = Member.createMember(memberFormDto, passwordEncoder);
 
-
 //            Address address = new Address();
 //            address.setCity(memberFormDto.getAddress().getCity());
 //            address.setStreet(memberFormDto.getAddress().getStreet());
@@ -48,11 +47,11 @@ public class MemberController {
 //            member.setPhone(memberFormDto.getPhone());
 
             memberService.saveMember(member);
+
         } catch (IllegalStateException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "pages/user/join";
         }
-
         return "redirect:/";
     }
 

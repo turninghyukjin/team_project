@@ -25,7 +25,7 @@ public class KcpController {
     @Autowired
     public KcpController(OrderService orderService) {
         this.iamportClient = new IamportClient("1570777386811537",
-                "JymvxAKxb1rT6t8LyShl5aQnIFdWHTd1KbBRsQ1JBbA6WyRVNXhgdNTBzG2FvOrWHslvYs64u0oAAehL");
+                "2k16RFAZ05kKlaM60SdMzmUobtT2KeeeDCeypvUdq07UjS4Bd2N9ZHz1lyK1h397iscygpegNn4bAxhz");
         this.orderService = orderService;
     }//생성자로 rest api key와 secret을 입력해서 토큰 바로생성.
 
@@ -49,7 +49,15 @@ public class KcpController {
     @GetMapping("/Payments")
     @PostMapping("/Payments")
     public String showKcpPaymentPage() {
-        return "KcpPayment";
+        return "payments/KcpPayment";
+    }
+    //showKcpPaymentPage 메서드: GET 및 POST 방식의 /Payments 경로에 대한 요청을 처리하는 메서드입니다.
+    // 이 메서드는 "KcpPayment"라는 뷰 페이지를 반환합니다.
+
+    @GetMapping("/Payments/sample")
+    @PostMapping("/Payments/sample")
+    public String showKcpPaymentPage2() {
+        return "payments/KcpPayment2";
     }
     //showKcpPaymentPage 메서드: GET 및 POST 방식의 /Payments 경로에 대한 요청을 처리하는 메서드입니다.
     // 이 메서드는 "KcpPayment"라는 뷰 페이지를 반환합니다.

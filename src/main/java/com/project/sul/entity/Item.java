@@ -53,7 +53,6 @@ public class Item { // 관리자 상품등록
     private LocalDateTime updateTime;   //수정 시간
 
 
-
 // 메서드
     public void updateItem(ItemFormDto itemFormDto) {
         this.itemNm = itemFormDto.getItemNm(); // 상품명

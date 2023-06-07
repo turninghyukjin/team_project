@@ -2,6 +2,7 @@ package com.project.sul.service;
 
 import com.project.sul.dto.ItemFormDto;
 import com.project.sul.dto.ItemImgDto;
+import com.project.sul.dto.ItemSearchDto;
 import com.project.sul.entity.Item;
 import com.project.sul.entity.ItemImg;
 import com.project.sul.repository.ItemImgRepository;
@@ -9,7 +10,6 @@ import com.project.sul.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -53,7 +53,7 @@ public class ItemService {
     }
 
     @Transactional(readOnly = true) // 목록을 조회
-    public ItemFormDto getItemDtl(Long itemId) {
+    public ItemFormDto getItemDetails(Long itemId) {
         List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
         // itemId에 해당하는 itemImg 목록 조회, 결과를 가져옴
         List<ItemImgDto> itemImgDtoList = new ArrayList<>();
@@ -75,28 +75,24 @@ public class ItemService {
     }
 
 
-//    public Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
-//        Item item = itemRepository.findById(itemFormDto.getId())
-//                .orElseThrow(EntityNotFoundException::new);
-//        item.updateItem(itemFormDto);
-//        List<Long> itemImgIds = itemFormDto.getItemImgIds();
-//
-//        for (int i = 0; i < itemImgFileList.size(); i++) {
-//            itemImgService.updateItemImg(itemImgIds.get(i),
-//                    itemImgFileList.get(i));
-//        }
-//        return item.getId();
-//    }
-//
-//
-//    @Transactional
-//    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
-//        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
-//    }
-//    // 다음의 메소드는 ItemRepositoryCustom 에 있음 > ItemRepositoryCustomImpl에 상속
-//    // ItemRepository는 ItemRepositoryCustom를 상속받았기 때문에 가능
-//    // itemSearchDto, pageable을 매개변수로 받아 itemRepository에서 item 데이터를 조회하는 작업
-//
+    public Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
+        Item item = itemRepository.findById(itemFormDto.getId())
+                .orElseThrow(EntityNotFoundException::new);
+        item.updateItem(itemFormDto);
+        List<Long> itemImgIds = itemFormDto.getItemImgIds();
+
+        for (int i = 0; i < itemImgFileList.size(); i++) {
+            itemImgService.updateItemImg(itemImgIds.get(i),
+                    itemImgFileList.get(i));
+        }
+        return item.getId();
+    }
+
+    @Transactional
+    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
+    }
+
 //    @Transactional(readOnly = true)
 //    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
 //        return itemRepository.getMainItemPage(itemSearchDto, pageable);
