@@ -1,5 +1,6 @@
 package com.project.sul.entity;
 
+import com.project.sul.dto.ItemImgDto;
 import lombok.Getter;
 import lombok.Setter;
 
