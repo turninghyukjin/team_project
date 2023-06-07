@@ -3,10 +3,8 @@ package com.project.sul.repository;
 import com.project.sul.dto.ItemSearchDto;
 import com.project.sul.entity.Item;
 import com.project.sul.entity.QItem;
-import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
-import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -47,7 +45,8 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
             int max = abvDg * 10;
             return QItem.item.abv.between(min, max);
         }
-        return QItem.item.abv.between(30,60);
+        else if(abvDg>3 )return QItem.item.abv.between(30,60);
+        return Expressions.asBoolean(true);
     }
 
     private BooleanExpression searchSweetDg(int sweetness) {
@@ -59,7 +58,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
             case 3:
                 return QItem.item.sweetness.eq(3);
             default:
-                return null;
+                return Expressions.asBoolean(true);
         }
     }
     private BooleanExpression searchSournessDg(int sourness) {
@@ -71,7 +70,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
             case 3:
                 return QItem.item.sourness.eq(3);
             default:
-                return null;
+                return Expressions.asBoolean(true);
         }
     }
     private BooleanExpression searchSparklingDg(int sparkling) {
@@ -83,7 +82,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
             case 3:
                 return QItem.item.sparkling.eq(3);
             default:
-                return null;
+                return Expressions.asBoolean(true);
         }
     }
 

@@ -29,7 +29,7 @@ public class ItemController {
     @GetMapping(value="/admin/item/new")
     public String showItemForm(Model model) {
         model.addAttribute("itemFormDto", new ItemFormDto());
-        return "item/itemForm";
+        return "item/admin/itemForm";
     }
 
     @PostMapping("/admin/item/news")
@@ -37,16 +37,16 @@ public class ItemController {
                           Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList) {
 
         if(bindingResult.hasErrors()){ // itemFormDto 에러
-            return "item/itemForm";
+            return "item/admin/itemForm";
         }
         if(itemImgFileList.get(0).isEmpty() && itemImgFileList.get(1).isEmpty() && itemFormDto.getId()==null){
             model.addAttribute("errorMessage", "상품 이미지는 필수 입력값입니다.");
-            return "item/itemForm";
+            return "item/admin/itemForm";
         }
         try { itemService.saveItem(itemFormDto, itemImgFileList); }
         catch (Exception e){
             model.addAttribute("errorMessage", "상품 등록 중 에러가 발생했습니다.");
-            return "item/itemForm";
+            return "item/admin/itemForm";
         }
         return "redirect:/";
     }
@@ -62,33 +62,32 @@ public class ItemController {
             model.addAttribute("itemFormDto", new ItemFormDto());
             return "item/itemForm";
         }
-        return "item/itemForm";
+        return "item/admin/itemForm";
     }
 
     @PostMapping("/admin/item/{itemId}")
     public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                              @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList, Model model){
         if(bindingResult.hasErrors()){
-            return "item/itemForm";
+            return "item/admin/itemForm";
         }
         if(itemImgFileList.get(0).isEmpty() && itemFormDto.getId()==null){
             model.addAttribute("errorMessage", "첫번째 상품 이미지는 필수 입력값입니다");
-            return "item/itemForm";
+            return "item/admin/itemForm";
         }
         try {
             itemService.updateItem(itemFormDto, itemImgFileList);
         } catch (Exception e){
             model.addAttribute("errorMessage", "상품 수정 중 에러가 발생했습니다");
-            return "item/itemForm";
+            return "item/admin/itemForm";
         }
         return "redirect:/";
     }
 
-
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page")
     Optional<Integer> page, Model model){
-        // 페이지번호가 있으면 get, 없으면 0,   + 한페이지당 게시물은 3개만 할당(페이지의 크기)
+        // 페이지번호가 있으면 get, 없으면 0,   + 한페이지당 게시물은 100개 할당(페이지의 크기)
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 100);
         Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
 
@@ -96,13 +95,13 @@ public class ItemController {
         model.addAttribute("itemSearchDto", itemSearchDto);
         // model.addAttribute("maxPage", 5);
 
-        return "item/itemMng";
+        return "item/admin/itemMng";
     }
     @GetMapping(value = "/item/{itemId}")
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
         ItemFormDto itemFormDto = itemService.getItemDetails(itemId);
         model.addAttribute("item", itemFormDto);
-        return "item/itemDetail";
+        return "item/user/itemDetail";
     }
 }
 

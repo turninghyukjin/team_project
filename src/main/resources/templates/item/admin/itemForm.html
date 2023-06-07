@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base_layout}">
 <head>
   <title>Shopping Mall</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -18,6 +19,7 @@
     <div class="container">
 
       <div th:include="menu :: menu"></div>
+
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Admin Enrollment</h1>
@@ -25,7 +27,8 @@
       </div>
 
       <!-- 폼 내용 맞춰야 됨 -->
-      <form role="form" enctype="multipart/form-data" th:object="${itemFromDto}" method="post" class="form-horizontal">
+      <form action="/admin/item/news" role="form" enctype="multipart/form-data"
+            th:object="${itemFormDto}" method="post" class="form-horizontal">
 
         <div class="form-group row">
           <label class="col-sm-2">상품코드</label>
@@ -62,10 +65,15 @@
         <div class="form-group row">
           <label class="col-sm-2">상품타입(type)</label>
           <div class="col-sm-5">
-            <input type="radio" name="productType" th:field="*{type}" th:value="A" class="form-control">탁주
-            <input type="radio" name="productType" th:field="*{type}" th:value="B" class="form-control">약주
-            <input type="radio" name="productType" th:field="*{type}" th:value="C" class="form-control">증류주
-            <input type="radio" name="productType" th:field="*{type}" th:value="D" class="form-control">과실주
+            <input type="radio" name="productType" th:field="*{type}" th:value="A">탁주
+            <input type="radio" name="productType" th:field="*{type}" th:value="B">약주
+            <input type="radio" name="productType" th:field="*{type}" th:value="C">증류주
+            <input type="radio" name="productType" th:field="*{type}" th:value="D">과실주
+
+<!--            <input type="radio" name="productType" th:field="*{type}" th:value="A" class="form-control">탁주-->
+<!--            <input type="radio" name="productType" th:field="*{type}" th:value="B" class="form-control">약주-->
+<!--            <input type="radio" name="productType" th:field="*{type}" th:value="C" class="form-control">증류주-->
+<!--            <input type="radio" name="productType" th:field="*{type}" th:value="D" class="form-control">과실주-->
           </div>
         </div>
 

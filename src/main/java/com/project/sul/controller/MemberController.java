@@ -47,11 +47,11 @@ public class MemberController {
 //            member.setPhone(memberFormDto.getPhone());
 
             memberService.saveMember(member);
+
         } catch (IllegalStateException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "pages/user/join";
         }
-
         return "redirect:/";
     }
 
