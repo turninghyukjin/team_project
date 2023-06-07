@@ -3,27 +3,27 @@
 <http auto-config="true" use-expressions="true" access-denied-page="/user/denied">
 </http>
 <head>
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-    <!-- iamport.payment.js -->
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-    <script>
-        var IMP = window.IMP; 
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+  <script>
+        var IMP = window.IMP;
         IMP.init("imp47175133");
-      
-        var today = new Date();   
+
+        var today = new Date();
         var hours = today.getHours(); // 시
         var minutes = today.getMinutes();  // 분
         var seconds = today.getSeconds();  // 초
         var milliseconds = today.getMilliseconds();
         var makeMerchantUid = hours +  minutes + seconds + milliseconds;
-        
+
 
         function requestPay() {
             IMP.request_pay({
                 pg : 'kcp',
                 pay_method : 'card',
-                merchant_uid: "IMP"+makeMerchantUid, 
+                merchant_uid: "IMP"+makeMerchantUid,
                 name : '막걸리',
                 amount : 1600,
                 buyer_email : 'kgm34872804@gmail.com',
@@ -40,11 +40,10 @@
             });
         }
     </script>
-    <meta charset="UTF-8">
-    <title>Sample Payment</title>
+  <meta charset="UTF-8">
+  <title>Sample Payment</title>
 </head>
 <body>
 <button onclick="requestPay()">결제하기</button> <!-- 결제하기 버튼 생성 -->
 </body>
 </html>
-

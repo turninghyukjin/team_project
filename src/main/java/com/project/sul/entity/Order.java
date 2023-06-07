@@ -39,6 +39,10 @@ public class Order extends BaseEntity{
         orderItem.setOrder(this);
     }
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private PaymentsInfo paymentsInfo;
+
+
     public static Order createOrder(Member member,List<OrderItem> orderItemList){
         Order order = new Order();
         order.setMember(member);

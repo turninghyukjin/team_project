@@ -44,8 +44,9 @@ public class PaymentsInfo {
     @Column(nullable = false, length = 100)
     private String buyerPostcode;
 
-    @OneToOne(mappedBy = "paymentsInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private OrderItem orderItem;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     // 추가 필드
     @ManyToOne(fetch = FetchType.LAZY)
