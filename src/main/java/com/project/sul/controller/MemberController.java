@@ -39,7 +39,6 @@ public class MemberController {
         try {
             Member member = Member.createMember(memberFormDto, passwordEncoder);
 
-
 //            Address address = new Address();
 //            address.setCity(memberFormDto.getAddress().getCity());
 //            address.setStreet(memberFormDto.getAddress().getStreet());

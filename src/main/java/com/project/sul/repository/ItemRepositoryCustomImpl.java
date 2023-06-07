@@ -6,6 +6,7 @@ import com.project.sul.entity.QItem;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
+import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
@@ -92,7 +94,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
 
     @Override
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
-        QueryResults<Item> results = queryFactory
+        List<Item> content = queryFactory
                 .selectFrom(QItem.item)
                 .where(searchType(itemSearchDto.getType()),
                         searchAbvDg(itemSearchDto.getAbv()),
@@ -104,9 +106,8 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                 .orderBy(QItem.item.id.desc())
                  .offset(pageable.getOffset())
                  .limit(pageable.getPageSize())
-                .fetchResults();
-         long total = results.getTotal();
-         return new PageImpl<>(results.getResults(), pageable, total);
+                .fetch();
+        return new PageImpl<>(content, pageable, content.size());
     }
 }
 
