@@ -11,6 +11,8 @@ import com.project.sul.repository.ItemRepository;
 import com.project.sul.repository.MemberRepository;
 import com.project.sul.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,9 +25,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderService {
 
+    private OrderRepository orderRepository;
+
     private final ItemRepository itemRepository;
+
+
     private final MemberRepository memberRepository;
-    private final OrderRepository orderRepository;
+
+
 
     public void cancelOrder(Long orderId) {
         Order order = orderRepository.findById(orderId)
@@ -42,7 +49,7 @@ public class OrderService {
 
     public Long order(OrderDto orderDto, String email) {
         Item item = itemRepository.findById(orderDto.getItemId())
-                .orElseThrow(ExceptionInInitializerError::new);
+                .orElseThrow(() -> new IllegalArgumentException("주문할 상품을 찾을 수 없습니다."));
         Member member = memberRepository.findByEmail(email);
 
         List<OrderItem> orderItemList = new ArrayList<>();
@@ -56,6 +63,7 @@ public class OrderService {
         order.setOrderDate(LocalDateTime.now());
 
         orderRepository.save(order);
+
 
         return order.getId();
     }

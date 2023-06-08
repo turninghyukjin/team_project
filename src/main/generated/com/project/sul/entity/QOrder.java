@@ -40,6 +40,10 @@ public class QOrder extends EntityPathBase<Order> {
 
     public final EnumPath<com.project.sul.constant.OrderStatus> orderStatus = createEnum("orderStatus", com.project.sul.constant.OrderStatus.class);
 
+    public final NumberPath<Double> paymentAmount = createNumber("paymentAmount", Double.class);
+
+    public final StringPath paymentMethod = createString("paymentMethod");
+
     public final QPaymentsInfo paymentsInfo;
 
     //inherited

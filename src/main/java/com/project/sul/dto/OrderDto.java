@@ -1,6 +1,8 @@
 package com.project.sul.dto;
 
 import com.project.sul.constant.OrderStatus;
+import com.project.sul.entity.Member;
+import com.project.sul.repository.MemberRepository;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -51,5 +53,6 @@ public class OrderDto {
     public double getPaymentAmount() {
         return paymentAmount;
     }
+
 
 }
