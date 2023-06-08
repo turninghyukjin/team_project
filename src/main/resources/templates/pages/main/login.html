@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout}"
+>
+
+<!-- main.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+  <link rel="stylesheet" th:href="@{/css/login.css}">
+</th:block>
+
+<!-- main.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+  <script th:src="@{/js/login.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="login_wrapper">
+    <section class="content_top_banner">
+      <span class="LoginMessageBarWrapper__MessageText-sc-1110ehu-1 bkgnhD"
+      >지금 회원가입하면 최대 4,000p 적립!</span
+      ><img
+            src="/images/modules/login/coin-icon.png"
+            alt="회원가입 시 적립 포인트 코인 아이콘"
+            class="LoginMessageBarWrapper__CoinIcon-sc-1110ehu-2 ixGgmB"
+    />
+    </section>
+
+
+  </div>
+
+
+
+</th:block>
+
+</html>

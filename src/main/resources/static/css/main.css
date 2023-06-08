@@ -1,4 +1,3 @@
-
 /* main custom
 -------------------------------------------------- */
 
@@ -88,12 +87,6 @@
 .slick-custom-arrow .next {
     left: 3%;
 }
-.slick-slide .slider_form {
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
 .slick-slide .slider_m1 {
     background-image: url(/images/main/slider_img/slider_register.png);
 }
@@ -110,7 +103,7 @@
     background-image: url(/images/main/slider_img/slider_login.png);
 }
 .slick-slide .slider_4 {
-    background-image: url(/images/main/slider_img/slider_register.jpg);
+    background-image: url(/images/main/slider_img/slider_register.png);
 }
 .slick-slide .slider_5 {
     background-image: url(/images/main/slider_img/slider_event1.jpg);
@@ -122,9 +115,14 @@
     background-image: url(/images/main/slider_img/slider_event2.jpg);
 }
 .slick-slide .slider_8 {
-    background-image: url(/images/main/slider_img/slider_login.jpg);
+    background-image: url(/images/main/slider_img/slider_login.png);
 }
 .slick-slide .slider_9 {
-    background-image: url(/images/main/slider_img/slider_register.jpg);
+    background-image: url(/images/main/slider_img/slider_register.png);
 }
-
+.slick-slide .slider_form {
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}

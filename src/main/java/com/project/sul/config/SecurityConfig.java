@@ -36,7 +36,7 @@ public class SecurityConfig {
         ;
         http.authorizeRequests()
                 .mvcMatchers("/css/**", "/js/**", "/images/**", "/jquery/**", "/bootstrap/**", "/slick/**","/payments/**").permitAll()
-                .mvcMatchers("/", "/user/**").permitAll()
+                .mvcMatchers("/", "/login", "/user/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
 //                .mvcMatchers("/KcpPayment").hasRole("ADMIN")
                 .anyRequest().authenticated();
