@@ -1,0 +1,16 @@
+* {
+    font-family: Spoqa Han Sans Neo,"sans-serif";
+    color: inherit;
+    box-sizing: border-box;
+}
+ul,li{
+    list-style:none;
+}
+a {
+    color: #1890ff;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    transition: color .3s;
+}

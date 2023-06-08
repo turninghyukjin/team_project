@@ -3,53 +3,61 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
 
-    <header th:fragment="header">
-        <div class="fixed-header">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container">
-                    <a class="navbar-brand" href="#">
-                        <img
-                                src="./images/main/main-logo.png"
-                                alt="술담화 로고"
-                                width="60"
-                                height="24"
-                        />
-                    </a>
-
-                    <ul class="navbar-nav landing-list">
-                        <li class="">구독</li>
-                        <li class="">스토어</li>
-                        <li class="style__SearchInputWrapper-sc-1qxy9aq-0 fTUhYn">
-                            <div class="inner">
-                                <img
-                                        class="search-icon"
-                                        src="./images/main/searchIcon.svg"
-                                        alt="search_icon"
-                                /><span class="search-text">무엇을 찾고 계신가요?</span>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div
-                            class="collapse navbar-collapse justify-content-end"
-                            id="navbarNav"
-                    >
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-person-fill"></i> 로그인
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-person-plus-fill"></i> 회원가입
-                                </a>
-                            </li>
-                        </ul>
+<header th:fragment="header">
+    <div class="fixed-header">
+        <div class="header_nav_wrapper">
+            <section class="navigation_menu">
+                <div class="logo_wrapper">
+                    <div class="img_wrapper">
+                        <a class="navbar-brand img_wrapper" href="#">
+                            <img
+                                    src="./images/header/main-logo.png"
+                                    alt="술담화 로고"
+                                    width="60"
+                                    height="24"
+                            />
+                        </a>
                     </div>
                 </div>
-            </nav>
+                <ul class="landing_list">
+                    <li class="">구독</li>
+                    <li class="selected">스토어</li>
+                    <li class="header_search">
+                        <div class="inner">
+                            <img
+                                    class="search-icon"
+                                    src="/images/header/searchIcon.svg"
+                                    alt="search_icon"
+                            />
+                            <span class="search-text">무엇을 찾고 계신가요?</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="user_menu">
+                <ul class="user_list">
+                    <li>
+                        <ul class="li_wrapper">
+                            <li class="login">
+                                <a class="" href="#">로그인/회원가입</a>
+                            </li>
+                        </ul>
+                        <img
+                                src="/images/header/icon-right-arrow.png"
+                                alt="오른쪽 화살표 아이콘"
+                                width="15"
+                        />
+                    </li>
+                    <div class="basket_icon">
+                        <img
+                                src="/images/header/icon-header-basket.png"
+                                alt="장바구니 아이콘"
+                        />
+                    </div>
+                </ul>
+            </section>
         </div>
-    </header>
+    </div>
+</header>
 
 </html>

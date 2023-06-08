@@ -35,7 +35,7 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/") //로그아웃 성공시 이동할 url
         ;
         http.authorizeRequests()
-                .mvcMatchers("/css/**", "/js/**", "/images/**", "/jquery/**", "/bootstrap/**", "/slick/**","/Payments/**").permitAll()
+                .mvcMatchers("/css/**", "/js/**", "/images/**", "/jquery/**", "/bootstrap/**", "/slick/**","/payments/**").permitAll()
                 .mvcMatchers("/", "/user/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
 //                .mvcMatchers("/KcpPayment").hasRole("ADMIN")
