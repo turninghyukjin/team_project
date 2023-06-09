@@ -1,5 +1,7 @@
 package com.project.sul.controller;
 
+import com.project.sul.dto.MemberFormDto;
+import com.project.sul.dto.RegisterSocialFormDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
@@ -29,6 +31,7 @@ public class MainController {
 
     @GetMapping(value = "/register/social")
     public String registerSocial(Model model) {
+        model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
         return "pages/main/register_social";
     }
 
