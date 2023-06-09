@@ -4,25 +4,26 @@
           layout:decorate="~{layouts/base_layout_no_footer}"
     >
 
-    <!-- main.html 고유 css 추가 -->
+    <!-- login.html 고유 css 추가 -->
     <th:block layout:fragment="css">
         <link rel="stylesheet" th:href="@{/css/login.css}">
     </th:block>
 
-    <!-- main.html 고유 js 추가 -->
+    <!-- login.html 고유 js 추가 -->
     <th:block layout:fragment="script">
         <script th:src="@{/js/login.js}"></script>
     </th:block>
 
     <th:block layout:fragment="content">
         <div class="login_wrapper">
-            <section class="content_top_banner">
-          <span class="top_banner_message"
-          >지금 회원가입하면 최대 4,000p 적립!</span
-          ><img
-                    src="/images/login/coin-icon.png"
-                    alt="회원가입 시 적립 포인트 코인 아이콘"
-                    class="top_banner_img"
+            <section class="login_top_banner">
+              <span class="login_banner_message">
+                  지금 회원가입하면 최대 4,000p 적립!
+              </span>
+            <img
+                src="/images/login/coin-icon.png"
+                alt="회원가입 시 적립 포인트 코인 아이콘"
+                class="login_banner_img"
             />
             </section>
 

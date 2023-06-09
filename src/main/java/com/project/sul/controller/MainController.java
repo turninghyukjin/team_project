@@ -16,4 +16,19 @@ public class MainController {
         return "pages/main/login";
     }
 
+    @GetMapping(value = "/register")
+    public String register() {
+        return "pages/main/register";
+    }
+
+    @GetMapping(value = "/register/email")
+    public String registerEmail() {
+        return "pages/main/register_email";
+    }
+
+    @GetMapping(value = "/register/social")
+    public String registerSocial() {
+        return "pages/main/register_social";
+    }
+
 }

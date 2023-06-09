@@ -4,7 +4,7 @@
 .login_wrapper {
     background:#fff;
 }
-.login_wrapper .content_top_banner {
+.login_wrapper .login_top_banner {
     width:100%;
     height:36px;
     display:flex;
@@ -16,13 +16,13 @@
     top:50px;
     background-color:rgb(81, 151, 242);
 }
-.content_top_banner .top_banner_message {
+.login_top_banner .login_banner_message {
     font-weight:500;
     font-size:13px;
     line-height:100%;
     color:rgb(255, 255, 255);
 }
-.content_top_banner .top_banner_img {
+.login_top_banner .login_banner_img {
     width:24px;
     height:24px;
     margin-left:5px;
@@ -261,12 +261,6 @@
 .search_id_pw a:hover {
     color:rgb(10, 10, 10);
 }
-
-
-
-
-
-
 
 .login_content_wrapper .mobile-gap {
     display:none;

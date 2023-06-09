@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout_no_footer}"
+>
+
+<!-- register_email.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/register_email.css}">
+</th:block>
+
+<!-- register_email.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/js/register_email.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="content_wrapper">
+        <div class="registerContentForm_wrapper">
+            <header class="welcome_user_wrapper">
+                <div class="userTitle_wrapper">
+                    <div class="title">김강민님, 환영해요!</div>
+                </div>
+            </header>
+
+            <div class="registerEmailForm_wrapper">
+                <form>
+                    <label for="email" class="registerEmailForm_inputLabel">
+                      이메일
+                      <img
+                            src="/images/register/icon-asterisk.png"
+                            alt="icon"
+                            class="registerEmailForm_inputLabel_img"
+                       />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            type="email"
+                            placeholder="이메일을 입력해 주세요"
+                            name="email"
+                            id="email"
+                    />
+                    <div class="mt-20"></div>
+                    <label for="password" class="registerEmailForm_inputLabel">
+                        비밀번호
+                        <img
+                            src="/images/register/icon-asterisk.png"
+                            alt="icon"
+                            class="registerEmailForm_inputLabel_img"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            type="password"
+                            placeholder="비밀번호를 입력해 주세요"
+                            name="password"
+                            id="password"
+                    />
+                    <div class="mt-4"></div>
+                    <span class="validation_wrapper">
+                        <img
+                            src="/images/register/password-validation-check-icon.png"
+                            alt="비밀번호 유효성 검사 통과 전후 체크 아이콘"
+                            width="9"
+                            height="8"
+                        />
+                        <span class="validation_check_msg">영문</span>
+                    </span>
+                    <span class="validation_wrapper">
+                        <img
+                            src="/images/register/password-validation-check-icon.png"
+                            alt="비밀번호 유효성 검사 통과 전후 체크 아이콘"
+                            width="9"
+                            height="8"
+                        />
+                        <span class="validation_check_msg">숫자</span>
+                    </span>
+                    <span class="validation_wrapper">
+                        <img
+                            src="/images/register/password-validation-check-icon.png"
+                            alt="비밀번호 유효성 검사 통과 전후 체크 아이콘"
+                            width="9"
+                            height="8"
+                        />
+                        <span class="validation_check_msg">8-16자</span>
+                    </span>
+                    <div class="mt-20"></div>
+                    <label for="confirmPassword" class="registerEmailForm_inputLabel">
+                        비밀번호 확인
+                        <img
+                            src="/images/register/icon-asterisk.png"
+                            alt="icon"
+                            class="registerEmailForm_inputLabel_img"
+                            id="confirmPassword"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            type="password"
+                            placeholder="비밀번호를 입력해 주세요"
+                            name="confirmPassword"
+                    />
+                    <div class="mt-4"></div>
+                    <span class="validation_wrapper">
+                        <img
+                            src="/images/register/password-validation-check-icon.png"
+                            alt="비밀번호 유효성 검사 통과 전후 체크 아이콘"
+                            width="9"
+                            height="8"
+                        />
+                        <span class="validation_check_msg">비밀번호 일치</span>
+                    </span>
+
+                    <div class="mt-20"></div>
+                    <div class="mt-30"></div>
+                    <button
+                            class="button_registerEmailForm"
+                            font-weight="500"
+                            type="blue"
+                            width="335px"
+                            height="50px">
+<!--                            disabled=""-->
+<!--                    >-->
+                        회원가입 완료
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</html>
