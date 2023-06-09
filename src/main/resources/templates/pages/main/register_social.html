@@ -24,8 +24,8 @@
             </header>
 
             <div class="registerSocialForm_wrapper">
-                <form action="/register/social" method="post" role="form" th:object=""${registerSocialFormDto}>
-                    <label th:for="*{email}" class="registerSocialForm_inputLabel">
+                <form th:action="@{/register/social}" method="post" th:object="${registerSocialFormDto}">
+                    <label th:for="email" class="registerSocialForm_inputLabel">
                         이메일
                         <img
                                 src="/images/register/icon-asterisk.png"
@@ -34,11 +34,10 @@
                         />
                     </label>
                     <div class="mt-8"></div>
-
                     <input class="disable-input" th:field="*{email}" type="text" value="kgm2804@naver.com"/>
                     <div class="mt-20"></div>
                     <div class="nicknameInput_wrapper">
-                        <label for="nickname" class="nicknameInputLabel">닉네임</label>
+                        <label th:for="nickname" class="nicknameInputLabel">닉네임</label>
                         <div class="nicknameInput_rule">
                             공백, 특수문자를 제외한 2~10자로 입력하세요.
                         </div>
@@ -47,9 +46,8 @@
                                 type="text"
                                 placeholder="닉네임을 입력해 주세요"
                                 name="nickname"
-                                id="nickname"
-                        />
-                        <button
+                                th:field="*{nickname}"
+                        /><button
                                 class="button_nicknameInput"
                                 font-size="15px"
                                 font-weight="500"
@@ -63,7 +61,7 @@
                     </div>
                     <div class="mt-20"></div>
                     <div class="addressInput_wrapper">
-                        <label for="address" class="registerSocialForm_inputLabel">
+                        <label th:for="address" class="registerSocialForm_inputLabel">
                             주소
                             <img
                                     src="/images/register/icon-asterisk.png"
@@ -79,6 +77,7 @@
                                 type="button"
                                 width="85px"
                                 height="50px"
+                                onclick="daumPostcode()"
                         >
                             주소 찾기
                         </button>
@@ -117,18 +116,6 @@
                     />
                     <div class="mt-20"></div>
 
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" th:for="address">주소 : </label>
-                        <input type="button" onclick="daumPostcode()" value="주소 찾기"><br>
-                        <input type="text" id="postcode" placeholder="우편번호" readonly="readonly">
-                        <input type="text" id="roadAddress" placeholder="도로명주소" readonly="readonly">
-                        <input type="text" id="jibunAddress" placeholder="지번주소" readonly="readonly">
-                        <input type="text" id="extraAddress" placeholder="참고항목" readonly="readonly">
-                        <span id="guide" style="color:#999;display:none"></span>
-                        <input type="text" id="detailAddress" class="form-control" placeholder="상세주소">
-                        <!--                        <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"-->
-                        <!--                           class="fieldError">Incorrect data</p>-->
-                    </div>
                     <div class="mt-30"></div>
                     <button
                             class="button_registerSocialForm"
