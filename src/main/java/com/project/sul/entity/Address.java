@@ -16,13 +16,13 @@ public class Address {
 
     private String zipCode;
 
-    private String streetAddr;
+    private String streetAdr;
 
-    private String detailAddr;
+    private String detailAdr;
 
-    public Address(String zipCode, String streetAddr, String detailAddr) {
+    public Address(String zipCode, String streetAdr, String detailAdr) {
         this.zipCode = zipCode;
-        this.streetAddr = streetAddr;
-        this.detailAddr = detailAddr;
+        this.streetAdr = streetAdr;
+        this.detailAdr = detailAdr;
     }
 }

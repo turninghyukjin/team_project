@@ -89,7 +89,18 @@
                         <div class="nicknameInput_rule">
                             우편번호
                         </div>
+
+                        <label th:for="address" class="nicknameInputLabel">닉네임</label>
+                        <input
+                                class=""
+                                type="text"
+                                placeholder="닉네임을 입력해 주세요"
+                                name="nickname"
+                                th:field="*{address}"
+                        />
                         <input type="text" id="postcode" placeholder="우편번호" readonly="readonly">
+
+
                         <div class="nicknameInput_rule">
                             도로명주소
                         </div>
