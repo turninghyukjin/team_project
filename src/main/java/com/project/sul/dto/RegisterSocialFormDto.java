@@ -14,13 +14,18 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 public class RegisterSocialFormDto {
 
-    @NotBlank(message = "닉네임은 필수 입력 값입니다.")
     private String nickname;
 
     @NotEmpty(message = "이메일은 필수 입력 값입니다.")
     @Email(message = "이메일 형식으로 입력해주세요.")
     private String email;
 
-    @NotEmpty(message = "주소를 입력해 주세요.")
-    private Address address;
+    @NotEmpty
+    private String zipCode;
+
+    @NotEmpty
+    private String streetAdr;
+
+    @NotEmpty(message = "상세 주소를 입력해 주세요.")
+    private String detailAdr;
 }

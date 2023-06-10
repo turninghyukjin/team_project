@@ -11,7 +11,7 @@
 
 <!-- register_social.html 고유 js 추가 -->
 <th:block layout:fragment="script">
-    <script th:src="@{/js/register_email.js}"></script>
+    <script th:src="@{/js/register_address.js}"></script>
     <!-- daum 주소찾기 API 추가 -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </th:block>
@@ -36,7 +36,7 @@
                         />
                     </label>
                     <div class="mt-8"></div>
-                    <input class="disable-input" th:field="*{email}" type="text" value="kgm2804@naver.com"/>
+                    <input class="disable-input" id="email" type="text" value="kgm2804@naver.com"/>
                     <div class="mt-20"></div>
                     <div class="nicknameInput_wrapper">
                         <label th:for="nickname" class="nicknameInputLabel">닉네임</label>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="mt-20"></div>
                     <div class="addressInput_wrapper">
-                        <label th:for="address" class="registerSocialForm_inputLabel">
+                        <label for="addressSubTitle" class="registerSocialForm_inputLabel">
                             주소
                             <img
                                     src="/images/register/icon-asterisk.png"
@@ -71,61 +71,72 @@
                                     class="registerSocialForm_inputLabel_img"
                             />
                         </label>
+                        <input type="hidden" id="addressSubTitle">
                         <div class="mt-8"></div>
-                        <button
-                                class="button_AddressInput"
-                                font-size="15px"
-                                font-weight="500"
-                                type="button"
-                                width="85px"
-                                height="50px"
-                                onclick="daumPostcode()"
-                        >
-                            주소 찾기
-                        </button>
+                        <div class="addressFrom">
+                            <button
+                                    class="button_AddressInput"
+                                    font-size="15px"
+                                    font-weight="500"
+                                    type="button"
+                                    width="85px"
+                                    height="50px"
+                                    onclick="daumPostcode()"
+                            >
+                                주소 찾기
+                            </button>
+                            <div class="mt-8"></div>
+
+                            <label for="zipcode" class="nicknameInputLabel addressLabelFont">우편번호</label>
+                            <input
+                                    class="addressFrom_inputStyle disable-input"
+                                    type="text"
+                                    placeholder="우편번호"
+                                    id="zipcode"
+                                    readonly="readonly"
+                            />
+                            <div class="mt-4"></div>
+                            <label for="streetAdr" class="nicknameInputLabel addressLabelFont">도로명주소</label>
+                            <input
+                                    class="addressFrom_inputStyle disable-input"
+                                    type="text"
+                                    placeholder="도로명주소"
+                                    id="streetAdr"
+                                    readonly="readonly"
+                            />
+                            <div class="mt-4"></div>
+                            <label for="jibunAddress" class="nicknameInputLabel addressLabelFont">지번주소</label>
+                            <input
+                                    class="addressFrom_inputStyle disable-input"
+                                    type="text"
+                                    placeholder="지번주소"
+                                    id="jibunAddress"
+                                    readonly="readonly"
+                            />
+                            <div class="mt-4"></div>
+                            <label for="extraAddress" class="nicknameInputLabel addressLabelFont">주소참고</label>
+                            <input
+                                    class="addressFrom_inputStyle disable-input"
+                                    type="text"
+                                    placeholder="주소참고"
+                                    id="extraAddress"
+                                    readonly="readonly"
+                            />
+                            <div class="mt-4"></div>
+                            <label for="detailAdr" class="nicknameInputLabel addressLabelFont">상세주소</label>
+                            <input
+                                    class=""
+                                    type="text"
+                                    placeholder="상세주소를 입력해주세요"
+                                    id="detailAdr"
+                            />
+                        </div>
                     </div>
-                    <div class="mt-4"></div>
-                    <div class="addressFrom">
-                        <div class="nicknameInput_rule">
-                            우편번호
-                        </div>
-
-                        <label th:for="address" class="nicknameInputLabel">닉네임</label>
-                        <input
-                                class=""
-                                type="text"
-                                placeholder="닉네임을 입력해 주세요"
-                                name="nickname"
-                                th:field="*{address}"
-                        />
-                        <input type="text" id="postcode" placeholder="우편번호" readonly="readonly">
-
-
-                        <div class="nicknameInput_rule">
-                            도로명주소
-                        </div>
-                        <input type="text" id="roadAddress" placeholder="도로명주소" readonly="readonly">
-                        <div class="nicknameInput_rule">
-                            지번주소
-                        </div>
-                        <input type="text" id="jibunAddress" placeholder="지번주소" readonly="readonly">
-
-                        <div class="nicknameInput_rule">
-                            주소참고항목
-                        </div>
-                        <input type="text" id="extraAddress" placeholder="참고항목" readonly="readonly">
-                        <span id="guide" style="color:#999;display:none"></span>
-                        <div class="nicknameInput_rule">
-                            상세주소
-                        </div>
-                        <input type="text" id="detailAddress" class="form-control" placeholder="상세주소">
-                    </div>
-
-                    <div class="mt-30"></div>
+                    <div class="mt-20"></div>
                     <button
                             class="button_registerSocialForm"
                             font-weight="500"
-                            type="blue"
+                            type="submit"
                             width="335px"
                             height="50px"
                     >
