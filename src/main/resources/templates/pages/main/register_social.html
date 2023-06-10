@@ -36,7 +36,13 @@
                         />
                     </label>
                     <div class="mt-8"></div>
-                    <input class="disable-input" id="email" type="text" value="kgm2804@naver.com"/>
+                    <input
+                            class="disable-input"
+                            id="email"
+                            name="email"
+                            type="text"
+                            value="kgm2804@naver.com"
+                    />
                     <div class="mt-20"></div>
                     <div class="nicknameInput_wrapper">
                         <label th:for="nickname" class="nicknameInputLabel">닉네임</label>
@@ -87,12 +93,12 @@
                             </button>
                             <div class="mt-8"></div>
 
-                            <label for="zipcode" class="nicknameInputLabel addressLabelFont">우편번호</label>
+                            <label th:for="*{zipCode}" class="nicknameInputLabel addressLabelFont">우편번호</label>
                             <input
                                     class="addressFrom_inputStyle disable-input"
                                     type="text"
                                     placeholder="우편번호"
-                                    id="zipcode"
+                                    th:field="*{zipCode}"
                                     readonly="readonly"
                             />
                             <div class="mt-4"></div>
@@ -102,6 +108,7 @@
                                     type="text"
                                     placeholder="도로명주소"
                                     id="streetAdr"
+                                    name="streetAdr"
                                     readonly="readonly"
                             />
                             <div class="mt-4"></div>
@@ -111,6 +118,7 @@
                                     type="text"
                                     placeholder="지번주소"
                                     id="jibunAddress"
+                                    name="jibunAddress"
                                     readonly="readonly"
                             />
                             <div class="mt-4"></div>
@@ -120,6 +128,7 @@
                                     type="text"
                                     placeholder="주소참고"
                                     id="extraAddress"
+                                    name="extraAddress"
                                     readonly="readonly"
                             />
                             <div class="mt-4"></div>
@@ -129,6 +138,7 @@
                                     type="text"
                                     placeholder="상세주소를 입력해주세요"
                                     id="detailAdr"
+                                    name="detailAdr"
                             />
                         </div>
                     </div>

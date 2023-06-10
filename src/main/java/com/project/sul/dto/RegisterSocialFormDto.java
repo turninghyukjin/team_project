@@ -14,6 +14,7 @@ import javax.validation.constraints.NotEmpty;
 @ToString
 public class RegisterSocialFormDto {
 
+    @NotBlank(message = "닉네임은 필수 입력 값입니다.")
     private String nickname;
 
     @NotEmpty(message = "이메일은 필수 입력 값입니다.")
