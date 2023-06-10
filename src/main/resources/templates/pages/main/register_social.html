@@ -102,12 +102,12 @@
                                     readonly="readonly"
                             />
                             <div class="mt-4"></div>
-                            <label for="streetAdr" class="nicknameInputLabel addressLabelFont">도로명주소</label>
+                            <label th:for="*{streetAdr}" class="nicknameInputLabel addressLabelFont">도로명주소</label>
                             <input
                                     class="addressFrom_inputStyle disable-input"
                                     type="text"
                                     placeholder="도로명주소"
-                                    id="streetAdr"
+                                    th:field="*{streetAdr}"
                                     name="streetAdr"
                                     readonly="readonly"
                             />
@@ -118,7 +118,6 @@
                                     type="text"
                                     placeholder="지번주소"
                                     id="jibunAddress"
-                                    name="jibunAddress"
                                     readonly="readonly"
                             />
                             <div class="mt-4"></div>
@@ -128,17 +127,15 @@
                                     type="text"
                                     placeholder="주소참고"
                                     id="extraAddress"
-                                    name="extraAddress"
                                     readonly="readonly"
                             />
                             <div class="mt-4"></div>
-                            <label for="detailAdr" class="nicknameInputLabel addressLabelFont">상세주소</label>
+                            <label th:for="detailAdr" class="nicknameInputLabel addressLabelFont">상세주소</label>
                             <input
                                     class=""
                                     type="text"
                                     placeholder="상세주소를 입력해주세요"
-                                    id="detailAdr"
-                                    name="detailAdr"
+                                    th:field="*{detailAdr}"
                             />
                         </div>
                     </div>

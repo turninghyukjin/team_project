@@ -20,12 +20,11 @@ function daumPostcode() {
             }
             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
             if(extraRoadAddr !== ''){
-                extraRoadAddr = ' (' + extr
-                aRoadAddr + ')';
+                extraRoadAddr = ' (' + extraRoadAddr + ')';
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById("zipCode").value = data.zonecode;
+            document.getElementById('zipCode').value = data.zonecode;
             document.getElementById("streetAdr").value = roadAddr;
             document.getElementById("jibunAddress").value = data.jibunAddress;
 
