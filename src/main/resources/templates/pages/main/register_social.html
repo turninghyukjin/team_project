@@ -12,6 +12,8 @@
 <!-- register_social.html 고유 js 추가 -->
 <th:block layout:fragment="script">
     <script th:src="@{/js/register_email.js}"></script>
+    <!-- daum 주소찾기 API 추가 -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </th:block>
 
 <th:block layout:fragment="content">
@@ -107,14 +109,6 @@
                         </div>
                         <input type="text" id="detailAddress" class="form-control" placeholder="상세주소">
                     </div>
-                    <input
-                            class=""
-                            type="email"
-                            placeholder="이메일을 입력해 주세요"
-                            name="email"
-                            id="address"
-                    />
-                    <div class="mt-20"></div>
 
                     <div class="mt-30"></div>
                     <button
