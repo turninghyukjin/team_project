@@ -4,9 +4,7 @@ import com.project.sul.entity.Address;
 import lombok.*;
 import org.springframework.stereotype.Controller;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 
 @Controller
 @Getter
@@ -15,10 +13,11 @@ import javax.validation.constraints.NotEmpty;
 public class RegisterSocialFormDto {
 
     @NotBlank(message = "닉네임은 필수 입력 값입니다.")
+//    @Pattern(regexp = "^[ㄱ-ㅎ가-힣a-z0-9-_]{2,10}$")
+    @Size(min = 2, max = 10)
     private String nickname;
 
-    @NotEmpty(message = "이메일은 필수 입력 값입니다.")
-    @Email(message = "이메일 형식으로 입력해주세요.")
+    @NotEmpty
     private String email;
 
     @NotEmpty
@@ -28,5 +27,6 @@ public class RegisterSocialFormDto {
     private String streetAdr;
 
     @NotEmpty(message = "상세 주소를 입력해 주세요.")
+    @Pattern(regexp = "\"^[ㄱ-ㅎ가-힣a-z0-9-]{2,20}$")
     private String detailAdr;
 }
