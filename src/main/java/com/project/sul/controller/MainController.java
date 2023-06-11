@@ -22,12 +22,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class MainController {
 
-    private final MemberService memberService;
-    private final PasswordEncoder passwordEncoder;
-    private final Member member;
+//    private final MemberService memberService;
+//    private final PasswordEncoder passwordEncoder;
+//    private final Member member;
 
     @GetMapping(value = "/")
     public String main() {
