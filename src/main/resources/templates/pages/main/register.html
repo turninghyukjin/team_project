@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+<<<<<<< HEAD
       xmlns:layout= "http://www.ultraq.net.nz/thymeleaf/layout"
+=======
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+>>>>>>> origin/master
       layout:decorate="~{layouts/base_layout_no_footer}"
 >
 
@@ -10,6 +14,7 @@
 </th:block>
 
 <!-- register.html 고유 js 추가 -->
+<<<<<<< HEAD
 
 
 <!-- jQuery -->
@@ -18,6 +23,11 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
 
+=======
+<th:block layout:fragment="script">
+    <script th:src="@{/js/register.js}"></script>
+</th:block>
+>>>>>>> origin/master
 
 <th:block layout:fragment="content">
     <div class="content_wrapper">
@@ -194,6 +204,7 @@
                         보내 드립니다.
                     </p>
                     <div class="mt-20"></div>
+<<<<<<< HEAD
                         <button id="adultCertButton"
                                 class="button_agree_adultCert"
                                 font-size="16px"
@@ -251,6 +262,23 @@
             loadIamportScript();
         });
     </script>
+=======
+                    <button
+                            class="button_agree_adultCert"
+                            font-size="16px"
+                            font-weight="500"
+                            type="blue"
+                            width="335px"
+                            height="50px">
+<!--                            disabled=""-->
+<!--                    >-->
+                        동의하고 성인 인증하기
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+>>>>>>> origin/master
 </th:block>
 
 </html>
