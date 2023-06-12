@@ -20,6 +20,8 @@ public class Address {
 
     private String detailAddr;
 
+    protected Address() {
+    }
     public Address(String zipCode, String streetAddr, String detailAddr) {
         this.zipCode = zipCode;
         this.streetAddr = streetAddr;

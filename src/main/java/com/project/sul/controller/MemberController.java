@@ -22,6 +22,10 @@ public class MemberController {
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
 
+    @GetMapping(value = "/agreement")
+    public String showAgreement() {
+        return "pages/user/agreement";
+    }
     // 회원가입
     @GetMapping(value = "/join")
     public String memberForm(Model model) {
