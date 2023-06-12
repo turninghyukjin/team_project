@@ -22,9 +22,17 @@ public class QOrder extends EntityPathBase<Order> {
 
     public static final QOrder order = new QOrder("order1");
 
+    public final QBaseEntity _super = new QBaseEntity(this);
+
+    //inherited
+    public final StringPath createBy = _super.createBy;
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final QMember member;
+
+    //inherited
+    public final StringPath modifiedBy = _super.modifiedBy;
 
     public final DateTimePath<java.time.LocalDateTime> orderDate = createDateTime("orderDate", java.time.LocalDateTime.class);
 
@@ -32,9 +40,17 @@ public class QOrder extends EntityPathBase<Order> {
 
     public final EnumPath<com.project.sul.constant.OrderStatus> orderStatus = createEnum("orderStatus", com.project.sul.constant.OrderStatus.class);
 
-    public final DateTimePath<java.time.LocalDateTime> regTime = createDateTime("regTime", java.time.LocalDateTime.class);
+    public final NumberPath<Double> paymentAmount = createNumber("paymentAmount", Double.class);
 
-    public final DateTimePath<java.time.LocalDateTime> updateTime = createDateTime("updateTime", java.time.LocalDateTime.class);
+    public final StringPath paymentMethod = createString("paymentMethod");
+
+    public final QPaymentsInfo paymentsInfo;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> regTime = _super.regTime;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> updateTime = _super.updateTime;
 
     public QOrder(String variable) {
         this(Order.class, forVariable(variable), INITS);
@@ -55,6 +71,7 @@ public class QOrder extends EntityPathBase<Order> {
     public QOrder(Class<? extends Order> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.member = inits.isInitialized("member") ? new QMember(forProperty("member"), inits.get("member")) : null;
+        this.paymentsInfo = inits.isInitialized("paymentsInfo") ? new QPaymentsInfo(forProperty("paymentsInfo"), inits.get("paymentsInfo")) : null;
     }
 
 }

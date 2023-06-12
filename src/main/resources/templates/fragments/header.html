@@ -3,33 +3,61 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
 
-    <header th:fragment="header" class="p-3 bg-dark text-white">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                        <use xlink:href="#bootstrap"/>
-                    </svg>
-                </a>
-
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-                </ul>
-
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-                </form>
-
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    <button type="button" class="btn btn-warning">Sign-up</button>
+<header th:fragment="header">
+    <div class="fixed-header">
+        <div class="header_nav_wrapper">
+            <section class="navigation_menu">
+                <div class="logo_wrapper">
+                    <div class="img_wrapper">
+                        <a class="navbar-brand img_wrapper" href="/">
+                            <img
+                                    src="/images/header/main-logo.png"
+                                    alt="술담화 로고"
+                                    width="60"
+                                    height="24"
+                            />
+                        </a>
+                    </div>
                 </div>
-            </div>
+                <ul class="landing_list">
+                    <li class="">구독</li>
+                    <li class="selected">스토어</li>
+                    <li class="header_search">
+                        <div class="inner">
+                            <img
+                                    class="search-icon"
+                                    src="/images/header/searchIcon.svg"
+                                    alt="search_icon"
+                            />
+                            <span class="search_text">무엇을 찾고 계신가요?</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="user_menu">
+                <ul class="user_list">
+                    <li>
+                        <ul class="li_wrapper">
+                            <li class="login">
+                                <a class="" href="/login">로그인/회원가입</a>
+                            </li>
+                        </ul>
+                        <img
+                                src="/images/header/icon-right-arrow.png"
+                                alt="오른쪽 화살표 아이콘"
+                                width="15"
+                        />
+                    </li>
+                    <div class="basket_icon">
+                        <img
+                                src="/images/header/icon-header-basket.png"
+                                alt="장바구니 아이콘"
+                        />
+                    </div>
+                </ul>
+            </section>
         </div>
-    </header>
+    </div>
+</header>
 
 </html>

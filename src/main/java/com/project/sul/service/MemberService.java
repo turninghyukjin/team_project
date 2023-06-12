@@ -28,6 +28,7 @@ public class MemberService implements UserDetailsService {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
+
     private void validateDuplicateNickname(Member member) {
         Member existingMember = memberRepository.findByNickname(member.getNickname());
         if (existingMember != null) {

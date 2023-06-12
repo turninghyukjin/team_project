@@ -1,0 +1,126 @@
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+          layout:decorate="~{layouts/base_layout_no_footer}"
+    >
+
+    <!-- login.html 고유 css 추가 -->
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/login.css}">
+    </th:block>
+
+    <!-- login.html 고유 js 추가 -->
+    <th:block layout:fragment="script">
+        <script th:src="@{/js/login.js}"></script>
+    </th:block>
+
+    <th:block layout:fragment="content">
+        <div class="login_wrapper">
+            <section class="login_top_banner">
+              <span class="login_banner_message">
+                  지금 회원가입하면 최대 4,000p 적립!
+              </span>
+            <img
+                src="/images/login/coin-icon.png"
+                alt="회원가입 시 적립 포인트 코인 아이콘"
+                class="login_banner_img"
+            />
+            </section>
+
+            <div class="login_content_wrapper">
+                <header class="login_content_box">
+                    <div class="login_content_title_wrapper">
+                        <div class="title">반가워요!</div>
+                        <img
+                                src="/images/login/login-greeting-icon.png"
+                                alt="회원가입 또는 로그인 페이지 헤더 아이콘"
+                        />
+                    </div>
+                    <div class="login_content_subtitle_wrapper">
+                        <div class="sub-title">찾아오는 인생술, 술담화입니다.</div>
+                    </div>
+                </header>
+
+                <div class="login_content_gap"></div>
+
+                <div class="bottom-buttons">
+                    <div class="default-gap">
+                        <div class="add_gap"></div>
+                    </div>
+                    <div class="sns_buttons_wrapper">
+                        <a href="https://kauth.kakao.com/oauth/authorize?client_id=b14405f58beace8dcc622c8a463b3ea1&amp;redirect_uri=https://www.sooldamhwa.com/login&amp;response_type=code"
+                           class="sns_buttons button_kakao">
+                            <svg viewBox="3 3 17 17">
+                                <path d="M12 4c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682
+                                    2.545-.78 2.94-.123.49.178.483.376.351.155-.103 2.466-1.675 3.464-2.353.541.08 1.1.123
+                                    1.67.123 4.97 0 9-3.186 9-7.115C21 7.185 16.97 4 12 4">
+                                </path>
+                            </svg>
+                            <label>카카오로 시작하기</label>
+                        </a>
+                        <button class="sns_buttons button_naver">
+                            <img src="/images/login/naver-login-icon.png" alt="네이버 로그인 버튼의 네이버 로고 아이콘">
+                            <label>네이버로 시작하기</label>
+                        </button>
+                        <div id="naverIdLogin" style="position: absolute; top: -10000px;">
+                            <a id="naverIdLogin_loginButton" href="#">
+                                <img src="https://static.nid.naver.com/oauth/button_g.PNG?version=js-2.0.1" height="40">
+                            </a>
+                        </div>
+                    </div>
+                    <button class="button_email_login">
+                        <img src="/images/login/email-login-icon.png" alt="이메일 로그인 버튼의 이메일 아이콘">
+                        <label>이메일로 시작하기</label>
+                    </button>
+                </div>
+
+                <div class="email_loginForm_wrapper">
+                    <div class="email_loginFrom">
+                        <form novalidate="">
+                            <input
+                                    class=""
+                                    type="email"
+                                    placeholder="이메일을 입력해 주세요"
+                                    name="email"
+                            />
+                            <div class="loginForm_gap"></div>
+                            <div class="email_loginForm_password">
+                                <input
+                                        class=""
+                                        type="password"
+                                        placeholder="비밀번호를 입력해 주세요"
+                                        name="password"
+                                />
+                                <span>
+                                    <img
+                                    src="/images/login/password-eye-hide-icon.png"
+                                    alt="비밀번호 확인용 아이콘"
+                                    width="15"
+                                    height="15"
+                                    />
+                                </span>
+                            </div>
+                            <div class="loginForm_gap"></div>
+                            <button
+                                    class="loginForm_loginButton"
+                                    type="blue"
+                            >
+                                로그인
+                            </button>
+                        </form>
+                    </div>
+                    <button class="loginForm_signUpButton" onclick="buttonClick_emailRegister()">
+                        이메일 회원가입
+                    </button>
+                    <section class="search_id_pw">
+                        <a href="/login/searchId">아이디 찾기</a
+                        ><a href="/login/searchPw">비밀번호 찾기</a>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+
+    </th:block>
+
+    </html>

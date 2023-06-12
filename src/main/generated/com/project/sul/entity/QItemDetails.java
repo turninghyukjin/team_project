@@ -23,13 +23,11 @@ public class QItemDetails extends EntityPathBase<ItemDetails> {
 
     public final NumberPath<Integer> r_abv = createNumber("r_abv", Integer.class);
 
-    public final NumberPath<Integer> r_sourness = createNumber("r_sourness", Integer.class);
+    public final NumberPath<Integer> r_sour = createNumber("r_sour", Integer.class);
 
-    public final NumberPath<Integer> r_sparkling = createNumber("r_sparkling", Integer.class);
+    public final NumberPath<Integer> r_sparkle = createNumber("r_sparkle", Integer.class);
 
-    public final NumberPath<Integer> r_sweetness = createNumber("r_sweetness", Integer.class);
-
-    public final StringPath type = createString("type");
+    public final NumberPath<Integer> r_sweet = createNumber("r_sweet", Integer.class);
 
     public QItemDetails(String variable) {
         super(ItemDetails.class, forVariable(variable));

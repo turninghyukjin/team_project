@@ -31,11 +31,11 @@ class MemberServiceTest {
 
         memberFormDto.setPassword("1234");
 
-        Address address = new Address();
-        address.setCity("서울시");
-
-
-        address.setStreet("합정동");
+//        Address address = new Address();
+//        address.setCity("서울시");
+//
+//
+//        address.setStreet("합정동");
 
 
         return Member.createMember(memberFormDto,passwordEncoder);
