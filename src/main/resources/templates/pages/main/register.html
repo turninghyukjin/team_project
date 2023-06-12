@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-<<<<<<< HEAD
-      xmlns:layout= "http://www.ultraq.net.nz/thymeleaf/layout"
-=======
       xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
->>>>>>> origin/master
       layout:decorate="~{layouts/base_layout_no_footer}"
 >
 
@@ -14,8 +10,9 @@
 </th:block>
 
 <!-- register.html 고유 js 추가 -->
-<<<<<<< HEAD
-
+<th:block layout:fragment="script">
+    <script th:src="@{/js/register.js}"></script>
+</th:block>
 
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -23,11 +20,6 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
 
-=======
-<th:block layout:fragment="script">
-    <script th:src="@{/js/register.js}"></script>
-</th:block>
->>>>>>> origin/master
 
 <th:block layout:fragment="content">
     <div class="content_wrapper">
