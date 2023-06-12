@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RequestMapping("/user")
+@RequestMapping("/join")
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -22,10 +22,6 @@ public class MemberController {
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
 
-    @GetMapping(value = "/agreement")
-    public String showAgreement() {
-        return "pages/user/agreement";
-    }
     // 회원가입
     @GetMapping(value = "/join")
     public String memberForm(Model model) {
@@ -64,6 +60,8 @@ public class MemberController {
     public String loginMember() {
         return "/user/login";
     }
+
+
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model) {

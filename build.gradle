@@ -34,7 +34,7 @@ dependencies {
 
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
-    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.google.code.gson:gson:2.8.8'
 
 
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'

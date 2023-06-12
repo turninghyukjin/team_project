@@ -1,4 +1,4 @@
-package com.project.sul.dto;
+package com.project.sul.kako;
 
 public class KakaoDto {
     private Long id;
