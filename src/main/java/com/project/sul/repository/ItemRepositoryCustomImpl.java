@@ -137,7 +137,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                             item.itemDetail,
                             itemImg.imgUrl))
             .from(itemImg)
-            .join(itemImg.item, item)
+            .join(itemImg.item, item).fetchJoin()
             .where(searchType(itemSearchDto.getType()),
                     searchAbvDg(itemSearchDto.getAbv()),
                     searchSweetDg(itemSearchDto.getSweetness()),
