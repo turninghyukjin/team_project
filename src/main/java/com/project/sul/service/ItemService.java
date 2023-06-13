@@ -1,5 +1,6 @@
 package com.project.sul.service;
 
+import com.project.sul.dto.ItemDto;
 import com.project.sul.dto.ItemFormDto;
 import com.project.sul.dto.ItemImgDto;
 import com.project.sul.dto.ItemSearchDto;
@@ -36,7 +37,6 @@ public class ItemService {
         if (itemImgFileList.size() < 1) {
             throw new IllegalArgumentException("최소한 2장의 이미지를 넣어야 합니다");
         }
-
         // 이미지 등록
         for (int i = 0; i < itemImgFileList.size(); i++) {
             ItemImg itemImg = new ItemImg();
@@ -94,8 +94,8 @@ public class ItemService {
     }
 
 //    @Transactional(readOnly = true)
-//    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
-//        return itemRepository.getMainItemPage(itemSearchDto, pageable);
+//    public Page<ItemDto> getItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+//        return itemRepository.getItemPage(itemSearchDto, pageable);
 //    }
 }
 

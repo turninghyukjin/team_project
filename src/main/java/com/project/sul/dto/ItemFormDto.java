@@ -55,6 +55,16 @@ public class ItemFormDto { // 상품등록
 
     private ItemSellStatus itemSellStatus;
 
+    @NotBlank(message="필수 입력값입니다")
+    private String taste; // 핵심포인트-맛
+    @NotBlank(message="필수 입력값입니다")
+    private String sideDish; // 핵심포인트-안주
+    @NotBlank(message="필수 입력값입니다")
+    private String ingredient; // 핵심포인트-재료
+
+    private int expire; // 유통기한
+    private String conserve; // 보관방법
+
 
     private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
     private List<Long> itemImgIds = new ArrayList<>();

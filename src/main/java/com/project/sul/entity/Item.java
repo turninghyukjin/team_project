@@ -40,7 +40,7 @@ public class Item { // 관리자 상품등록
 
     @Lob
     @Column(nullable = false)
-    private String itemDetail; //상품상세설명
+    private String itemDetail; // #상품상세설명
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="itemDetail_id") // 단방향 상세정보(도수, 맛)
@@ -52,6 +52,12 @@ public class Item { // 관리자 상품등록
     private LocalDateTime regTime;      //등록 시간 >> 유통기한과 연관?
     private LocalDateTime updateTime;   //수정 시간
 
+    private String taste; // 핵심포인트-맛
+    private String sideDish; // 핵심포인트-안주
+    private String ingredient; // 핵심포인트-재료
+
+    private int expire; // 유통기한
+    private String conserve; // 보관방법
 
 // 메서드
     public void updateItem(ItemFormDto itemFormDto) {

@@ -15,11 +15,15 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends JpaRepository<Item,Long>, QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {
         List<Item> findByItemNm(String itemNm);
-
         List<Item> findByPriceLessThan(Integer price);
         List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
+        List<Item> findByAbvLessThan(Integer abv);
 
-//        쿼리...
-        @Query("select i from Item i where i.itemDetail like %:itemDetail% order by i.price desc" )
-        List<Item> findByItemDetail(@Param("itemDetail") String itemDetail);
+        // 쿼리 이름 일부
+        @Query("select i from Item i where i.itemNm like %:itemNm% order by i.price desc" )
+        List<Item> findByItemNmPart(@Param("itemNm") String itemDetail);
+
+        // 재료
+        @Query("select i from Item i where i.ingredient like %:ingredient% order by i.price desc" )
+        List<Item> findByIngredient(@Param("ingredient") String itemDetail);
 }
