@@ -3,10 +3,8 @@ package com.project.sul.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Getter @Setter
 public class CartDetailDto {
-    //장바구니 조회페이지에 전달할 dto
 
     private Long cartItemId; //장바구니 상품 아이디
 
@@ -14,9 +12,9 @@ public class CartDetailDto {
 
     private int price; //상품 금액
 
-    private int count; // 수량
+    private int count; //수량
 
-    private String imgUrl; // 상품 이미지 경로
+    private String imgUrl; //상품 이미지 경로
 
     public CartDetailDto(Long cartItemId, String itemNm, int price, int count, String imgUrl){
         this.cartItemId = cartItemId;
@@ -25,6 +23,5 @@ public class CartDetailDto {
         this.count = count;
         this.imgUrl = imgUrl;
     }
-
 
 }

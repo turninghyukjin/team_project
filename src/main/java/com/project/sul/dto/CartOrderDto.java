@@ -1,13 +1,16 @@
 package com.project.sul.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
 public class CartOrderDto {
-    public List<CartOrderDto> getCartOrderDtoList() {
-        return null;
-    }
 
-    public Long getCartItemId() {
-        return null;
-    }
+    private Long cartItemId;
+
+    private List<CartOrderDto> cartOrderDtoList;
+
 }
