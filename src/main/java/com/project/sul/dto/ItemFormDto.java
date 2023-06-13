@@ -2,63 +2,58 @@ package com.project.sul.dto;
 
 import com.project.sul.constant.ItemSellStatus;
 import com.project.sul.entity.Item;
+import com.project.sul.entity.ItemDetails;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
+import org.springframework.ui.Model;
 
-import javax.validation.constraints.*;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-public class ItemFormDto { // 상품등록
-    private Long id;
+public class ItemFormDto {
+    private Long id; //상품 코드111
 
-    @NotBlank(message = "상품명은 필수 입력값입니다")
-    private String itemNm;
+    @NotBlank
+    private String itemNm; //상품명
 
-    @NotNull(message = "가격은 필수 입력값입니다")
-    private int price; // 가격
+    @NotNull
+    private int price; //가격
 
-    @NotNull(message = "재고는 필수 입력값입니다")
-    private Integer stockNumber;
+    @NotNull
+    private Integer stockNumber; //재고수량
 
-    private String selectedOption; // 상품타입
+    @Lob
+    @Column(nullable = false)
+    private String itemDetail; //상품상세설명
 
-    // 라디오값
-    public String getSelectedOption() {
-        return selectedOption;
-    }
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="itemDetail_id")
+    private ItemDetails itemDetails; // 단방향 상세정보(도수, 맛)
 
-    public void setSelectedOption(String selectedOption) {
-        this.selectedOption = selectedOption;
-    }
-
-    @NotBlank(message = "필수 입력값입니다")
-    @Min(value = 0, message = "알콜도수는 0 이상이어야 합니다")
-    @Max(value = 60, message = "알콜도수는 60 이하여야 합니다")
-    private int abv; // 알콜도수
-    @NotBlank(message = "필수 입력값입니다")
-    @Min(value = 1, message = "당도는 0 이상이어야 합니다")
-    @Max(value = 3, message = "당도는 3 이하여야 합니다")
-    private int sweetness; // 단맛
-    @NotBlank(message = "필수 입력값입니다")
-    @Min(value = 1, message = "산미는 1 이상이어야 합니다")
-    @Max(value = 3, message = "산미는 3 이하여야 합니다")
-    private int sourness; // 신맛
-    @NotBlank(message = "필수 입력값입니다")
-    @Min(value = 1, message = "탄산은 1 이상이어야 합니다")
-    @Max(value = 3, message = "탄산은 3 이하여야 합니다")
-    private int sparkling; // 탄산
-
-    @NotBlank(message = "상품 상세정보는 필수 입력값입니다")
-    private String itemDetail;
+    private List<Long> itemImgIds = new ArrayList<>();
+    private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
 
     private ItemSellStatus itemSellStatus;
 
-    private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
-    private List<Long> itemImgIds = new ArrayList<>();
+    @Column(nullable = false)
+    private String type; //상품타입(탁주, 약주, 증류주, 과실주)
+
+    private int abv; // 알콜도수
+
+    @Column(nullable = false)
+    private int sweetness; // 단맛 (1 to 3 degree)
+    private int sourness; // 신맛 (1 to 3 degree)
+    private int sparkling; // 탄산 (1 to 3 degree)
+
+    private LocalDateTime regTime;      //등록 시간 >> 유통기한과 연관?
+    private LocalDateTime updateTime;   //수정 시간
 
     private static ModelMapper modelMapper = new ModelMapper();
 
