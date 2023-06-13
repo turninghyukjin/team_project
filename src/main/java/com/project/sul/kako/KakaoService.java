@@ -14,6 +14,8 @@ import java.util.HashMap;
 @Service
 public class KakaoService {
 
+
+    //access_Token 값 읽어오고 db 저장! 
     public String getAccessToken (String authorize_code) {
         String access_Token = "";
         String refresh_Token = "";
@@ -72,6 +74,8 @@ public class KakaoService {
 
         return access_Token;
     }
+    
+    //카카오에서 이메일 가져오기
     public HashMap<String, Object> getUserInfo(String access_Token) {
         HashMap<String, Object> userInfo = new HashMap<>();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
@@ -97,13 +101,18 @@ public class KakaoService {
             com.google.gson.JsonParser parser = new JsonParser();
             JsonElement element = parser.parseString(result);
 
-            JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-            String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 
+//            JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+//            String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+
+            // 이메일 정보 가져오기
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
             String email = kakao_account.getAsJsonObject().get("email").getAsString();
 
-            userInfo.put("nickname", nickname);
+
+
+
+//            userInfo.put("nickname", nickname);
             userInfo.put("email", email);
 
             br.close();

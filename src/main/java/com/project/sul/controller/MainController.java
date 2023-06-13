@@ -47,6 +47,11 @@ public class MainController {
         return "pages/main/register";
     }
 
+    @GetMapping(value = "/register/agreement")
+    public String   agreement() {
+        return "pages/main/agreement";
+    }
+
     @GetMapping(value = "/register/email")
     public String registerEmail() {
         return "pages/main/register_email";

@@ -37,22 +37,20 @@ public class MemberController {
         }
 
         try {
-            Member member = Member.createMember(memberFormDto, passwordEncoder);
+            Member member = Member.createMember(memberFormDto, passwordEncoder, memberFormDto.getEmail());
+            member.setEmail(memberFormDto.getEmail());
 
-//            Address address = new Address();
-//            address.setCity(memberFormDto.getAddress().getCity());
-//            address.setStreet(memberFormDto.getAddress().getStreet());
-//            address.setZipCode(memberFormDto.getAddress().getZipCode());
-//            member.setAddress(address);
-//            member.setPhone(memberFormDto.getPhone());
+            Address address = new Address(memberFormDto.getAddress().getZipCode(), memberFormDto.getAddress().getStreetAdr(), memberFormDto.getAddress().getDetailAdr());
+            member.setAddress(address);
+            member.setPhone(memberFormDto.getPhone());
 
             memberService.saveMember(member);
-
         } catch (IllegalStateException e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "pages/user/join";
         }
         return "redirect:/";
+
     }
 
     // 로그인
@@ -60,8 +58,6 @@ public class MemberController {
     public String loginMember() {
         return "/user/login";
     }
-
-
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model) {
