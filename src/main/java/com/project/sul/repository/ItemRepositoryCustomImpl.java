@@ -1,8 +1,11 @@
 package com.project.sul.repository;
 
+import com.project.sul.dto.ItemDto;
 import com.project.sul.dto.ItemSearchDto;
 import com.project.sul.entity.Item;
 import com.project.sul.entity.QItem;
+import com.project.sul.entity.QItemImg;
+import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -15,10 +18,10 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository
-public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
+public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
     private JPAQueryFactory queryFactory;
-    public ItemRepositoryCustomImpl(EntityManager em){
 
+    public ItemRepositoryCustomImpl(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
     }
 
@@ -26,11 +29,16 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
     private BooleanExpression searchType(String type) {
         if (type != null && !type.isEmpty()) {
             switch (type) {
-                case "A" : return QItem.item.type.eq("A"); // 일단은 a로 맞췄어요
-                case "B" : return QItem.item.type.eq("B");
-                case "C" : return QItem.item.type.eq("C");
-                case "D" : return QItem.item.type.eq("D");
-                default: return null;
+                case "A":
+                    return QItem.item.type.eq("A"); // 일단은 a로 맞췄어요
+                case "B":
+                    return QItem.item.type.eq("B");
+                case "C":
+                    return QItem.item.type.eq("C");
+                case "D":
+                    return QItem.item.type.eq("D");
+                default:
+                    return null;
             }
         }
         return Expressions.asBoolean(true);
@@ -38,14 +46,13 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
 
     // 맛
     private BooleanExpression searchAbvDg(int abv) {
-        int abvDg = (int)(abv/10);
+        int abvDg = (int) (abv / 10);
 
-        if(abvDg<=3){
+        if (abvDg <= 3) {
             int min = (abvDg - 1) * 10;
             int max = abvDg * 10;
             return QItem.item.abv.between(min, max);
-        }
-        else if(abvDg>3 )return QItem.item.abv.between(30,60);
+        } else if (abvDg > 3) return QItem.item.abv.between(30, 60);
         return Expressions.asBoolean(true);
     }
 
@@ -61,6 +68,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                 return Expressions.asBoolean(true);
         }
     }
+
     private BooleanExpression searchSournessDg(int sourness) {
         switch (sourness) {
             case 1:
@@ -73,6 +81,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                 return Expressions.asBoolean(true);
         }
     }
+
     private BooleanExpression searchSparklingDg(int sparkling) {
         switch (sparkling) {
             case 1:
@@ -103,10 +112,39 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
                         searchByLike(itemSearchDto.getItemNm(), itemSearchDto.getSearchQuery())
                 )
                 .orderBy(QItem.item.id.desc())
-                 .offset(pageable.getOffset())
-                 .limit(pageable.getPageSize())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
         return new PageImpl<>(content, pageable, content.size());
     }
-}
 
+    @Override
+    public Page<ItemDto> getItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        QItem item = QItem.item;
+        QItemImg itemImg = QItemImg.itemImg;
+
+
+//        QueryResults<ItemDto> results = queryFactory
+//        List<ItemDto> content = queryFactory
+//            .select(new QItemDto(
+//                    item.id,
+//                    item.itemNm,
+//                    item.price,
+//                    item.itemDetails,
+//                    itemImg.imgUrl)
+//            )
+//            .from(itemImg)
+//            .join(itemImg.item, item)
+//            .where(itemImg.repImgYn.eq("Y"))
+//            .orderBy(QItem.item.id.desc())
+//            .offset(pageable.getOffset())
+//            .limit(pageable.getPageSize())
+//            .fetchResults();
+//
+//        List<ItemDto> contents = results.getResults();
+//        long total = results.getTotal();
+//        return new PageImpl<>(contents, pageable, total);
+        return null;
+    }
+
+}

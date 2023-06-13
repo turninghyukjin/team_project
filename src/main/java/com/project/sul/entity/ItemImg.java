@@ -25,7 +25,6 @@ public class ItemImg  {
     @JoinColumn(name="item_id")
     private Item item;
 
-
 //    메소드
     public void updateItemImg(String oriImgName, String imgName, String imgUrl){
         this.oriImgName = oriImgName;

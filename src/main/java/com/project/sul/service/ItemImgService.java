@@ -32,7 +32,6 @@ public class ItemImgService {
         }
     }
 
-
     public void updateItemImg(Long itemImgId, MultipartFile itemImgFile) throws Exception{
         // MultipartFile 첨부파일의 정보를 갖고 있는 객체! 파일의 이름, 크기, 내용등
         if(!itemImgFile.isEmpty()){

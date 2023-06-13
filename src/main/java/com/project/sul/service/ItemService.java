@@ -33,9 +33,9 @@ public class ItemService {
         itemRepository.save(item);
 
         //최소 2장의 이미지를 넣도록 (대표이미지, 상세이미지)
-//        if (itemImgFileList.size() < 1) {
-//            throw new IllegalArgumentException("최소한 2장의 이미지를 넣어야 합니다");
-//        }
+        if (itemImgFileList.size() < 1) {
+            throw new IllegalArgumentException("최소한 2장의 이미지를 넣어야 합니다");
+        }
 
         // 이미지 등록
         for (int i = 0; i < itemImgFileList.size(); i++) {
