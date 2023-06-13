@@ -2,6 +2,7 @@ package com.project.sul.repository;
 
 import com.project.sul.dto.ItemDto;
 import com.project.sul.dto.ItemSearchDto;
+import com.project.sul.dto.QItemDto;
 import com.project.sul.entity.Item;
 import com.project.sul.entity.QItem;
 import com.project.sul.entity.QItemImg;
@@ -94,57 +95,66 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                 return Expressions.asBoolean(true);
         }
     }
-
     // 이름
     private BooleanExpression searchByLike(String itemNm, String searchQuery) {
         return QItem.item.itemNm.likeIgnoreCase("%" + searchQuery + "%");
     }
 
+    // 관리자
     @Override
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         List<Item> content = queryFactory
-                .selectFrom(QItem.item)
-                .where(searchType(itemSearchDto.getType()),
-                        searchAbvDg(itemSearchDto.getAbv()),
-                        searchSweetDg(itemSearchDto.getSweetness()),
-                        searchSournessDg(itemSearchDto.getSourness()),
-                        searchSparklingDg(itemSearchDto.getSparkling()),
-                        searchByLike(itemSearchDto.getItemNm(), itemSearchDto.getSearchQuery())
-                )
-                .orderBy(QItem.item.id.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
+            .selectFrom(QItem.item)
+            .where(searchType(itemSearchDto.getType()),
+                searchAbvDg(itemSearchDto.getAbv()),
+                searchSweetDg(itemSearchDto.getSweetness()),
+                searchSournessDg(itemSearchDto.getSourness()),
+                searchSparklingDg(itemSearchDto.getSparkling()),
+                searchByLike(itemSearchDto.getItemNm(),
+                itemSearchDto.getSearchQuery())
+            )
+            .orderBy(QItem.item.id.desc())
+            .offset(pageable.getOffset())
+            .limit(pageable.getPageSize())
+            .fetch();
         return new PageImpl<>(content, pageable, content.size());
     }
 
+    // 고객
     @Override
     public Page<ItemDto> getItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         QItem item = QItem.item;
         QItemImg itemImg = QItemImg.itemImg;
 
+        QueryResults<ItemDto> results = queryFactory
+            .select(
+                    new QItemDto(
+                            item.id,
+                            item.itemNm,
+                            item.price,
+                            item.starRate,
+                            item.numReview,
+                            item.itemDetail,
+                            itemImg.imgUrl))
+            .from(itemImg)
+            .join(itemImg.item, item)
+            .where(searchType(itemSearchDto.getType()),
+                    searchAbvDg(itemSearchDto.getAbv()),
+                    searchSweetDg(itemSearchDto.getSweetness()),
+                    searchSournessDg(itemSearchDto.getSourness()),
+                    searchSparklingDg(itemSearchDto.getSparkling()),
+                    searchByLike(itemSearchDto.getItemNm(),
+                    itemSearchDto.getSearchQuery()),
+                    itemImg.repImgYn.eq("Y")
+            )
+            .orderBy(QItem.item.id.desc())
+            .offset(pageable.getOffset())
+            .limit(pageable.getPageSize())
+            .fetchResults();
 
-//        QueryResults<ItemDto> results = queryFactory
-//        List<ItemDto> content = queryFactory
-//            .select(new QItemDto(
-//                    item.id,
-//                    item.itemNm,
-//                    item.price,
-//                    item.itemDetails,
-//                    itemImg.imgUrl)
-//            )
-//            .from(itemImg)
-//            .join(itemImg.item, item)
-//            .where(itemImg.repImgYn.eq("Y"))
-//            .orderBy(QItem.item.id.desc())
-//            .offset(pageable.getOffset())
-//            .limit(pageable.getPageSize())
-//            .fetchResults();
-//
-//        List<ItemDto> contents = results.getResults();
-//        long total = results.getTotal();
-//        return new PageImpl<>(contents, pageable, total);
-        return null;
+        List<ItemDto> contents = results.getResults();
+        long total = results.getTotal();
+        return new PageImpl<>(contents, pageable, total);
     }
 
 }
