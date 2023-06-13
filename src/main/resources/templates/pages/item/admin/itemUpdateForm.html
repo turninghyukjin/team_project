@@ -124,6 +124,40 @@
                             placeholder="상품 설명 내용을 입력해주세요"
                     />
                     <div class="mt-20"></div>
+                    <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
+                        <div class="itemUpdateForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
+                            <img
+                                    src="/images/item/icon-asterisk.png"
+                                    alt="icon"
+                                    class="itemUpdateForm_inputLabel_img"
+                            />
+                        </div>
+                        <div class="mt-8"></div>
+                        <input
+                                type="file"
+                                accept=".jpg, .png"
+                                class="custom-file-input"
+                                name="itemImgFile"
+                        >
+                        <div class="mt-20"></div>
+                        <div class="itemUpdateForm_inputLabel">상품 설명 이미지 (JPG/PNG 형식만 가능, 5개 파일로 제한, 각 파일 사이즈 20MB 이하)
+                            <!--                            <img-->
+                            <!--                                    src="/images/Update/icon-asterisk.png"-->
+                            <!--                                    alt="icon"-->
+                            <!--                                    class="itemUpdateForm_inputLabel_img"-->
+                            <!--                            />-->
+                        </div>
+                        <div class="mt-8"></div>
+                        <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
+                            <input
+                                    type="file"
+                                    accept=".jpg, .png"
+                                    class="custom-file-input"
+                                    name="itemImgFile"
+                            >
+                            <div class="mt-8"></div>
+                        </div>
+                    </div>
                     <div th:unless="${#strings.isEmpty(itemFormDto.id)}">
                         <div class="itemUpdateForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
                             <img

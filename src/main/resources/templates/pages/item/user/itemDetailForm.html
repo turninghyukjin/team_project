@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout}"
+>
+
+<!-- itemDetailForm.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/itemDetailForm.css}">
+</th:block>
+
+<!-- itemDetailForm.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/js/itemDetailForm.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="content_wrapper">
+        <div class="itemDetailContent_wrapper">
+            <div class="itemDetail_wrapper">
+                <div class="itemDetail_box box_relative pr-30">
+                    <div class="img_wrapper imgSet">
+                        <span class="img_box"></span>
+                        <img src="/images/itemDetail/탁주_담은.jpg" alt="담은 탁주">
+                    </div>
+                </div>
+                <div class="itemDetail_box">
+                    <div class="itemDetail_content">
+                        <div class="content_top">
+                            <div class="title">
+                                담은
+                            </div>
+                        </div>
+                        <div class="content_middle">
+                            <div class="itemTag">
+                                #입안을 가득 채우는 푸근함 #카페라떼처럼 부드러운
+                            </div>
+                        </div>
+                        <div class="content_bottom">
+                            <span class="star"></span>
+                            <div class="score">4.9</div>
+                            <span class="reviewCount">[490 리뷰]</span>
+                        </div>
+                        <div class="content_price">
+                            <div class="priceTitle">
+                                <div>판매가격:</div>
+                            </div>
+                            <div class="originalPrice">
+                                33,000원
+                            </div>
+                            <div class="salePrice">
+                                <span class="salePriceText">31,350원</span>
+                            </div>
+                            <div class="expirationStorage">
+                                <label class="blue">유통기한:</label>
+                                <span class="blue">제조일로부터 30일</span>
+                            </div>
+                            <div class="expirationStorage">
+                                <label class="blue">보관방법:</label>
+                                <span class="blue">세워서 냉장 보관</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-60">
+                    <div class="keyPoint_wrapper">
+                        <div class="keyPointTitle">
+                            핵심 포인트
+                        </div>
+                        <div class="key_wrapper">
+                            <div class="img_wrapper">
+                                <img src="images/itemDetail/mainPointImg.png" alt="mainpoint_image">
+                                <div class="label">맛</div>
+                                <div class="content">
+                                    <span>우유같이 부드러운 단맛</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="key_wrapper">
+                            <div class="img_wrapper">
+                                <img src="images/itemDetail/point_anju.png" alt="anju_image">
+                                <div class="label">안주</div>
+                                <div class="content">
+                                    <span>매콤한 음식과 즐겨보세요!</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="key_wrapper">
+                            <div class="img_wrapper">
+                                <img src="images/itemDetail/point_damhwa.png" alt="damhwa_image">
+                                <div class="label">담화</div>
+                                <div class="content">
+                                    <span>생쌀을 발효한 프리미엄 막걸리</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="itemOrderContent_wrapper">
+            <div class="orderContentList">
+                <div class="title">수량</div>
+                <div class="count_wrapper">
+                    <div class="count_minusPlus_img_wrapper">
+                        <img src="/images/itemDetail/icon_minus_counter_inactive.png" alt="icon_minus_counter_inactive">
+<!--                        <img src="/images/itemDetail/icon_minus_counter.png" alt="icon_minus_counter">-->
+                    </div>
+                    <input type="number" maxlength="3" value="1">
+                    <div class="count_minusPlus_img_wrapper">
+                        <img src="/images/itemDetail/icon_plus_counter.png" alt="icon_plus_counter">
+                    </div>
+                </div>
+                <div class="title">총 상품가격</div>
+                <div class="totalPrice">
+                    <span>31,350원</span>
+                </div>
+                <div class="delivery">
+                    <div class="deliveryIcon">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</th:block>
+
+</html>
