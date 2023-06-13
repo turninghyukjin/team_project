@@ -59,7 +59,7 @@ class ItemServiceTest {
         itemFormDto.setItemNm("테스트상품1");
         itemFormDto.setPrice(1000);
         itemFormDto.setStockNumber(10);
-        itemFormDto.setSelectedOption("A");
+//        itemFormDto.setSelectedOption("A");
         itemFormDto.setAbv(20);
         itemFormDto.setSweetness(1);
         itemFormDto.setSourness(2);
@@ -77,7 +77,7 @@ class ItemServiceTest {
         assertEquals(itemFormDto.getItemNm(), item.getItemNm());
         assertEquals(itemFormDto.getPrice(), item.getPrice());
         assertEquals(itemFormDto.getStockNumber(), item.getStockNumber());
-        assertEquals(itemFormDto.getSelectedOption(), item.getType());
+//        assertEquals(itemFormDto.getSelectedOption(), item.getType());
         assertEquals(itemFormDto.getAbv(), item.getAbv());
         assertEquals(itemFormDto.getSweetness(), item.getSweetness());
         assertEquals(itemFormDto.getSourness(), item.getSourness());

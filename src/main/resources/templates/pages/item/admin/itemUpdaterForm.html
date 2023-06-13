@@ -6,31 +6,62 @@
 
 <!-- login.html 고유 css 추가 -->
 <th:block layout:fragment="css">
-    <link rel="stylesheet" th:href="@{/css/itemRegisterForm.css}">
+    <link rel="stylesheet" th:href="@{/css/itemUpdateForm.css}">
 </th:block>
 
 <!-- login.html 고유 js 추가 -->
 <th:block layout:fragment="script">
-    <script th:src="@{/js/itemRegisterForm.js}"></script>
+    <script th:src="@{/js/itemUpdateForm.js}"></script>
 </th:block>
 
 <th:block layout:fragment="content">
-    <div class="itemRegister_wrapper">
+    <div class="itemUpdate_wrapper">
         <div class="content_wrapper">
             <header class="admin_wrapper">
                 <div class="title_wrapper">
-                    <div class="title">[관리자] 상품 등록</div>
+                    <div class="title">[관리자] 상품 수정</div>
                 </div>
             </header>
 
-            <div class="itemRegisterForm_wrapper">
-                <form th:action="@{/item/admin/register}" method="post" th:object="${itemFormDto}">
-                    <label th:for="itemNm" class="itemRegisterForm_inputLabel">
+            <div class="itemUpdateForm_wrapper">
+                <form th:action="@{/item/admin/update}" method="post" th:object="${itemFormDto}">
+                    <div class="radioContent_wrapper">
+                        <div class="title">상품 상태
+                            <img
+                                    src="/images/item/icon-asterisk.png"
+                                    alt="icon"
+                                    class="itemUpdateForm_inputLabel_img"
+                            />
+                        </div>
+                        <div class="mt-8"></div>
+                        <div class="radio_wrapper">
+                            <div class="form-check form-check-inline">
+                                <label for="sellstatus1" class="form-check-label">판매중</label>
+                                <input type="radio"
+                                       class="form-check-input radioSize"
+                                       id="sellstatus1"
+                                       th:field="*{itemSellStatus}"
+                                       th:value="SELL"
+                                >
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="sellstatus2" class="form-check-label">품절</label>
+                                <input type="radio"
+                                       class="form-check-input radioSize"
+                                       id="sellstatus2"
+                                       th:field="*{itemSellStatus}"
+                                       th:value="SOLD_OUT"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-20"></div>
+                    <label th:for="itemNm" class="itemUpdateForm_inputLabel">
                         상품명
                         <img
                                 src="/images/item/icon-asterisk.png"
                                 alt="icon"
-                                class="itemRegisterForm_inputLabel_img"
+                                class="itemUpdateForm_inputLabel_img"
                                 th:field="*{itemNm}"
                         />
                     </label>
@@ -42,12 +73,12 @@
                             placeholder="상품명을 입력해주세요"
                     />
                     <div class="mt-20"></div>
-                    <label th:for="price" class="itemRegisterForm_inputLabel">
+                    <label th:for="price" class="itemUpdateForm_inputLabel">
                         가격
                         <img
                                 src="/images/item/icon-asterisk.png"
                                 alt="icon"
-                                class="itemRegisterForm_inputLabel_img"
+                                class="itemUpdateForm_inputLabel_img"
                                 th:field="*{price}"
                         />
                     </label>
@@ -59,12 +90,12 @@
                             placeholder="상품의 가격을 입력해주세요"
                     />
                     <div class="mt-20"></div>
-                    <label th:for="stockNumber" class="itemRegisterForm_inputLabel">
+                    <label th:for="stockNumber" class="itemUpdateForm_inputLabel">
                         재고 수량
                         <img
                                 src="/images/item/icon-asterisk.png"
                                 alt="icon"
-                                class="itemRegisterForm_inputLabel_img"
+                                class="itemUpdateForm_inputLabel_img"
                                 th:field="*{stockNumber}"
                         />
                     </label>
@@ -76,12 +107,12 @@
                             placeholder="상품의 재고 수량을 입력하세요"
                     />
                     <div class="mt-20"></div>
-                    <label th:for="itemDetail" class="itemRegisterForm_inputLabel">
+                    <label th:for="itemDetail" class="itemUpdateForm_inputLabel">
                         상품 설명
                         <img
                                 src="/images/item/icon-asterisk.png"
                                 alt="icon"
-                                class="itemRegisterForm_inputLabel_img"
+                                class="itemUpdateForm_inputLabel_img"
                                 th:field="*{itemDetail}"
                         />
                     </label>
@@ -93,12 +124,12 @@
                             placeholder="상품 설명 내용을 입력해주세요"
                     />
                     <div class="mt-20"></div>
-                    <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
-                        <div class="itemRegisterForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
+                    <div th:unless="${#strings.isEmpty(itemFormDto.id)}">
+                        <div class="itemUpdateForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
                             <img
                                     src="/images/item/icon-asterisk.png"
                                     alt="icon"
-                                    class="itemRegisterForm_inputLabel_img"
+                                    class="itemUpdateForm_inputLabel_img"
                             />
                         </div>
                         <div class="mt-8"></div>
@@ -109,11 +140,11 @@
                                 name="itemImgFile"
                         >
                         <div class="mt-20"></div>
-                        <div class="itemRegisterForm_inputLabel">상품 설명 이미지 (JPG/PNG 형식만 가능, 5개 파일로 제한, 각 파일 사이즈 20MB 이하)
+                        <div class="itemUpdateForm_inputLabel">상품 설명 이미지 (JPG/PNG 형식만 가능, 5개 파일로 제한, 각 파일 사이즈 20MB 이하)
                             <!--                            <img-->
-                            <!--                                    src="/images/register/icon-asterisk.png"-->
+                            <!--                                    src="/images/Update/icon-asterisk.png"-->
                             <!--                                    alt="icon"-->
-                            <!--                                    class="itemRegisterForm_inputLabel_img"-->
+                            <!--                                    class="itemUpdateForm_inputLabel_img"-->
                             <!--                            />-->
                         </div>
                         <div class="mt-8"></div>
@@ -134,7 +165,7 @@
                             <img
                                     src="/images/item/icon-asterisk.png"
                                     alt="icon"
-                                    class="itemRegisterForm_inputLabel_img"
+                                    class="itemUpdateForm_inputLabel_img"
                             />
                         </div>
                         <div class="mt-8"></div>
@@ -178,12 +209,12 @@
                         </div>
                     </div>
                     <div class="mt-20"></div>
-                    <label th:for="abv" class="itemRegisterForm_inputLabel">
+                    <label th:for="abv" class="itemUpdateForm_inputLabel">
                         술 도수
                         <img
                                 src="/images/item/icon-asterisk.png"
                                 alt="icon"
-                                class="itemRegisterForm_inputLabel_img"
+                                class="itemUpdateForm_inputLabel_img"
                         />
                     </label>
                     <div class="mt-8"></div>
@@ -200,7 +231,7 @@
                             <img
                                     src="/images/item/icon-asterisk.png"
                                     alt="icon"
-                                    class="itemRegisterForm_inputLabel_img"
+                                    class="itemUpdateForm_inputLabel_img"
                             />
                         </div>
                         <div class="mt-8"></div>
@@ -240,7 +271,7 @@
                             <img
                                     src="/images/item/icon-asterisk.png"
                                     alt="icon"
-                                    class="itemRegisterForm_inputLabel_img"
+                                    class="itemUpdateForm_inputLabel_img"
                             />
                         </div>
                         <div class="mt-8"></div>
@@ -280,7 +311,7 @@
                             <img
                                     src="/images/item/icon-asterisk.png"
                                     alt="icon"
-                                    class="itemRegisterForm_inputLabel_img"
+                                    class="itemUpdateForm_inputLabel_img"
                             />
                         </div>
                         <div class="mt-8"></div>
@@ -316,13 +347,13 @@
                     </div>
                     <div class="mt-20"></div>
                     <button
-                            class="button_registerSocialForm"
+                            class="button_UpdateSocialForm"
                             font-weight="500"
                             type="submit"
                             width="335px"
                             height="50px"
                     >
-                        상품등록 완료
+                        상품수정 완료
                     </button>
                     <div class="mb-50"></div>
                 </form>

@@ -1,8 +1,6 @@
 package com.project.sul.service;
 
-import com.project.sul.dto.ItemFormDto;
-import com.project.sul.dto.ItemImgDto;
-import com.project.sul.dto.ItemSearchDto;
+import com.project.sul.dto.*;
 import com.project.sul.entity.Item;
 import com.project.sul.entity.ItemImg;
 import com.project.sul.repository.ItemImgRepository;
@@ -74,7 +72,6 @@ public class ItemService {
         return itemFormDto;
     }
 
-
     public Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
         Item item = itemRepository.findById(itemFormDto.getId())
                 .orElseThrow(EntityNotFoundException::new);
@@ -98,8 +95,6 @@ public class ItemService {
 //        return itemRepository.getMainItemPage(itemSearchDto, pageable);
 //    }
 }
-
-
 
     // 지금 구현하고 싶은 거
     // 지정된 값에 따라서 자동으로 그림을 불러오기(별점, 맛(도수, 산미, 탄산, 단맛))
