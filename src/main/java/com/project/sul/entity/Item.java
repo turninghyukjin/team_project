@@ -31,7 +31,7 @@ public class Item { // 관리자 상품등록
     private int stockNumber; //재고수량
 
     @Column(nullable = false)
-    private String type; //상품타입(탁주, 약주, 증류주, 과실주)
+    private String productType; //상품타입(탁주, 약주, 증류주, 과실주)
 
     private int abv; // 알콜도수
     private int sweetness; // 단맛

@@ -1,5 +1,6 @@
 package com.project.sul.controller;
 
+import com.project.sul.dto.ItemRegisterFormDto;
 import com.project.sul.dto.MemberFormDto;
 import com.project.sul.dto.RegisterSocialFormDto;
 import com.project.sul.entity.Address;
@@ -54,6 +55,15 @@ public class MainController {
         model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
         return "pages/main/register_social";
     }
+
+    @GetMapping(value = "/admin/itemRegister")
+    public String itemRegister(Model model) {
+        model.addAttribute("itemRegisterFormDto", new ItemRegisterFormDto());
+        return "pages/item/admin/itemRegisterForm";
+    }
+
+
+
 // 닉네임 중복 체크
 //    @GetMapping(value = "/register/social/{nickname}/duplicate")
 //    public ResponseEntity<Boolean> checkNicknameDuplicate (@PathVariable String nickname) {

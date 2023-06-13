@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout_no_footer}"
+>
+
+<!-- login.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/itemRegisterForm.css}">
+</th:block>
+
+<!-- login.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/js/itemRegisterForm.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="itemRegister_wrapper">
+        <div class="content_wrapper">
+            <header class="admin_wrapper">
+                <div class="title_wrapper">
+                    <div class="title">[관리자] 상품 등록</div>
+                </div>
+            </header>
+
+            <div class="itemRegisterForm_wrapper">
+                <form th:action="@{/item/admin/register}" method="post" th:object="${itemRegisterFormDto}">
+                    <label th:for="itemNm" class="itemRegisterForm_inputLabel">
+                        상품명
+                        <img
+                                src="/images/register/icon-asterisk.png"
+                                alt="icon"
+                                class="itemRegisterForm_inputLabel_img"
+                                th:field="*{itemNm}"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            id="itemNm"
+                            type="text"
+                            placeholder="상품명을 입력해주세요"
+                    />
+                    <div class="mt-20"></div>
+                    <label th:for="price" class="itemRegisterForm_inputLabel">
+                        가격
+                        <img
+                                src="/images/register/icon-asterisk.png"
+                                alt="icon"
+                                class="itemRegisterForm_inputLabel_img"
+                                th:field="*{price}"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            id="price"
+                            type="text"
+                            placeholder="상품의 가격을 입력해주세요"
+                    />
+                    <div class="mt-20"></div>
+                    <label th:for="stockNumber" class="itemRegisterForm_inputLabel">
+                        재고 수량
+                        <img
+                                src="/images/register/icon-asterisk.png"
+                                alt="icon"
+                                class="itemRegisterForm_inputLabel_img"
+                                th:field="*{stockNumber}"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            id="stockNumber"
+                            type="text"
+                            placeholder="상품의 재고 수량을 입력하세요"
+                    />
+                    <div class="mt-20"></div>
+                    <label th:for="itemDetail" class="itemRegisterForm_inputLabel">
+                        상품 설명
+                        <img
+                                src="/images/register/icon-asterisk.png"
+                                alt="icon"
+                                class="itemRegisterForm_inputLabel_img"
+                                th:field="*{itemDetail}"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            id="itemDetail"
+                            type="text"
+                            placeholder="상품 설명 내용을 입력해주세요"
+                    />
+                    <div class="mt-20"></div>
+                    <div th:if="${#lists.isEmpty(itemRegisterFormDto.itemImgDtoList)}">
+                        <div class="itemRegisterForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
+                            <img
+                                    src="/images/register/icon-asterisk.png"
+                                    alt="icon"
+                                    class="itemRegisterForm_inputLabel_img"
+                            />
+                        </div>
+                        <div class="mt-8"></div>
+                        <input
+                                type="file"
+                                accept=".jpg, .png"
+                                class=""
+                                name="itemImgFile"
+                        >
+                        <div class="mt-20"></div>
+                        <div class="itemRegisterForm_inputLabel">상품 설명 이미지 (JPG/PNG 형식만 가능, 5개 파일로 제한, 각 파일 사이즈 20MB 이하)
+                            <!--                            <img-->
+                            <!--                                    src="/images/register/icon-asterisk.png"-->
+                            <!--                                    alt="icon"-->
+                            <!--                                    class="itemRegisterForm_inputLabel_img"-->
+                            <!--                            />-->
+                        </div>
+                        <div class="mt-8"></div>
+                        <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
+                            <input
+                                    type="file"
+                                    accept=".jpg, .png"
+                                    class=""
+                                    name="itemImgFile"
+                            >
+                            <div class="mt-8"></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-20"></div>
+                    <div class="radioContent_wrapper">
+                        <div class="title">술 종류
+                            <img
+                                    src="/images/register/icon-asterisk.png"
+                                    alt="icon"
+                                    class="itemRegisterForm_inputLabel_img"
+                            />
+                        </div>
+                        <div class="mt-8"></div>
+                        <div class="radio_wrapper">
+                            <div class="form-check form-check-inline">
+                                <label for="productType1" class="form-check-label">탁주</label>
+                                <input type="radio" value="A"
+                                       class="form-check-input radioSize" id="productType1" name="productType">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="productType2" class="form-check-label">약주</label>
+                                <input type="radio" value="B"
+                                       class="form-check-input radioSize" id="productType2" name="productType">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="productType3" class="form-check-label">증류수</label>
+                                <input type="radio" value="C"
+                                       class="form-check-input radioSize" id="productType3" name="productType">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="productType4" class="form-check-label">과실주</label>
+                                <input type="radio" value="D"
+                                       class="form-check-input radioSize" id="productType4" name="productType">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-20"></div>
+                    <label for="alcoholProof" class="itemRegisterForm_inputLabel">
+                        술 도수
+                        <img
+                                src="/images/register/icon-asterisk.png"
+                                alt="icon"
+                                class="itemRegisterForm_inputLabel_img"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            id="alcoholProof"
+                            type="text"
+                            placeholder="알콜도수를 입력해주세요"
+                    />
+                    <div class="mt-20"></div>
+                    <div class="radioContent_wrapper">
+                        <div class="title">단맛
+                            <img
+                                    src="/images/register/icon-asterisk.png"
+                                    alt="icon"
+                                    class="itemRegisterForm_inputLabel_img"
+                            />
+                        </div>
+                        <div class="mt-8"></div>
+                        <div class="radio_wrapper">
+                            <div class="form-check form-check-inline">
+                                <label for="sweetness1" class="form-check-label">약간</label>
+                                <input type="radio" value="1"
+                                       class="form-check-input radioSize" id="sweetness1" name="sweetness">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="sweetness2" class="form-check-label">중간</label>
+                                <input type="radio" value="2"
+                                       class="form-check-input radioSize" id="sweetness2" name="sweetness">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="sweetness3" class="form-check-label">강한</label>
+                                <input type="radio" value="3"
+                                       class="form-check-input radioSize" id="sweetness3" name="sweetness">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-20"></div>
+                    <div class="radioContent_wrapper">
+                        <div class="title">신맛
+                            <img
+                                    src="/images/register/icon-asterisk.png"
+                                    alt="icon"
+                                    class="itemRegisterForm_inputLabel_img"
+                            />
+                        </div>
+                        <div class="mt-8"></div>
+                        <div class="radio_wrapper">
+                            <div class="form-check form-check-inline">
+                                <label for="sourness1" class="form-check-label">약간</label>
+                                <input type="radio" value="1"
+                                       class="form-check-input radioSize" id="sourness1" name="sourness">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="sourness2" class="form-check-label">중간</label>
+                                <input type="radio" value="2"
+                                       class="form-check-input radioSize" id="sourness2" name="sourness">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="sourness3" class="form-check-label">강한</label>
+                                <input type="radio" value="3"
+                                       class="form-check-input radioSize" id="sourness3" name="sourness">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-20"></div>
+                    <div class="radioContent_wrapper">
+                        <div class="title">탄산
+                            <img
+                                    src="/images/register/icon-asterisk.png"
+                                    alt="icon"
+                                    class="itemRegisterForm_inputLabel_img"
+                            />
+                        </div>
+                        <div class="mt-8"></div>
+                        <div class="radio_wrapper">
+                            <div class="form-check form-check-inline">
+                                <label for="sparkling1" class="form-check-label">약간</label>
+                                <input type="radio" value="1"
+                                       class="form-check-input radioSize" id="sparkling1" name="sparkling">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="sparkling2" class="form-check-label">중간</label>
+                                <input type="radio" value="2"
+                                       class="form-check-input radioSize" id="sparkling2" name="sparkling">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label for="sparkling3" class="form-check-label">강한</label>
+                                <input type="radio" value="3"
+                                       class="form-check-input radioSize" id="sparkling3" name="sparkling">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</th:block>
+
+</html>
