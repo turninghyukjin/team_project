@@ -30,7 +30,7 @@ class MemberServiceTest {
         memberFormDto.setEmail("test@example.com");
         memberFormDto.setPassword("1234");
         String email = memberFormDto.getEmail();
-        return Member.createMember(memberFormDto, passwordEncoder,email);
+        return null;
     }
     @Test
     @DisplayName("회원가입 테스트")

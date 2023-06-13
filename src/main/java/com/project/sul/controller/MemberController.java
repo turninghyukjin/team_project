@@ -13,6 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.Period;
 
 @RequestMapping("/join")
 @Controller
@@ -37,8 +39,15 @@ public class MemberController {
         }
 
         try {
-            Member member = Member.createMember(memberFormDto, passwordEncoder, memberFormDto.getEmail());
-            member.setEmail(memberFormDto.getEmail());
+            LocalDate birthDate = memberFormDto.getBirthDate();
+            if (!isAgeValid(birthDate)) {
+                model.addAttribute("errorMessage", "만 19세 이상만 가입할 수 있습니다.");
+                return "pages/user/join";
+            }
+
+            String impUid = "인증토큰"; // 인증 토큰을 얻어오는 로직이 필요합니다.
+
+            Member member = Member.createMember(memberFormDto, passwordEncoder, memberFormDto.getEmail(), impUid, birthDate);
 
             Address address = new Address(memberFormDto.getAddress().getZipCode(), memberFormDto.getAddress().getStreetAdr(), memberFormDto.getAddress().getDetailAdr());
             member.setAddress(address);
@@ -50,7 +59,6 @@ public class MemberController {
             return "pages/user/join";
         }
         return "redirect:/";
-
     }
 
     // 로그인
@@ -65,4 +73,9 @@ public class MemberController {
         return "/user/login";
     }
 
+    private boolean isAgeValid(LocalDate birthDate) {
+        LocalDate now = LocalDate.now();
+        int age = Period.between(birthDate, now).getYears();
+        return age >= 19;
+    }
 }

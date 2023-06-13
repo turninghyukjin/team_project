@@ -20,6 +20,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
+    implementation 'com.querydsl:querydsl-core:4.4.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'

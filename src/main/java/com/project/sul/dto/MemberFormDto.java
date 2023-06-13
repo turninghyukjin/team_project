@@ -7,6 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,8 +16,8 @@ import javax.validation.constraints.Size;
 @ToString
 public class MemberFormDto {
 
-//    @NotBlank(message = "이름은 필수 입력 값입니다.")
-//    private String name;
+
+    private String name;
 
     @NotBlank(message = "닉네임은 필수 입력 값입니다.")
     private String nickname;
@@ -39,6 +40,13 @@ public class MemberFormDto {
     @NotEmpty(message = "주소를 입력해 주세요.")
     private Address address;
 
+    private LocalDate birthDate;
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
 
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
 
 }
