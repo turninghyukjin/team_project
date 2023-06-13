@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/base_layout}">
+<!-- join.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/join.css}">
+</th:block>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+<body>
+
+<div class="mt-20"></div>
+<button id="adultCertButton"
+        class="button_agree_adultCert"
+        font-size="16px"
+        font-weight="500"
+        type="blue"
+        width="335px"
+        height="50px">
+    동의하고 성인 인증하기
+</button>
+
+<script type="text/javascript">
+        // I'mport 라이브러리 로드
+        function loadIamportScript() {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "http://cdn.iamport.kr/v1/iamport.js";
+            script.onload = function() {
+                // I'mport 라이브러리 로드 완료 후에 본인인증 함수 호출
+                handleAdultCertification();
+            };
+            document.body.appendChild(script);
+        }
+
+        // 버튼 클릭 시 실행될 함수
+        function handleAdultCertification() {
+            var IMP = window.IMP; // 생략 가능
+            IMP.init("1570777386811537"); // 실제 사용하는 REST API 키로 대체합니다.
+
+            // IMP.certification() 호출
+            IMP.certification(
+                {
+                    pg: "html5_inicis.A010002002",
+                    merchant_uid: "11111111111",
+                    m_redirect_url: "http://localhost/register/social",
+                    popup: false
+                },
+                function(rsp) {
+                    if (rsp.success) {
+                        console.log("본인인증 성공");
+                        // 추가적인 로직 수행 가능
+                    } else {
+                        console.log("본인인증 실패");
+                        // 추가적인 로직 수행 가능
+                    }
+                }
+            );
+        }
+
+        // 버튼 클릭 이벤트 핸들러 등록
+        document.getElementById("adultCertButton").addEventListener("click", function() {
+            loadIamportScript();
+        });
+    </script>
+</body>
+</html>

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RequestMapping("/user")
+@RequestMapping("/join")
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -60,6 +60,8 @@ public class MemberController {
     public String loginMember() {
         return "/user/login";
     }
+
+
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model) {

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout_no_footer}"
+>
+
+<!-- register_social.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/register_social.css}">
+</th:block>
+
+<!-- register_social.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/js/register_address.js}"></script>
+    <!-- daum 주소찾기 API 추가 -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="content_wrapper">
+        <div class="registerContentForm_wrapper">
+            <header class="welcome_user_wrapper">
+                <div class="userTitle_wrapper">
+                    <div class="title">김강민님, 환영해요!</div>
+                </div>
+            </header>
+
+            <div class="registerSocialForm_wrapper">
+                <form th:action="@{/register/social}" method="post" th:object="${registerSocialFormDto}">
+                    <label th:for="email" class="registerSocialForm_inputLabel">
+                        이메일
+                        <img
+                                src="/images/register/icon-asterisk.png"
+                                alt="icon"
+                                class="registerSocialForm_inputLabel_img"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class="disable-input"
+                            id="email"
+                            name="email"
+                            type="text"
+                            value="kgm2804@naver.com"
+                    />
+                    <div class="mt-20"></div>
+                    <div class="nicknameInput_wrapper">
+                        <label th:for="nickname" class="nicknameInputLabel">닉네임</label>
+                        <div class="nicknameInput_rule">
+                            공백, 특수문자를 제외한 2~10자로 입력하세요.
+                        </div>
+                        <input
+                                class=""
+                                type="text"
+                                placeholder="닉네임을 입력해 주세요"
+                                name="nickname"
+                                th:field="*{nickname}"
+                        /><button
+                                class="button_nicknameInput"
+                                font-size="15px"
+                                font-weight="500"
+                                type="button"
+                                width="85px"
+                                height="50px"
+                        >
+                            중복 확인
+                        </button>
+                        <div class="mt-4"></div>
+                    </div>
+                    <div class="mt-20"></div>
+                    <div class="addressInput_wrapper">
+                        <label for="addressSubTitle" class="registerSocialForm_inputLabel">
+                            주소
+                            <img
+                                    src="/images/register/icon-asterisk.png"
+                                    alt="icon"
+                                    class="registerSocialForm_inputLabel_img"
+                            />
+                        </label>
+                        <input type="hidden" id="addressSubTitle">
+                        <div class="mt-8"></div>
+                        <div class="addressFrom">
+                            <button
+                                    class="button_AddressInput"
+                                    font-size="15px"
+                                    font-weight="500"
+                                    type="button"
+                                    width="85px"
+                                    height="50px"
+                                    onclick="daumPostcode()"
+                            >
+                                주소 찾기
+                            </button>
+                            <div class="mt-8"></div>
+
+                            <label th:for="*{zipCode}" class="nicknameInputLabel addressLabelFont">우편번호</label>
+                            <input
+                                    class="addressFrom_inputStyle disable-input"
+                                    type="text"
+                                    placeholder="우편번호"
+                                    th:field="*{zipCode}"
+                                    readonly="readonly"
+                            />
+                            <div class="mt-4"></div>
+                            <label th:for="*{streetAdr}" class="nicknameInputLabel addressLabelFont">도로명주소</label>
+                            <input
+                                    class="addressFrom_inputStyle disable-input"
+                                    type="text"
+                                    placeholder="도로명주소"
+                                    th:field="*{streetAdr}"
+                                    name="streetAdr"
+                                    readonly="readonly"
+                            />
+                            <div class="mt-4"></div>
+                            <label for="jibunAddress" class="nicknameInputLabel addressLabelFont">지번주소</label>
+                            <input
+                                    class="addressFrom_inputStyle disable-input"
+                                    type="text"
+                                    placeholder="지번주소"
+                                    id="jibunAddress"
+                                    readonly="readonly"
+                            />
+                            <div class="mt-4"></div>
+                            <label for="extraAddress" class="nicknameInputLabel addressLabelFont">주소참고</label>
+                            <input
+                                    class="addressFrom_inputStyle disable-input"
+                                    type="text"
+                                    placeholder="주소참고"
+                                    id="extraAddress"
+                                    readonly="readonly"
+                            />
+                            <div class="mt-4"></div>
+                            <label th:for="detailAdr" class="nicknameInputLabel addressLabelFont">상세주소</label>
+                            <input
+                                    class=""
+                                    type="text"
+                                    placeholder="상세주소를 입력해주세요"
+                                    th:field="*{detailAdr}"
+                            />
+                        </div>
+                    </div>
+                    <div class="mt-20"></div>
+                    <button
+                            class="button_registerSocialForm"
+                            font-weight="500"
+                            type="submit"
+                            width="335px"
+                            height="50px"
+                    >
+                        회원가입 완료
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</html>

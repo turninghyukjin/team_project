@@ -1,0 +1,81 @@
+.itemRegister_wrapper {
+    background:#fff;
+}
+.itemRegister_wrapper .content_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    padding-left:20%;
+}
+.content_wrapper .admin_wrapper {
+    width:335px;
+}
+.admin_wrapper .title_wrapper {
+    margin: 30px 0px 14px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.title_wrapper .title {
+    margin-right: 3px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 100%;
+    color: rgb(62, 62, 62);
+}
+.content_wrapper .itemRegisterForm_wrapper {
+    width: 80%;
+    user-select: none;
+    margin: 16px 0px 20px;
+}
+.itemRegisterForm_wrapper .itemRegisterForm_inputLabel {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(62, 62, 62);
+    font-size: 15px;
+    line-height: 22px;
+}
+form .itemRegisterForm_inputLabel_img {
+    width: 7px;
+    height: 7px;
+    margin: 0px 0px 2px 3px;
+}
+form .mt-8 {
+    margin-top:8px;
+}
+form input {
+    appearance: none;
+    outline: none;
+    width: 100%;
+    min-width: 315px;
+    height: 50px;
+    padding: 14px;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 5px;
+    color: rgb(62, 62, 62);
+    font-size: 15px;
+    line-height: 22px;
+    transition: all 0.3s ease 0s;
+}
+form .mt-20 {
+    margin-top:20px;
+}
+.radioContent_wrapper .title {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(62, 62, 62);
+    font-size: 15px;
+    line-height: 22px;
+}
+.radioContent_wrapper input.radioSize {
+    min-width:0px !important;
+    padding:0px !important;
+}
+.radioContent_wrapper .radio_wrapper {
+    font-size:15px;
+    line-height: 22px;
+}

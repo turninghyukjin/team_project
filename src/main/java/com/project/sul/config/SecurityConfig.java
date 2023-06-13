@@ -7,7 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+
+
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,17 +17,17 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @SuppressWarnings("deprecation")
-public class SecurityConfig {
+public class SecurityConfig  {
     @Autowired
     MemberService memberService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.formLogin()
-                .loginPage("/user/login") //로그인 페이지 url 설정
+                .loginPage("/login") //로그인 페이지 url 설정
                 .defaultSuccessUrl("/") // 성공시 이동할 url
                 .usernameParameter("email") //로그인시 사용할 파라미터 이름으로 email 지정
-                .failureUrl("/user/login/error") //.로그인 실패시 이동할 url
+                .failureUrl("/login/error") //.로그인 실패시 이동할 url
                 .and()
                 .logout() //로그아웃 url
                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
@@ -35,10 +36,10 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/") //로그아웃 성공시 이동할 url
         ;
         http.authorizeRequests()
-                .mvcMatchers("/css/**", "/js/**", "/images/**", "/jquery/**", "/bootstrap/**", "/slick/**","/Payments/**").permitAll()
-                .mvcMatchers("/", "/user/**").permitAll()
+                .mvcMatchers("/css/**", "/js/**", "/images/**", "/jquery/**", "/bootstrap/**", "/slick/**","/payments/**").permitAll()
+                .mvcMatchers("/", "/login/**", "/register/**", "/user/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
-//                .mvcMatchers("/KcpPayment").hasRole("ADMIN")
+
                 .anyRequest().authenticated();
         http.exceptionHandling()
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint())

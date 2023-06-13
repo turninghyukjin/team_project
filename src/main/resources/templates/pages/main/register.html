@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout_no_footer}"
+>
+
+<!-- register.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+</th:block>
+
+<!-- register.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/js/register.js}"></script>
+</th:block>
+
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/v1/iamport.js"></script>
+
+
+
+<th:block layout:fragment="content">
+    <div class="content_wrapper">
+        <div class="register_wrapper">
+            <header class="register_top_banner">
+                <div class="register_banner_message">
+                    <div class="title">환영해요!</div>
+                </div>
+                <div class="register_banner_message_sub">
+                    <div class="sub-title">지금 회원가입하면 최대 4,000p를 드려요.</div>
+                </div>
+            </header>
+
+            <div class="mt-64"></div>
+
+            <div class="signUp_agree_checkboxForm_wrapper">
+                <form>
+                    <div class="checkbox-wrapper">
+                        <svg
+                                fill="#e0e0e0"
+                                hover="#eaa638"
+                                class="svg_effect"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                    x="0.5"
+                                    y="0.5"
+                                    width="23"
+                                    height="23"
+                                    rx="4.5"
+                                    fill="white"
+                                    stroke="#E0E0E0"
+                            ></rect>
+                        </svg>
+                        <div class="ml-16"></div>
+                        <span class="all-agree-text">모두 동의합니다</span>
+                    </div>
+                    <div class="mt-28"></div>
+                    <div class="checkbox-wrapper">
+                        <svg
+                                fill="#e0e0e0"
+                                hover="#eaa638"
+                                class="svg_effect"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                    x="0.5"
+                                    y="0.5"
+                                    width="23"
+                                    height="23"
+                                    rx="4.5"
+                                    fill="white"
+                                    stroke="#E0E0E0"
+                            ></rect>
+                        </svg>
+                        <div class="ml-16"></div>
+                        <a href="/terms/policy"
+                        >
+                            <div class="agreeLink">
+                                <div>
+                                    (필수)
+                                    <ins>이용 약관 동의
+                                    </ins
+                                    >
+                                    <img
+                                            src="/images/register/icon-asterisk.png"
+                                            width="7"
+                                            height="7"
+                                            alt="asterisk"
+                                            style="margin: 0px 0px 2px 3px"
+                                    />
+                                </div>
+                                <section
+                                        class="agreeLink_arrow_icon_wrapper"
+                                >
+                                    <img
+                                            src="/images/register/right-arrow-icon.png"
+                                            alt="약관 페이지 조회를 위한 화살표 아이콘"
+                                            width="6px"
+                                            height="10px"
+                                    />
+                                </section>
+                            </div
+                            >
+                        </a>
+                    </div>
+                    <div class="mt-28"></div>
+                    <div class="checkbox-wrapper">
+                        <svg
+                                fill="#e0e0e0"
+                                hover="#eaa638"
+                                class="svg_effect"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                    x="0.5"
+                                    y="0.5"
+                                    width="23"
+                                    height="23"
+                                    rx="4.5"
+                                    fill="white"
+                                    stroke="#E0E0E0"
+                            ></rect>
+                        </svg>
+                        <div class="ml-16"></div>
+                        <a href="/terms/privacy"
+                        >
+                            <div class="agreeLink">
+                                <div>
+                                    (필수)
+                                    <ins>개인정보 수집 및 이용 동의
+                                    </ins
+                                    >
+                                    <img
+                                            src="/images/register/icon-asterisk.png"
+                                            width="7"
+                                            height="7"
+                                            alt="asterisk"
+                                            style="margin: 0px 0px 2px 3px"
+                                    />
+                                </div>
+                                <section
+                                        class="agreeLink_arrow_icon_wrapper"
+                                >
+                                    <img
+                                            src="/images/register/right-arrow-icon.png"
+                                            alt="약관 페이지 조회를 위한 화살표 아이콘"
+                                            width="6px"
+                                            height="10px"
+                                    />
+                                </section>
+                            </div
+                            >
+                        </a>
+                    </div>
+                    <div class="mt-28"></div>
+                    <div class="checkbox-wrapper">
+                        <svg
+                                fill="#e0e0e0"
+                                hover="#eaa638"
+                                class="svg_effect"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                    x="0.5"
+                                    y="0.5"
+                                    width="23"
+                                    height="23"
+                                    rx="4.5"
+                                    fill="white"
+                                    stroke="#E0E0E0"
+                            ></rect>
+                        </svg>
+                        <div class="ml-16"></div>
+                        <span class="marketing-agree-point-wrapper">
+                            (선택) 광고성 및 마케팅 정보 수신 동의
+                        </span>
+                    </div>
+                    <div class="mt-8"></div>
+                    <p class="marketing_detail_message">
+                        다양한 할인 프로모션 및 이벤트 소식을<br>
+                        보내 드립니다.
+                    </p>
+                    <div class="mt-20"></div>
+
+                        <button id="adultCertButton"
+                                class="button_agree_adultCert"
+                                font-size="16px"
+                                font-weight="500"
+                                type="blue"
+                                width="335px"
+                                height="50px">
+                            동의하고 성인 인증하기
+                        </button>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // I'mport 라이브러리 로드
+        function loadIamportScript() {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "http://cdn.iamport.kr/v1/iamport.js";
+            script.onload = function() {
+                // I'mport 라이브러리 로드 완료 후에 본인인증 함수 호출
+                handleAdultCertification();
+            };
+            document.body.appendChild(script);
+        }
+
+        // 버튼 클릭 시 실행될 함수
+        function handleAdultCertification() {
+            var IMP = window.IMP; // 생략 가능
+            IMP.init("1570777386811537"); // 실제 사용하는 REST API 키로 대체합니다.
+
+            // IMP.certification() 호출
+            IMP.certification(
+                {
+                    pg: "html5_inicis.A010002002",
+                    merchant_uid: "11111111111",
+                    m_redirect_url: "http://localhost/register/social",
+                    popup: false
+                },
+                function(rsp) {
+                    if (rsp.success) {
+                        console.log("본인인증 성공");
+                        // 추가적인 로직 수행 가능
+                    } else {
+                        console.log("본인인증 실패");
+                        // 추가적인 로직 수행 가능
+                    }
+                }
+            );
+        }
+
+        // 버튼 클릭 이벤트 핸들러 등록
+        document.getElementById("adultCertButton").addEventListener("click", function() {
+            loadIamportScript();
+        });
+    </script>
+
+
+</th:block>
+
+</html>
