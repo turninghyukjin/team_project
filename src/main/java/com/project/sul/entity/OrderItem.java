@@ -28,7 +28,6 @@ public class OrderItem extends BaseEntity{
 
     private int count; //수량
 
-
     // PaymentsInfo 필드 추가
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payments_info_id")
