@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-</head>
-<body>
-<button id="adultCertButton">동의하고 성인 인증하기</button>
-
-<script>
-        const userCode = "imp47175133";
+const userCode = "imp47175133";
         IMP.init(userCode);
 
-        document.getElementById("adultCertButton").addEventListener("click", function() {
-            handleAdultCertification();
-        });
+
+    window.onload = function() {
+      const button = document.getElementById("adultCertButton");
+      button.addEventListener("click", handleAdultCertification);
+    };
+
 
         function handleAdultCertification() {
             IMP.certification(
@@ -32,6 +26,3 @@
                 }
             );
         }
-    </script>
-</body>
-</html>
