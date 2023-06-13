@@ -27,18 +27,10 @@ class MemberServiceTest {
 
     private Member createMember() {
         MemberFormDto memberFormDto = new MemberFormDto();
-        memberFormDto.setEmail("test@email.com");
-
+        memberFormDto.setEmail("test@example.com");
         memberFormDto.setPassword("1234");
-
-//        Address address = new Address();
-//        address.setCity("서울시");
-//
-//
-//        address.setStreet("합정동");
-
-
-        return Member.createMember(memberFormDto,passwordEncoder);
+        String email = memberFormDto.getEmail();
+        return Member.createMember(memberFormDto, passwordEncoder,email);
     }
     @Test
     @DisplayName("회원가입 테스트")

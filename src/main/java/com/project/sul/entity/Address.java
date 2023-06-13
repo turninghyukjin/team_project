@@ -19,7 +19,9 @@ public class Address {
     private String streetAdr;
 
     private String detailAdr;
+    public Address() {
 
+    }
     public Address(String zipCode, String streetAdr, String detailAdr) {
         this.zipCode = zipCode;
         this.streetAdr = streetAdr;

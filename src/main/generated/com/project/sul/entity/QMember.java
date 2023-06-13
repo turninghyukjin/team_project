@@ -26,6 +26,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public final QAddress address;
 
+    public final NumberPath<Integer> age = createNumber("age", Integer.class);
+
     //inherited
     public final StringPath createBy = _super.createBy;
 
