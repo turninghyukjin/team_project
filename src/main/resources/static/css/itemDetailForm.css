@@ -244,9 +244,108 @@
     width: 100%;
     color: rgb(112, 112, 112);
 }
+.review_wrapper .reviewSearch {
+    width: 100%;
+    padding: 20px 0px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    font-size: 13px;
+}
+.reviewSearch .filter_checkbox {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.filter_checkbox svg {
+    width:24px;
+    height:24px;
+    min-width: 23px;
+    animation: 0.3s ease 0s 1 normal none running fadein;
+}
+.filter_checkbox span {
+    margin-left: 8px;
+    color: rgb(62, 62, 62);
+}
+.reviewSearch select {
+    min-width: 100px;
+    padding-right: 20px;
+    appearance: none;
+    outline: none;
+    border: none;
+    color: rgb(62, 62, 62);
+    font-size: 13px;
+    text-align: right;
+    direction: rtl;
+    background: url(/images/global/icon_arrow_under.png) 95% 50% / 10px no-repeat;
+}
+.review_wrapper .reviewContent_wrapper {
+    margin-bottom: 50px;
+    color: rgb(112, 112, 112);
+    position: relative;
+}
+.reviewContent_wrapper .reviewContent_header {
+    font-size: 13px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: rgb(244, 244, 244);
+    padding: 0px 30px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.reviewContent_header .reviewHeader_name {
+    font-weight: bold;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.reviewContent_header .reviewHeader_right {
+    width: 80%;
+    display: flex;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    align-items: center;
+    font-weight: 400;
+}
+.reviewHeader_right .itemName {
+    margin-right: 10px;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.reviewHeader_right .ratingStars {
+    display: inline-flex;
+    position: relative;
+    font-size: 1.125rem;
+    color: rgb(250, 175, 0);
+    cursor: pointer;
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: none;
+}
+.ratingStars .stars_wrapper {
+    display: inline-flex;
+    position: relative;
+    font-size: 1.125rem;
+    color: rgb(250, 175, 0);
+    cursor: pointer;
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: none;
+    padding-bottom: 3px;
+}
+.stars_wrapper .stars_wrapper {
+    position:relative;
+}
+.star_wrapper .star_style {
 
-
-
+}
 
 
 
