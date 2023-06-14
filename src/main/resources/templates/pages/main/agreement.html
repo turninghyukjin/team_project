@@ -20,55 +20,188 @@
 
 <th:block layout:fragment="content">
 
-<button id="adultCertButton"
-        class="button_agree_adultCert"
-        font-size="16px"
-        font-weight="500"
-        type="blue"
-        width="335px"
-        height="50px">본인 인증하기</button>
 
-<!--<script>-->
-<!--       const userCode = "imp47175133";-->
-<!--IMP.init(userCode);-->
+<!--<button id="adultCertButton"-->
+<!--        class="button_agree_adultCert"-->
+<!--        font-size="16px"-->
+<!--        font-weight="500"-->
+<!--        type="blue"-->
+<!--        width="335px"-->
+<!--        height="50px">본인 인증하기</button>-->
+    <div class="signUp_agree_checkboxForm_wrapper">
+            <div class="checkbox-wrapper">
+                <svg
+                        fill="#e0e0e0"
+                        hover="#eaa638"
+                        class="svg_effect"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <rect
+                            x="0.5"
+                            y="0.5"
+                            width="23"
+                            height="23"
+                            rx="4.5"
+                            fill="white"
+                            stroke="#E0E0E0"
+                    ></rect>
+                </svg>
+                <div class="ml-16"></div>
+                <span class="all-agree-text">모두 동의합니다</span>
+            </div>
+            <div class="mt-28"></div>
+            <div class="checkbox-wrapper">
+                <svg
+                        fill="#e0e0e0"
+                        hover="#eaa638"
+                        class="svg_effect"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <rect
+                            x="0.5"
+                            y="0.5"
+                            width="23"
+                            height="23"
+                            rx="4.5"
+                            fill="white"
+                            stroke="#E0E0E0"
+                    ></rect>
+                </svg>
+                <div class="ml-16"></div>
+                <a href="/terms/policy"
+                >
+                    <div class="agreeLink">
+                        <div>
+                            (필수)
+                            <ins>이용 약관 동의
+                            </ins
+                            >
+                            <img
+                                    src="/images/global/icon-asterisk.png"
+                                    width="7"
+                                    height="7"
+                                    alt="asterisk"
+                                    style="margin: 0px 0px 2px 3px"
+                            />
+                        </div>
+                        <section
+                                class="agreeLink_arrow_icon_wrapper"
+                        >
+                            <img
+                                    src="/images/global/right-arrow-icon.png"
+                                    alt="약관 페이지 조회를 위한 화살표 아이콘"
+                                    width="6px"
+                                    height="10px"
+                            />
+                        </section>
+                    </div
+                    >
+                </a>
+            </div>
+            <div class="mt-28"></div>
+            <div class="checkbox-wrapper">
+                <svg
+                        fill="#e0e0e0"
+                        hover="#eaa638"
+                        class="svg_effect"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <rect
+                            x="0.5"
+                            y="0.5"
+                            width="23"
+                            height="23"
+                            rx="4.5"
+                            fill="white"
+                            stroke="#E0E0E0"
+                    ></rect>
+                </svg>
+                <div class="ml-16"></div>
+                <a href="/terms/privacy"
+                >
+                    <div class="agreeLink">
+                        <div>
+                            (필수)
+                            <ins>개인정보 수집 및 이용 동의
+                            </ins
+                            >
+                            <img
+                                    src="/images/global/icon-asterisk.png"
+                                    width="7"
+                                    height="7"
+                                    alt="asterisk"
+                                    style="margin: 0px 0px 2px 3px"
+                            />
+                        </div>
+                        <section
+                                class="agreeLink_arrow_icon_wrapper"
+                        >
+                            <img
+                                    src="/images/global/right-arrow-icon.png"
+                                    alt="약관 페이지 조회를 위한 화살표 아이콘"
+                                    width="6px"
+                                    height="10px"
+                            />
+                        </section>
+                    </div
+                    >
+                </a>
+            </div>
+            <div class="mt-28"></div>
+            <div class="checkbox-wrapper">
+                <svg
+                        fill="#e0e0e0"
+                        hover="#eaa638"
+                        class="svg_effect"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <rect
+                            x="0.5"
+                            y="0.5"
+                            width="23"
+                            height="23"
+                            rx="4.5"
+                            fill="white"
+                            stroke="#E0E0E0"
+                    ></rect>
+                </svg>
+                <div class="ml-16"></div>
+                <span class="marketing-agree-point-wrapper">
+                            (선택) 광고성 및 마케팅 정보 수신 동의
+                        </span>
+            </div>
+            <div class="mt-8"></div>
+            <p class="marketing_detail_message">
+                다양한 할인 프로모션 및 이벤트 소식을<br>
+                보내 드립니다.
+            </p>
+            <div class="mt-20"></div>
 
-<!--window.onload = function() {-->
-<!--  const button = document.getElementById("adultCertButton");-->
-<!--  button.addEventListener("click", handleAdultCertification);-->
-<!--};-->
 
-<!--function handleAdultCertification() {-->
-<!--  IMP.certification(-->
-<!--    {-->
-<!--      pg: "html5_inicis.MIIiasTest",-->
-<!--      merchant_uid: "1570777386811537",-->
-<!--      company: "sul",-->
-<!--      m_redirect_url: "http://localhost/register/social",-->
-<!--      popup: true,-->
-<!--    },-->
-<!--    function(rsp) {-->
-<!--      if (rsp.success) {-->
-<!--        // jQuery로 HTTP 요청-->
-<!--        jQuery.ajax({-->
-<!--          url: "/register/social",-->
-<!--          method: "POST",-->
-<!--          headers: { "Content-Type": "application/json" },-->
-<!--          data: { imp_uid: rsp.imp_uid }-->
-<!--        });-->
 
-<!--        // 본인인증이 완료되었습니다.-->
-<!--        alert("본인인증이 완료되었습니다.");-->
+            <button id="adultCertButton"
+                    class="button_agree_adultCert"
+                    font-size="16px"
+                    font-weight="500"
+                    type="blue"
+                    width="335px"
+                    height="50px">
+                동의하기
+            </button>
+    </div>
 
-<!--        // 다음 페이지로 이동-->
-<!--        window.location.href = "http://localhost/register/social";-->
-<!--      } else {-->
-<!--        alert("인증에 실패하였습니다. 에러 내용: " + rsp.error_msg);-->
-<!--      }-->
-<!--    }-->
-<!--  );-->
-<!--}-->
-
-<!--    </script>-->
 </th:block>
 
 </html>
