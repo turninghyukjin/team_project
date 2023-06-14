@@ -24,6 +24,12 @@ function handleAdultCertification() {
           headers: { "Content-Type": "application/json" },
           data: { imp_uid: rsp.imp_uid }
         });
+
+        // 본인인증이 완료되었습니다.
+        alert("본인인증이 완료되었습니다.");
+
+        // 다음 페이지로 이동
+        window.location.href = "http://localhost/register/social";
       } else {
         alert("인증에 실패하였습니다. 에러 내용: " + rsp.error_msg);
       }
