@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/register/social")
+@RequestMapping("/register")
 public class RegisterController {
 
     @PostMapping("/certifications")
@@ -30,8 +30,8 @@ public class RegisterController {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             Map<String, String> tokenRequest = new HashMap<>();
-            tokenRequest.put("imp_key", "imp_apikey"); // REST API키
-            tokenRequest.put("imp_secret", "ekKoeW8RyKuT0zgaZsUtXXTLQ4AhPFW3ZGseDA6bkA5lamv9OqDMnxyeB9wqOsuO9W3Mx9YSJ4dTqJ3f"); // REST API Secret
+            tokenRequest.put("imp_key", "1570777386811537"); // REST API키
+            tokenRequest.put("imp_secret", "2k16RFAZ05kKlaM60SdMzmUobtT2KeeeDCeypvUdq07UjS4Bd2N9ZHz1lyK1h397iscygpegNn4bAxhz"); // REST API Secret
             ResponseEntity<Map> tokenResponseEntity = restTemplate.postForEntity(
                     "https://api.iamport.kr/users/getToken",
                     tokenRequest,
@@ -62,15 +62,15 @@ public class RegisterController {
     }
 
     @PostMapping
-    public void handleRegisterRequest(@RequestBody Member.Register request) {
+    public void handleRegisterRequest(@RequestBody RegisterDto registerDto) {
         try {
-            String impUid = request.getImpUid();
+            String impUid = registerDto.getImpUid();
 
             // 서버에서 필요한 인증 정보 확인 및 로직 수행
             // ...
 
             // 인증 정보를 받았을 때의 처리
-            if (isAgeValid(request)) {
+            if (isAgeValid(registerDto)) {
                 // 만 19세 이상인 경우에만 인증 허용
                 // 성공적인 처리 로직 작성
                 System.out.println("인증 성공");
@@ -85,11 +85,11 @@ public class RegisterController {
         }
     }
 
-    private boolean isAgeValid(Member.Register request) {
+    private boolean isAgeValid(RegisterDto registerDto) {
         // 연령 검증 로직 구현
         // 예시: 현재 날짜와 생년월일을 비교하여 만 19세 이상인지 확인
         LocalDate now = LocalDate.now();
-        LocalDate birthDate = request.getBirthDate();
+        LocalDate birthDate = registerDto.getBirthDate();
         int age = Period.between(birthDate, now).getYears();
         return age >= 19;
     }

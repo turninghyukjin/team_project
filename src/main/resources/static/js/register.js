@@ -12,14 +12,14 @@ function handleAdultCertification() {
       pg: "html5_inicis.MIIiasTest",
       merchant_uid: "1570777386811537",
       company: "sul",
-      m_redirect_url: "http://localhost/register/social",
+      m_redirect_url: "http://localhost/register",
       popup: true,
     },
     function(rsp) {
       if (rsp.success) {
         // jQuery로 HTTP 요청
         jQuery.ajax({
-          url: "/register/social",
+          url: "/register",
           method: "POST",
           headers: { "Content-Type": "application/json" },
           data: { imp_uid: rsp.imp_uid }
