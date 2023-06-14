@@ -1,7 +1,7 @@
-.itemRegister_wrapper {
+.itemUpdate_wrapper {
     background:#fff;
 }
-.itemRegister_wrapper .content_wrapper {
+.itemUpdate_wrapper .content_wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -25,12 +25,12 @@
     line-height: 100%;
     color: rgb(62, 62, 62);
 }
-.content_wrapper .itemRegisterForm_wrapper {
+.content_wrapper .itemUpdateForm_wrapper {
     width: 80%;
     user-select: none;
     margin: 16px 0px 20px;
 }
-.itemRegisterForm_wrapper .itemRegisterForm_inputLabel {
+.itemUpdateForm_wrapper .itemUpdateForm_inputLabel {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -38,7 +38,7 @@
     font-size: 15px;
     line-height: 22px;
 }
-form .itemRegisterForm_inputLabel_img {
+form .itemUpdateForm_inputLabel_img {
     width: 7px;
     height: 7px;
     margin: 0px 0px 2px 3px;
@@ -82,7 +82,7 @@ form .mt-20 {
 form .mb-50 {
     margin-bottom:50px !important;
 }
-form .button_registerSocialForm {
+form .button_UpdateSocialForm {
     width: 335px;
     height: 50px;
     background-color: rgb(0, 150, 243);
@@ -97,6 +97,6 @@ form .button_registerSocialForm {
     box-shadow: none !important;
     text-shadow: none !important;
 }
-form .button_registerSocialForm:hover {
+form .button_UpdateSocialForm:hover {
     background-color: rgb(52, 99, 129);
 }
