@@ -15,11 +15,11 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class Item { // 관리자 상품등록
+public class Item extends BaseEntity { // 관리자 상품등록
     @Id
     @Column(name = "item_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; //상품 코드111
+    private Long id; //상품 코드
 
     @Column(nullable = false,length = 100)
     private String itemNm; //상품명
@@ -56,8 +56,11 @@ public class Item { // 관리자 상품등록
     private String sideDish; // 핵심포인트-안주
     private String ingredient; // 핵심포인트-재료
 
-    private int expire; // 유통기한
-    private String conserve; // 보관방법
+//    private int expire; // 유통기한
+//    private String conserve; // 보관방법
+
+    private double avgStar; // 평균별점
+    private int numComment;  // 리뷰개수
 
 // 메서드
     public void updateItem(ItemFormDto itemFormDto) {
@@ -80,4 +83,6 @@ public class Item { // 관리자 상품등록
     public void addStock(int stockNumber){
         this.stockNumber = stockNumber;
     }
+
+
 }
