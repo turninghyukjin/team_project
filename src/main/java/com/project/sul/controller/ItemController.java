@@ -26,10 +26,16 @@ public class ItemController {
     private final ItemService itemService;
 
     // 새로운 아이템 등록
-    @GetMapping(value = "/admin/item/new")
-    public String showItemForm(Model model) {
+    @GetMapping(value = "/admin/item/register")
+    public String itemRegister(Model model) {
         model.addAttribute("itemFormDto", new ItemFormDto());
-        return "item/admin/itemForm";
+        return "pages/item/admin/itemRegisterForm";
+    }
+
+    @GetMapping(value = "/admin/item/update")
+    public String itemUpdate(Model model) {
+        model.addAttribute("itemFormDto", new ItemFormDto());
+        return "pages/item/admin/itemUpdateForm";
     }
 
     @PostMapping("/admin/item/newValid")
