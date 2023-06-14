@@ -93,4 +93,6 @@ public class RegisterController {
         int age = Period.between(birthDate, now).getYears();
         return age >= 19;
     }
+
+
 }

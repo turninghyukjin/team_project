@@ -14,6 +14,7 @@
     <script th:src="@{/js/register_address.js}"></script>
     <!-- daum 주소찾기 API 추가 -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script th:src="@{/js/register_social.js}"></script>
 </th:block>
 
 <th:block layout:fragment="content">
@@ -26,11 +27,11 @@
             </header>
 
             <div class="registerSocialForm_wrapper">
-                <form th:action="@{/register/final}" method="post" th:object="${registerSocialFormDto}">
+                <form th:action="@{/register/social}" method="post" th:object="${registerSocialFormDto}">
                     <label th:for="email" class="registerSocialForm_inputLabel">
                         이메일
                         <img
-                                src="/images/global/icon-asterisk.png"
+                                src="/images/register/icon-asterisk.png"
                                 alt="icon"
                                 class="registerSocialForm_inputLabel_img"
                         />
@@ -41,7 +42,7 @@
                             id="email"
                             name="email"
                             type="text"
-                            value="kgm2804@naver.com"
+                            value=""
                     />
                     <div class="mt-20"></div>
                     <div class="nicknameInput_wrapper">
@@ -72,7 +73,7 @@
                         <label for="addressSubTitle" class="registerSocialForm_inputLabel">
                             주소
                             <img
-                                    src="/images/global/icon-asterisk.png"
+                                    src="/images/register/icon-asterisk.png"
                                     alt="icon"
                                     class="registerSocialForm_inputLabel_img"
                             />

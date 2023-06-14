@@ -45,39 +45,5 @@ public class MainController {
     }
 
 
-// 닉네임 중복 체크
-//    @GetMapping(value = "/register/social/{nickname}/duplicate")
-//    public ResponseEntity<Boolean> checkNicknameDuplicate (@PathVariable String nickname) {
-//        return ResponseEntity.ok(memberService.saveMember(member));
-//    }
-
-//유효성 검사 수정 해야함
-//    public Map<String, String> validateHandling(Errors errors) {
-//        Map<String, String> validatorResult = new HashMap<>();
-//
-//        for (FieldError error : errors.getFieldErrors()) {
-//            String validKeyName = String.format("valid_%s", error.getField());
-//            validatorResult.put(validKeyName, error.getDefaultMessage());
-//        }
-//        return validatorResult;
-//    }
-
-
-//    @PostMapping(value = "/register/social")
-//    public String registerSocialMember(@Valid  memberFormDto,
-//                                    BindingResult bindingResult, Model model) {
-//        if (bindingResult.hasErrors()) {
-//            return "pages/main/register_social";
-//        }
-//        try {
-//            Address address = new Address()
-//            Member member = Member.createMember(memberFormDto, passwordEncoder);
-//            memberService.saveMember(member);
-//        } catch (IllegalStateException e) {
-//            model.addAttribute("errorMessage", e.getMessage());
-//            return "pages/main/register_social";
-//        }
-//        return "redirect:/";
-//    }
 
 }
