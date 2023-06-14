@@ -26,7 +26,7 @@ public class KakaoController {
             System.out.println("###access_Token#### : " + access_Token);
             System.out.println("###userInfo#### : " + userInfo.get("email"));
             System.out.println("###nickname#### : " + userInfo.get("nickname"));
-            return "redirect:/register"; // 리디렉션을 "/register"로 변경
+            return "redirect:/register/agreement"; // 리디렉션을 "/register"로 변경
         } else {
             // 로그인 페이지로 이동하는 로직
             return "login";
