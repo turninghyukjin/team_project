@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
-public class ItemSearchDto {
+public class ItemSearchDto { // 검색할 것들
     private String type;
     private int abv;
     private int sweetness;

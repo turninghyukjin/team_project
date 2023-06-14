@@ -132,8 +132,8 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                             item.id,
                             item.itemNm,
                             item.price,
-                            item.starRate,
-                            item.numReview,
+                            item.avgStar,
+                            item.numComment,
                             item.itemDetail,
                             itemImg.imgUrl))
             .from(itemImg)

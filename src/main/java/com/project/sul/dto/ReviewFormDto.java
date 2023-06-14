@@ -19,9 +19,9 @@ public class ReviewFormDto { // 고객이 작성하는 리뷰창
     private String itemNm;  // 상품명
 
     @NotBlank(message="필수 입력값입니다")
-    private int starRating; // 별점
+    private double star; // 별점
     @Size(min = 20, message = "상품평은 20자 이상 입력해주세요.")
-    private String Rating;  // 상세리뷰
+    private String Comment;  // 상세리뷰
 
     private List<ReviewImgDto> reivewImgDtoList = new ArrayList<>();
     private List<Long> reviewImgIds = new ArrayList<>(); // 수정시 reviewImgId 저장용

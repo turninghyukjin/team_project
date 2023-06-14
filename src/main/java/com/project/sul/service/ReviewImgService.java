@@ -17,16 +17,19 @@ public class ReviewImgService {
     private String reviewImgLocation;
 
     private final RvImgRepository rvImgRepository;
-    private final FileService fileService;
+    private final ReviewFileService reviewFileService;
 
-//    public void saveReImg(ReviewImg reviewImg, MultipartFile reviewImgFile) throws Exception{
-//        String RvOriImgName = reviewImgFile.getOriginalFilename();
-//        String imgName = "";
-//        String imgUrl = "";
-//
-//        if(!StringUtils.isEmpty(rvOriImgName)){
-//            imgName = fileService.uploadFile(reviewImgLocation, rvOriImgName, rvImgFile.getBytes());
-//            imgUrl= "/images/review" + imgName;
-//        }
-//    }
+    public void saveReviewImg(ReviewImg reviewImg, MultipartFile reviewImgFile) throws Exception{
+        String rvOriImgName = reviewImgFile.getOriginalFilename();
+        String imgName = "";
+        String imgUrl = "";
+
+        if(!StringUtils.isEmpty(rvOriImgName)){
+            imgName = reviewFileService.rvUploadFile(reviewImgLocation, rvOriImgName, reviewImgFile.getBytes() );
+            imgUrl= "/review/item" + imgName;
+        }
+
+        reviewImg.updateReImg(rvOriImgName, imgName, imgUrl);
+        rvImgRepository.save(reviewImg);
+    }
 }

@@ -26,4 +26,7 @@ public interface ItemRepository extends JpaRepository<Item,Long>, QuerydslPredic
         // 재료
         @Query("select i from Item i where i.ingredient like %:ingredient% order by i.price desc" )
         List<Item> findByIngredient(@Param("ingredient") String itemDetail);
+
+        @Query("select count(r) from Review r where r.item = :item")
+        int countCommentsByItem(@Param("item") Item item);
 }
