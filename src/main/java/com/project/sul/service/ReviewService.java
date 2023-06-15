@@ -1,25 +1,18 @@
 package com.project.sul.service;
 
-import com.project.sul.dto.ReviewDto;
-import com.project.sul.dto.ReviewFormDto;
-import com.project.sul.entity.Item;
-import com.project.sul.entity.Member;
-import com.project.sul.entity.Review;
+import com.project.sul.dto.*;
+import com.project.sul.entity.*;
 import com.project.sul.repository.ItemRepository;
 import com.project.sul.repository.ReviewRepository;
 import com.project.sul.repository.RvImgRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.Errors;
-import org.springframework.validation.FieldError;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.print.Pageable;
-import java.util.HashMap;
+import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @Transactional
@@ -32,7 +25,7 @@ public class ReviewService {
 
     // 리뷰수가 0 이상일 때 별점계산
     public Double calAvgStar(Item item) {
-        List<Review> reviews = reviewRepository.findByItemItemNm(item.getItemNm());
+        List<Review> reviews = reviewRepository.findByItemItemId(item.getId());
         Double sum = reviews.stream().mapToDouble(Review::getAvgStar).sum();
         if (reviews.size() > 0) {
             return sum / reviews.size();
@@ -63,12 +56,42 @@ public class ReviewService {
 //    }
 
     // 리뷰 메서드
-    public void save(ReviewFormDto reviewFormDto, Member member, Item item){
-        Review review = reviewFormDto.createReview();
-        review.setMember(member);
-        review.setItem(item);
+//    public void save(ReviewFormDto reviewFormDto, Member member, Item item){
+//        Review review = reviewFormDto.createReview();
+//        review.setMember(member);
+//        review.setItem(item);
+//        reviewRepository.save(review);
+//    }
 
+    // 등록
+    public Long saveReview(ReviewFormDto reviewFormDto, List<MultipartFile> reviewImgFileList) throws Exception {
+        Review review = reviewFormDto.createReview();
         reviewRepository.save(review);
+
+        for (int i = 0; i < reviewImgFileList.size(); i++) {
+            ReviewImg reviewImg = new ReviewImg();
+            reviewImg.setReview(review);
+            reviewImgService.saveReviewImg(reviewImg, reviewImgFileList.get(i));
+        }
+        return review.getId();
+    }
+
+    // 조회
+    @Transactional(readOnly = true)
+    public ReviewFormDto getReview(Long reviewId){
+        List<ReviewImg> reviewImgList = rvImgRepository.findByReviewImg(reviewId);
+        List<ReviewImgDto> reviewImgDtoList = new ArrayList<>();
+
+        for(ReviewImg reviewImg : reviewImgList){
+            ReviewImgDto reviewImgDto = ReviewImgDto.of(reviewImg);
+            reviewImgDtoList.add(reviewImgDto);
+        }
+
+        Review review = reviewRepository.findById(reviewId)
+                .orElseThrow(EntityNotFoundException::new);
+        ReviewFormDto reviewFormDto = ReviewFormDto.of(review);
+        reviewFormDto.setReivewImgDtoList(reviewImgDtoList);
+        return reviewFormDto;
     }
 
 }
