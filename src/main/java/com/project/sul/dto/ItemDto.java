@@ -21,19 +21,21 @@ public class ItemDto { // 기본 틀 (스토어와 연결)
     private Long id;
     private String itemNm;          // 상품명
     private int price;              // 가격
-    private int starRate;           // 별점
-    private int numReview;          // 리뷰수
+    private double avgStar;           // 평균별점
+    private int numComment;          // 리뷰수
     private String itemDetail;       // 상세설명
+    private String imgUrl;          // 사진
 
     private ItemSellStatus itemSellStatCd; // 재고상태
 
     @QueryProjection
-    public ItemDto(Long id, String itemNm, int price, int starRate, int numReview, String itemDetail) {
+    public ItemDto(Long id, String itemNm, int price, double avgStar, int numComment, String itemDetail, String imgUrl) {
         this.id = id;
         this.itemNm = itemNm;
         this.price = price;
-        this.starRate = starRate;
-        this.numReview = numReview;
+        this.avgStar = avgStar;
+        this.numComment = numComment;
         this.itemDetail = itemDetail;
+        this.imgUrl = imgUrl;
     }
 }

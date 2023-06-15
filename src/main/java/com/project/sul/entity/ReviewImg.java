@@ -20,8 +20,8 @@ public class ReviewImg extends BaseEntity {
     private String rvImgUrl;     // 이미지 조회경로
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="item_id")
-    private Item item;
+    @JoinColumn(name="review_id")
+    private Review review;
 
     // 이미지정보 업데이트 메소드
     public void updateReImg(String rvImgName, String rvOriImgName, String rvImgUrl) {
