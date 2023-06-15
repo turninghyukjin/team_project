@@ -33,7 +33,7 @@ public class MainController {
         return "pages/main/register_email";
     }
 
-    @GetMapping(value = "/register/social")
+    @GetMapping(value = "/register/final")
     public String registerFinal(Model model) {
         model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
         return "pages/main/register_final";
@@ -44,6 +44,10 @@ public class MainController {
         return "pages/item/user/itemDetailForm";
     }
 
-
+//    @GetMapping(value = "/error")
+//    public String error() {
+//        return "pages/main/error";
+//    }
+//
 
 }
