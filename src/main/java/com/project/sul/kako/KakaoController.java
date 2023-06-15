@@ -32,7 +32,7 @@ public class KakaoController {
 
             // 회원 가입 페이지로 이동하는 로직
             model.addAttribute("kakaoEmail", userInfo.get("email"));
-            return "redirect:/join/join"; // 회원가입 페이지로 리다이렉트
+            return "redirect:/register/final"; // 회원가입 페이지로 리다이렉트
         } catch (Exception e) {
             // 예외 처리 로직
             return "error";

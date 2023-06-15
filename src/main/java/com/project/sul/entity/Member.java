@@ -43,6 +43,8 @@ public class Member extends BaseEntity {
     private Integer point;
     //결제 포인트
 
+
+
     @Enumerated(EnumType.STRING)
     private Role role;
     //관리자 아이디

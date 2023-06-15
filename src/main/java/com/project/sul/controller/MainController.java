@@ -36,7 +36,7 @@ public class MainController {
     @GetMapping(value = "/register/final")
     public String registerFinal(Model model) {
         model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
-        return "pages/main/register_social";
+        return "pages/main/register_final";
     }
 
     @GetMapping(value = "/item/detail")

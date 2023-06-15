@@ -15,7 +15,26 @@
     <!-- daum 주소찾기 API 추가 -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </th:block>
+<!--
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function() {
+        var emailInput = document.getElementById('email');
+        var kakaoEmail = /*[[${kakaoEmail}]]*/ '';
+        emailInput.value = kakaoEmail; // 이메일 값 설정
 
+        var nicknameInput = document.getElementById('nickname');
+        var button = document.querySelector('.button_nicknameInput');
+        button.addEventListener('click', function() {
+            var nickname = nicknameInput.value;
+            console.log('이메일:', kakaoEmail);
+            console.log('닉네임:', nickname);
+            // 중복 확인 등 필요한 로직 추가
+        });
+    });
+    /*]]>*/
+</script>
+-->
 <th:block layout:fragment="content">
     <div class="content_wrapper">
         <div class="registerContentForm_wrapper">
@@ -40,7 +59,6 @@
 
 
                     <input class="disable-input" id="email" name="email" type="text" value="${kakaoEmail}" />
-                    <div>이메일: ${kakaoEmail}</div>
 
 
                     <div class="mt-20"></div>
@@ -65,21 +83,6 @@
                         >
                             중복 확인
                         </button>
-
-
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                var form = document.getElementById('registerForm');
-                                form.addEventListener('submit', function(event) {
-                                    event.preventDefault(); // 기본 제출 동작 중지
-
-                                    console.log('이메일:', '${kakaoEmail}'); // 이메일 값 출력
-                                    console.log('닉네임:', document.getElementById('nickname').value); // 닉네임 값 출력
-
-                                    // 폼 제출 로직 추가 (필요한 경우)
-                                });
-                            });
-                        </script>
 
 
                         <div class="mt-4"></div>
