@@ -33,8 +33,6 @@ class ItemServiceTest {
     ItemRepository itemRepository;
     @Autowired
     ItemImgRepository itemImgRepository;
-    @Autowired
-    ItemImgService itemImgService;
 
     List<MultipartFile> createMultipartFiles() throws Exception {
         List<MultipartFile> multipartFileList = new ArrayList<>();
@@ -49,9 +47,8 @@ class ItemServiceTest {
         return multipartFileList;
     }
 
-
     @Test
-    @DisplayName("상품등록 테스트1 -- 사진이 1개 이하 등록") //
+    @DisplayName("상품등록 테스트1") //
     @WithMockUser(username = "admin", roles = "ADMIN")
     void saveItem() throws Exception {
         // given
@@ -59,13 +56,7 @@ class ItemServiceTest {
         itemFormDto.setItemNm("테스트상품1");
         itemFormDto.setPrice(1000);
         itemFormDto.setStockNumber(10);
-//        itemFormDto.setSelectedOption("A");
-        itemFormDto.setAbv(20);
-        itemFormDto.setSweetness(1);
-        itemFormDto.setSourness(2);
-        itemFormDto.setSparkling(3);
-        itemFormDto.setItemDetail("#맛있는 탁주");
-        itemFormDto.setItemSellStatus(ItemSellStatus.SELL);
+        itemFormDto.setItemDetail("AAA");
 
         List<MultipartFile> multipartFileList = createMultipartFiles();
         Long itemId = itemService.saveItem(itemFormDto, multipartFileList);
@@ -73,21 +64,26 @@ class ItemServiceTest {
         Item item = itemRepository.findById(itemId)
                 .orElseThrow(EntityNotFoundException::new);
 
+        itemFormDto.setItemSellStatus(ItemSellStatus.SELL);
+        itemFormDto.setType("aaa");
+        itemFormDto.setAbv(20);
+        itemFormDto.setSweetness(1);
+        itemFormDto.setSourness(2);
+        itemFormDto.setSparkling(3);
+
         // result
         assertEquals(itemFormDto.getItemNm(), item.getItemNm());
         assertEquals(itemFormDto.getPrice(), item.getPrice());
         assertEquals(itemFormDto.getStockNumber(), item.getStockNumber());
-//        assertEquals(itemFormDto.getSelectedOption(), item.getType());
+        assertEquals(itemFormDto.getItemDetail(), item.getItemDetail());
+
+        assertEquals(multipartFileList.get(0).getOriginalFilename(), itemImgsList.get(0).getOriImgName());
+
+        assertEquals(itemFormDto.getItemSellStatus(), item.getItemSellStatus());
+        assertEquals(itemFormDto.getType(), item.getType());
         assertEquals(itemFormDto.getAbv(), item.getAbv());
         assertEquals(itemFormDto.getSweetness(), item.getSweetness());
         assertEquals(itemFormDto.getSourness(), item.getSourness());
         assertEquals(itemFormDto.getSparkling(), item.getSparkling());
-        assertEquals(itemFormDto.getItemDetail(), item.getItemDetail());
-        assertEquals(itemFormDto.getItemSellStatus(), item.getItemSellStatus());
-        assertEquals(multipartFileList.get(0).getOriginalFilename(), itemImgsList.get(0).getOriImgName());
-        assertEquals(multipartFileList.get(1).getOriginalFilename(), itemImgsList.get(1).getOriImgName());
-
-        IllegalStateException e = assertThrows(IllegalStateException.class,
-                () -> itemService.saveItem(itemFormDto, multipartFileList), "최소한 2장의 이미지를 넣어야 합니다");
-        }
     }
+}

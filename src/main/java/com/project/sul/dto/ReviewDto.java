@@ -10,10 +10,10 @@ import java.util.List;
 @Setter
 public class ReviewDto { // 실제 아래 보이는 리뷰
     private Long id;
-    private String name; // 고객이름
+    private String nickname; // 고객이름
     private String itemNm; // 상품명
 
-    private double avgStar; // 별점
+    private double Star; // 별점
     private LocalDateTime regTime; // 상품평 등록시간
     private String Comment;
 
