@@ -63,7 +63,7 @@
     min-width: 23px;
     animation: 0.3s ease 0s 1 normal none running fadein;
 }
-form .ml-16 {
+.ml-16 {
     margin-left: 16px;
 }
 .checkbox-wrapper .all-agree-text {
@@ -73,7 +73,7 @@ form .ml-16 {
     line-height: 22px;
     cursor: pointer;
 }
-form .mt-28 {
+.mt-28 {
     margin-top: 28px;
 }
 .checkbox-wrapper .agreeLink {
@@ -92,17 +92,17 @@ form .mt-28 {
     -webkit-box-align: center;
     align-items: center;
 }
-form .mt-8 {
+.mt-8 {
     margin-top: 8px;
 }
 .marketing_detail_message {
     margin-left: 38px;
     color: rgb(178, 178, 178);
 }
-form .mt-20 {
+.mt-20 {
     margin-top: 20px;
 }
-form .button_agree_adultCert {
+.button_agree_adultCert {
     width:350px;
     height:50px;
     background-color:rgb(0, 150, 243);
@@ -118,13 +118,13 @@ form .button_agree_adultCert {
     text-shadow:none !important;
     transition:0.3s;
 }
-form .button_agree_adultCert:disabled {
+.button_agree_adultCert:disabled {
     color:rgb(255, 255, 255) !important;
     background-color:rgb(178, 178, 178) !important;
     border:1px solid rgb(255, 255, 255) !important;
     cursor:not-allowed;
     margin:;
 }
-form .button_agree_adultCert:hover {
+.button_agree_adultCert:hover {
     background-color: rgb(52, 99, 129);
 }
