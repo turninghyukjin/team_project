@@ -69,10 +69,19 @@ public class RegisterController {
             // 서버에서 필요한 인증 정보 확인 및 로직 수행
             // ...
 
+
+
             // 인증 정보를 받았을 때의 처리
             if (isAgeValid(registerDto)) {
                 // 만 19세 이상인 경우에만 인증 허용
                 // 성공적인 처리 로직 작성
+
+                // 이름 저장
+                String name = registerDto.getName();
+                Member member = new Member();
+                member.setName(name);
+
+
                 System.out.println("인증 성공");
             } else {
                 // 인증 실패 처리 로직 작성

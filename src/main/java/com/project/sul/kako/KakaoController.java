@@ -63,4 +63,11 @@ public class KakaoController {
         model.addAttribute("kakaoEmail", kakaoEmail);
         return "register";
     }
+
+    @GetMapping("/error")
+    public String handleError() {
+        // 오류 처리 로직 작성
+        return "error";
+    }
+
 }

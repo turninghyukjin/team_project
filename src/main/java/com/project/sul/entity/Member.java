@@ -2,6 +2,8 @@ package com.project.sul.entity;
 
 import com.project.sul.constant.Role;
 import com.project.sul.dto.MemberFormDto;
+import com.project.sul.kako.Kakao;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -43,7 +45,11 @@ public class Member extends BaseEntity {
     private Integer point;
     //결제 포인트
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "kakao_id") // member 테이블의 컬럼 이름이 "kakao_id"인 것을 가정합니다.
+    private Kakao kakao;
 
+    private LocalDate birthDate;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -69,8 +75,16 @@ public class Member extends BaseEntity {
 
         member.setRole(Role.ADMIN);
 
+        member.setBirthDate(birthDate); // 생년월일 설정
+
         // 추가 정보 저장
         member.setImpUid(impUid); // 인증 토큰
+
+        // Kakao 정보 저장
+        Kakao kakaoDto = memberFormDto.getKakao();
+        if (kakaoDto != null) {
+            member.setKakao(kakaoDto);
+        }
 
         return member;
     }

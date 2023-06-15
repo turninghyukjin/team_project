@@ -21,7 +21,10 @@
         <div class="registerContentForm_wrapper">
             <header class="welcome_user_wrapper">
                 <div class="userTitle_wrapper">
-                    <div class="title" th:text="${userName + ', 환영해요!'}"></div>
+
+                    <div class="title" th:text="${userName} + ', 환영해요!'"></div>
+
+
                 </div>
             </header>
 
@@ -37,9 +40,7 @@
                     </label>
                     <div class="mt-8"></div>
 
-
-
-                    <input class="disable-input" id="email" name="email" type="text" value="${kakaoEmail}" />
+                    <input class="disable-input" id="email" name="email" type="text" th:value="${kakaoEmail}" />
 
 
                     <div class="mt-20"></div>
