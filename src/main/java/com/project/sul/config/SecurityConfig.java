@@ -37,13 +37,15 @@ public class SecurityConfig  {
         ;
         http.authorizeRequests()
                 .mvcMatchers("/css/**", "/js/**", "/images/**", "/jquery/**", "/bootstrap/**", "/slick/**","/payments/**").permitAll()
-                .mvcMatchers("/", "/login/**", "/register/**", "/user/**","/admin/**", "/item/**").permitAll()
+                .mvcMatchers("/", "/login/**", "/register/**", "/user/**","/admin/**", "/item/**","/error/**").permitAll()
 //                .mvcMatchers("/admin/**").hasRole("ADMIN")
-                .mvcMatchers("/error").permitAll()
+//                .mvcMatchers("/error").permitAll()
                 .anyRequest().authenticated();
+        http.csrf().disable();
+
         http.exceptionHandling()
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
-        ; //인증되지 않은 사용자가 리소스에 접근했을때 수행되는 핸들러 등록
+                .accessDeniedPage("/error"); //인증되지 않은 사용자가 리소스에 접근했을때 수행되는 핸들러 등록
 
         return http.build();
     }
@@ -53,9 +55,6 @@ public class SecurityConfig  {
         return new BCryptPasswordEncoder();
         //PasswordEncoder 인테페이스 구현체 BCryptPasswordEncoder();
     }
-
-
-
 
 
 }

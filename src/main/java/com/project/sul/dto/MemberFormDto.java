@@ -1,6 +1,9 @@
 package com.project.sul.dto;
 
 import com.project.sul.entity.Address;
+import com.project.sul.entity.Member;
+import com.project.sul.kako.Kakao;
+
 import lombok.*;
 
 import javax.validation.constraints.Email;
@@ -16,6 +19,7 @@ import java.time.LocalDate;
 @ToString
 public class MemberFormDto {
 
+    private Kakao kakao; // Kakao와의 연결을 위한 필드 추가
 
     private String name;
 
@@ -41,6 +45,7 @@ public class MemberFormDto {
     private Address address;
 
     private LocalDate birthDate;
+
     public LocalDate getBirthDate() {
         return birthDate;
     }
@@ -49,4 +54,21 @@ public class MemberFormDto {
         this.birthDate = birthDate;
     }
 
+    public Member toMember() {
+        Member member = new Member();
+        member.setName(this.name);
+        member.setNickname(this.nickname);
+        member.setEmail(this.email);
+        member.setPassword(this.password);
+        member.setPhone(this.phone);
+        member.setAddress(this.address);
+        member.setBirthDate(this.birthDate);
+
+        // Kakao 정보 저장
+        if (kakao != null) {
+            member.setKakao(this.kakao);
+        }
+
+        return member;
+    }
 }

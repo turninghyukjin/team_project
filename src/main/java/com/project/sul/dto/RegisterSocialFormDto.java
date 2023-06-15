@@ -27,4 +27,6 @@ public class RegisterSocialFormDto {
     @NotEmpty(message = "상세 주소를 입력해 주세요.")
     @Pattern(regexp = "^[ㄱ-ㅎ가-힣a-z0-9-]{2,20}$")
     private String detailAdr;
+
+
 }

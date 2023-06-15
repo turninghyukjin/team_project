@@ -2,6 +2,8 @@ package com.project.sul.entity;
 
 import com.project.sul.constant.Role;
 import com.project.sul.dto.MemberFormDto;
+import com.project.sul.kako.Kakao;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,9 +17,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-public class Member extends BaseEntity{
+public class Member extends BaseEntity {
     @Id
-    @Column(name="member_id")
+    @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -34,10 +36,7 @@ public class Member extends BaseEntity{
 
     private Integer age;
 
-
     private String impUid; // 추가된 필드: 인증 토큰
-
-
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
@@ -46,37 +45,17 @@ public class Member extends BaseEntity{
     private Integer point;
     //결제 포인트
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "kakao_id") // member 테이블의 컬럼 이름이 "kakao_id"인 것을 가정합니다.
+    private Kakao kakao;
+
+    private LocalDate birthDate;
+
     @Enumerated(EnumType.STRING)
     private Role role;
     //관리자 아이디
 
-
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public class Register {
-        private String impUid;
-        // 다른 필드들도 필요에 따라 추가할 수 있습니다.
-        private LocalDate birthDate;
-        // 생성자, getter, setter 메서드 등을 정의합니다.
-
-        public String getImpUid() {
-            return impUid;
-        }
-
-        public void setImpUid(String impUid) {
-            this.impUid = impUid;
-        }
-        public LocalDate getBirthDate() {
-            return birthDate;
-        }
-
-        public void setBirthDate(LocalDate birthDate) {
-            this.birthDate = birthDate;
-        }
-    }
+    // 생성자, getter, setter 등 필요한 메서드는 생략
 
     public static Member createMember(MemberFormDto memberFormDto,
                                       PasswordEncoder passwordEncoder,
@@ -87,7 +66,7 @@ public class Member extends BaseEntity{
 
         member.setName(memberFormDto.getName()); // 이름
         member.setNickname(memberFormDto.getNickname()); // 닉네임
-        member.setEmail(memberFormDto.getEmail()); // 이메일
+        member.setEmail(email); // 이메일
         member.setAddress(memberFormDto.getAddress()); // 주소
         member.setPhone(memberFormDto.getPhone()); // 폰 번호
 
@@ -96,11 +75,17 @@ public class Member extends BaseEntity{
 
         member.setRole(Role.ADMIN);
 
+        member.setBirthDate(birthDate); // 생년월일 설정
+
         // 추가 정보 저장
         member.setImpUid(impUid); // 인증 토큰
 
+        // Kakao 정보 저장
+        Kakao kakaoDto = memberFormDto.getKakao();
+        if (kakaoDto != null) {
+            member.setKakao(kakaoDto);
+        }
 
         return member;
     }
-
 }

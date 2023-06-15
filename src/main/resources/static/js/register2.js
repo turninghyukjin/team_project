@@ -12,7 +12,7 @@ function handleAdultCertification() {
       pg: "html5_inicis.MIIiasTest",
       merchant_uid: "1570777386811537",
       company: "sul",
-      m_redirect_url: "http://localhost/register/final",
+      m_redirect_url: "http://localhost/register/social ",
       popup: true,
     },
     function(rsp) {
@@ -29,7 +29,7 @@ function handleAdultCertification() {
         alert("본인인증이 완료되었습니다.");
 
         // 다음 페이지로 이동
-        window.location.href = "http://localhost/register/final";
+        window.location.href = "http://localhost/register/social";
       } else {
         alert("인증에 실패하였습니다. 에러 내용: " + rsp.error_msg);
       }
