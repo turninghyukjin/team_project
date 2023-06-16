@@ -79,7 +79,7 @@ public class ReviewService {
     // 조회
     @Transactional(readOnly = true)
     public ReviewFormDto getReview(Long reviewId){
-        List<ReviewImg> reviewImgList = rvImgRepository.findByReviewImg(reviewId);
+        List<ReviewImg> reviewImgList = rvImgRepository.findByReviewId(reviewId);
         List<ReviewImgDto> reviewImgDtoList = new ArrayList<>();
 
         for(ReviewImg reviewImg : reviewImgList){

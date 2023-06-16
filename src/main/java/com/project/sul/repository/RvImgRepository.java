@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface RvImgRepository extends JpaRepository<ReviewImg, Long> {
-    List<ReviewImg> findByReviewImg(Long reviewId);
+    List<ReviewImg> findByReviewId(Long reviewId);
 }

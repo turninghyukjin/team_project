@@ -2,7 +2,6 @@ package com.project.sul.dto;
 
 import com.project.sul.entity.Address;
 import com.project.sul.entity.Member;
-import com.project.sul.kakaoApi.KakaoApi;
 import com.project.sul.kako.Kakao;
 
 import lombok.*;

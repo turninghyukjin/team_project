@@ -13,9 +13,9 @@ import java.util.List;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    List<Review> findByItemItemId(Long ItemId);
+    List<Review> findByItemItemId(Long id);
     // 갯수
-    @Query("SELECT COUNT(r) FROM Review r WHERE r.item.id = :itemId")
+    @Query("SELECT COUNT(r) FROM Review r WHERE r.item.id = :id")
     Long countByItemId(@Param("itemId") Long itemId);
 
     List<Review> findAllByItemAndMember(Long itemId, Long memberId);

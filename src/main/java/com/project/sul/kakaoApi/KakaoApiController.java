@@ -20,7 +20,7 @@ public class KakaoApiController {
     public final KakaoApiService kakaoApiService;
 
     @ResponseBody
-    @GetMapping(value = "/kakao")
+    @GetMapping(value = "/localhost/login")
     public String kakaoLogin(@RequestParam(value = "code", required = false) String code, Model model) {
         try {
             // URL에 포함된 code를 이용하여 액세스 토큰 발급
