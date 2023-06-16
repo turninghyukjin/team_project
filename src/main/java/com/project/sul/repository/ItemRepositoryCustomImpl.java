@@ -48,13 +48,12 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
     // 맛
     private BooleanExpression searchAbvDg(int abv) {
-        int abvDg = (int) (abv / 10);
 
-        if (abvDg <= 3) {
-            int min = (abvDg - 1) * 10;
-            int max = abvDg * 10;
+        if(abv<=3){
+            int min = (abv-1)*10; // 0/10/20
+            int max = (abv * 10) -1; // 9/19/29까지
             return QItem.item.abv.between(min, max);
-        } else if (abvDg > 3) return QItem.item.abv.between(30, 60);
+        } else if (abv > 3) return QItem.item.abv.between(30, 60);
         return Expressions.asBoolean(true);
     }
 
