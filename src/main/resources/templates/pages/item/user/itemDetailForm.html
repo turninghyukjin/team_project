@@ -15,7 +15,9 @@
 </th:block>
 
 <th:block layout:fragment="content">
+    <div class="mt-64"></div>
     <div class="content_wrapper">
+
         <div class="itemDetailContent_wrapper">
             <div class="itemDetail_wrapper">
                 <div class="itemDetail_box">
@@ -29,28 +31,52 @@
                     <div class="itemDetail_content">
                         <div class="content_top">
                             <div class="title">
-                                담은
+                                담은 [3병/6병/10병]
                             </div>
                         </div>
                         <div class="content_middle">
                             <div class="itemTag">
                                 #입안을 가득 채우는 푸근함 #카페라떼처럼 부드러운
                             </div>
+                            <div class="itemRating">
+                                <span class="star"></span>
+                                <div class="score">4.9</div>
+                                <span class="reviewCount">[490 리뷰]</span>
+                            </div>
                         </div>
                         <div class="content_bottom">
-                            <span class="star"></span>
-                            <div class="score">4.9</div>
-                            <span class="reviewCount">[490 리뷰]</span>
+                            <div class="content">
+                                <label>주종:</label>
+                                <span class="itemType">탁주</span>
+                            </div>
+                            <div class="content">
+                                <label>도수:</label>
+                                <span class="itemAbv">6.50%</span>
+                            </div>
+                            <div class="content">
+                                <label>용량:</label>
+                                <span class="itemSize">750ml</span>
+                            </div>
+                            <div class="content">
+                                <label>배송기간:</label>
+                                <span class="fontStyle itemDelivery">2일 이내 배송</span>
+                            </div>
+                            <div class="content">
+                                <label>수상:</label>
+                                <span class="fontStyle itemReward">2016년 우리술 품평회 생막걸리 부문 장려상</span>
+                            </div>
                         </div>
                         <div class="content_price">
                             <div class="priceTitle">
                                 <div>판매가격:</div>
                             </div>
-                            <div class="originalPrice">
-                                33,000원
-                            </div>
-                            <div class="salePrice">
-                                <span class="salePriceText">31,350원</span>
+                            <div class="itemPrice">
+                                <div class="originalPrice">
+                                    33,000원
+                                </div>
+                                <div class="salePrice">
+                                    <span class="salePriceText">31,350원</span>
+                                </div>
                             </div>
                             <div class="expirationStorage">
                                 <label class="blue">유통기한:</label>
@@ -64,6 +90,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="mb-60"></div>
             <div class="keyPoint_wrapper">
                 <div class="keyPointTitle">
@@ -109,7 +136,6 @@
                 <button>상품정보</button>
                 <button>교환/반품</button>
             </div>
-
             <div class="review_wrapper">
                 <div class="reviewSearch">
                     <div class="filter_checkbox">
@@ -194,10 +220,7 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
-
 
         <div class="itemOrderContent_wrapper">
             <div class="orderContentList">
@@ -210,13 +233,13 @@
                             <option value="227">[750ml] 담은 X 6병 (+31,350원)</option>
                             <option value="228">[750ml] 담은 X 10병 (+73,150원)</option>
                         </select>
-<!--                        <svg class=""-->
-<!--                             focusable="false"-->
-<!--                             aria-hidden="true"-->
-<!--                             viewBox="0 0 24 24"-->
-<!--                             data-testid="ExpandMoreIcon">-->
-<!--                            <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>-->
-<!--                        </svg>-->
+                        <svg class=""
+                             focusable="false"
+                             aria-hidden="true"
+                             viewBox="0 0 24 24"
+                             data-testid="ExpandMoreIcon">
+                            <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                        </svg>
                     </div>
                 </div>
                 <div class="mb-20"></div>
@@ -240,7 +263,7 @@
                         <img src="/images/itemDetail/icon_truck.png" alt="truck" class="icon-truck">
                     </div>
                     <div class="deliveryMsg">
-                        <span class="font">상품 무료배송!</span>
+                        <span class="font">6월 23일까지 전 상품 무료배송!</span>
                     </div>
                 </div>
                 <div class="button_wrapper">
@@ -248,17 +271,16 @@
                         <img src="/images/itemDetail/icon_cart.png" alt="icon-cart">
                         장바구니
                     </button>
+                    <div class="button_wrapper">
+                        <button class="cart" type="outline">
+                            <img src="/images/itemDetail/icon_gift_box.png" alt="icon-gift">
+                            구매하기
+                        </button>
+                    </div>
                 </div>
-                <div class="button_wrapper">
-                    <button class="cart" type="outline">
-                        <img src="/images/itemDetail/icon_gift_box.png" alt="icon-gift">
-                        구매하기
-                    </button>
-                </div>
-
             </div>
-
         </div>
+
     </div>
 
 </th:block>

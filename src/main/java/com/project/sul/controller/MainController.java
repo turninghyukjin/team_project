@@ -36,7 +36,7 @@ public class MainController {
     @GetMapping(value = "/register/social")
     public String registerFinal(Model model) {
         model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
-        return "pages/main/register_final";
+        return "pages/main/register_social";
     }
 
     @GetMapping(value = "/item/detail")
@@ -44,6 +44,10 @@ public class MainController {
         return "pages/item/user/itemDetailForm";
     }
 
-
+//    @GetMapping(value = "/error")
+//    public String error() {
+//        return "pages/main/error";
+//    }
+//
 
 }
