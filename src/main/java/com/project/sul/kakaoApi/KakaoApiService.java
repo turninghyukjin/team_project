@@ -21,6 +21,7 @@ public class KakaoApiService {
 
         try {
             URL url = new URL(requestURL);
+            // POST 요청을 위해 기본값이 false인 setDoOutput을 true로
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setRequestMethod("POST");
@@ -32,11 +33,12 @@ public class KakaoApiService {
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             String sb = "grant_type=authorization_code" +
                     "&client_id=1708de0ead6eb3c1cd3ccc89914bfb0b" + // REST_API_KEY
-                    "&redirect_uri=http://localhost/login" + // REDIRECT_URI
+                    "&redirect_uri=http://localhost/register" + // REDIRECT_URI
                     "&code=" + code;
-            bufferedWriter.write(sb);
+            bufferedWriter.write(sb.toString());
             bufferedWriter.flush();
 
+            // 결과 코드가 200이라면 성공
             int responseCode = conn.getResponseCode();
             System.out.println("responseCode : " + responseCode);
 

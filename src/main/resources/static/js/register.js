@@ -36,3 +36,8 @@ function handleAdultCertification() {
     }
   );
 }
+
+
+// 데이터 넘기기
+
+

@@ -23,7 +23,7 @@
         <div class="registerContentForm_wrapper">
             <header class="welcome_user_wrapper">
                 <div class="userTitle_wrapper">
-                    <div class="title">김강민님, 환영해요!</div>
+                    <div class="title" th:text="${userName} + ', 환영해요!'"></div>
                 </div>
             </header>
 
@@ -43,7 +43,7 @@
                             id="email"
                             name="email"
                             type="text"
-                            value=""
+                            th:value="${kakaoEmail}"
                     />
                     <div class="mt-20"></div>
                     <div class="nicknameInput_wrapper">

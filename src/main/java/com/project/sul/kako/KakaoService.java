@@ -34,7 +34,7 @@ public class KakaoService {
             // HTTP 요청 바디 설정
             String requestBody = "grant_type=authorization_code"
                     + "&client_id=bf28ed31fcb1b73d74523ad7a6c0a869"
-                    + "&redirect_uri=http://localhost/login"
+                    + "&redirect_uri=http://localhost/register"
                     + "&code=" + authorize_code;
 
             // HTTP 요청 전송

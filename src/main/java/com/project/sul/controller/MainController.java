@@ -18,10 +18,10 @@ public class MainController {
         return "pages/main/login";
     }
 
-    @GetMapping(value = "/register")
-    public String register() {
-        return "pages/main/register";
-    }
+//    @GetMapping(value = "/register")
+//    public String register() {
+//        return "pages/main/register";
+//    }
 
     @GetMapping(value = "/register/agreement")
     public String   agreement() {
@@ -33,11 +33,11 @@ public class MainController {
         return "pages/main/register_email";
     }
 
-    @GetMapping(value = "/register/social")
-    public String registerFinal(Model model) {
-        model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
-        return "pages/main/register_social";
-    }
+//    @GetMapping(value = "/register/social")
+//    public String registerFinal(Model model) {
+//        model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
+//        return "pages/main/register_social";
+//    }
 
     @GetMapping(value = "/item/detail")
     public String itemDetail() {
