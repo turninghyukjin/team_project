@@ -25,7 +25,7 @@ public class ReviewService {
 
     // 리뷰수가 0 이상일 때 별점계산
     public Double calAvgStar(Item item) {
-        List<Review> reviews = reviewRepository.findByItemItemId(item.getId());
+        List<Review> reviews = reviewRepository.findByItemId(item.getId());
         Double sum = reviews.stream().mapToDouble(Review::getAvgStar).sum();
         if (reviews.size() > 0) {
             return sum / reviews.size();
