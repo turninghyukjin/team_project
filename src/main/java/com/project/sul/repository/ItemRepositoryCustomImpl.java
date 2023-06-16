@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -47,13 +48,12 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
     // 맛
     private BooleanExpression searchAbvDg(int abv) {
-        int abvDg = (int) (abv / 10);
 
-        if (abvDg <= 3) {
-            int min = (abvDg - 1) * 10;
-            int max = abvDg * 10;
+        if(abv<=3){
+            int min = (abv-1)*10; // 0/10/20
+            int max = (abv * 10) -1; // 9/19/29까지
             return QItem.item.abv.between(min, max);
-        } else if (abvDg > 3) return QItem.item.abv.between(30, 60);
+        } else if (abv > 3) return QItem.item.abv.between(30, 60);
         return Expressions.asBoolean(true);
     }
 
@@ -95,6 +95,18 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                 return Expressions.asBoolean(true);
         }
     }
+
+//    private BooleanExpression searchSparklingDg(Collection<Integer> sparklingValues) {
+//        return sparklingValues == null || sparklingValues.isEmpty()
+//                ? Expressions.asBoolean(true)
+//                : QItem.item.sparkling.in(sparklingValues);
+//    }
+//    private BooleanExpression searchSparklingDg(int sparklingValue) {
+//        return sparklingValue == 0
+//                ? Expressions.asBoolean(true)
+//                : QItem.item.sparkling.eq(sparklingValue);
+//    }
+
     // 이름
     private BooleanExpression searchByLike(String itemNm, String searchQuery) {
         return QItem.item.itemNm.likeIgnoreCase("%" + searchQuery + "%");
@@ -105,15 +117,15 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         List<Item> content = queryFactory
             .selectFrom(QItem.item)
-            .where(searchType(itemSearchDto.getType()),
-                searchAbvDg(itemSearchDto.getAbv()),
+            .where(searchType(itemSearchDto.getType()), // 타입
+                searchAbvDg(itemSearchDto.getAbv()),    // 맛
                 searchSweetDg(itemSearchDto.getSweetness()),
                 searchSournessDg(itemSearchDto.getSourness()),
                 searchSparklingDg(itemSearchDto.getSparkling()),
-                searchByLike(itemSearchDto.getItemNm(),
-                itemSearchDto.getSearchQuery())
+                searchByLike(itemSearchDto.getItemNm(), // 이름
+                itemSearchDto.getSearchQuery())     // 서치쿼리
             )
-            .orderBy(QItem.item.id.desc())
+            .orderBy(QItem.item.id.desc()) // 정렬
             .offset(pageable.getOffset())
             .limit(pageable.getPageSize())
             .fetch();
@@ -138,12 +150,12 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                             itemImg.imgUrl))
             .from(itemImg)
             .join(itemImg.item, item).fetchJoin()
-            .where(searchType(itemSearchDto.getType()),
-                    searchAbvDg(itemSearchDto.getAbv()),
+            .where(searchType(itemSearchDto.getType()), // 타입
+                    searchAbvDg(itemSearchDto.getAbv()),    // 맛
                     searchSweetDg(itemSearchDto.getSweetness()),
                     searchSournessDg(itemSearchDto.getSourness()),
                     searchSparklingDg(itemSearchDto.getSparkling()),
-                    searchByLike(itemSearchDto.getItemNm(),
+                    searchByLike(itemSearchDto.getItemNm(), // 이름
                     itemSearchDto.getSearchQuery()),
                     itemImg.repImgYn.eq("Y")
             )

@@ -11,9 +11,9 @@ import java.util.UUID;
 @Log
 public class ReviewFileService {
 
-    public String rvUploadFile(String reviewPath, String rvOriFileName, byte[] fileData) throws Exception{
+    public String uploadFile(String reviewPath, String oriFileName, byte[] fileData) throws Exception{
         UUID uuid = UUID.randomUUID();
-        String extension = rvOriFileName.substring(rvOriFileName.lastIndexOf("."));
+        String extension = oriFileName.substring(oriFileName.lastIndexOf("."));
         String savedFileName = uuid.toString() + extension;
         String fileUploadFullUrl = reviewPath + "/" + savedFileName;
         FileOutputStream fos = new FileOutputStream(fileUploadFullUrl);

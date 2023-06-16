@@ -28,7 +28,7 @@ class ItemRepositoryTest {
     public void createItemList(){
         for(int i=1; i<=10; i++){
             Item item = new Item();
-            item.setItemNm("테스트" + i);
+            item.setItemNm("테스트 상품" + i);
             item.setPrice(1000 + i*100);
             item.setStockNumber(10);
             item.setType("A");

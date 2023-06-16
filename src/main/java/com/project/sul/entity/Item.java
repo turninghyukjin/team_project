@@ -42,9 +42,9 @@ public class Item extends BaseEntity { // 관리자 상품등록
     @Column(nullable = false)
     private String itemDetail; // #상품상세설명
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name="itemDetail_id") // 단방향 상세정보(도수, 맛)
-    private ItemDetails itemDetails;
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name="itemDetail_id") // 단방향 상세정보(도수, 맛)
+//    private ItemDetails itemDetails;
 
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;

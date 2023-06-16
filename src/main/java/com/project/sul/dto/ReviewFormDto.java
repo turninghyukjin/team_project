@@ -15,7 +15,7 @@ import java.util.List;
 public class ReviewFormDto { // 고객이 작성하는 리뷰창
 
     private Long id;
-    private String name;    // 고객이름
+    private String nickname;    // 고객이름
     private String itemNm;  // 상품명
 
     @NotBlank(message="필수 입력값입니다")
@@ -28,7 +28,7 @@ public class ReviewFormDto { // 고객이 작성하는 리뷰창
 
     private static ModelMapper modelMapper = new ModelMapper();
 
-    public Review createItem(){
+    public Review createReview(){
         return modelMapper.map(this, Review.class);
     }
     public static ReviewFormDto of(Review review){
