@@ -10,6 +10,4 @@ function toggleLoginForm() {
         } else {
             loginFormWrapper.style.display = 'none';
         }
-
-        loginFormWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

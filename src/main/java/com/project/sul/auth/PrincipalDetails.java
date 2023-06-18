@@ -1,5 +1,6 @@
 package com.project.sul.auth;
 
+import com.project.sul.auth.userInfo.OAuth2UserInfo;
 import com.project.sul.dto.RegisterSocialFormDto;
 import com.project.sul.entity.Member;
 import lombok.Getter;
@@ -18,19 +19,19 @@ import java.util.Map;
 public class PrincipalDetails implements UserDetails, OAuth2User {
 
     private Member member;
-    private Map<String, Object> attributes;
-    private RegisterSocialFormDto formDto;
+//    private Map<String, Object> attributes;
+    private OAuth2UserInfo oAuth2UserInfo;
 
     //UserDetails : Form 로그인 시 사용
-    public PrincipalDetails(RegisterSocialFormDto formDto) {
-        this.formDto = formDto;
+    public PrincipalDetails(Member member) {
+        this.member = member;
     }
 
     //OAuth2User : OAuth2 로그인 시 사용
-    public PrincipalDetails(Member member, Map<String, Object> attributes) {
+    public PrincipalDetails(Member member, OAuth2UserInfo oAuth2UserInfo) {
         //PrincipalOauth2UserService 참고
         this.member = member;
-        this.attributes = attributes;
+        this.oAuth2UserInfo = oAuth2UserInfo;
     }
 
     /**
@@ -116,7 +117,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
      */
     @Override
     public Map<String, Object> getAttributes() {
-        return attributes;
+        return oAuth2UserInfo.getAttributes();
     }
 
     /**
@@ -125,7 +126,8 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
      */
     @Override
     public String getName() {
-        String sub = attributes.get("sub").toString();
-        return sub;
+//        String sub = attributes.get("sub").toString();
+//        return sub;
+        return oAuth2UserInfo.getProviderId();
     }
 }

@@ -2,7 +2,6 @@ package com.project.sul.dto;
 
 import com.project.sul.entity.Address;
 import com.project.sul.entity.Member;
-import com.project.sul.kako.Kakao;
 
 import lombok.*;
 
@@ -18,8 +17,6 @@ import java.time.LocalDate;
 @Setter
 @ToString
 public class MemberFormDto {
-
-    private Kakao kakao; // Kakao와의 연결을 위한 필드 추가
 
     private String name;
 

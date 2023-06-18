@@ -87,6 +87,18 @@
 .slick-custom-arrow .next {
     left: 3%;
 }
+.slick-track .slider_form {
+    width:1519px;
+    height:380px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: 1;
+}
+.slick-slide img {
+    width:100%;
+}
 .slick-slide .slider_m1 {
     background-image: url(/images/main/slider_img/slider_register.png);
 }
@@ -120,9 +132,4 @@
 .slick-slide .slider_9 {
     background-image: url(/images/main/slider_img/slider_register.png);
 }
-.slick-slide .slider_form {
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
+

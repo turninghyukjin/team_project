@@ -8,6 +8,7 @@ import com.project.sul.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -43,8 +44,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
         String providerId = oAuth2UserInfo.getProviderId();
 
-//        String username = provider + "_" + providerId;
-        String nickname = oAuth2UserInfo.getNickName();
+        String username = provider + "_" + providerId;
+        String nickname = oAuth2UserInfo.getName();
         String uuid = UUID.randomUUID().toString().substring(0, 6);
         String password = passwordEncoder.encode("패스워드" + uuid);
 
@@ -59,9 +60,11 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
                     .nickname(nickname).password(password).email(email).role(role)
                     .provider(provider).providerId(providerId)
                     .build();
+
             memberRepository.save(byMemberEmail);
+
         }
 
-        return new PrincipalDetails(byMemberEmail, (Map<String, Object>) oAuth2UserInfo);
+        return new PrincipalDetails(byMemberEmail, oAuth2UserInfo);
     }
 }

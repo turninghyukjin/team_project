@@ -2,7 +2,6 @@ package com.project.sul.entity;
 
 import com.project.sul.constant.Role;
 import com.project.sul.dto.MemberFormDto;
-import com.project.sul.kako.Kakao;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

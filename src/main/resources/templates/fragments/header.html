@@ -38,7 +38,7 @@
                 <ul class="user_list">
                     <li>
                         <ul class="li_wrapper">
-                            <li class="login">
+                            <li class="login" sec:authorize="isAnonymous()">
                                 <a class="" href="/login">로그인/회원가입</a>
                             </li>
                         </ul>
@@ -48,7 +48,16 @@
                                 width="15"
                         />
                     </li>
-                    <div class="basket_icon">
+                    <li class="username" th:text="${nickname}" sec:authorize="isAuthenticated()"></li>
+                    <li sec:authorize="isAuthenticated()">님
+                        <img
+                                src="/images/header/icon-arrow-right-blue.png"
+                                alt="우측 화살표 아이콘"
+                                width="12" height="12" style="margin-left: 2px;"
+                        >
+                    </li>
+                    <li class="logout" sec:authorize="isAuthenticated()">로그아웃</li>
+                    <div class="basket_icon" sec:authorize="isAuthenticated()">
                         <img
                                 src="/images/header/icon-header-basket.png"
                                 alt="장바구니 아이콘"

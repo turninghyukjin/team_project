@@ -100,7 +100,7 @@ public class MainController {
         return attributes.toString();
     }
 
-    @GetMapping("loginInfo")
+    @GetMapping("/loginInfo")
     @ResponseBody
     public String loginInfo(Authentication authentication, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         String result = "";

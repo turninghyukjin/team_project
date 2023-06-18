@@ -147,6 +147,13 @@
     width:28px;
     height:28px;
 }
-
-
+.user_list .username {
+    padding-right: 0px;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.user_list .logout {
+    color: rgb(178, 178, 178);
+}
 
