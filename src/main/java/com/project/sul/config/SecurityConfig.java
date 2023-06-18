@@ -23,7 +23,7 @@ public class SecurityConfig {
     private MemberService memberService;
     @Autowired
     private PrincipalOauth2UserService principalOauth2UserService;
-
+//
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 

@@ -11,6 +11,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Member findByNickname(String nickname);
 
+    boolean existsByNickname(String nickname);
+
     // 임의데이터
     @Modifying
     @Query(value = "INSERT INTO member (name, nickname, email, password, phone, age, role) " +

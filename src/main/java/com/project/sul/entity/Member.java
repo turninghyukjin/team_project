@@ -63,20 +63,20 @@ public class Member extends BaseEntity {
 
     // 생성자, getter, setter 등 필요한 메서드는 생략
 
-    public static Member createMember(MemberFormDto memberFormDto,
+    public static Member createMember(RegisterSocialFormDto registerSocialFormDto,
                                       PasswordEncoder passwordEncoder,
                                       String email,
                                       String impUid,
                                       LocalDate birthDate, String provider, String providerId) {
         Member member = new Member();
 
-        member.setName(memberFormDto.getName()); // 이름
-        member.setNickname(memberFormDto.getNickname()); // 닉네임
+        member.setName(registerSocialFormDto.getName()); // 이름
+        member.setNickname(registerSocialFormDto.getNickname()); // 닉네임
         member.setEmail(email); // 이메일
-        member.setAddress(memberFormDto.getAddress()); // 주소
-        member.setPhone(memberFormDto.getPhone()); // 폰 번호
+        member.setAddress(new Address(registerSocialFormDto.getZipCode(), registerSocialFormDto.getStreetAdr(), registerSocialFormDto.getDetailAdr())); // 주소
+        member.setPhone(registerSocialFormDto.getPhone()); // 폰 번호
 
-        String password = passwordEncoder.encode(memberFormDto.getPassword());
+        String password = passwordEncoder.encode(registerSocialFormDto.getPassword());
         member.setPassword(password);
 
         member.setRole(Role.ADMIN);
@@ -91,10 +91,10 @@ public class Member extends BaseEntity {
         member.setProviderId(providerId);
 
         // Kakao 정보 저장
-//        Kakao kakaoDto = memberFormDto.getKakao();
-//        if (kakaoDto != null) {
-//            member.setKakao(kakaoDto);
-//        }
+        // Kakao kakaoDto = registerSocialFormDto.getKakao();
+        // if (kakaoDto != null) {
+        //     member.setKakao(kakaoDto);
+        // }
 
         return member;
     }
