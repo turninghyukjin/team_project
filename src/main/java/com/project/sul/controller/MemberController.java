@@ -92,15 +92,30 @@ public class MemberController {
 //        }
 //        return "redirect:/";
 //    }
+//    @PostMapping(value = "/social")
+//    public String emailRegister(RegisterSocialFormDto registerSocialFormDto) {
+//        Member member = Member.createMember(registerSocialFormDto, passwordEncoder);
+//        memberService.saveMember(member);
+//        return "redirect:/";
+//    }
+
     @PostMapping(value = "/social")
-    public String emailRegister(RegisterSocialFormDto registerSocialFormDto) {
-        Member member = Member.createMember(registerSocialFormDto, passwordEncoder);
-        memberService.saveMember(member);
+    public String checkResister(@Valid RegisterSocialFormDto registerSocialFormDto,
+                                BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "pages/main/register_social";
+        }
+
+        try {
+            Member member = Member.createMember(registerSocialFormDto, passwordEncoder);
+            memberService.saveMember(member);
+        } catch (IllegalStateException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "pages/main/register_social";
+        }
+
         return "redirect:/";
     }
-
-
-
 
 //    @PostMapping(value = "/register/final")
 //    public String registerFinal(

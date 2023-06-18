@@ -1,3 +1,13 @@
+$(document).ready(function(){
+    var errorMessage = [[${errorMessage}]];
+    if(errorMessage != null){
+        alert(errorMessage);
+    }
+});
+
+
+
+
 
 function buttonClick_SocialRegister2() {
    console.log('Button clicked!');

@@ -43,13 +43,12 @@
                                 class=""
                                 id="email"
                                 type="text"
-                                placeholder="닉네임을 입력해 주세요"
+                                placeholder="이메일을 입력해 주세요"
                                 th:field="*{email}"
                                 oninput="checkEmail()"
                         /><button class="button_nicknameInput" onclick="">중복 확인</button>
-                        <span class="check_yes">사용 가능한 이메일입니다.</span>
-                        <span class="check_no">사용중인 이메일입니다.</span>
                         <div class="mt-4"></div>
+                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
                     </div>
                     <div class="mt-20"></div>
 
@@ -69,6 +68,8 @@
                             placeholder="이름을 입력해 주세요"
                             th:field="*{name}"
                     />
+                    <div class="mt-4"></div>
+                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
                     <div class="mt-20"></div>
                     <label th:for="password" class="registerSocialForm_inputLabel">
                         비밀번호
@@ -86,6 +87,8 @@
                             placeholder="비밀번호를 입력해 주세요"
                             th:field="*{password}"
                     />
+                    <div class="mt-4"></div>
+                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>
                     <div class="mt-20"></div>
                     <div class="nicknameInput_wrapper">
                         <label th:for="nickname" class="nicknameInputLabel">닉네임</label>
@@ -101,6 +104,7 @@
                                 th:field="*{nickname}"
                         /><button class="button_nicknameInput" onclick="checkNickname()">중복 확인</button>
                         <div class="mt-4"></div>
+                        <p th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="fieldError">Incorrect data</p>
                     </div>
                     <div class="mt-20"></div>
                     <div class="addressInput_wrapper">
@@ -172,6 +176,8 @@
                                     placeholder="상세주소를 입력해주세요"
                                     th:field="*{detailAdr}"
                             />
+                            <div class="mt-4"></div>
+                            <p th:if="${#fields.hasErrors('detailAdr')}" th:errors="*{detailAdr}" class="fieldError">Incorrect data</p>
                         </div>
                     </div>
                     <div class="mt-20"></div>

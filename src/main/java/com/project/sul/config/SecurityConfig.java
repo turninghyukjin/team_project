@@ -23,7 +23,7 @@ public class SecurityConfig {
     private MemberService memberService;
     @Autowired
     private PrincipalOauth2UserService principalOauth2UserService;
-//
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .failureUrl("/login") //.로그인 실패시 이동할 url
             .and()
             .logout() //로그아웃 url
-                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
                 //패턴과 요청url을 비교하여 일치하는지 판단
                 //'members/logout' url 로 요청을 보내면 이를 로그아웃 처리로 인식 하여 로그아웃
                 .logoutSuccessUrl("/") //로그아웃 성공시 이동할 url
@@ -51,14 +51,14 @@ public class SecurityConfig {
                 .mvcMatchers("/css/**", "/js/**", "/images/**", "/jquery/**", "/bootstrap/**", "/slick/**", "/payments/**").permitAll()
                 .mvcMatchers("/", "/login/**", "/register/**", "/user/**", "/admin/**", "/item/**", "/error/**").permitAll()
 //                .mvcMatchers("/admin/**").hasRole("ADMIN")
-                .mvcMatchers("/error").permitAll()
+//                .mvcMatchers("/error").permitAll()
                 .anyRequest().authenticated();
 
         http.csrf().disable();
 
         http.exceptionHandling()
-                .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
-                .accessDeniedPage("/error"); //인증되지 않은 사용자가 리소스에 접근했을때 수행되는 핸들러 등록
+                .authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+//                .accessDeniedPage("/error"); //인증되지 않은 사용자가 리소스에 접근했을때 수행되는 핸들러 등록
 
         return http.build();
     }

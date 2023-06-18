@@ -24,6 +24,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
     @Autowired
     private MemberRepository memberRepository;
+
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
@@ -52,19 +53,19 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String email = oAuth2UserInfo.getEmail();
         Role role = Role.USER;
 
-        Member byMemberEmail = memberRepository.findByEmail(email);
+        Member byUsername = memberRepository.findByNickname(nickname);
 
         //DB에 없는 사용자라면 회원가입처리
-        if(byMemberEmail == null){
-            byMemberEmail = Member.oauth2Register()
-                    .nickname(nickname).password(password).email(email).role(role)
+        if(byUsername == null){
+            byUsername = Member.oauth2Register()
+                    .username(username).password(password).email(email).role(role)
                     .provider(provider).providerId(providerId)
                     .build();
 
-            memberRepository.save(byMemberEmail);
+            memberRepository.save(byUsername);
 
         }
 
-        return new PrincipalDetails(byMemberEmail, oAuth2UserInfo);
+        return new PrincipalDetails(byUsername, oAuth2UserInfo);
     }
 }

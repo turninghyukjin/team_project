@@ -24,15 +24,15 @@ public class RegisterSocialFormDto {
     private String name;
 
     @NotBlank(message = "닉네임을 입력해 주세요.")
-    @Size(min = 2, max = 10)
+    @Size(min = 2, max = 5, message = "닉네임은 2자 이상, 5자 이하로 입력해 주세요.")
     private String nickname;
 
     @NotEmpty(message = "이메일을 입력해 주세요.")
-    @Email(message = "이메일 형식으로 입력해 주세요.")
+    @Email
     private String email;
 
     @NotEmpty(message = "비밀번호를 입력해 주세요.")
-    @Size(min = 8, max = 16, message = "비밀번호는 8자 이상, 16자 이하로 입력해주세요.")
+    @Size(min = 8, max = 16, message = "비밀번호는 8자 이상, 16자 이하로 입력해 주세요.")
     private String password;
 
 //    @NotEmpty
@@ -48,7 +48,7 @@ public class RegisterSocialFormDto {
     private String streetAdr;
 
     @NotEmpty(message = "상세 주소를 입력해 주세요.")
-    @Pattern(regexp = "^[ㄱ-ㅎ가-힣a-z0-9-]{2,20}$")
+    @Pattern(regexp = "^[ㄱ-ㅎ가-힣a-z0-9-]{2,20}$", message = "주소 형식에 맞게 입력해 주세요.")
     private String detailAdr;
 
     private LocalDate birthDate;
