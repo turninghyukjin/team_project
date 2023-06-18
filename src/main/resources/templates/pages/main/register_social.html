@@ -23,7 +23,7 @@
         <div class="registerContentForm_wrapper">
             <header class="welcome_user_wrapper">
                 <div class="userTitle_wrapper">
-<!--                    <div class="title" th:text="${userName} + ', 환영해요!'"></div>-->
+                    <!--                    <div class="title" th:text="${userName} + ', 환영해요!'"></div>-->
                     <div class="title" text="환영해요!"></div>
                 </div>
             </header>
@@ -60,7 +60,7 @@
                             class=""
                             id="name"
                             type="text"
-                            placeholder="이메일을 입력해 주세요"
+                            placeholder="이름을 입력해 주세요"
                             th:field="*{name}"
                     />
                     <div class="mt-20"></div>
@@ -93,16 +93,7 @@
                                 placeholder="닉네임을 입력해 주세요"
                                 name="nickname"
                                 th:field="*{nickname}"
-                        /><button
-                                class="button_nicknameInput"
-                                font-size="15px"
-                                font-weight="500"
-                                type="button"
-                                width="85px"
-                                height="50px"
-                        >
-                            중복 확인
-                        </button>
+                        /><button class="button_nicknameInput" onclick="checkNickname()">중복 확인</button>
                         <div class="mt-4"></div>
                     </div>
                     <div class="mt-20"></div>

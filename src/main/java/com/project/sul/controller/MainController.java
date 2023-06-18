@@ -31,10 +31,34 @@ public class MainController {
         return "pages/main/main";
     }
 
+
+
     @GetMapping(value = "/login")
     public String login() {
         return "pages/main/login";
     }
+
+
+
+    @GetMapping(value = "/login/error")
+    public String loginError(Model model) {
+        model.addAttribute("loginErrorMsg","아이디 또는 비밀번호를 확인해주세요");
+        return "pages/main/login";
+    }
+
+
+
+    @GetMapping(value = "/login/email")
+    public String loginSucces(@RequestParam("email") String email, @RequestParam("password") String password) {
+
+        // 필요한 동작을 수행한 후 로그인 결과에 따라 적절한 응답을 반환.
+
+        return "pages/main/main"; // 로그인 후 이동할 페이지.
+    }
+
+
+
+
 
     @GetMapping(value = "/register/agreement")
     public String   agreement() {
@@ -51,24 +75,9 @@ public class MainController {
         return "pages/main/register_email";
     }
 
-    @GetMapping(value = "/register/social")
-    public String registerSocial(Model model) {
-        model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
-        return "pages/main/register_social";
-    }
 
-    @PostMapping(value = "/register/email")
-    public String formLogin(@ModelAttribute Member member) {
-        member.setRole(Role.USER);
 
-        // 패스워드 암호화
-        String encodePW = passwordEncoder.encode(member.getPassword());
-        member.setPassword(encodePW);
 
-        memberRepository.save(member);
-
-        return "redirect:/";
-    }
 
     // form 로그인 시
     @GetMapping(value = "/form/loginInfo")

@@ -1,6 +1,6 @@
 package com.project.sul.kako;
 
-import com.project.sul.dto.MemberFormDto;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,12 +21,12 @@ public class Kakao{
         this.kakaoId = kakaoId;
     }
 
-    public MemberFormDto toMemberFormDto() {
-        MemberFormDto memberFormDto = new MemberFormDto();
-        memberFormDto.setName(this.nickname);
-        memberFormDto.setNickname(this.nickname);
-        memberFormDto.setEmail(this.kakaoId); // 카카오톡 아이디 (이메일) 설정
-        memberFormDto.setKakao(this); // KakaoDto 설정
-        return memberFormDto;
-    }
+//    public MemberFormDto toMemberFormDto() {
+//        MemberFormDto memberFormDto = new MemberFormDto();
+//        memberFormDto.setName(this.nickname);
+//        memberFormDto.setNickname(this.nickname);
+//        memberFormDto.setEmail(this.kakaoId); // 카카오톡 아이디 (이메일) 설정
+//        memberFormDto.setKakao(this); // KakaoDto 설정
+//        return memberFormDto;
+//    }
 }

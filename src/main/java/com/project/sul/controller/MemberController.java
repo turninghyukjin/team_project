@@ -1,18 +1,23 @@
 package com.project.sul.controller;
 
-import com.project.sul.auth.PrincipalDetails;
 import com.project.sul.constant.Role;
+import com.project.sul.dto.RegisterSocialFormDto;
 import com.project.sul.entity.Member;
 import com.project.sul.repository.MemberRepository;
 import com.project.sul.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-@RequestMapping("/")
+import java.util.HashMap;
+import java.util.Map;
+
+@RequestMapping("/register")
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -20,6 +25,45 @@ public class MemberController {
     private final MemberService memberService;
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+
+    // 닉네임 중복 체크
+    @GetMapping(value = "/social/{nickname}/duplicate")
+    public ResponseEntity<String> checkNicknameDuplicate(@PathVariable String nickname) {
+        boolean isNicknameDuplicate = memberRepository.existsByNickname(nickname);
+        if (isNicknameDuplicate) {
+            return ResponseEntity.ok("이미 사용 중인 닉네임입니다.");
+        } else {
+            return ResponseEntity.ok("사용 가능한 닉네임입니다.");
+        }
+    }
+
+    @GetMapping(value = "/social")
+    public String registerSocial(Model model) {
+        model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
+        return "pages/main/register_social";
+    }
+
+    @PostMapping(value = "/social")
+    public String formLogin(@ModelAttribute Member member) {
+        member.setRole(Role.USER);
+
+        // 패스워드 암호화
+        String encodePW = passwordEncoder.encode(member.getPassword());
+        member.setPassword(encodePW);
+
+        memberRepository.save(member);
+
+        return "redirect:/";
+    }
+
+
+
+
+
+
+
+
+
 
 //    @PostMapping(value = "/register/final")
 //    public String registerFinal(
@@ -70,22 +114,20 @@ public class MemberController {
 //        return age >= 19;
 //    }
 
-    // 닉네임 중복 체크
-//    @GetMapping(value = "/register/social/{nickname}/duplicate")
-//    public ResponseEntity<Boolean> checkNicknameDuplicate (@PathVariable String nickname) {
-//        return ResponseEntity.ok(memberService.saveMember(member));
-//    }
 
-//유효성 검사 수정 해야함
-//    public Map<String, String> validateHandling(Errors errors) {
-//        Map<String, String> validatorResult = new HashMap<>();
-//
-//        for (FieldError error : errors.getFieldErrors()) {
-//            String validKeyName = String.format("valid_%s", error.getField());
-//            validatorResult.put(validKeyName, error.getDefaultMessage());
-//        }
-//        return validatorResult;
-//    }
+
+
+
+    //유효성 검사 수정 해야함
+    public Map<String, String> validateHandling(Errors errors) {
+        Map<String, String> validatorResult = new HashMap<>();
+
+        for (FieldError error : errors.getFieldErrors()) {
+            String validKeyName = String.format("valid_%s", error.getField());
+            validatorResult.put(validKeyName, error.getDefaultMessage());
+        }
+        return validatorResult;
+    }
 
 
 //    @PostMapping(value = "/register/social")
