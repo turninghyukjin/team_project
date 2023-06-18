@@ -19,6 +19,12 @@ public class RegisterSocialFormDto {
     private String email;
 
     @NotEmpty
+    private String name;
+
+    @NotEmpty
+    private String password;
+
+    @NotEmpty
     private String zipCode;
 
     @NotEmpty

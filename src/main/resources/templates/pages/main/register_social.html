@@ -47,6 +47,40 @@
                             th:field="*{email}"
                     />
                     <div class="mt-20"></div>
+                    <label th:for="name" class="registerSocialForm_inputLabel">
+                        이름
+                        <img
+                                src="/images/global/icon-asterisk.png"
+                                alt="icon"
+                                class="registerSocialForm_inputLabel_img"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            id="name"
+                            type="text"
+                            placeholder="이메일을 입력해 주세요"
+                            th:field="*{name}"
+                    />
+                    <div class="mt-20"></div>
+                    <label th:for="password" class="registerSocialForm_inputLabel">
+                        비밀번호
+                        <img
+                                src="/images/global/icon-asterisk.png"
+                                alt="icon"
+                                class="registerSocialForm_inputLabel_img"
+                        />
+                    </label>
+                    <div class="mt-8"></div>
+                    <input
+                            class=""
+                            id="password"
+                            type="text"
+                            placeholder="이메일을 입력해 주세요"
+                            th:field="*{password}"
+                    />
+                    <div class="mt-20"></div>
                     <div class="nicknameInput_wrapper">
                         <label th:for="nickname" class="nicknameInputLabel">닉네임</label>
                         <div class="nicknameInput_rule">
