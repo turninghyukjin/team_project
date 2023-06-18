@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout xmlns:sec="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/base_layout_no_footer}"
 >
 
@@ -15,7 +15,7 @@
 </th:block>
 
 <th:block layout:fragment="content">
-    <div class="login_wrapper">
+    <div sec:authorize="isAnonymous()" class="login_wrapper">
         <section class="login_top_banner">
               <span class="login_banner_message">
                   지금 회원가입하면 최대 4,000p 적립!
@@ -48,7 +48,10 @@
                 </div>
                 <div class="sns_buttons_wrapper">
 
-                    <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=1708de0ead6eb3c1cd3ccc89914bfb0b&redirect_uri=http://localhost/register"
+                    <!-- /oauth2/authorization/{registrationId}에 요청이 들어오면,
+                        스프링 시큐리티가 provider의 authorization-uri로 요청을 전달한다-->
+
+                    <a href="/oauth2/authorization/kakao"
                        class="sns_buttons button_kakao">
                         <svg viewBox="3 3 17 17">
                             <path d="M12 4c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682
@@ -68,15 +71,15 @@
                         </a>
                     </div>
                 </div>
-                <button class="button_email_login">
+                <button class="button_email_login" onclick="toggleLoginForm()">
                     <img src="/images/login/email-login-icon.png" alt="이메일 로그인 버튼의 이메일 아이콘">
                     <label>이메일로 시작하기</label>
                 </button>
             </div>
 
-            <div class="email_loginForm_wrapper">
+            <div class="email_loginForm_wrapper" style="display:none">
                 <div class="email_loginFrom">
-                    <form novalidate="">
+                    <form action="/login/email" novalidate="">
                         <input
                                 class=""
                                 type="email"
@@ -117,7 +120,6 @@
                     ><a href="/login/searchPw">비밀번호 찾기</a>
                 </section>
             </div>
-
         </div>
     </div>
 

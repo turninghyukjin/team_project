@@ -40,11 +40,11 @@
                     </label>
                     <div class="mt-8"></div>
                     <input
-                            class=""
+                            class="disable-input"
                             id="email"
+                            name="email"
                             type="text"
-                            placeholder="이메일을 입력해 주세요"
-                            th:field="*{email}"
+                            th:field="${kakaoEmail}"
                     />
                     <div class="mt-20"></div>
                     <div class="nicknameInput_wrapper">
@@ -54,7 +54,6 @@
                         </div>
                         <input
                                 class=""
-                                id="nickname"
                                 type="text"
                                 placeholder="닉네임을 입력해 주세요"
                                 name="nickname"

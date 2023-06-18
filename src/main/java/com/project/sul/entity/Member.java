@@ -4,12 +4,12 @@ import com.project.sul.constant.Role;
 import com.project.sul.dto.MemberFormDto;
 import com.project.sul.kako.Kakao;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.security.Timestamp;
 import java.time.LocalDate;
 
 @Entity
@@ -17,6 +17,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Member extends BaseEntity {
     @Id
     @Column(name = "member_id")
@@ -42,12 +43,15 @@ public class Member extends BaseEntity {
     @JoinColumn(name = "address_id")
     private Address address;
 
+//    @CreationTimestamp  //자동으로 만들어준다
+//    private Timestamp createTime;
+
     private Integer point;
     //결제 포인트
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "kakao_id") // member 테이블의 컬럼 이름이 "kakao_id"인 것을 가정합니다.
-    private Kakao kakao;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "kakao_id") // member 테이블의 컬럼 이름이 "kakao_id"인 것을 가정합니다.
+//    private Kakao kakao;
 
     private LocalDate birthDate;
 
@@ -55,13 +59,16 @@ public class Member extends BaseEntity {
     private Role role;
     //관리자 아이디
 
+    private String provider;    // oauth2를 이용할 경우 어떤 플랫폼을 이용하는지
+    private String providerId;  // oauth2를 이용할 경우 아이디값
+
     // 생성자, getter, setter 등 필요한 메서드는 생략
 
     public static Member createMember(MemberFormDto memberFormDto,
                                       PasswordEncoder passwordEncoder,
                                       String email,
                                       String impUid,
-                                      LocalDate birthDate) {
+                                      LocalDate birthDate, String provider, String providerId) {
         Member member = new Member();
 
         member.setName(memberFormDto.getName()); // 이름
@@ -80,12 +87,34 @@ public class Member extends BaseEntity {
         // 추가 정보 저장
         member.setImpUid(impUid); // 인증 토큰
 
+        // oauth2
+        member.setProvider(provider);
+        member.setProviderId(providerId);
+
         // Kakao 정보 저장
-        Kakao kakaoDto = memberFormDto.getKakao();
-        if (kakaoDto != null) {
-            member.setKakao(kakaoDto);
-        }
+//        Kakao kakaoDto = memberFormDto.getKakao();
+//        if (kakaoDto != null) {
+//            member.setKakao(kakaoDto);
+//        }
 
         return member;
+    }
+
+    @Builder(builderClassName = "UserDetailRegister", builderMethodName = "userDetailRegister")
+    public Member(String username, String password, String email, Role role) {
+        this.name = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
+    @Builder(builderClassName = "OAuth2Register", builderMethodName = "oauth2Register")
+    public Member(String nickname, String password, String email, Role role, String provider, String providerId) {
+        this.nickname = nickname;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
     }
 }

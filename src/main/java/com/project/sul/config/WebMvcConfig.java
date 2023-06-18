@@ -13,7 +13,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/imagesss/**") // url이 images로 시작하면 uploadPath 설정 폴더기준으로 가져오기
+        registry.addResourceHandler("/imageItem/**") // url이 imageItem로 시작하면 uploadPath 설정 폴더기준으로 가져오기
                 .addResourceLocations(uploadPath);
     }
 

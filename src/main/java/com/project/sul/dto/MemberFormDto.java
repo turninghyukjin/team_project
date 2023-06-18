@@ -65,9 +65,9 @@ public class MemberFormDto {
         member.setBirthDate(this.birthDate);
 
         // Kakao 정보 저장
-        if (kakao != null) {
-            member.setKakao(this.kakao);
-        }
+//        if (kakao != null) {
+//            member.setKakao(this.kakao);
+//        }
 
         return member;
     }
