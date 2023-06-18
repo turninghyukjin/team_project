@@ -2,7 +2,6 @@ package com.project.sul.dto;
 
 import com.project.sul.entity.Address;
 import com.project.sul.entity.Member;
-import com.project.sul.kako.Kakao;
 
 
 import lombok.*;
@@ -21,27 +20,25 @@ import java.time.LocalDate;
 @ToString
 public class RegisterSocialFormDto {
 
-    private Kakao kakao; // Kakao와의 연결을 위한 필드 추가
-
-    @NotBlank
+    @NotBlank(message = "이름을 입력해 주세요.")
     private String name;
 
-    @NotBlank(message = "닉네임은 필수 입력 값입니다.")
+    @NotBlank(message = "닉네임을 입력해 주세요.")
     @Size(min = 2, max = 10)
     private String nickname;
 
-    @NotEmpty
-    @Email(message = "이메일 형식으로 입력해주세요.")
+    @NotEmpty(message = "이메일을 입력해 주세요.")
+    @Email(message = "이메일 형식으로 입력해 주세요.")
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = "비밀번호를 입력해 주세요.")
     @Size(min = 8, max = 16, message = "비밀번호는 8자 이상, 16자 이하로 입력해주세요.")
     private String password;
 
-    @NotEmpty
-    private String matchingPassword;
+//    @NotEmpty
+//    private String matchingPassword;
 
-    @NotBlank(message = "휴대폰 번호를 입력해주세요")
+    @NotBlank(message = "휴대폰 번호를 입력해 주세요")
     private String phone;
 
     @NotEmpty

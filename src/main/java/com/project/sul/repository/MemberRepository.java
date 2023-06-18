@@ -13,6 +13,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     boolean existsByNickname(String nickname);
 
+    boolean existsByEmail(String email);
+
     // 임의데이터
     @Modifying
     @Query(value = "INSERT INTO member (name, nickname, email, password, phone, age, role) " +

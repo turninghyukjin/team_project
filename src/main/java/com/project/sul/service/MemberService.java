@@ -3,6 +3,7 @@ package com.project.sul.service;
 import com.project.sul.entity.Member;
 import com.project.sul.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,7 +15,16 @@ import javax.transaction.Transactional;
 @Transactional
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService {
+
     private final MemberRepository memberRepository;
+
+    public boolean checkEmailDuplicate(String email) {
+        return memberRepository.existsByEmail(email);
+    }
+
+    public boolean checkNicknameDuplicate(String nickname) {
+        return memberRepository.existsByNickname(nickname);
+    }
 
     public Member saveMember(Member member) {
         validateDuplicateMember(member);

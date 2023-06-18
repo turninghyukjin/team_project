@@ -3,6 +3,7 @@ package com.project.sul.entity;
 import com.project.sul.constant.Role;
 import com.project.sul.dto.MemberFormDto;
 
+import com.project.sul.dto.RegisterSocialFormDto;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -64,31 +65,32 @@ public class Member extends BaseEntity {
     // 생성자, getter, setter 등 필요한 메서드는 생략
 
     public static Member createMember(RegisterSocialFormDto registerSocialFormDto,
-                                      PasswordEncoder passwordEncoder,
-                                      String email,
-                                      String impUid,
-                                      LocalDate birthDate, String provider, String providerId) {
+                                      PasswordEncoder passwordEncoder
+//                                      String email,
+//                                      String impUid,
+//                                      LocalDate birthDate, String provider, String providerId) {
+                                      ) {
         Member member = new Member();
 
         member.setName(registerSocialFormDto.getName()); // 이름
         member.setNickname(registerSocialFormDto.getNickname()); // 닉네임
-        member.setEmail(email); // 이메일
+//        member.setEmail(email); // 이메일
         member.setAddress(new Address(registerSocialFormDto.getZipCode(), registerSocialFormDto.getStreetAdr(), registerSocialFormDto.getDetailAdr())); // 주소
         member.setPhone(registerSocialFormDto.getPhone()); // 폰 번호
 
         String password = passwordEncoder.encode(registerSocialFormDto.getPassword());
         member.setPassword(password);
 
-        member.setRole(Role.ADMIN);
+        member.setRole(Role.USER);
 
-        member.setBirthDate(birthDate); // 생년월일 설정
+//        member.setBirthDate(birthDate); // 생년월일 설정
 
         // 추가 정보 저장
-        member.setImpUid(impUid); // 인증 토큰
+//        member.setImpUid(impUid); // 인증 토큰
 
         // oauth2
-        member.setProvider(provider);
-        member.setProviderId(providerId);
+//        member.setProvider(provider);
+//        member.setProviderId(providerId);
 
         // Kakao 정보 저장
         // Kakao kakaoDto = registerSocialFormDto.getKakao();
