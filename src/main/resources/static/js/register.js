@@ -38,6 +38,11 @@ function handleAdultCertification() {
 }
 
 
-// 데이터 넘기기
 
-
+  $(document).ready(function() {
+        $(".checkbox-wrapper").click(function() {
+            var checkbox = $(this).find("input[type='checkbox']");
+            checkbox.prop("checked", !checkbox.prop("checked"));
+            $(this).toggleClass("checked");
+        });
+    });
