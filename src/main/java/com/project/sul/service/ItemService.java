@@ -9,6 +9,7 @@ import com.project.sul.entity.ItemImg;
 import com.project.sul.repository.ItemImgRepository;
 import com.project.sul.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ public class ItemService {
     private final ItemImgRepository itemImgRepository;
 
     private final EntityManager em;
+
 
     // 별점
     public void updateAvgStar(Long id, Double avgStar) {
@@ -109,4 +111,18 @@ public class ItemService {
     public Page<ItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         return itemRepository.getItemPage(itemSearchDto, pageable);
     }
+
+    public Item getItemById(Long itemId) {
+        return itemRepository.findById(itemId).orElse(null);
+    }
+
+    public int getItemPrice(Long itemId) {
+        Item item = itemRepository.findById(itemId).orElse(null);
+        if (item != null) {
+            return item.getPrice();
+        }
+        return 0; // or any other appropriate default value
+    }
+
+
 }

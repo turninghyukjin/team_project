@@ -70,13 +70,17 @@
                             <div class="priceTitle">
                                 <div>판매가격:</div>
                             </div>
+
+
+
                             <div class="itemPrice">
                                 <div class="originalPrice">
                                     33,000원
                                 </div>
                                 <div class="salePrice">
-<!--                                    <span class="salePriceText" th:text="${item.price}+'원'"></span>-->
-                                    <span>31350원</span>
+
+                                    <span th:if="${item != null}" th:text="${item.price + '원'}"></span>
+                                    <span th:unless="${item != null}">상품 가격 없음</span>
                                 </div>
                             </div>
                             <div class="expirationStorage">
@@ -249,16 +253,21 @@
                     <div class="count_minusPlus_img_wrapper">
                         <img id="minusButton" src="/images/itemDetail/icon_minus_counter_inactive.png" alt="icon_minus_counter_inactive" onclick="decreaseQuantity()" disabled>
                     </div>
+
+
                     <input id="quantityInput" type="number" maxlength="3" value="1">
                     <div class="count_minusPlus_img_wrapper">
                         <img id="plusButton" src="/images/itemDetail/icon_plus_counter.png" alt="icon_plus_counter" onclick="increaseQuantity()">
                     </div>
                 </div>
+
                 <div class="title">총 상품가격</div>
-                <div class="totalPrice">
-<!--                    <span th:text="${item.price}+'원'"></span>-->
-                    <span id="totalPriceText">31350원</span>
+                <div class="salePrice">
+                    <span th:if="${item != null}" th:text="${item.price + '원'}"></span>
+                    <span th:unless="${item != null}">상품 가격 없음</span>
                 </div>
+
+
                 <div class="delivery">
                     <div class="deliveryIcon">
                         <img src="/images/itemDetail/icon_truck.png" alt="truck" class="icon-truck">
@@ -283,6 +292,7 @@
         </div>
 
     </div>
+
 
 </th:block>
 

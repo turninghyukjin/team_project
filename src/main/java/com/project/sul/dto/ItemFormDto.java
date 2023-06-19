@@ -16,13 +16,15 @@ import java.util.List;
 @Getter
 @Setter
 public class ItemFormDto {
+
+    private Item item;
+
     private Long id;
 
     @NotBlank
     private String itemNm;
 
-    @NotNull
-    private int price;
+    private Integer price;
 
     @NotNull
     private Integer stockNumber;
@@ -45,13 +47,16 @@ public class ItemFormDto {
     private int sparkling; // 탄산
 
     public Item createItem() {
+        if (item == null) {
+            item = new Item();
+        }
+        item.setPrice(price); // 아이템 생성 시에도 가격 설정
         return modelMapper.map(this, Item.class);
     }
 
     public static ItemFormDto of(Item item) {
-        return modelMapper.map(item, ItemFormDto.class);
+        ItemFormDto itemFormDto = modelMapper.map(item, ItemFormDto.class);
+        itemFormDto.setPrice(item.getPrice()); // 가져온 아이템의 가격 설정
+        return itemFormDto;
     }
-
-
-
 }

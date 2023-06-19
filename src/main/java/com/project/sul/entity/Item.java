@@ -24,8 +24,8 @@ public class Item extends BaseEntity { // 관리자 상품등록
     @Column(nullable = false,length = 100)
     private String itemNm; //상품명
 
-    @Column(name = "price",nullable = false)
-    private int price; //가격
+    @Column(name = "price")
+    private Integer price;
 
     @Column(nullable = false)
     private int stockNumber; //재고수량
@@ -85,4 +85,11 @@ public class Item extends BaseEntity { // 관리자 상품등록
     }
 
 
+
+    public int getPrice() {
+        return price;
+    }
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }
