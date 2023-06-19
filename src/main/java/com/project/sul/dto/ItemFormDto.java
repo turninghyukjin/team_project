@@ -22,12 +22,12 @@ public class ItemFormDto {
     private String itemNm;
 
     @NotNull
-    private int price;
+    private String price; // 가격을 문자열로 저장
 
     @NotNull
     private Integer stockNumber;
 
-    @NotBlank(message="상품 상세정보는 필수 입력값입니다")
+    @NotBlank(message = "상품 상세정보는 필수 입력값입니다")
     private String itemDetail;
 
     private List<Long> itemImgIds = new ArrayList<>();
@@ -38,7 +38,7 @@ public class ItemFormDto {
     private ItemSellStatus itemSellStatus;
 
     @Column(nullable = false)
-    private String type; //상품타입(탁주, 약주, 증류주, 과실주)
+    private String type; // 상품타입(탁주, 약주, 증류주, 과실주)
     private int abv; // 알콜도수
     private int sweetness; // 단맛
     private int sourness; // 신맛
@@ -51,5 +51,7 @@ public class ItemFormDto {
     public static ItemFormDto of(Item item) {
         return modelMapper.map(item, ItemFormDto.class);
     }
+
+    // 가격 설정 메서드
 
 }
