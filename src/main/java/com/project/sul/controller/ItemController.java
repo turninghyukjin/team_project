@@ -59,7 +59,6 @@ public class ItemController {
         return "redirect:/";
     }
 
-
     // 수정목록 조회
     @GetMapping("/admin/item/{itemId}")
     public String itemDtl(@PathVariable("itemId") Long itemId, Model model) {
@@ -76,6 +75,7 @@ public class ItemController {
         return "pages/item/admin/itemUpdateForm";
     }
 
+    // 수정
     @PostMapping("/admin/item/{itemId}")
     public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                              @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList, Model model) {
@@ -109,11 +109,11 @@ public class ItemController {
         return "pages/item/admin/itemMng";
     }
 
-//    @GetMapping(value = "/item/{itemId}")
-//    public String itemDtl(Model model, @PathVariable("itemId") Long itemId) {
-//        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
-//        model.addAttribute("item", itemFormDto);
-//        return "item/user/itemDetail";
-//    }
+    @GetMapping(value = "/item/{itemId}")
+    public String itemDtl(Model model, @PathVariable("itemId") Long itemId) {
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        model.addAttribute("item", itemFormDto);
+        return "item/user/itemDetail";
+    }
 }
 
