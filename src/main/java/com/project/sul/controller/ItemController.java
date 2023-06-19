@@ -113,5 +113,15 @@ public class ItemController {
         model.addAttribute("item", itemFormDto);
         return "item/user/itemDetail";
     }
+    @GetMapping(value = "/item/{itemId}/price")
+    public String getItemPrice(Model model, @PathVariable("itemId") Long itemId) {
+        int itemPrice = itemService.getItemPrice(itemId);
+        model.addAttribute("itemPrice", itemPrice);
+        return "pages/item/user/itemPrice";
+    }
+
+
+
+
 }
 
