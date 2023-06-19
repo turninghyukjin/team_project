@@ -28,8 +28,8 @@ public class MemberService {
     }
 
     public Member saveMember(Member member) {
-        validateDuplicateMember(member);
-        validateDuplicateNickname(member);
+//        validateDuplicateMember(member);
+//        validateDuplicateNickname(member);
         return memberRepository.save(member);
     }
 
