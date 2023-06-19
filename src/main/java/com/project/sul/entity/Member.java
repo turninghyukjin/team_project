@@ -74,7 +74,7 @@ public class Member extends BaseEntity {
 
         member.setName(registerSocialFormDto.getName()); // 이름
         member.setNickname(registerSocialFormDto.getNickname()); // 닉네임
-//        member.setEmail(email); // 이메일
+        member.setEmail(registerSocialFormDto.getEmail()); // 이메일
         member.setAddress(new Address(registerSocialFormDto.getZipCode(), registerSocialFormDto.getStreetAdr(), registerSocialFormDto.getDetailAdr())); // 주소
         member.setPhone(registerSocialFormDto.getPhone()); // 폰 번호
 

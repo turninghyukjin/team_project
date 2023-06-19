@@ -11,7 +11,12 @@
 
 <!-- order.html 고유 js 추가 -->
 <th:block layout:fragment="script">
-    <script th:src="@{/js/order.js}"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+    <script th:src="@{/js/order2.js}"></script>
 </th:block>
 
 <th:block layout:fragment="content">
@@ -163,7 +168,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="agreeDetailContent_wrapper">
+                <div class="agreeDetailContent_wrapper" style="display: none;">
                     <div>
                         <div class="terms-title">개인정보 판매자 제공에 동의합니다.</div>
                         <div class="mb-12"></div>
@@ -181,6 +186,7 @@
                         <div class="terms-footer">※ 동의하지 않으실 경우 구매가 제한됩니다.</div>
                     </div>
                 </div>
+
             </div>
             <div class="mb-12"></div>
             <div class="orderButton_wrapper">
