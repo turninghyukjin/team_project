@@ -22,7 +22,7 @@ public class ItemFormDto {
     private String itemNm;
 
     @NotNull
-    private String price; // 가격을 문자열로 저장
+    private int price;
 
     @NotNull
     private Integer stockNumber;
@@ -52,6 +52,6 @@ public class ItemFormDto {
         return modelMapper.map(item, ItemFormDto.class);
     }
 
-    // 가격 설정 메서드
+
 
 }
