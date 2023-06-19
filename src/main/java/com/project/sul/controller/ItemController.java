@@ -31,8 +31,6 @@ public class ItemController {
         model.addAttribute("itemFormDto", new ItemFormDto());
         return "pages/item/admin/itemRegisterForm";
     }
-
-<<<<<<< HEAD
     // 업데이트
     @GetMapping(value = "/admin/item/update")
     public String itemUpdate(Model model) {
@@ -40,8 +38,6 @@ public class ItemController {
         return "pages/item/admin/itemUpdateForm";
     }
 
-=======
->>>>>>> 5e56925 (item)
     @PostMapping("/admin/item/newValid")
     public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                           Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList) {

@@ -51,13 +51,10 @@ public class Item extends BaseEntity { // 관리자 상품등록
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
 
-<<<<<<< HEAD
     private LocalDateTime regTime;      //등록 시간 >> 유통기한과 연관?
     private LocalDateTime updateTime;   //수정 시간
-=======
 //    private LocalDateTime regTime;      //등록 시간 >> 유통기한과 연관?
 //    private LocalDateTime updateTime;   //수정 시간
->>>>>>> 5e56925 (item)
 
     private String taste; // 핵심포인트-맛
     private String sideDish; // 핵심포인트-안주
@@ -76,14 +73,11 @@ public class Item extends BaseEntity { // 관리자 상품등록
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
-<<<<<<< HEAD
-=======
         this.type = itemFormDto.getType();
         this.abv = itemFormDto.getAbv();
         this.sweetness = itemFormDto.getSweetness();
         this.sourness = itemFormDto.getSourness();
         this.sparkling = itemFormDto.getSparkling();
->>>>>>> 5e56925 (item)
     }
 
 // 재고가 없을 때의 예외
@@ -99,15 +93,10 @@ public class Item extends BaseEntity { // 관리자 상품등록
         this.stockNumber = stockNumber;
     }
 
-
-<<<<<<< HEAD
-
     public int getPrice() {
         return price;
     }
     public void setPrice(int price) {
         this.price = price;
     }
-=======
->>>>>>> 5e56925 (item)
 }
