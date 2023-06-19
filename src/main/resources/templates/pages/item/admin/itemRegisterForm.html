@@ -4,8 +4,6 @@
       layout:decorate="~{layouts/base_layout_no_footer}"
 >
 
-<<<<<<< HEAD
-=======
 <th:block layout:fragment="script">
 
     <script th:inline="javascript">
@@ -34,7 +32,6 @@
 </th:block>
 
 
->>>>>>> 5e56925 (item)
 <!-- login.html 고유 css 추가 -->
 <th:block layout:fragment="css">
     <link rel="stylesheet" th:href="@{/css/itemRegisterForm.css}">
@@ -129,10 +126,6 @@
                             placeholder="상품 설명 내용을 입력해주세요"
                             th:field="*{itemDetail}"
                     />
-<<<<<<< HEAD
-=======
-
->>>>>>> 5e56925 (item)
                     <div class="mt-20"></div>
                     <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
                         <div class="itemRegisterForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
@@ -143,10 +136,8 @@
                             />
                         </div>
                         <div class="mt-8"></div>
-<<<<<<< HEAD
-=======
                         <!--대표 이미지 -->
->>>>>>> 5e56925 (item)
+
                         <input
                                 type="file"
                                 accept=".jpg, .png"
@@ -162,10 +153,7 @@
                             <!--                            />-->
                         </div>
                         <div class="mt-8"></div>
-<<<<<<< HEAD
-=======
                         <!-- 설명 이미지 -->
->>>>>>> 5e56925 (item)
                         <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
                             <input
                                     type="file"

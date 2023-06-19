@@ -37,20 +37,24 @@ public class ItemFormDto {
 
     private static ModelMapper modelMapper = new ModelMapper();
 
-    @NotBlank(message = "판매 상태는 필수 입력값입니다.")
+//    @NotBlank(message = "판매 상태는 필수 입력값입니다.")
     private ItemSellStatus itemSellStatus;
 
     @NotBlank(message = "술 종류는 필수 입력값입니다.")
     @Column(nullable = false)
     private String type; // 상품타입(탁주, 약주, 증류주, 과실주)
 
-    @NotBlank(message = "술 도수는 필수 입력값입니다.")
+//    @NotBlank(message = "술 도수는 필수 입력값입니다.")
+    @NotNull(message = "술 도수는 필수 입력값입니다.")
     private int abv; // 알콜도수
-    @NotBlank(message = "술 단맛 정도는 필수 입력값입니다.")
+//    @NotBlank(message = "술 단맛 정도는 필수 입력값입니다.")
+    @NotNull(message = "술 도수는 필수 입력값입니다.")
     private int sweetness; // 단맛
-    @NotBlank(message = "술 신맛 정도는 필수 입력값입니다.")
+//    @NotBlank(message = "술 신맛 정도는 필수 입력값입니다.")
+    @NotNull(message = "술 도수는 필수 입력값입니다.")
     private int sourness; // 신맛
-    @NotBlank(message = "술 탄산 정도는 필수 입력값입니다.")
+//    @NotBlank(message = "술 탄산 정도는 필수 입력값입니다.")
+    @NotNull(message = "술 도수는 필수 입력값입니다.")
     private int sparkling; // 탄산
 
     public Item createItem() {
