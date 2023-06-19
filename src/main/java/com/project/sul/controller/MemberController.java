@@ -120,17 +120,17 @@ public class MemberController {
     @PostMapping(value = "/social")
     public String checkResister(@Valid RegisterSocialFormDto registerSocialFormDto,
                                 BindingResult bindingResult, Model model) {
-//        if (bindingResult.hasErrors()) {
-//            return "pages/main/register_social";
-//        }
+        if (bindingResult.hasErrors()) {
+            return "pages/main/register_social";
+        }
 
-//        try {
+        try {
             Member member = Member.createMember(registerSocialFormDto, passwordEncoder);
             memberService.saveMember(member);
-//        } catch (IllegalStateException e) {
-//            model.addAttribute("errorMessage", e.getMessage());
-//            return "pages/main/register_social";
-//        }
+        } catch (IllegalStateException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "pages/main/register_social";
+        }
 
         return "redirect:/";
     }

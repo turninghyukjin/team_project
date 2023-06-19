@@ -26,7 +26,7 @@ function handleAdultCertification() {
         });
 
         // 본인인증이 완료되었습니다.
-        alert("본인인증이 완료되었습니다.");
+//        alert("본인인증이 완료되었습니다.");
 
         // 다음 페이지로 이동
         window.location.href = "http://localhost/register/social";

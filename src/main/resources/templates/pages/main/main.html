@@ -48,81 +48,136 @@
 
     <div class="content_wrapper">
         <div class="content_position">
-            <div class="slider_wrapper">
-                <div class="slick-slider slick-initialized" dir="ltr">
-                    <img
-                            class="slick-custom-arrow prev"
-                            src="/images/main/icon_left_arrow.png"
-                            alt="custom-arrow"
-                            width="50px"
-                    />
-                    <div class="slick-list">
-                        <div
-                                class="slick-track"
-                        >
-                            <div class="slic-slide slider_form">
-                                <a href="https://www.sooldamhwa.com/register">
-                                    <img src="/images/main/slider_img/slider_register.png" alt="">
-                                </a>
-                            </div>
-                            <div class="slick-slide slider_form">
-                                <a href="https://www.sooldamhwa.com/register">
-                                    <img src="/images/main/slider_img/slider_event1.jpg" alt="">
-                                </a>
-                            </div>
-
-
-
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="bd-placeholder-img">
+                            <a href="#">
+                                <img src="images/main/slider_img/slider_damhwabox.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="bd-placeholder-img">
+                            <a href="#">
+                                <img src="images/main/slider_img/slider_event1.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="bd-placeholder-img">
+                            <a href="#">
+                                <img src="images/main/slider_img/slider_event2.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="bd-placeholder-img">
+                            <a href="#">
+                                <img src="images/main/slider_img/slider_login.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="bd-placeholder-img">
+                            <a href="#">
+                                <img src="images/main/slider_img/slider_register.png" alt="">
+                            </a>
                         </div>
                     </div>
 
-                    <img
-                            class="slick-custom-arrow next"
-                            src="/images/main/icon_right_arrow.png"
-                            alt="custom-arrow"
-                            width="50px"
-                    />
-                    <div class="slick-dots">
-                        <ul style="padding: 0px; margin: 0px">
-                            <li style="margin: 0px; padding: 0px">
-                                <ul style="padding: 0px; margin: 0px">
-                                    <li class="">
-                                        <div></div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li style="margin: 0px; padding: 0px">
-                                <ul style="padding: 0px; margin: 0px">
-                                    <li class="slick-active">
-                                        <div></div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li style="margin: 0px; padding: 0px">
-                                <ul style="padding: 0px; margin: 0px">
-                                    <li class="">
-                                        <div></div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li style="margin: 0px; padding: 0px">
-                                <ul style="padding: 0px; margin: 0px">
-                                    <li class="">
-                                        <div></div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li style="margin: 0px; padding: 0px">
-                                <ul style="padding: 0px; margin: 0px">
-                                    <li class="">
-                                        <div></div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
+<!--            <div class="slider_wrapper">-->
+<!--                <div class="slick-slider slick-initialized" dir="ltr">-->
+<!--                    <img-->
+<!--                            class="slick-custom-arrow prev"-->
+<!--                            src="/images/main/icon_left_arrow.png"-->
+<!--                            alt="custom-arrow"-->
+<!--                            width="50px"-->
+<!--                    />-->
+<!--                    <div class="slick-list">-->
+<!--                        <div-->
+<!--                                class="slick-track"-->
+<!--                        >-->
+<!--                            <div class="slic-slide slider_form">-->
+<!--                                <a href="https://www.sooldamhwa.com/register">-->
+<!--                                    <img src="/images/main/slider_img/slider_register.png" alt="">-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                            <div class="slick-slide slider_form">-->
+<!--                                <a href="https://www.sooldamhwa.com/register">-->
+<!--                                    <img src="/images/main/slider_img/slider_event1.jpg" alt="">-->
+<!--                                </a>-->
+<!--                            </div>-->
+
+
+
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <img-->
+<!--                            class="slick-custom-arrow next"-->
+<!--                            src="/images/main/icon_right_arrow.png"-->
+<!--                            alt="custom-arrow"-->
+<!--                            width="50px"-->
+<!--                    />-->
+<!--                    <div class="slick-dots">-->
+<!--                        <ul style="padding: 0px; margin: 0px">-->
+<!--                            <li style="margin: 0px; padding: 0px">-->
+<!--                                <ul style="padding: 0px; margin: 0px">-->
+<!--                                    <li class="">-->
+<!--                                        <div></div>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li style="margin: 0px; padding: 0px">-->
+<!--                                <ul style="padding: 0px; margin: 0px">-->
+<!--                                    <li class="slick-active">-->
+<!--                                        <div></div>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li style="margin: 0px; padding: 0px">-->
+<!--                                <ul style="padding: 0px; margin: 0px">-->
+<!--                                    <li class="">-->
+<!--                                        <div></div>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li style="margin: 0px; padding: 0px">-->
+<!--                                <ul style="padding: 0px; margin: 0px">-->
+<!--                                    <li class="">-->
+<!--                                        <div></div>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li style="margin: 0px; padding: 0px">-->
+<!--                                <ul style="padding: 0px; margin: 0px">-->
+<!--                                    <li class="">-->
+<!--                                        <div></div>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 
