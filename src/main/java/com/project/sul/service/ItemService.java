@@ -9,7 +9,6 @@ import com.project.sul.entity.ItemImg;
 import com.project.sul.repository.ItemImgRepository;
 import com.project.sul.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -31,7 +30,6 @@ public class ItemService {
     private final ItemImgRepository itemImgRepository;
 
     private final EntityManager em;
-
 
     // 별점
     public void updateAvgStar(Long id, Double avgStar) {
@@ -66,18 +64,15 @@ public class ItemService {
         return item.getId();
     }
 
-    @Transactional(readOnly = true) // 목록을 조회
-    public ItemFormDto getItemDetails(Long itemId) {
+    // 수정할 아이템 조회
+    @Transactional(readOnly = true)
+    public ItemFormDto getItemDtl(Long itemId) {
         List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
-        // itemId에 해당하는 itemImg 목록 조회, 결과를 가져옴
         List<ItemImgDto> itemImgDtoList = new ArrayList<>();
-        // itemImgDto에서 매핑되었기 때문에 해당 itemId의 사진만 나옴
-
         for (ItemImg itemImg : itemImgList) {
             ItemImgDto itemImgDto = ItemImgDto.of(itemImg);
             itemImgDtoList.add(itemImgDto);
         }
-        // itemImgList 순회하면서 각각의 ItemImg를 itemImgDto로 변환하여 itemImgDtoList 추가
 
         Item item = itemRepository.findById(itemId)
                 .orElseThrow(EntityNotFoundException::new);
@@ -87,7 +82,6 @@ public class ItemService {
         // 변환된 itemFormDto를 ItemImgDtoList에 넣음
         return itemFormDto;
     }
-
 
     public Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
         Item item = itemRepository.findById(itemFormDto.getId())
@@ -111,26 +105,4 @@ public class ItemService {
     public Page<ItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         return itemRepository.getItemPage(itemSearchDto, pageable);
     }
-
-    public Item getItemById(Long itemId) {
-        return itemRepository.findById(itemId).orElse(null);
-    }
-
-
-    public Integer getItemPrice(Long itemId) {
-        Item item = itemRepository.findById(itemId).orElse(null);
-        if (item != null) {
-            Integer price = item.getPrice();
-            return price != null ? price : 0; // 가격이 null인 경우 0을 반환하도록 설정
-        }
-        return 0; // 아이템이 null인 경우 0을 반환하도록 설정
-    }
-
-
-
-
-
-
-
-
 }

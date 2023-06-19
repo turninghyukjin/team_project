@@ -30,6 +30,8 @@ public class ItemImgService {
             imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
             imgUrl= "/images/item" + imgName;
         }
+        itemImg.updateItemImg(oriImgName, imgName, imgUrl);
+        itemImgRepository.save(itemImg);
     }
 
     public void updateItemImg(Long itemImgId, MultipartFile itemImgFile) throws Exception{
