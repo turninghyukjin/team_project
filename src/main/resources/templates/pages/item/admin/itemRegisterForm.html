@@ -47,6 +47,8 @@
                             placeholder="상품명을 입력해주세요"
                             th:field="*{itemNm}"
                     />
+                    <div class="mt-4"></div>
+                    <p th:if="${#fields.hasErrors('itemNm')}" th:errors="*{itemNm}" class="fieldError">Incorrect data</p>
                     <div class="mt-20"></div>
                     <label th:for="price" class="itemRegisterForm_inputLabel">
                         가격
@@ -64,6 +66,8 @@
                             placeholder="상품의 가격을 입력해주세요"
                             th:field="*{price}"
                     />
+                    <div class="mt-4"></div>
+                    <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="fieldError">Incorrect data</p>
                     <div class="mt-20"></div>
                     <label th:for="stockNumber" class="itemRegisterForm_inputLabel">
                         재고 수량
@@ -81,6 +85,8 @@
                             placeholder="상품의 재고 수량을 입력하세요"
                             th:field="*{stockNumber}"
                     />
+                    <div class="mt-4"></div>
+                    <p th:if="${#fields.hasErrors('stockNumber')}" th:errors="*{stockNumber}" class="fieldError">Incorrect data</p>
                     <div class="mt-20"></div>
                     <label th:for="itemDetail" class="itemRegisterForm_inputLabel">
                         상품 설명
@@ -98,6 +104,8 @@
                             placeholder="상품 설명 내용을 입력해주세요"
                             th:field="*{itemDetail}"
                     />
+                    <div class="mt-4"></div>
+                    <p th:if="${#fields.hasErrors('itemDetail')}" th:errors="*{itemDetail}" class="fieldError">Incorrect data</p>
                     <div class="mt-20"></div>
                     <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
                         <div class="itemRegisterForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
@@ -114,6 +122,8 @@
                                 class="custom-file-input"
                                 name="itemImgFile"
                         >
+                        <div class="mt-4"></div>
+                        <p th:if="${#fields.hasErrors('itemImgFile')}" th:errors="*{itemImgFile}" class="fieldError">Incorrect data</p>
                         <div class="mt-20"></div>
                         <div class="itemRegisterForm_inputLabel">상품 설명 이미지 (JPG/PNG 형식만 가능, 5개 파일로 제한, 각 파일 사이즈 20MB 이하)
                             <!--                            <img-->
@@ -130,6 +140,8 @@
                                     class="custom-file-input"
                                     name="itemImgFile"
                             >
+                            <div class="mt-4"></div>
+                            <p th:if="${#fields.hasErrors('itemImgFile')}" th:errors="*{itemImgFile}" class="fieldError">Incorrect data</p>
                             <div class="mt-8"></div>
                         </div>
                     </div>
@@ -181,6 +193,8 @@
                                        th:value="D"
                                 >
                             </div>
+                            <div class="mt-4"></div>
+                            <p th:if="${#fields.hasErrors('type')}" th:errors="*{type}" class="fieldError">Incorrect data</p>
                         </div>
                     </div>
                     <div class="mt-20"></div>
@@ -200,6 +214,8 @@
                             placeholder="알콜도수를 입력해주세요"
                             th:field="*{abv}"
                     />
+                    <div class="mt-4"></div>
+                    <p th:if="${#fields.hasErrors('abv')}" th:errors="*{abv}" class="fieldError">Incorrect data</p>
                     <div class="mt-20"></div>
                     <div class="radioContent_wrapper">
                         <div class="title">단맛
@@ -238,6 +254,8 @@
                                        th:value="3"
                                 >
                             </div>
+                            <div class="mt-4"></div>
+                            <p th:if="${#fields.hasErrors('sweetness')}" th:errors="*{sweetness}" class="fieldError">Incorrect data</p>
                         </div>
                     </div>
                     <div class="mt-20"></div>
@@ -278,6 +296,8 @@
                                        th:value="3"
                                 >
                             </div>
+                            <div class="mt-4"></div>
+                            <p th:if="${#fields.hasErrors('sourness')}" th:errors="*{sourness}" class="fieldError">Incorrect data</p>
                         </div>
                     </div>
                     <div class="mt-20"></div>
@@ -318,6 +338,8 @@
                                        th:value="3"
                                 >
                             </div>
+                            <div class="mt-4"></div>
+                            <p th:if="${#fields.hasErrors('sparkling')}" th:errors="*{sparkling}" class="fieldError">Incorrect data</p>
                         </div>
                     </div>
                     <div class="mt-20"></div>
