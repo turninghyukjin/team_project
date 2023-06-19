@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout}"
+>
+
+<!-- order.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/order.css}">
+</th:block>
+
+<!-- order.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/js/order.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="content_wrapper">
+        <div class="content_header">
+            <div class="title">주문 / 결제</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="content">
+            <div class="order_wrapper">
+                <div class="order_delivery">
+                    <div class="deliveryHeader">
+                        <div class="headerTitle">배송지</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+</th:block>
+
+</html>
