@@ -68,6 +68,7 @@
                                     class="itemUpdateForm_inputLabel_img"
                             />
                         </div>
+                        <p th:text="${itemFormDto.itemImgDtoList}"></p>
                         <div class="mt-8"></div>
                         <div class="radio_wrapper">
                             <div class="form-check form-check-inline">
@@ -163,7 +164,26 @@
                             th:field="*{itemDetail}"
                     />
                     <div class="mt-20"></div>
-                    <div th:if="${not #lists.isEmpty(itemFormDto.itemImgDtoList)}">
+
+                    <div >
+                        <div th:if="${itemFormDto.itemImgDtoList[0].imgUrl != null }">
+                            이미지 있다
+                            <img src="${itemFormDto.itemImgDtoList[0].imgUrl}" alt="">
+                        </div>
+                        <div th:unless="${itemFormDto.itemImgDtoList[0].imgUrl != null}">
+                            없다
+                            <img
+                                    src="/images/global/icon-asterisk.png"
+                                    alt="icon"
+                                    class="itemUpdateForm_inputLabel_img"
+                            />
+                        </div>
+
+                        <img
+                                src="/images/global/icon-asterisk.png"
+                                alt="icon"
+                                class="itemUpdateForm_inputLabel_img"
+                        />
                         <div class="itemUpdateForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
                             <img
                                     src="/images/global/icon-asterisk.png"
