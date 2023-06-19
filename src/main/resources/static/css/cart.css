@@ -1,0 +1,15 @@
+.mt-64 {
+    margin-bottom:64px;
+}
+.content_wrapper {
+    width: 100%;
+    max-width: 1024px;
+    min-height: 100vh;
+    padding: 0px 69px;
+    margin: 0px auto;
+    align-items: start;
+    background: white;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1.4fr 1fr;
+}
