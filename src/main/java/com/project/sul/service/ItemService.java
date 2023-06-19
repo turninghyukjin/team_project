@@ -116,13 +116,21 @@ public class ItemService {
         return itemRepository.findById(itemId).orElse(null);
     }
 
-    public int getItemPrice(Long itemId) {
+
+    public Integer getItemPrice(Long itemId) {
         Item item = itemRepository.findById(itemId).orElse(null);
         if (item != null) {
-            return item.getPrice();
+            Integer price = item.getPrice();
+            return price != null ? price : 0; // 가격이 null인 경우 0을 반환하도록 설정
         }
-        return 0; // or any other appropriate default value
+        return 0; // 아이템이 null인 경우 0을 반환하도록 설정
     }
+
+
+
+
+
+
 
 
 }
