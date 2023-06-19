@@ -1,16 +1,16 @@
 package com.project.sul.controller;
 
 import com.project.sul.dto.OrderDto;
+import com.project.sul.dto.OrderPageDto;
 import com.project.sul.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -18,12 +18,28 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/")
 public class OrderController {
 
     private final OrderService orderService;
 
     @GetMapping(value = "/order")
-    public @ResponseBody ResponseEntity order(@ @RequestBody @Valid OrderDto orderDto, BindingResult bindingResult, Principal principal) {
+    public String orderPage() {
+        return "pages/order/order";
+    }
+
+
+    @GetMapping(value = "/order/{memberId}")
+    public String orderPageMove(@PathVariable("memberId") String memberId, OrderPageDto orderPageDto, Model model) {
+        System.out.println("memberId : " + memberId);
+        System.out.println("oders : " + orderPageDto.getOrders());
+
+        return "order";
+    }
+
+
+    @GetMapping(value = "/order/{itemId}")
+    public @ResponseBody ResponseEntity order(@RequestBody @Valid OrderDto orderDto, BindingResult bindingResult, Principal principal) {
 
         if (bindingResult.hasErrors()) {
             StringBuilder sb = new StringBuilder();

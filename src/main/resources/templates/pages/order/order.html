@@ -15,6 +15,7 @@
 </th:block>
 
 <th:block layout:fragment="content">
+    <div class="mb-100"></div>
     <div class="content_wrapper">
         <div class="content_header">
             <div class="title">주문 / 결제</div>
@@ -24,23 +25,171 @@
 
         <div class="content">
             <div class="order_wrapper">
-                <div class="order_delivery">
-                    <div class="deliveryHeader">
+                <div class="order_cardStyle">
+                    <div class="cardStyleHeader">
                         <div class="headerTitle">배송지</div>
+                        <div class="changeAddress">변경</div>
+                    </div>
+                    <div class="delivery_divider mb-20"></div>
+                    <div class="addressInfo_wrapper">
+                        <div class="addressInfo">
+                            <div class="infoTitle">
+                                <span class="name">홍길동</span>
+                                <span class="phone">010-1234-5678</span>
+                            </div>
+                            <div class="infoAddress">
+                                <span class="zipCode">16908</span>
+                                <span class="streetAdr">&nbsp;경기 용인시 기흥구 연원로 5</span>
+                                <span class="detailAdr">&nbsp;105동 403호</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1"></div>
+                    <div class="addressTagStyle_wrapper">
+                        <div class="addressBadgeStyle">기본 배송지</div>
+                    </div>
+                </div>
+                <div class="mb-12"></div>
+                <div class="order_cardStyle">
+                    <div class="cardStyleHeader">
+                        <div class="headerTitle">주문 상품</div>
+                    </div>
+                    <div class="delivery_divider mb-20"></div>
+                    <div class="mb-20"></div>
+                    <div class="itemOderStyle_wrapper">
+                        <div class="orderItem_wrapper">
+                            <a href="#">
+                                <div class="flex">
+                                    <img src="/images/itemDetail/G43H-1672194788288-153+(1).jpg" alt="">
+                                </div>
+                            </a>
+                            <div class="orderItemInfo_wrapper">
+                                <img class="mb-4" src="/images/order/icon_direct_purchase.png" alt="">
+                                <div class="itemName">붉은 원숭이</div>
+                                <div class="price_wrapper">
+                                    <span>9000원 /</span>
+                                    <span class="price">수량 2개</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="orderItemsDivider">
+                    <div class="delivery">
+                        <div class="flex_col">
+                            <div class="deliveryPrice_wrapper">
+                                <img src="/images/order/icon-truck.png" alt="" class="icon-truck">
+                                <span>3,000원</span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="orderBottomLine">
+                    <div class="orderTotalPrice_wrapper">
+                        <div class="title">주문 총액</div>
+                        <div class="price">21,000원</div>
+                    </div>
+                </div>
+                <div class="mb-12"></div>
+                <div style="display:none;" class="order_cardStyle">
+                    <div class="cardStyleHeader">
+                        <div class="headerTitle">결제 방법</div>
+                    </div>
+                    <div class="delivery_divider mb-20"></div>
+                    <div class="multiGrid_wrapper">
+                        <div class="multiGrid">
+                            <div class="multiGridButton">신용카드</div>
+                        </div>
+                        <div class="multiGrid">
+                            <div class="multiGridButton">
+                                <span class="buttonImg">
+                                    <img class="toss" src="images/order/icon-payment-method-toss.png" alt="">
+                                </span>
+                                <img class="position" src="images/order/icon-tosspay-benefit.png" alt="">
+                            </div>
+                        </div>
+                        <div class="multiGrid">
+                            <div class="multiGridButton">
+                                <span class="buttonImg">
+                                    <img class="kakaopay" src="images/order/icon-payment-method-kakao.png" alt="">
+                                </span>
+                            </div>
+                        </div>
 
                     </div>
-
                 </div>
-
+                <div class="order_cardStyle">
+                    <div class="cardStyleHeader">
+                        <div class="headerTitle">결제</div>
+                    </div>
+                    <div class="delivery_divider mb-20"></div>
+                    <div class="orderFinal_content">
+                        <div class="subTitle">결제방법</div>
+                        <div class="content"></div>
+                    </div>
+                    <div class="orderFinal_content">
+                        <div class="subTitle">총 상품금액</div>
+                        <div class="content">18,000원</div>
+                    </div>
+                    <div class="orderFinal_content">
+                        <div class="subTitle">총 배송비</div>
+                        <div class="content">3,000원</div>
+                    </div>
+                    <div class="orderFinal_content">
+                        <div class="subTitle">포인트 사용</div>
+                        <div class="content">0원</div>
+                    </div>
+                    <div style="display:block;" class="orderFinal_content">
+                        <div class="subTitle">쿠폰</div>
+                        <div class="content">0원</div>
+                    </div>
+                    <hr class="orderBottomLine">
+                    <div class="orderFinalTotalPrice">
+                        <div class="subTitle">총 결제 금액</div>
+                        <div class="content">21,000원</div>
+                    </div>
+                </div>
+                <div class="mb-12"></div>
+                <div class="agreeCheck_wrapper">
+                    <div class="agreeCheck">
+                        <div class="content">
+                            <button type="button" class="custom_checkbox">
+                                <img src="images/order/icon_unchecked_square.png" alt="">
+                                <img style="display:none;" src="images/order/icon_checked_square.png" alt="">
+                            </button>
+                            <div class="agreeDetail">
+                                <span class="agreeMsg">전통주 구매자의 정보수집ㆍ이용</span>
+                                <span class="agreeMsgReq">(필수)</span>
+                            </div>
+                            <img src="images/order/icon-arrow-down.png" alt="" class="agree_content">
+                        </div>
+                    </div>
+                </div>
+                <div class="agreeDetailContent_wrapper">
+                    <div>
+                        <div class="terms-title">개인정보 판매자 제공에 동의합니다.</div>
+                        <div class="mb-12"></div>
+                        <div class="">제공받는 자 : “양조장”<br>목적 : 판매자와 구매자 사이의 원활한 거래 진행, 상품의 배송을 위한<br>배송지 확인,
+                            고객상담 및 불만처리 등명<br>정보 : 구매자 정보 (이름, 전화번호, 주소),<br>수취인 정보(이름, 전화번호, 주소)<br>보유기간 : 발송완료 후 90일
+                        </div>
+                        <div class="mb-12"></div>
+                        <div class="terms-title">전통주 구매자의 정보수집·이용에 동의합니다.</div>
+                        <div class="mb-12"></div>
+                        <div class="terms-contents">제공받는 자 : 관할 세무서장<br>목적 : 주류 통신판매기록부 관리 및 국세청 신고<br>정보 : 구매자 정보 (이름,
+                            주소, 생년월일(본인인증 정보를 이용함),<br>주문상품, 수량, 주문금액)<br>보유기간 : 회원 탈퇴 시까지<br>단, 관계법령의 규정에 따라 보존할 의무가
+                            있으며 해당 기간동안 보존
+                        </div>
+                        <div class="style__Divider-sc-bbr3m2-3 imkkRy"></div>
+                        <div class="terms-footer">※ 동의하지 않으실 경우 구매가 제한됩니다.</div>
+                    </div>
+                </div>
             </div>
-
+            <div class="mb-12"></div>
+            <div class="orderButton_wrapper">
+                <button class="orderButtonStyle">
+                    21,000원 결제하기
+                </button>
+            </div>
         </div>
-
-
-
     </div>
-
-
 </th:block>
 
 </html>

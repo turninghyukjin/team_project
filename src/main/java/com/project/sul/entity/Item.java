@@ -27,6 +27,8 @@ public class Item extends BaseEntity { // 관리자 상품등록
     @Column(name = "price",nullable = false)
     private int price; //가격
 
+    private double discount;
+
     @Column(nullable = false)
     private int stockNumber; //재고수량
 

@@ -18,13 +18,13 @@ import java.util.List;
 public class ItemFormDto {
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "상품명은 필수 입력값입니다.")
     private String itemNm;
 
-    @NotNull
+    @NotNull(message = "가격은 필수 입력값입니다.")
     private int price;
 
-    @NotNull
+    @NotNull(message = "재고 수량은 필수 입력값입니다.")
     private Integer stockNumber;
 
     @NotBlank(message = "상품 상세정보는 필수 입력값입니다")
@@ -35,13 +35,20 @@ public class ItemFormDto {
 
     private static ModelMapper modelMapper = new ModelMapper();
 
+    @NotBlank(message = "판매 상태는 필수 입력값입니다.")
     private ItemSellStatus itemSellStatus;
 
+    @NotBlank(message = "술 종류는 필수 입력값입니다.")
     @Column(nullable = false)
     private String type; // 상품타입(탁주, 약주, 증류주, 과실주)
+    
+    @NotBlank(message = "술 도수는 필수 입력값입니다.")
     private int abv; // 알콜도수
+    @NotBlank(message = "술 단맛 정도는 필수 입력값입니다.")
     private int sweetness; // 단맛
+    @NotBlank(message = "술 신맛 정도는 필수 입력값입니다.")
     private int sourness; // 신맛
+    @NotBlank(message = "술 탄산 정도는 필수 입력값입니다.")
     private int sparkling; // 탄산
 
     public Item createItem() {

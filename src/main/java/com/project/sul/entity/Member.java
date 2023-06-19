@@ -46,7 +46,7 @@ public class Member extends BaseEntity {
 //    @CreationTimestamp  //자동으로 만들어준다
 //    private Timestamp createTime;
 
-    private Integer point;
+    private int point;
     //결제 포인트
 
 //    @ManyToOne(cascade = CascadeType.ALL)
