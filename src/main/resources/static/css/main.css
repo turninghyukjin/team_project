@@ -99,37 +99,11 @@
 .slick-slide img {
     width:100%;
 }
-.slick-slide .slider_m1 {
-    background-image: url(/images/main/slider_img/slider_register.png);
+/* bootstrap custom
+-------------------------------------------------- */
+.carousel-item img {
+    width:100%;
+    height:380px;
 }
-.slick-slide .slider_0 {
-    background-image: url(/images/main/slider_img/slider_event1.jpg);
-}
-.slick-slide .slider_1 {
-    background-image: url(/images/main/slider_img/slider_damhwabox.jpg);
-}
-.slick-slide .slider_2 {
-    background-image: url(/images/main/slider_img/slider_event2.jpg);
-}
-.slick-slide .slider_3 {
-    background-image: url(/images/main/slider_img/slider_login.png);
-}
-.slick-slide .slider_4 {
-    background-image: url(/images/main/slider_img/slider_register.png);
-}
-.slick-slide .slider_5 {
-    background-image: url(/images/main/slider_img/slider_event1.jpg);
-}
-.slick-slide .slider_6 {
-    background-image: url(/images/main/slider_img/slider_damhwabox.jpg);
-}
-.slick-slide .slider_7 {
-    background-image: url(/images/main/slider_img/slider_event2.jpg);
-}
-.slick-slide .slider_8 {
-    background-image: url(/images/main/slider_img/slider_login.png);
-}
-.slick-slide .slider_9 {
-    background-image: url(/images/main/slider_img/slider_register.png);
-}
+
 

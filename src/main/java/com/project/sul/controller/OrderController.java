@@ -32,7 +32,7 @@ public class OrderController {
     @GetMapping(value = "/order/{memberId}")
     public String orderPageMove(@PathVariable("memberId") String memberId, OrderPageDto orderPageDto, Model model) {
         System.out.println("memberId : " + memberId);
-        System.out.println("oders : " + orderPageDto.getOrders());
+        System.out.println("orders : " + orderPageDto.getOrders());
 
         return "order";
     }
