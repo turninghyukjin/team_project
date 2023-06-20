@@ -10,7 +10,7 @@
             success:function(result){ //컨트롤러에서 넘어온 result값을 받는다
                 if(result == 'N'){ // result이 N이면 -> 사용 가능한 아이디
                     resultMsg = '사용 가능한 아이디입니다.';
-                    $("#resultMsg").text(resultMsg).css("color", "blue");
+                    $("#resultMsg").text(resultMsg).css("color", "rgb(0, 150, 243)");
                 } else { // result이 Y이면 -> 사용중인 아이디
                     resultMsg = '사용중인 아이디입니다.';
                     $("#resultMsg").text(resultMsg).css("color","red");

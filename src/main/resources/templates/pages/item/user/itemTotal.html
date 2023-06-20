@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout}"
+>
+
+<!-- main.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/slick/slick.css}">
+    <!--    <link rel="stylesheet" th:href="@{/slick/slick-theme.css}">-->
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</th:block>
+
+<!-- main.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/slick/slick.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+
+
+
+
+</th:block>
+
+</html>

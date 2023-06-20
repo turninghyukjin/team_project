@@ -121,5 +121,19 @@ public class ItemController {
         model.addAttribute("item", itemFormDto);
         return "item/user/itemDetail";
     }
+
+    // 전체 상품 페이지
+    @GetMapping(value = "/item/total")
+    public String itemTotal(ItemSearchDto itemSearchDto, Model model) {
+        model.addAttribute("itemSearchDto", itemSearchDto);
+
+        return "pages/item/user/itemTotal";
+    }
+
+
+
+
+
+
 }
 

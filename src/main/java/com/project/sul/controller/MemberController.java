@@ -35,11 +35,6 @@ public class MemberController {
         return "pages/main/register_social";
     }
 
-    @GetMapping(value = "/login")
-    public String login() {
-        return "pages/main/login";
-    }
-
     @GetMapping(value = "/login/error")
     public String loginError(Model model) {
         model.addAttribute("loginErrorMsg","아이디 또는 비밀번호를 확인해주세요");

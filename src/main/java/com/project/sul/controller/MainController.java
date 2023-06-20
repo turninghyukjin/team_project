@@ -31,6 +31,10 @@ public class MainController {
         return "pages/main/main";
     }
 
+    @GetMapping(value = "/login")
+    public String login() {
+        return "pages/main/login";
+    }
 
     @GetMapping(value = "/login/email")
     public String loginSucces(@RequestParam("email") String email, @RequestParam("password") String password) {
