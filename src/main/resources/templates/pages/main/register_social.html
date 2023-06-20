@@ -45,8 +45,7 @@
                                 type="text"
                                 placeholder="이메일을 입력해 주세요"
                                 th:field="*{email}"
-                                oninput="checkEmail()"
-                        /><button class="button_nicknameInput" onclick="">중복 확인</button>
+                        /><button class="button_nicknameInput">중복 확인</button>
                         <div class="mt-4"></div>
                         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
                     </div>
@@ -91,7 +90,7 @@
                     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>
                     <div class="mt-20"></div>
                     <div class="nicknameInput_wrapper">
-                        <label th:for="nickname" class="nicknameInputLabel">닉네임</label>
+                        <label th:for="nicknameInput" class="nicknameInputLabel">닉네임</label>
                         <div class="nicknameInput_rule">
                             공백, 특수문자를 제외한 2~10자로 입력하세요.
                         </div>

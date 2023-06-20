@@ -29,33 +29,16 @@ public class MemberController {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @GetMapping(value = "/social/{email}/duplicate")
-    public ResponseEntity<Boolean> checkEmailDuplicate(@PathVariable String email) {
-        return ResponseEntity.ok(memberService.checkEmailDuplicate(email));
-    }
-
-//    @PostMapping(value = "/emailDuplicateCheck")
-//    @ResponseBody
-//    public int emailDuplicateCheck(@RequestParam("email") String email) {
-//        int resultNumber = memberService.
-//    }
-
+    // 닉네임 중복 체크
     @GetMapping(value = "/social/{nickname}/duplicate")
-    public ResponseEntity<Boolean> checkNicknameDuplicate(@PathVariable String nickname) {
-        return ResponseEntity.ok(memberService.checkNicknameDuplicate(nickname));
+    public ResponseEntity<String> checkNicknameDuplicate(@PathVariable String nickname) {
+        boolean isNicknameDuplicate = memberRepository.existsByNickname(nickname);
+        if (isNicknameDuplicate) {
+            return ResponseEntity.ok("이미 사용 중인 닉네임입니다.");
+        } else {
+            return ResponseEntity.ok("사용 가능한 닉네임입니다.");
+        }
     }
-
-
-//    // 닉네임 중복 체크
-//    @GetMapping(value = "/social/{nickname}/duplicate")
-//    public ResponseEntity<String> checkNicknameDuplicate(@PathVariable String nickname) {
-//        boolean isNicknameDuplicate = memberRepository.existsByNickname(nickname);
-//        if (isNicknameDuplicate) {
-//            return ResponseEntity.ok("이미 사용 중인 닉네임입니다.");
-//        } else {
-//            return ResponseEntity.ok("사용 가능한 닉네임입니다.");
-//        }
-//    }
 
     @GetMapping(value = "/social")
     public String registerSocial(Model model) {
@@ -120,18 +103,19 @@ public class MemberController {
     @PostMapping(value = "/social")
     public String checkResister(@Valid RegisterSocialFormDto registerSocialFormDto,
                                 BindingResult bindingResult, Model model) {
+
         if (bindingResult.hasErrors()) {
             return "pages/main/register_social";
         }
-
-        try {
+//
+//        try {
             Member member = Member.createMember(registerSocialFormDto, passwordEncoder);
             memberService.saveMember(member);
-        } catch (IllegalStateException e) {
-            model.addAttribute("errorMessage", e.getMessage());
-            return "pages/main/register_social";
-        }
-
+//        } catch (IllegalStateException e) {
+//            model.addAttribute("errorMessage", e.getMessage());
+//            return "pages/main/register_social";
+//        }
+//
         return "redirect:/";
     }
 

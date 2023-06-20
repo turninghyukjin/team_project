@@ -79,7 +79,7 @@
 
             <div class="email_loginForm_wrapper" style="display:none">
                 <div class="email_loginFrom">
-                    <form action="/login/email" novalidate="">
+                    <form action="/login/email" method="post" th:object="${registerSocialFormDto}" >
                         <input
                                 class=""
                                 type="email"
@@ -95,6 +95,12 @@
                                     name="password"
                             />
                             <span>
+                                    <img
+                                            src="/images/login/password-eye-hide-icon.png"
+                                            alt="비밀번호 확인용 아이콘"
+                                            width="15"
+                                            height="15"
+                                    />
                                     <img
                                             src="/images/login/password-eye-hide-icon.png"
                                             alt="비밀번호 확인용 아이콘"
