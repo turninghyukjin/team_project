@@ -22,7 +22,7 @@ public class RegisterSocialFormDto {
     private String name;
 
     @NotBlank(message = "닉네임을 입력해 주세요.")
-    @Size(min = 2, max = 5, message = "닉네임은 2자 이상, 5자 이하로 입력해 주세요.")
+    @Size(min = 2, max = 10, message = "닉네임은 2자 이상, 5자 이하로 입력해 주세요.")
     private String nickname;
 
     @NotEmpty(message = "이메일을 입력해 주세요.")
@@ -36,28 +36,25 @@ public class RegisterSocialFormDto {
 //    @NotEmpty
 //    private String matchingPassword;
 
-    @NotBlank(message = "휴대폰 번호를 입력해 주세요")
-    private String phone;
+//    @NotBlank(message = "휴대폰 번호를 입력해 주세요")
+//    private String phone;
 
-    @NotEmpty
     private String zipCode;
 
-    @NotEmpty
     private String streetAdr;
 
     @NotEmpty(message = "상세 주소를 입력해 주세요.")
-    @Pattern(regexp = "^[ㄱ-ㅎ가-힣a-z0-9-]{2,20}$", message = "주소 형식에 맞게 입력해 주세요.")
     private String detailAdr;
 
-    private LocalDate birthDate;
+//    private LocalDate birthDate;
 
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
+//    public LocalDate getBirthDate() {
+//        return birthDate;
+//    }
+//
+//    public void setBirthDate(LocalDate birthDate) {
+//        this.birthDate = birthDate;
+//    }
 
     public Member toMember() {
         Member member = new Member();
@@ -65,9 +62,9 @@ public class RegisterSocialFormDto {
         member.setNickname(this.nickname);
         member.setEmail(this.email);
         member.setPassword(this.password);
-        member.setPhone(this.phone);
+//        member.setPhone(this.phone);
         member.setAddress(new Address(this.zipCode, this.streetAdr, this.detailAdr));
-        member.setBirthDate(this.birthDate);
+//        member.setBirthDate(this.birthDate);
 
         return member;
     }

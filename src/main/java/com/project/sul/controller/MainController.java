@@ -32,22 +32,6 @@ public class MainController {
     }
 
 
-
-    @GetMapping(value = "/login")
-    public String login() {
-        return "pages/main/login";
-    }
-
-
-
-    @GetMapping(value = "/login/error")
-    public String loginError(Model model) {
-        model.addAttribute("loginErrorMsg","아이디 또는 비밀번호를 확인해주세요");
-        return "pages/main/login";
-    }
-
-
-
     @GetMapping(value = "/login/email")
     public String loginSucces(@RequestParam("email") String email, @RequestParam("password") String password) {
 
@@ -55,10 +39,6 @@ public class MainController {
 
         return "pages/main/main"; // 로그인 후 이동할 페이지.
     }
-
-
-
-
 
     @GetMapping(value = "/register/agreement")
     public String   agreement() {
@@ -76,23 +56,20 @@ public class MainController {
     }
 
 
-
-
-
     // form 로그인 시
-    @GetMapping(value = "/form/loginInfo")
-    @ResponseBody
-    public String formLoginInfo(Authentication authentication, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-
-        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
-        Member member = principal.getMember();
-        System.out.println(member);
-
-//        Member member1 = principalDetails.getMember();
-//        System.out.println(member1);
-
-        return member.toString();
-    }
+//    @GetMapping(value = "/form/loginInfo")
+//    @ResponseBody
+//    public String formLoginInfo(Authentication authentication, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+//
+//        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+//        Member member = principal.getMember();
+//        System.out.println(member);
+//
+////        Member member1 = principalDetails.getMember();
+////        System.out.println(member1);
+//
+//        return member.toString();
+//    }
 
     // oauth2 로그인 시
     @GetMapping(value = "/oauth/loginInfo")

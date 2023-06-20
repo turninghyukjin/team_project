@@ -22,13 +22,14 @@ public class MemberService implements UserDetailsService {
         return memberRepository.existsByEmail(email);
     }
 
-    public boolean checkNicknameDuplicate(String nickname) {
+    public Boolean checkNicknameDuplicate(String nickname) {
+        System.out.println(" 서비스 : 넘어온 닉네임 = " + nickname);
         return memberRepository.existsByNickname(nickname);
     }
 
     public Member saveMember(Member member) {
         validateDuplicateMember(member);
-//        validateDuplicateNickname(member);
+        validateDuplicateNickname(member);
         return memberRepository.save(member);
     }
 
