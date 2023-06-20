@@ -16,11 +16,12 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequestMapping("/register")
+@RequestMapping("/")
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -29,11 +30,56 @@ public class MemberController {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @GetMapping(value = "/social")
+    @GetMapping(value = "register/social")
     public String registerSocial(Model model) {
         model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
         return "pages/main/register_social";
     }
+
+    @GetMapping(value = "login")
+    public String login() {
+        return "pages/main/login";
+    }
+
+//    @PostMapping(value = "/member/login")
+//    public String login(@ModelAttribute RegisterSocialFormDto formDto, HttpSession session) {
+//        RegisterSocialFormDto loginResult = memberService.login(formDto);
+//        if (loginResult != null) {
+//            // login 성공
+//            session.setAttribute("loginEmail", loginResult.getEmail());
+//            return "main";
+//        } else {
+//            // login 실패
+//            return "login";
+//        }
+//    }
+
+//    @GetMapping("/member/{id}")
+//    public String findById(@PathVariable Long id, Model model) {
+//        RegisterSocialFormDto formDto = memberService.findById(id);
+//        model.addAttribute("member", formDto);
+//        return "detail";
+//    }
+
+//    @GetMapping("/member/update")
+//    public String updateForm(HttpSession session, Model model) {
+//        String myEmail = (String) session.getAttribute("loginEmail");
+//        MemberDTO memberDTO = memberService.updateForm(myEmail);
+//        model.addAttribute("updateMember", memberDTO);
+//        return "update";
+//    }
+
+//    @GetMapping("/member/logout")
+//    public String logout(HttpSession session) {
+//        session.invalidate();
+//        return "index";
+//    }
+
+//    @GetMapping("/member/delete/{id}")
+//    public String deleteById(@PathVariable Long id) {
+//        memberService.deleteById(id);
+//        return "redirect:/member/";
+//    }
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model) {
@@ -50,7 +96,7 @@ public class MemberController {
 
 
     // 닉네임 중복 체크 sout 는 확인용
-    @PostMapping(value = "/social/nicknameDuplicate")
+    @PostMapping(value = "register/social/nicknameDuplicate")
     @ResponseBody
     public String checkNickname(@RequestParam(name = "nickname") String nickname) {
 //        System.out.println(" 컨트롤러 : 넘어온 닉네임 = " + nickname);
@@ -66,7 +112,7 @@ public class MemberController {
         return result;
     }
 
-    @PostMapping(value = "/social")
+    @PostMapping(value = "register/social")
     public String checkResister(@Valid RegisterSocialFormDto registerSocialFormDto,
                                 BindingResult bindingResult, Model model) {
 
@@ -85,16 +131,16 @@ public class MemberController {
         return "redirect:/";
     }
 
-    //유효성 검사 수정 해야함
-    public Map<String, String> validateHandling(Errors errors) {
-        Map<String, String> validatorResult = new HashMap<>();
-
-        for (FieldError error : errors.getFieldErrors()) {
-            String validKeyName = String.format("valid_%s", error.getField());
-            validatorResult.put(validKeyName, error.getDefaultMessage());
-        }
-        return validatorResult;
-    }
+//    //유효성 검사 수정 해야함
+//    public Map<String, String> validateHandling(Errors errors) {
+//        Map<String, String> validatorResult = new HashMap<>();
+//
+//        for (FieldError error : errors.getFieldErrors()) {
+//            String validKeyName = String.format("valid_%s", error.getField());
+//            validatorResult.put(validKeyName, error.getDefaultMessage());
+//        }
+//        return validatorResult;
+//    }
 
 
 }

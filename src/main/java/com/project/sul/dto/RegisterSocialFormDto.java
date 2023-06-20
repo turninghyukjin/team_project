@@ -6,17 +6,16 @@ import com.project.sul.entity.Member;
 
 import lombok.*;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Getter
 @Setter
 @ToString
 public class RegisterSocialFormDto {
+
+    @Null
+    private Long id;
 
     @NotBlank(message = "이름을 입력해 주세요.")
     private String name;
@@ -36,8 +35,8 @@ public class RegisterSocialFormDto {
 //    @NotEmpty
 //    private String matchingPassword;
 
-//    @NotBlank(message = "휴대폰 번호를 입력해 주세요")
-//    private String phone;
+    @Null
+    private String phone;
 
     private String zipCode;
 
@@ -68,4 +67,24 @@ public class RegisterSocialFormDto {
 
         return member;
     }
+
+    public static RegisterSocialFormDto toMember(Member member) {
+
+        RegisterSocialFormDto formDto = new RegisterSocialFormDto();
+
+        formDto.setId(member.getId());
+        formDto.setName(member.getName());
+        formDto.setNickname(member.getNickname());
+        formDto.setEmail(member.getEmail());
+        formDto.setPassword(member.getPassword());
+        formDto.setPhone(member.getPhone());
+        formDto.setZipCode(member.getAddress().getZipCode());
+        formDto.setStreetAdr(member.getAddress().getStreetAdr());
+        formDto.setDetailAdr(member.getAddress().getDetailAdr());
+
+        return formDto;
+    }
+
+
+
 }
