@@ -46,17 +46,18 @@ public class MemberController {
         return "pages/main/login";
     }
 
-    @GetMapping(value = "/updateMember")
-    public String updateMember(Model model) {
-        model.addAttribute("registerSocialFormDto", new RegisterSocialFormDto());
-        return "pages/main/update_social";
-    }
+//    @GetMapping(value = "/updateMember")
+//    public String updateMember(@RequestParam(name = "email") String email, Model model) {
+//        RegisterSocialFormDto formDto = memberService.
+//
+//
+//    }
 
 
     // 닉네임 중복 체크 sout 는 확인용
     @PostMapping(value = "/social/nicknameDuplicate")
     @ResponseBody
-    public String checkNickname(@RequestParam("nickname") String nickname) {
+    public String checkNickname(@RequestParam(name = "nickname") String nickname) {
 //        System.out.println(" 컨트롤러 : 넘어온 닉네임 = " + nickname);
 
         String result = "N"; // 닉네임이 없을 시 (default) N

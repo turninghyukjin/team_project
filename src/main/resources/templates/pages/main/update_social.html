@@ -28,7 +28,7 @@
             </header>
 
             <div class="registerSocialForm_wrapper">
-                <form th:action="@{/register/social}" method="post" th:object="${registerSocialFormDto}">
+                <form th:action="@{/register/updateMember}" method="post" th:object="${registerSocialFormDto}">
 
                     <label th:for="email" class="registerSocialForm_inputLabel">
                         이메일
@@ -45,6 +45,7 @@
                             type="text"
                             placeholder="이메일을 입력해 주세요"
                             th:field="*{email}"
+                            value="${"
                             readonly
                     />
                     <div class="mt-4"></div>
