@@ -1,5 +1,6 @@
 package com.project.sul.repository;
 
+import com.project.sul.constant.ItemSellStatus;
 import com.project.sul.dto.ItemDto;
 import com.project.sul.dto.ItemSearchDto;
 import com.project.sul.dto.QItemDto;
@@ -27,7 +28,28 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
         this.queryFactory = new JPAQueryFactory(em);
     }
 
+    // 품절여부
+//    private BooleanExpression searchStatusEq(ItemSellStatus itemSellStatus){
+//        return itemSellStatus == null ?
+//                null : QItem.item.itemSellStatus.eq(itemSellStatus);
+//    }
+
     // 타입
+//    private BooleanExpression searchType(String type) {
+//
+//        if (type == null) {
+//            return null;
+//        } else if (type.equals("A")) {
+//            QItem.item.type.eq("A");
+//        } else if (type.equals("B")) {
+//            QItem.item.type.eq("B");
+//        } else if (type.equals("C")) {
+//            QItem.item.type.eq("C");
+//        } else if (type.equals("D")) {
+//            QItem.item.type.eq("D");
+//        }
+
+
     private BooleanExpression searchType(String type) {
         if (type != null && !type.isEmpty()) {
             switch (type) {
@@ -45,6 +67,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
         }
         return Expressions.asBoolean(true);
     }
+
 
     // 맛
     private BooleanExpression searchAbvDg(int abv) {
@@ -115,6 +138,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
     // 관리자
     @Override
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+
         List<Item> content = queryFactory
             .selectFrom(QItem.item)
             .where(searchType(itemSearchDto.getType()), // 타입

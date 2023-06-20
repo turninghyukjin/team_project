@@ -1,300 +1,332 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <title>Shopping Mall</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout}"
+>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- itemDetailForm.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/itemDetailForm.css}">
+</th:block>
 
-    <style>
-        <!-- 주문 정보 -->
-        .right-section {
-            border: 2px solid;
-            top: 0;
-            right: 0;
-            width: 200px;
-            height: 400px;
-            background-color: #f8f9fa;
-        }
+<!-- itemDetailForm.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/js/itemDetailForm.js}"></script>
+</th:block>
 
-        <!-- 상품 정보 -->
-        .left {
-               height: 400px;
-        }
+<th:block layout:fragment="content">
+    <div class="mt-64"></div>
+    <div class="content_wrapper">
 
-        <!-- 하단 박스 -->
-        .image {
-            display: flex;
-
-            top: 0;
-            right: 0;
-            width: 180px;
-            height: 100px;
-            margin-left: 10px;
-            background-color: #f8f9fa;
-        }
-
-        .mgt-10 {
-            margin-top: 100px;
-        }
-    </style>
-
-    <script th:inline="javascript">
-
-        $(document).ready(function(){
-
-            calculateTotalPrice();
-
-            $("#quantity").change( function(){
-                calculateTotalPrice();
-            });
-        });
-
-        function calculateTotalPrice(){
-            var quantity = $("#quantity").val();
-            var price = $("#price").val();
-            var totalPrice = price*quantity;
-            $("#totalPrice").html(totalPrice + '원');
-        }
-
-        function order(){
-            var token = $("meta[name='_csrf']").attr("content");            <!-- csrf!!! -->
-            var header = $("meta[name='_csrf_header']").attr("content");
-
-            var url = "/order";
-
-            <!-- 주문할 상품의 아이디와 수량 데이터를 전달할 객체를 생성 -->
-            var paramData = {
-                itemId : $("#itemId").val(),
-                quantity : $("#quantity").val()
-            };
-
-
-            <!-- 장바구니로 데이터를 전송  -->
-            var param = JSON.stringify(paramData);
-
-            $.ajax({
-                url      : url,
-                type     : "POST",
-                contentType : "application/json",
-                data     : param,
-                beforeSend : function(xhr){             <!-- 데이터를 전송하기 전에 헤더에 csrf값을 설정 -->
-                    xhr.setRequestHeader(header, token);
-                },
-                dataType : "json",                      <!-- 서버에서 결과값을 받을 데이터 타입을 제이슨으로 지정 -->
-                cache   : false,                        <!-- 캐시에 저장된 내용을 불러오는게 아니라 매번 refresh. 적지 않으면 캐시값이 우선 -->
-
-                success  : function(result, status){    <!-- 주문성공시 alert창으로 메세지 출력 후, 메인페이지로 이동 -->
-                    alert("주문이 완료 되었습니다.");
-                    location.href='/';
-                },
-                error : function(jqXHR, status, error){
-
-                    if(jqXHR.status == '401'){
-                        alert('로그인 후 이용해주세요');
-                        location.href='/members/login';
-                    } else{
-                        alert(jqXHR.responseText);
-                    }
-                }
-            });
-        }
-
-        <!-- 장바구니 -->
-        function addCart(){
-            var token = $("meta[name='_csrf']").attr("content");
-            var header = $("meta[name='_csrf_header']").attr("content");
-
-            var url = "/cart";
-            var paramData = {
-                itemId : $("#itemId").val(),
-                quantity : $("#quantity").val()
-            };
-
-            var param = JSON.stringify(paramData);
-
-            $.ajax({
-                url      : url,
-                type     : "POST",
-                contentType : "application/json",
-                data     : param,
-                beforeSend : function(xhr){
-                    /* 데이터를 전송하기 전에 헤더에 csrf 설정 */
-                    xhr.setRequestHeader(header, token);
-                },
-                dataType : "json",
-                cache   : false,
-                success  : function(result, status){
-                    alert("상품을 장바구니에 담았습니다.");
-                    location.href='/';
-                },
-                error : function(jqXHR, status, error){
-
-                    if(jqXHR.status == '401'){
-                        alert('로그인 후 이용해주세요');
-                        location.href='/members/login';
-                    } else{
-                        alert(jqXHR.responseText);
-                    }
-                }
-            });
-        }
-    </script>
-</head>
-<body>
-
-<!--<div class="container-fluid">-->
-<div class="col-md-12 mt-5">
-    <div class="row justify-content-center">
-
-        <!-- 정보 -->
-        <div class="col-md-6">
-            <div class="row left">
-                <div class="col-md-6">
-                    <img th:src="${item.itemImgDtoList[0].imgUrl}" class = "rounded repImg" th:alt="${item.itemNm}">
+        <div class="itemDetailContent_wrapper">
+            <div class="itemDetail_wrapper">
+                <div class="itemDetail_box">
+                    <div class="img_itemWrapper">
+                        <span class="img_box">
+                            <img src="/images/items/탁주_담은_대표.jpg" alt="담은_탁주">
+                        </span>
+                    </div>
                 </div>
-
-                <input type="hidden" id="itemId" th:value="${item.id}">
-                <div class="col-md-6">
-
-                    <!-- 들어갈 값: item(상품명, 상세설명, 타입, 도수, 평가, 가격) -->
-                    <h2>Name<span th:text="${item.itemNm}">soju</span></h2>
-                    <p>Detail<span th:text="${item.itemDetail}">sweet mango sul</span></p>
-                    <p>type: <span th:text="${item.type}">soju</span></p>
-                    <p>abv: <span th:text="${item.abv}">10.5%</span></p>
-                    <p>Star Rating <span th:text="${starRating}">4.5</span></p>  <!--별점.. 이걸어쨰-->
-                    <p>price: <br/><span th:text="${item.price}">3000won</span></p>
-                </div>
-            </div>
-
-
-
-            <div class="jumbotron jumbotron-fluid mgt-10">
-                <div class="container">
-                    <h4 class="display-5">tastes</h4>
-                    <hr class="my-4">
-                    <p class="lead" th:text="${item.itemDetail}"></p>
-                </div>
-            </div>
-
-            <!-- 맛? -->
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <script th:inline="javascript">
-<!--                        $(document).ready(function(){-->
-
-<!--                          var degree = $("#abv").val();-->
-
-<!--                          switch (degree) {-->
-<!--                            case 1:-->
-<!--                              document.getElementById("image").src = "icon_rating_one.png";-->
-<!--                              break;-->
-<!--                            case 2:-->
-<!--                              document.getElementById("image").src = "icon_rating_two.png";-->
-<!--                              break;-->
-<!--                            case 3:-->
-<!--                              document.getElementById("image").src = "icon_rating_three.png";-->
-<!--                              break;-->
-<!--                            case 4:-->
-<!--                              document.getElementById("image").src = "icon_rating_four.png";-->
-<!--                              break;-->
-<!--                            case 5:-->
-<!--                              document.getElementById("image").src = "icon_rating_five.png";-->
-<!--                              break;-->
-<!--                            default:-->
-<!--                              document.getElementById("image").src = "default.jpg";-->
-<!--                          }-->
-<!--                          var imageDegree = 3;-->
-<!--                          var imageUrl = "/images/rating/rate-" + imageDegree + ".png";-->
-<!--                          document.getElementById("image").src = imageUrl;-->
+                <div class="itemDetail_box">
+                    <div class="itemDetail_content">
+                        <div class="content_top">
+                            <div class="title" th:text="${item.itemNm}">
+                                담은 [3병/6병/10병]
+                            </div>
+                        </div>
+                        <div class="content_middle">
+                            <div class="itemTag" th:text="${item.itemDetail}">
+                                #입안을 가득 채우는 푸근함 #카페라떼처럼 부드러운
+                            </div>
+                            <div class="itemRating">
+                                <span class="star"></span>
+                                <div class="score">4.9</div>
+                                <span class="reviewCount">[490 리뷰]</span>
+                            </div>
+                        </div>
+                        <div class="content_bottom">
+                            <div class="content">
+                                <label>주종:</label>
+                                <span class="itemType" th:if="${item.type.toString()=='A'}">탁주</span>
+                                <span class="itemType" th:unless="${item.type.toString()=='B'}">약주</span>
+                                <span class="itemType" th:unless="${item.type.toString()=='C'}">증류주</span>
+                                <span class="itemType" th:unless="${item.type.toString()=='D'}">과실주</span>
+                            </div>
+                            <div class="content">
+                                <label>도수:</label>
+                                <span class="itemAbv" th:text="${item.abv}">6.50%</span>
+                            </div>
+                            <div class="content">
+                                <label>용량:</label>
+                                <span class="itemSize">750ml</span>
+                            </div>
+                            <div class="content">
+                                <label>배송기간:</label>
+                                <span class="fontStyle itemDelivery">2일 이내 배송</span>
+                            </div>
+                            <div class="content">
+                                <label>수상:</label>
+                                <span class="fontStyle itemReward">2016년 우리술 품평회 생막걸리 부문 장려상</span>
+                            </div>
+                        </div>
+                        <div class="content_price">
+                            <div class="priceTitle" >
+                                <div>판매가격:</div>
+                            </div>
 
 
-                           function taste_info(){
-                              var imageUrl;
-                            for(var i=1; i,=5; i++){
-                              if(user_area == i) {
-                              img_src = '../images/rating/'+ 'icon_rating_' + i + '.png';
-                            }
-                            return imageUrl;
-                           }
 
-                    </script>
+                            <div class="itemPrice">
+                                <div class="originalPrice" th:text="${item.price}">
+                                    33,000원
+                                </div>
 
-                    <h4>Degree image</h4>
-                    <!-- rating 이미지 -->
-                    <div>
-                        <img id="image" src="" alt="Image">
-                        <script>document.getElementById('image').src = taste_info()</script>
+
+                                <!--                                <div class="salePrice">-->
+                                <!--                                    <span th:if="${item != null && item.price != null}" th:text="${#numbers.formatDecimal(item.price, 0, 'DEFAULT')} + '원'"></span>-->
+                                <!--                                    <span th:unless="${item != null && item.price != null}">가격 없음</span>-->
+                                <!--                                </div>-->
+
+
+                            </div>
+                            <div class="expirationStorage">
+                                <label class="blue">유통기한:</label>
+                                <span class="blue">제조일로부터 30일</span>
+                            </div>
+                            <div class="expirationStorage">
+                                <label class="blue">보관방법:</label>
+                                <span class="blue">세워서 냉장 보관</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 이미지 -->
-
-            <div class="jumbotron jumbotron-fluid mgt-30">
-                <div class="container">
-                    <h4 class="display-5">item description</h4>
-                    <hr class="my-4">
-                    <p class="lead" th:text="${item.itemDetail}"></p>
+            <div class="mb-60"></div>
+            <div class="keyPoint_wrapper">
+                <div class="keyPointTitle">
+                    핵심 포인트
+                </div>
+                <div class="key_wrapper">
+                    <div class="img_keyWrapper">
+                        <img src="/images/itemDetail/mainPointImg.png" alt="mainpoint_image">
+                        <div class="label">맛</div>
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <span>우유같이 부드러운 단맛</span>
+                    </div>
+                    <span></span>
+                </div>
+                <div class="key_wrapper">
+                    <div class="img_keyWrapper">
+                        <img src="/images/itemDetail/point_anju.png" alt="anju_image">
+                        <div class="label">안주</div>
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <span>매콤한 음식과 즐겨보세요!</span>
+                    </div>
+                </div>
+                <div class="key_wrapper">
+                    <div class="img_keyWrapper">
+                        <img src="/images/itemDetail/point_damhwa.png" alt="damhwa_image">
+                        <div class="label">담화</div>
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <span>생쌀을 발효한 프리미엄 막걸리</span>
+                    </div>
                 </div>
             </div>
-            <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
-                <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
+
+
+
+            <!--  상세 그림-->
+            <div class="key_wrapper">
+                <div class="img_keyWrapper">
+                    <img src="${itemFormDto.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
+                    <div class="label">담화</div>
+                    <span></span>
+                </div>
+                <div class="content">
+                    <span>생쌀을 발효한 프리미엄 막걸리</span>
+                </div>
+            </div>
+
+            <div class="main">
+<!--                    <div class="img_keyWrapper">-->
+                    <img src="${itemFormDto.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
+                    <span></span>
+<!--                    </div>-->
             </div>
 
 
+            <div class="divideLine"></div>
+
+            <div class="select_button_bottom_content">
+                <button class="selected">리뷰</button>
+                <button>상품정보</button>
+                <button>교환/반품</button>
+            </div>
+            <div class="review_wrapper">
+                <div class="reviewSearch">
+                    <div class="filter_checkbox">
+                        <svg fill="#e0e0e0" hover="#eaa638" class=""
+                             width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="white" stroke="#E0E0E0"></rect>
+                        </svg>
+                        <!--                        <svg fill="#0096f3" hover="#2d7bc3" class="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="#0097F3" stroke="#0097F3"></rect><path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494 7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866 17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421 10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802 6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z" fill="white"></path></svg>-->
+                        <span class="">포토리뷰만 보기</span>
+                    </div>
+                    <select>
+                        <option value="default">상세 리뷰순</option>
+                        <option value="lastest">상세 리뷰순</option>
+                        <option value="highRating">평점 높은 순</option>
+                        <option value="lowRating">평점 낮은 순</option>
+                    </select>
+                </div>
+                <div class="reviewContent_wrapper">
+                    <div>
+                        <div class="reviewContent_header">
+                            <div class="reviewHeader_name">홍길동</div>
+                            <div class="reviewHeader_right">
+                                <div class="itemName">[750ml] 담은 X 3병</div>
 
 
-            <!-- 댓글 + something 아직 엔티티, 디티오 안했음 틀만 잡았어요 -->
-            <div class="row">
-                <div class="col-md-6">
-                    <p><span th:text="${userId}"></span>
-                        <span th: text="${itemNm}"></span>
-                        <span th: text="${date}"></span>
-                    </p>
-                    <p><span th: text="${text}"></span></p>
+                                <span class="ratingStars" role="img">
+                                <span class="stars_wrapper" role="img">
+
+
+                                    <span class="star_wrapper">
+                                        <span class="star_style"></span>
+                                    </span>
+                                </span>
+                            </span>
+
+
+                                <div class="score">4</div>
+                                <div class="date">2023.06.03</div>
+                            </div>
+                        </div>
+                        <div class="reviewContent_content">
+                            <div class="content_text">
+                                <span>부드러운 목 넘김.</span>
+                                <span>더 좋은 막걸리를 원할때...</span>
+                            </div>
+                            <div class="content_img">
+                                <span class="reviewImg"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="reviewContent_header">
+                            <div class="reviewHeader_name">홍길동</div>
+                            <div class="reviewHeader_right">
+                                <div class="itemName">[750ml] 담은 X 3병</div>
+
+
+                                <span class="ratingStars" role="img">
+                                <span class="stars_wrapper" role="img">
+
+
+                                    <span class="star_wrapper">
+                                        <span class="star_style"></span>
+                                    </span>
+                                </span>
+                            </span>
+
+
+                                <div class="score">4</div>
+                                <div class="date">2023.06.03</div>
+                            </div>
+                        </div>
+                        <div class="reviewContent_content">
+                            <div class="content_text">
+                                <span>부드러운 목 넘김.</span>
+                                <span>더 좋은 막걸리를 원할때...</span>
+                            </div>
+                            <div class="content_img">
+                                <span class="reviewImg"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- 주문 -->
-        <div class="col-md-3 right-section sticky-top">
-            <h4 class="mt-5">Order Details</h4>
-            <div class="form-group mt-3">
-                <label for="quantity">quantity</label>
+        <div class="itemOrderContent_wrapper">
+            <div class="orderContentList">
+                <div class="title">옵션</div>
+                <div class="optionSelect_wrapper">
+                    <div class="selectWrapper_style">
+                        <select class="optionSelect">
+                            <option value>어떤 옵션을 원하시나요?</option>
+                            <option value="226">[750ml] 담은 X 3병</option>
+                            <option value="227">[750ml] 담은 X 6병 (+31,350원)</option>
+                            <option value="228">[750ml] 담은 X 10병 (+73,150원)</option>
+                        </select>
+                        <svg class=""
+                             focusable="false"
+                             aria-hidden="true"
+                             viewBox="0 0 24 24"
+                             data-testid="ExpandMoreIcon">
+                            <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mb-20"></div>
+                <div class="title">수량</div>
+                <div class="count_wrapper">
+                    <div class="count_minusPlus_img_wrapper">
+                        <img id="minusButton" src="/images/itemDetail/icon_minus_counter_inactive.png" alt="icon_minus_counter_inactive" onclick="decreaseQuantity()" disabled>
+                    </div>
 
-                <div class="input-group" role="group" aria-label="quantity control">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-outline-primary" id="decreaseBtn">-</button>
-                    </span>
-                    <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-outline-primary" id="increaseBtn">+</button>
-                    </span>
+
+                    <input id="quantityInput" type="number" maxlength="3" value="1">
+                    <div class="count_minusPlus_img_wrapper">
+                        <img id="plusButton" src="/images/itemDetail/icon_plus_counter.png" alt="icon_plus_counter" onclick="increaseQuantity()">
+                    </div>
                 </div>
 
-            </div>
-            <p>total price</p>
-            <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
+                <div class="title">총 상품가격</div>
+                <div class="salePrice">
+                    <span th:if="${item != null}" th:text="${item.price + '원'}"></span>
+                    <span th:unless="${item != null}">상품 가격 없음</span>
+                </div>
 
-            <div th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
-                <button type="button" class="btn btn-light border border-primary btn-lg" onclick="addCart()">Order</button>
-                <button type="button" class="btn btn-primary btn-lg" onclick="order()">BUY</button>
-            </div>
-            <div th:unless="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
-                <button type="button" class="btn btn-danger btn-lg mt-2">Sold Out</button>
+
+                <div class="delivery">
+                    <div class="deliveryIcon">
+                        <img src="/images/itemDetail/icon_truck.png" alt="truck" class="icon-truck">
+                    </div>
+                    <div class="deliveryMsg">
+                        <span class="font">6월 23일까지 전 상품 무료배송!</span>
+                    </div>
+                </div>
+                <div class="button_wrapper">
+                    <button class="cart" type="outline">
+                        <img src="/images/itemDetail/icon_cart.png" alt="icon-cart">
+                        장바구니
+                    </button>
+                    <div class="button_wrapper">
+                        <button class="cart" type="outline">
+                            <img src="/images/itemDetail/icon_gift_box.png" alt="icon-gift">
+                            구매하기
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
-</div>
 
-<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
-<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
-</body>
+
+</th:block>
+
 </html>
+
+
+
+
+

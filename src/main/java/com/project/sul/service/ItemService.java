@@ -65,7 +65,7 @@ public class ItemService {
     }
 
     // 수정할 아이템 조회
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public ItemFormDto getItemDtl(Long itemId) {
         List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
         List<ItemImgDto> itemImgDtoList = new ArrayList<>();
@@ -73,7 +73,6 @@ public class ItemService {
             ItemImgDto itemImgDto = ItemImgDto.of(itemImg);
             itemImgDtoList.add(itemImgDto);
         }
-
         Item item = itemRepository.findById(itemId)
                 .orElseThrow(EntityNotFoundException::new);
         ItemFormDto itemFormDto = ItemFormDto.of(item);
