@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 public class ItemFormDto {
 
-    private Item item;
+//    private Item item;
     private Long id;
 
     @NotBlank(message = "상품명은 필수 입력값입니다.")
@@ -57,11 +57,17 @@ public class ItemFormDto {
     @NotNull(message = "술 도수는 필수 입력값입니다.")
     private int sparkling; // 탄산
 
+//
+//    private String point1;
+//    private String point2;
+//    private String point3;
+//
+//
     public Item createItem() {
-        if (item == null) {
-            item = new Item();
-        }
-        item.setPrice(price); // 아이템 생성 시에도 가격 설정
+//        if (item == null) {
+//            item = new Item();
+//        }
+//        item.setPrice(price); // 아이템 생성 시에도 가격 설정
         return modelMapper.map(this, Item.class);
     }
 

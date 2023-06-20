@@ -96,13 +96,13 @@
 
     <div class="d-flex justify-content-center" th:object="${itemSearchDto}">
       <select th:field="*{type}" class="form-control" style="width:auto;">
-        <option text="A">탁주</option>
-        <option text="B">청주</option>
-        <option text="C">증류주</option>
-        <option text="D">과실주</option>
+        <option value="A">typeA 탁주</option>
+        <option value="B">청주</option>
+        <option value="C">증류주</option>
+        <option value="D">과실주</option>
       </select>
       <select th:field="*{abv}" class="form-control" style="width:auto;">
-        <option value="1">0~10도</option>
+        <option value="1">abv 0~10도</option>
         <option value="2">11~20도</option>
         <option value="3">21~30도</option>
         <option value="4">40도 이상</option>

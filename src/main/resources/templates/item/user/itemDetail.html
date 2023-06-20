@@ -47,7 +47,10 @@
                         <div class="content_bottom">
                             <div class="content">
                                 <label>주종:</label>
-                                <span class="itemType" th:text="${item.type}">탁주</span>
+                                <span class="itemType" th:if="${item.type.toString()=='A'}">탁주</span>
+                                <span class="itemType" th:unless="${item.type.toString()=='B'}">약주</span>
+                                <span class="itemType" th:unless="${item.type.toString()=='C'}">증류주</span>
+                                <span class="itemType" th:unless="${item.type.toString()=='D'}">과실주</span>
                             </div>
                             <div class="content">
                                 <label>도수:</label>

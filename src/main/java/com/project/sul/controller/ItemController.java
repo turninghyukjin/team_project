@@ -67,6 +67,8 @@ public class ItemController {
             model.addAttribute("itemFormDto", itemFormDto);
             System.out.println(itemId);
             System.out.println("나의 이름은" + itemFormDto.getItemNm());
+            System.out.println("이미지" + itemFormDto.getItemImgIds()); // 안나옴
+            System.out.println("이미지" + itemFormDto.getItemImgDtoList());
         } catch (EntityNotFoundException e) {
             model.addAttribute("errorMessage", "존재하지 않는 상품입니다.");
             model.addAttribute("itemFormDto", new ItemFormDto());

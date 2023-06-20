@@ -68,11 +68,12 @@ public class Item extends BaseEntity { // 관리자 상품등록
 
 // 메서드
     public void updateItem(ItemFormDto itemFormDto) {
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
         this.itemNm = itemFormDto.getItemNm(); // 상품명
         this.price = itemFormDto.getPrice();
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
-        this.itemSellStatus = itemFormDto.getItemSellStatus();
+
         this.type = itemFormDto.getType();
         this.abv = itemFormDto.getAbv();
         this.sweetness = itemFormDto.getSweetness();
