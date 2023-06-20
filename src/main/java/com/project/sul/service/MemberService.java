@@ -14,8 +14,7 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-//public class MemberService implements UserDetailsService {
-public class MemberService {
+public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
 
@@ -29,7 +28,7 @@ public class MemberService {
 
     public Member saveMember(Member member) {
         validateDuplicateMember(member);
-        validateDuplicateNickname(member);
+//        validateDuplicateNickname(member);
         return memberRepository.save(member);
     }
 
@@ -47,22 +46,19 @@ public class MemberService {
         }
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//        Member member = memberRepository.findByEmail(email);
-//
-//        if (member == null) {
-//            throw new UsernameNotFoundException(email);
-//        }
-//
-//        return User.builder()
-//                .username(member.getEmail())
-//                .password(member.getPassword())
-//                .roles(member.getRole().toString())
-//                .build();
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Member member = memberRepository.findByEmail(email);
 
+        if (member == null) {
+            throw new UsernameNotFoundException(email);
+        }
 
-
+        return User.builder()
+                .username(member.getEmail())
+                .password(member.getPassword())
+                .roles(member.getRole().toString())
+                .build();
+    }
 
 }

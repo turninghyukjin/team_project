@@ -300,12 +300,11 @@
 }
 .order_cardStyle .orderFinal_content {
     display: flex;
-    -webkit-box-pack: justify;
     justify-content: space-between;
     margin-bottom: 16px;
 }
 .orderFinal_content .subTitle {
-    font-weight: 500;
+    font-weight: bold;
     color: rgb(0, 0, 0);
     font-size: 13px;
 }
@@ -319,15 +318,15 @@
     -webkit-box-pack: justify;
     justify-content: space-between;
 }
-.orderFinalTotalPrice .subTitle {
+.order_cardStyle .subTitle {
     color: rgb(0, 150, 243);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
 }
-.orderFinalTotalPrice .content {
+.order_cardStyle .content {
     color: rgb(0, 150, 243);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
 }
 .agreeCheck_wrapper .agreeCheck {
     width: 100%;
@@ -395,8 +394,16 @@
 .agreeDetailContent_wrapper .terms-footer {
     color: rgb(255, 0, 0);
 }
-
-
+.order {
+    line-height:2.5;
+}
+.order .subTitle {
+    width:80px;
+    justify-content: space-between;
+}
+.order .content {
+    text-align:end;
+}
 
 
 

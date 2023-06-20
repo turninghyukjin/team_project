@@ -13,8 +13,6 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -70,11 +68,6 @@ public class RegisterSocialFormDto {
         member.setPhone(this.phone);
         member.setAddress(new Address(this.zipCode, this.streetAdr, this.detailAdr));
         member.setBirthDate(this.birthDate);
-
-        // Kakao 정보 저장
-//        if (kakao != null) {
-//            member.setKakao(this.kakao);
-//        }
 
         return member;
     }

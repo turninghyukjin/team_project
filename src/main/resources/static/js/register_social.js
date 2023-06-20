@@ -1,18 +1,8 @@
-$(document).ready(function(){
-    var errorMessage = [[${errorMessage}]];
-    if(errorMessage != null){
-        alert(errorMessage);
-    }
-});
-
-
-
-
-
-function buttonClick_SocialRegister2() {
-   console.log('Button clicked!');
-   window.location.href = '/register/login';
-};
+//
+//function buttonClick_SocialRegister2() {
+//   console.log('Button clicked!');
+//   window.location.href = '/register/login';
+//};
 
 //window.onload = function() {
 //    document.addEventListener('DOMContentLoaded', function() {
