@@ -265,9 +265,8 @@
                 </div>
 
                 <div class="title">총 상품가격</div>
-                <div class="salePrice">
-                    <span th:if="${item != null}" th:text="${item.price + '원'}"></span>
-                    <span th:unless="${item != null}">상품 가격 없음</span>
+                <div class="salePrice" id="totalPriceText">
+                    31350원
                 </div>
 
 

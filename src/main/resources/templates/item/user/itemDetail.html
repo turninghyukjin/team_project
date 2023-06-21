@@ -23,7 +23,10 @@
                 <div class="itemDetail_box">
                     <div class="img_itemWrapper">
                         <span class="img_box">
-                            <img src="/images/items/탁주_담은_대표.jpg" alt="담은_탁주">
+<!--                            <img th:src="${item.itemFormDto." alt="담은_탁주">-->
+<!--                             <p th:text="'C:/team_project' + ${item.itemImgDtoList[0].imgUrl}"></p>-->
+<!--                             <img th:src="'C://team_project' + ${item.itemImgDtoList[0].imgUrl}">-->
+                            <img th:src="'/display/img?fileName='+${item.itemImgDtoList[0].imgUrl}">
                         </span>
                     </div>
                 </div>
@@ -40,8 +43,8 @@
                             </div>
                             <div class="itemRating">
                                 <span class="star"></span>
-                                <div class="score">4.9</div>
-                                <span class="reviewCount">[490 리뷰]</span>
+                                <div class="score">4.5</div>
+                                <span class="reviewCount">[2 리뷰]</span>
                             </div>
                         </div>
                         <div class="content_bottom">
@@ -143,23 +146,13 @@
 
 
             <!--  상세 그림-->
-            <div class="key_wrapper">
-                <div class="img_keyWrapper">
-                    <img src="${itemFormDto.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
-                    <div class="label">담화</div>
-                    <span></span>
-                </div>
-                <div class="content">
-                    <span>생쌀을 발효한 프리미엄 막걸리</span>
-                </div>
+            <div class="main">
+                <img class="mw-100" th:src="'/display/img?fileName='+${item.itemImgDtoList[1].imgUrl}">
+                <img class="mw-100" th:src="'/display/img?fileName='+${item.itemImgDtoList[2].imgUrl}">
+                <img class="mw-100" th:src="'/display/img?fileName='+${item.itemImgDtoList[3].imgUrl}">
+                <img class="mw-100" th:src="'/display/img?fileName='+${item.itemImgDtoList[4].imgUrl}">
             </div>
 
-            <div class="main">
-<!--                    <div class="img_keyWrapper">-->
-                    <img src="${itemFormDto.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
-                    <span></span>
-<!--                    </div>-->
-            </div>
 
 
             <div class="divideLine"></div>

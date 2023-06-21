@@ -270,5 +270,7 @@
 }
 
 
-
+.password-toggle-icon-show {
+  display: none;
+}
 

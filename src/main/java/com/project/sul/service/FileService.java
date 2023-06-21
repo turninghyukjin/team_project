@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.UUID;
 
 @Service
@@ -15,9 +17,17 @@ public class FileService { // 파일업로드, 삭제
         String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
         String savedFileName = uuid.toString() + extension;
         String fileUploadFullUrl = uploadPath + "/" + savedFileName;
-        FileOutputStream fos = new FileOutputStream(fileUploadFullUrl);
-        fos.write(fileData);
-        fos.close();
+
+        try (OutputStream outputStream = new FileOutputStream(fileUploadFullUrl)) {
+
+            outputStream.write(fileData);
+            outputStream.flush();
+            System.out.println("File saved successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to save file: " + e.getMessage());
+        }
+
         return savedFileName;
     }
 
