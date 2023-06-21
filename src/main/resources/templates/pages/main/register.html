@@ -35,36 +35,41 @@
 
             <div class="mt-64"></div>
 
-            <div class="signUp_agree_checkboxForm_wrapper" onclick="toggleCheckbox(this)">
-                <div class="signUp_agree_checkboxForm_wrapper" onclick="toggleCheckbox()">
+            <div class="signUp_agree_checkboxForm_wrapper">
+                <div class="signUp_agree_checkboxForm_wrapper">
 
-                    <div class="checkbox-wrapper" onclick="toggleCheckbox(this)">
+                    <div id="allCheck" class="checkbox-wrapper">
 
-                        <svg class="checkbox" fill="#e0e0e0"  width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="checkbox" fill="#e0e0e0" width="24" height="24" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg" style="display:block;">
                             <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="white" stroke="#E0E0E0"></rect>
                         </svg>
-                        <svg class="checkboxIcon" fill="#0097F3"  width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
-                            <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="#0097F3" stroke="#0097F3"></rect>
-                            <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494 7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866 17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421 10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802 6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z" fill="white"></path>
+                        <svg class="checkboxIcon" fill="#0097F3" width="24" height="24" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg" style="display: none">
+                            <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="#0097F3"
+                                  stroke="#0097F3"></rect>
+                            <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494 7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866 17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421 10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802 6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z"
+                                  fill="white"></path>
                         </svg>
 
                         <div class="ml-16"></div>
-                        <span class="all-agree-text">모두 동의합니다</span>
+                        <span>모두 동의합니다</span>
                     </div>
-
-
-
 
                     <div class="mt-28"></div>
 
-
-                    <div class="checkbox-wrapper" onclick="toggleCheckbox(this)">
-                        <svg class="checkbox" fill="#e0e0e0"  width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="white" stroke="#E0E0E0"></rect>
+                    <div class="checkbox-wrapper">
+                        <svg class="checkbox requiredCheck" fill="#e0e0e0" width="24" height="24" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="white" stroke="#E0E0E0"
+                                  style="display:block;"></rect>
                         </svg>
-                        <svg class="checkboxIcon" fill="#0097F3"  width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
-                            <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="#0097F3" stroke="#0097F3"></rect>
-                            <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494 7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866 17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421 10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802 6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z" fill="white"></path>
+                        <svg class="checkboxIcon" fill="#0097F3" width="24" height="24" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg" style="display: none">
+                            <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="#0097F3"
+                                  stroke="#0097F3"></rect>
+                            <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494 7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866 17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421 10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802 6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z"
+                                  fill="white"></path>
                         </svg>
 
                         <div class="ml-16"></div>
@@ -73,103 +78,111 @@
                                 <div>
                                     (필수)
                                     <ins>이용 약관 동의</ins>
-                                    <img src="/images/global/icon-asterisk.png" width="7" height="7" alt="asterisk" style="margin: 0px 0px 2px 3px">
+                                    <img src="/images/global/icon-asterisk.png" width="7" height="7" alt="asterisk"
+                                         style="margin: 0px 0px 2px 3px">
                                 </div>
                                 <section class="agreeLink_arrow_icon_wrapper">
-                                    <img src="/images/global/right-arrow-icon.png" alt="약관 페이지 조회를 위한 화살표 아이콘" width="6px" height="10px">
+                                    <img src="/images/global/right-arrow-icon.png" alt="약관 페이지 조회를 위한 화살표 아이콘"
+                                         width="6px" height="10px">
                                 </section>
                             </div>
                         </a>
                     </div>
 
 
-                <div class="mt-28"></div>
+                    <div class="mt-28"></div>
 
 
-                    <div class="checkbox-wrapper" onclick="toggleCheckbox(this)">
-                        <svg class="checkbox" fill="#e0e0e0"  width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <div class="checkbox-wrapper">
+                        <svg class="checkbox requiredCheck" fill="#e0e0e0" width="24" height="24" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="white" stroke="#E0E0E0"></rect>
                         </svg>
-                        <svg class="checkboxIcon" fill="#0097F3"  width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
-                            <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="#0097F3" stroke="#0097F3"></rect>
-                            <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494 7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866 17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421 10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802 6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z" fill="white"></path>
+                        <svg class="checkboxIcon" fill="#0097F3" width="24" height="24" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg" style="display: none">
+                            <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="#0097F3"
+                                  stroke="#0097F3"></rect>
+                            <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494 7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866 17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421 10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802 6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z"
+                                  fill="white"></path>
                         </svg>
 
 
                         <div class="ml-16"></div>
-                    <a href="/terms/privacy"
-                    >
-                    <div class="agreeLink">
-                        <div>
-                            (필수)
-                            <ins>개인정보 수집 및 이용 동의
-                            </ins
-                            >
-                            <img
-                                    src="/images/global/icon-asterisk.png"
-                                    width="7"
-                                    height="7"
-                                    alt="asterisk"
-                                    style="margin: 0px 0px 2px 3px"
-                            />
-                        </div>
-                        <section
-                                class="agreeLink_arrow_icon_wrapper"
+                        <a href="/terms/privacy"
                         >
-                            <img
-                                    src="/images/global/right-arrow-icon.png"
-                                    alt="약관 페이지 조회를 위한 화살표 아이콘"
-                                    width="6px"
-                                    height="10px"
-                            />
-                        </section>
-                    </div>
-                </a>
+                            <div class="agreeLink">
+                                <div>
+                                    (필수)
+                                    <ins>개인정보 수집 및 이용 동의
+                                    </ins
+                                    >
+                                    <img
+                                            src="/images/global/icon-asterisk.png"
+                                            width="7"
+                                            height="7"
+                                            alt="asterisk"
+                                            style="margin: 0px 0px 2px 3px"
+                                    />
+                                </div>
+                                <section
+                                        class="agreeLink_arrow_icon_wrapper"
+                                >
+                                    <img
+                                            src="/images/global/right-arrow-icon.png"
+                                            alt="약관 페이지 조회를 위한 화살표 아이콘"
+                                            width="6px"
+                                            height="10px"
+                                    />
+                                </section>
+                            </div>
+                        </a>
 
                     </div>
-            </div>
+                </div>
 
 
-            <div class="mt-28"></div>
-                <div class="checkbox-wrapper" onclick="toggleCheckbox(this)">
-                    <svg class="checkbox" fill="#e0e0e0"  width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div class="mt-28"></div>
+                <div class="checkbox-wrapper">
+                    <svg class="checkbox" fill="#e0e0e0" width="24" height="24" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="white" stroke="#E0E0E0"></rect>
                     </svg>
-                    <svg class="checkboxIcon" fill="#0097F3"  width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none">
+                    <svg class="checkboxIcon" fill="#0097F3" width="24" height="24" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg" style="display: none">
                         <rect x="0.5" y="0.5" width="23" height="23" rx="4.5" fill="#0097F3" stroke="#0097F3"></rect>
-                        <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494 7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866 17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421 10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802 6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z" fill="white"></path>
+                        <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494 7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866 17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421 10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802 6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z"
+                              fill="white"></path>
                     </svg>
 
 
-                <div class="ml-16"></div>
-                <span class="marketing-agree-point-wrapper">
+                    <div class="ml-16"></div>
+                    <span class="marketing-agree-point-wrapper">
                             (선택) 광고성 및 마케팅 정보 수신 동의
                         </span>
 
+                </div>
+                <div class="mt-8"></div>
+                <p class="marketing_detail_message">
+                    다양한 할인 프로모션 및 이벤트 소식을<br>
+                    보내 드립니다.
+                </p>
+                <div class="mt-20"></div>
+
+                <button id="adultCertButton"
+                        class="button_agree_adultCert"
+                        font-size="16px"
+                        font-weight="500"
+                        type="blue"
+                        width="335px"
+                        height="50px"
+                        disabled
+                >
+                    동의하기
+                </button>
+
             </div>
-            <div class="mt-8"></div>
-            <p class="marketing_detail_message">
-                다양한 할인 프로모션 및 이벤트 소식을<br>
-                보내 드립니다.
-            </p>
-            <div class="mt-20"></div>
-
-            <button id="adultCertButton"
-                    class="button_agree_adultCert"
-                    font-size="16px"
-                    font-weight="500"
-                    type="blue"
-                    width="335px"
-                    height="50px"
-
-            >
-                동의하기
-            </button>
-
         </div>
-    </div>
 
-            </div>
     </div>
 </th:block>
 
