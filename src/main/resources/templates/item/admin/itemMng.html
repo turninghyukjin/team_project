@@ -17,11 +17,15 @@
 
         function page(page){
             var searchSellStatus = $("#searchSellStatus").val();
-            var searchBy = $("#searchBy").val();
-            var searchQuery = $("#searchQuery").val();
+            var searchType = $("#searchType").val();
+            var searchByLike = $("#searchByLike").val();
+            var searchAbvDg = $("#searchAbvDg").val();
+            var searchSweetDg = $("#searchSweetDg").val();
+            var searchSournessDg = $("#searchSournessDg").val();
+<!--            var searchSparklingDg = $("#searchSparklingDg").val();-->
 
             location.href="/admin/items/" + page + "?searchSellStatus=" + searchSellStatus
-            + "&searchBy=" + searchBy
+            + "&searchByLike=" + searchByLike;
             + "&searchQuery=" + searchQuery;
         }
     </script>
@@ -96,7 +100,7 @@
 
     <div class="d-flex justify-content-center" th:object="${itemSearchDto}">
       <select th:field="*{type}" class="form-control" style="width:auto;">
-        <option value="A">typeA 탁주</option>
+        <option value="A">탁주</option>
         <option value="B">청주</option>
         <option value="C">증류주</option>
         <option value="D">과실주</option>

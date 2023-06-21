@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout_no_footer}"
+>
+
+<!-- register.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+</th:block>
+
+<!-- register.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script th:src="@{/js/register.js}"></script>
+
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="content_wrapper">
+        <div class="mt-64"></div>
+        <div class="register_wrapper">
+            <header class="register_top_banner">
+                <div class="register_banner_message">
+                    <div class="title">환영해요!</div>
+                </div>
+                <div class="register_banner_message_sub">
+                    <div class="sub-title">지금 회원가입하면 최대 4,000p를 드려요.</div>
+                </div>
+            </header>
+
+            <div class="mt-64"></div>
+
+            <div class="signUp_agree_checkboxForm_wrapper">
+
+                <div class="checkbox-wrapper">
+                    <div>
+                        <svg
+                                fill="#e0e0e0"
+                                hover="#eaa638"
+                                class="svg_effect"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                    x="0.5"
+                                    y="0.5"
+                                    width="23"
+                                    height="23"
+                                    rx="4.5"
+                                    fill="white"
+                                    stroke="#E0E0E0"
+                            ></rect>
+                        </svg>
+                    </div>
+                    <div style="display:none;">
+                        <svg
+                                fill="#0096f3"
+                                hover="#2d7bc3"
+                                class=""
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                            <rect
+                                    x="0.5" y="0.5"
+                                    width="23"
+                                    height="23"
+                                    rx="4.5"
+                                    fill="#0097F3"
+                                    stroke="#0097F3">
+
+                            </rect>
+                            <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494
+                                7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866
+                                17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421
+                                10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802
+                                6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z"
+                                  fill="white"
+                            >
+
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="ml-16"></div>
+
+                    <span class="all-agree-text">모두 동의합니다</span>
+                </div>
+                <div class="mt-28"></div>
+                <div class="checkbox-wrapper">
+                    <svg
+                            fill="#e0e0e0"
+                            hover="#eaa638"
+                            class="svg_effect"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <rect
+                                x="0.5"
+                                y="0.5"
+                                width="23"
+                                height="23"
+                                rx="4.5"
+                                fill="white"
+                                stroke="#E0E0E0"
+                        ></rect>
+                    </svg>
+
+                    <svg
+                            fill="#0096f3"
+                            hover="#2d7bc3"
+                            class=""
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <rect
+                                x="0.5" y="0.5"
+                                width="23"
+                                height="23"
+                                rx="4.5"
+                                fill="#0097F3"
+                                stroke="#0097F3">
+
+                        </rect>
+                        <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494
+                                7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866
+                                17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421
+                                10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802
+                                6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z"
+                              fill="white"
+                        >
+                        </path>
+                    </svg>
+
+                    <div class="ml-16"></div>
+                    <a href="/terms/policy"
+                    >
+                        <div class="agreeLink">
+                            <div>
+                                (필수)
+                                <ins>이용 약관 동의
+                                </ins
+                                >
+                                <img
+                                        src="/images/global/icon-asterisk.png"
+                                        width="7"
+                                        height="7"
+                                        alt="asterisk"
+                                        style="margin: 0px 0px 2px 3px"
+                                />
+                            </div>
+                            <section
+                                    class="agreeLink_arrow_icon_wrapper"
+                            >
+                                <img
+                                        src="/images/global/right-arrow-icon.png"
+                                        alt="약관 페이지 조회를 위한 화살표 아이콘"
+                                        width="6px"
+                                        height="10px"
+                                />
+                            </section>
+                        </div
+                        >
+                    </a>
+                </div>
+                <div class="mt-28"></div>
+                <div class="checkbox-wrapper">
+                    <svg
+                            fill="#e0e0e0"
+                            hover="#eaa638"
+                            class="svg_effect"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <rect
+                                x="0.5"
+                                y="0.5"
+                                width="23"
+                                height="23"
+                                rx="4.5"
+                                fill="white"
+                                stroke="#E0E0E0"
+                        ></rect>
+                    </svg>
+
+                    <svg
+                            fill="#0096f3"
+                            hover="#2d7bc3"
+                            class=""
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <rect
+                                x="0.5" y="0.5"
+                                width="23"
+                                height="23"
+                                rx="4.5"
+                                fill="#0097F3"
+                                stroke="#0097F3">
+
+                        </rect>
+                        <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494
+                                7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866
+                                17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421
+                                10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802
+                                6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z"
+                              fill="white"
+                        >
+                        </path>
+                    </svg>
+
+                    <div class="ml-16"></div>
+                    <a href="/terms/privacy"
+                    >
+                        <div class="agreeLink">
+                            <div>
+                                (필수)
+                                <ins>개인정보 수집 및 이용 동의
+                                </ins
+                                >
+                                <img
+                                        src="/images/global/icon-asterisk.png"
+                                        width="7"
+                                        height="7"
+                                        alt="asterisk"
+                                        style="margin: 0px 0px 2px 3px"
+                                />
+                            </div>
+                            <section
+                                    class="agreeLink_arrow_icon_wrapper"
+                            >
+                                <img
+                                        src="/images/global/right-arrow-icon.png"
+                                        alt="약관 페이지 조회를 위한 화살표 아이콘"
+                                        width="6px"
+                                        height="10px"
+                                />
+                            </section>
+                        </div
+                        >
+                    </a>
+                </div>
+                <div class="mt-28"></div>
+                <div class="checkbox-wrapper">
+                    <svg
+                            fill="#e0e0e0"
+                            hover="#eaa638"
+                            class="svg_effect"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <rect
+                                x="0.5"
+                                y="0.5"
+                                width="23"
+                                height="23"
+                                rx="4.5"
+                                fill="white"
+                                stroke="#E0E0E0"
+                        ></rect>
+                    </svg>
+
+                    <svg
+                            fill="#0096f3"
+                            hover="#2d7bc3"
+                            class=""
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <rect
+                                x="0.5" y="0.5"
+                                width="23"
+                                height="23"
+                                rx="4.5"
+                                fill="#0097F3"
+                                stroke="#0097F3">
+
+                        </rect>
+                        <path d="M18.2599 6.24044C18.7296 6.60954 18.8262 7.27762 18.4916 7.76279L18.4494
+                                7.8201L10.7887 17.5701C10.3406 18.1405 9.48433 18.1402 9.03378 17.588L8.98866
+                                17.5289L5.50651 12.6539C5.14538 12.1484 5.26248 11.4457 5.76807 11.0846C6.25421
+                                10.7374 6.92252 10.8323 7.29426 11.2895L7.33741 11.3462L9.94664 14.9993L16.6802
+                                6.43C17.0641 5.94144 17.7713 5.85657 18.2599 6.24044Z"
+                              fill="white"
+                        >
+                        </path>
+                    </svg>
+
+                    <div class="ml-16"></div>
+                    <span class="marketing-agree-point-wrapper">
+                            (선택) 광고성 및 마케팅 정보 수신 동의
+                        </span>
+                </div>
+                <div class="mt-8"></div>
+                <p class="marketing_detail_message">
+                    다양한 할인 프로모션 및 이벤트 소식을<br>
+                    보내 드립니다.
+                </p>
+                <div class="mt-20"></div>
+
+                <button id="adultCertButton"
+                        class="button_agree_adultCert"
+                        font-size="16px"
+                        font-weight="500"
+                        type="blue"
+                        width="335px"
+                        height="50px">
+                    동의하기
+                </button>
+
+            </div>
+        </div>
+
+
+    </div>
+</th:block>
+
+</html>

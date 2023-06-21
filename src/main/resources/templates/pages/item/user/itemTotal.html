@@ -4,15 +4,14 @@
       layout:decorate="~{layouts/base_layout}"
 >
 
-<!-- main.html 고유 css 추가 -->
+<!-- itemTotal.html 고유 css 추가 -->
 <th:block layout:fragment="css">
     <link rel="stylesheet" th:href="@{/css/itemTotal.css}">
 </th:block>
 
-<!-- main.html 고유 js 추가 -->
+<!-- itemTotal.html 고유 js 추가 -->
 <th:block layout:fragment="script">
-    <script th:src="@{/slick/slick.min.js}"></script>
-    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/itemTotal.js}"></script>
 </th:block>
 
 <th:block layout:fragment="content">
@@ -22,14 +21,14 @@
         <div class="menuList_wrapper">
             <ul class="menuList">
                 <li class="">
-                    <a href="">
+                    <a href="/">
                         <div>
                             홈
                         </div>
                     </a>
                 </li>
                 <li class="selected">
-                    <a href="">
+                    <a href="item/total">
                         <div>
                             전체상품
                         </div>
@@ -64,7 +63,7 @@
                     </a>
                 </li>
             </ul>
-            <div class="underLine"></div>
+<!--            <div class="underLine"></div>-->
         </div>
     </div>
     <div class="content_wrapper">
@@ -88,11 +87,162 @@
                     <div class="filter_wrapper">
                         <div class="filter_container">
                             <button class="filter">
-                                <span>주종</span>
+                                <span>신맛</span>
                                 <img src="/images/itemTotal/arrow-down.png" alt="" class="imgPointer">
                             </button>
+                            <div class="popUpFilterBox_wrapper" style="display:none;">
+                                <div class="multiGridBox">
+                                    <div class="MultiGrid">
+                                        <div class="checkBox flex">
+                                            <div class="checkBoxStyle_wrapper">
+                                                <button type="button" class="checkBoxStyle">
+                                                    <img src="/images/itemTotal/icon_unchecked_square.png" alt="">
+                                                </button>
+                                            </div>
+                                            <button class="button_text">약한</button>
+                                        </div>
+                                    </div>
+                                    <div class="MultiGrid">
+                                        <div class="checkBox flex">
+                                            <div class="checkBoxStyle_wrapper">
+                                                <button type="button" class="checkBoxStyle">
+                                                    <img src="/images/itemTotal/icon_unchecked_square.png" alt="">
+                                                </button>
+                                            </div>
+                                            <button class="button_text">중간</button>
+                                        </div>
+                                    </div>
+                                    <div class="MultiGrid">
+                                        <div class="checkBox flex">
+                                            <div class="checkBoxStyle_wrapper">
+                                                <button type="button" class="checkBoxStyle">
+                                                    <img src="/images/itemTotal/icon_unchecked_square.png" alt="">
+                                                </button>
+                                            </div>
+                                            <button class="button_text">강한</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div class="filter_container">
+                            <button class="filter">
+                                <span>탄산</span>
+                                <img src="/images/itemTotal/arrow-down.png" alt="" class="imgPointer">
+                            </button>
+                            <div class="popUpFilterBox_wrapper" style="display:none;">
+                                <div class="multiGridBox">
+                                    <div class="MultiGrid">
+                                        <div class="checkBox flex">
+                                            <div class="checkBoxStyle_wrapper">
+                                                <button type="button" class="checkBoxStyle">
+                                                    <img src="/images/itemTotal/icon_unchecked_square.png" alt="">
+                                                </button>
+                                            </div>
+                                            <button class="button_text">약한</button>
+                                        </div>
+                                    </div>
+                                    <div class="MultiGrid">
+                                        <div class="checkBox flex">
+                                            <div class="checkBoxStyle_wrapper">
+                                                <button type="button" class="checkBoxStyle">
+                                                    <img src="/images/itemTotal/icon_unchecked_square.png" alt="">
+                                                </button>
+                                            </div>
+                                            <button class="button_text">중간</button>
+                                        </div>
+                                    </div>
+                                    <div class="MultiGrid">
+                                        <div class="checkBox flex">
+                                            <div class="checkBoxStyle_wrapper">
+                                                <button type="button" class="checkBoxStyle">
+                                                    <img src="/images/itemTotal/icon_unchecked_square.png" alt="">
+                                                </button>
+                                            </div>
+                                            <button class="button_text">강한</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="itemList_wrapper">
+            <div class="itemList_width">
+                <div class="totalCount_wrapper">
+                    <div class="left flex">
+                        <div class="filterResult flex">
+                            <div>4</div>
+                            <div>건의 결과가 있어요.</div>
+                        </div>
+                    </div>
+                    <div class="right flex">
+                        <div class="filterSelector_wrapper">
+                            <select name="rating" id="">
+                                <option value="recommend">추천순</option>
+                                <option value="released_at">최신순</option>
+                                <option value="rating">평점순</option>
+                                <option value="star_count">리뷰 많은 순</option>
+                                <option value="selling_count">판매순</option>
+                                <option value="price_high">높은 가격순</option>
+                                <option value="price_low">낮은 가격순</option>
+                            </select>
+<!--                            <svg class="iconStyle"-->
+<!--                                 focusable="false" aria-hidden="true" viewBox="0 0 24 24"-->
+<!--                                 data-testid="ArrowDropDownIcon">-->
+<!--                                <path d="M7 10l5 5 5-5z"></path>-->
+<!--                            </svg>-->
+                        </div>
+                    </div>
+                </div>
 
+
+                <!-- 상품 -->
+                <div class="itemLists_wrapper">
+                    <div class="itemMultiGrid_wrapper">
+<!--                        <th:block th:each="item : ${item}"  class="itemMultiGrid">-->
+                        <th:block th:each="item : ${itemSearchDto}"  class="itemMultiGrid">
+                            <input type="hidden" th:${item.id}>
+                            <div class="itemMultiGridStyle">
+                                <a th:href="'/item/'+${item.id}">
+                                    <div class="itemImg_wrapper">
+                                        <span>
+<!--                                            <img src="/images/itemTotal/w03q-1686813795303-thumbnail.jpg" alt="">-->
+                                            <img class="mw-25" th:src="'/display/img?fileName='+${item.imgUrl}">
+
+                                        </span>
+                                    </div>
+                                    <div class="itemContent_wrapper">
+                                        <div class="itemContent">
+                                            <div class="itemName" th:text="${item.itemNm}">
+                                                초 여름밤에 마시기 좋은 담화박스 (1회성/선물용)
+                                            </div>
+                                            <div class="itemPrice">
+                                                <p class="originPrice"></p>
+                                                <div class="flex salePrice_wrapper">
+                                                    <p class="salePrice" th:text="${item.price}">42000<span>원</span></p>
+<!--                                                    <p class="salePrice" th:text="${itemFormDto.price}">42000<span>원</span></p>-->
+                                                </div>
+                                                <div class="flex review_wrapper">
+                                                    <img src="/images/itemTotal/star.png" alt="별" height="12">
+                                                    <p class="rating" th:number="${item.avgStar}">4.7</p>
+                                                    <div class="column-line"></div>
+                                                    <p class="countReview" th:number="${item.numComment}">리뷰 2</p>
+                                                </div>
+                                            </div>
+                                            <div class="itemTag_wrapper">
+                                                <div class="content">
+<!--                                                    <div th:text="${item.detail}">#전통주 소믈리에</div>-->
+                                                    <div>#전통주 입문자 용</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </th:block>
                     </div>
 
                 </div>

@@ -21,9 +21,10 @@ public class Review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_name", referencedColumnName = "itemNm")
+//    @JoinColumn(name = "item_id", referencedColumnName = "itemId")
     private Item item; // 상품명
 
-    private Double avgStar; // 별점
+    private Double Star; // 별점
     // private LocalDateTime regTime; // 상품평 등록시간
 
     @Lob @Column(nullable = false)

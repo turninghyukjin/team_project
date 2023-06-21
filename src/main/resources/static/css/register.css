@@ -128,3 +128,17 @@
 .button_agree_adultCert:hover {
     background-color: rgb(52, 99, 129);
 }
+
+  .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .checkbox-wrapper svg {
+    margin-right: 10px;
+  }
+
+  .checkbox-icon.hidden {
+    display: none;
+  }
