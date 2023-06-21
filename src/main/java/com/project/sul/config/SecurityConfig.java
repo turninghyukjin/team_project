@@ -60,7 +60,7 @@ public class SecurityConfig {
 //                .mvcMatchers("/error").permitAll()
                 .anyRequest().authenticated();
 
-        http.csrf().disable();
+      http.csrf().disable();
 
         http.exceptionHandling()
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint());

@@ -1,12 +1,10 @@
 package com.project.sul.auth;
 
 import com.project.sul.auth.userInfo.OAuth2UserInfo;
-import com.project.sul.dto.RegisterSocialFormDto;
 import com.project.sul.entity.Member;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
@@ -16,15 +14,23 @@ import java.util.Map;
 
 @Getter
 @ToString
-public class PrincipalDetails implements OAuth2User {
+public class PrincipalDetails implements  UserDetails, OAuth2User {
 
     private Member member;
 //    private Map<String, Object> attributes;
     private OAuth2UserInfo oAuth2UserInfo;
+    private String nickname;
+
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
 
     //UserDetails : Form 로그인 시 사용
-    public PrincipalDetails(Member member) {
+    public PrincipalDetails(Member member, String nickname) {
         this.member = member;
+        this.nickname = nickname;
     }
 
 //    OAuth2User : OAuth2 로그인 시 사용
@@ -35,11 +41,19 @@ public class PrincipalDetails implements OAuth2User {
 //    }
 
     //OAuth2User : OAuth2 로그인 시 사용
-    public PrincipalDetails(Member member, OAuth2UserInfo oAuth2UserInfo) {
+    public PrincipalDetails(Member member, OAuth2UserInfo oAuth2UserInfo, String nickname) {
         //PrincipalOauth2UserService 참고
         this.member = member;
-        this.oAuth2UserInfo = oAuth2UserInfo;
+            this.oAuth2UserInfo = oAuth2UserInfo;
+            this.nickname = member.getNickname();
+
     }
+
+
+    public String getNickname() {
+        return nickname;
+    }
+
 
     /**
      * UserDetails 구현
@@ -61,29 +75,30 @@ public class PrincipalDetails implements OAuth2User {
      * UserDetails 구현
      * 비밀번호를 리턴
      */
-//    @Override
-//    public String getPassword() {
-//        return member.getPassword();
-//    }
+    @Override
+    public String getPassword() {
+        return member.getPassword();
+    }
 //
 //    /**
 //     * UserDetails 구현
 //     * PK값을 반환해준다
 //     */
-//    @Override
-//    public String getUsername() {
-//        return member.getEmail();
-//    }
+    @Override
+    public String getUsername() {
+        return member.getEmail();
+    }
 //    /**
 //     * UserDetails 구현
 //     * 계정 만료 여부
 //     *  true : 만료안됨
 //     *  false : 만료됨
 //     */
-//    @Override
-//    public boolean isAccountNonExpired() {
-//        return true;
-//    }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
 //
 //    /**
 //     * UserDetails 구현
@@ -91,20 +106,20 @@ public class PrincipalDetails implements OAuth2User {
 //     *  true : 잠기지 않음
 //     *  false : 잠김
 //     */
-//    @Override
-//    public boolean isAccountNonLocked() {
-//        return true;
-//    }
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 //    /**
 //     * UserDetails 구현
 //     * 계정 비밀번호 만료 여부
 //     *  true : 만료 안됨
 //     *  false : 만료됨
 //     */
-//    @Override
-//    public boolean isCredentialsNonExpired() {
-//        return true;
-//    }
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 //
 //    /**
 //     * UserDetails 구현
@@ -112,10 +127,10 @@ public class PrincipalDetails implements OAuth2User {
 //     *  true : 활성화됨
 //     *  false : 활성화 안됨
 //     */
-//    @Override
-//    public boolean isEnabled() {
-//        return true;
-//    }
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 
 
     /**
@@ -137,4 +152,8 @@ public class PrincipalDetails implements OAuth2User {
 //        return sub;
         return oAuth2UserInfo.getProviderId();
     }
+
+    // 추가된 메서드
+
+
 }

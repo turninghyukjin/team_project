@@ -46,7 +46,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String providerId = oAuth2UserInfo.getProviderId();
 
         String username = provider + "_" + providerId;
-        String nickname = oAuth2UserInfo.getName();
+        String nickname = oAuth2UserInfo.getNickname();
         String uuid = UUID.randomUUID().toString().substring(0, 6);
         String password = passwordEncoder.encode("패스워드" + uuid);
 
@@ -66,6 +66,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
         }
 
-        return new PrincipalDetails(byUsername, oAuth2UserInfo);
+        return new PrincipalDetails(byUsername, oAuth2UserInfo, nickname);
     }
 }

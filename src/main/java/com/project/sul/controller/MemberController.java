@@ -54,6 +54,10 @@ public class MemberController {
 //        }
 //    }
 
+
+
+
+
 //    @GetMapping("/member/{id}")
 //    public String findById(@PathVariable Long id, Model model) {
 //        RegisterSocialFormDto formDto = memberService.findById(id);
