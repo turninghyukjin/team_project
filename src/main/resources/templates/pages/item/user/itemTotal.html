@@ -347,37 +347,44 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!-- 상품 -->
                 <div class="itemLists_wrapper">
                     <div class="itemMultiGrid_wrapper">
-                        <th:block th:each="itemSearchDto : ${itemList}"  class="itemMultiGrid">
+<!--                        <th:block th:each="item : ${item}"  class="itemMultiGrid">-->
+                        <th:block th:each="item : ${itemSearchDto}"  class="itemMultiGrid">
                             <input type="hidden" th:${item.id}>
                             <div class="itemMultiGridStyle">
-                                <a href="#">
+                                <a th:href="'/item/'+${item.id}">
                                     <div class="itemImg_wrapper">
                                         <span>
-                                            <img src="/images/itemTotal/w03q-1686813795303-thumbnail.jpg" alt="">
+<!--                                            <img src="/images/itemTotal/w03q-1686813795303-thumbnail.jpg" alt="">-->
+                                            <img class="mw-25" th:src="'/display/img?fileName='+${item.imgUrl}">
+
                                         </span>
                                     </div>
                                     <div class="itemContent_wrapper">
                                         <div class="itemContent">
-                                            <div class="itemName" th:text="item.itemNm">
+                                            <div class="itemName" th:text="${item.itemNm}">
                                                 초 여름밤에 마시기 좋은 담화박스 (1회성/선물용)
                                             </div>
                                             <div class="itemPrice">
                                                 <p class="originPrice"></p>
                                                 <div class="flex salePrice_wrapper">
-                                                    <p class="salePrice">42000<span>원</span></p>
+                                                    <p class="salePrice" th:text="${item.price}">42000<span>원</span></p>
+<!--                                                    <p class="salePrice" th:text="${itemFormDto.price}">42000<span>원</span></p>-->
                                                 </div>
                                                 <div class="flex review_wrapper">
                                                     <img src="/images/itemTotal/star.png" alt="별" height="12">
-                                                    <p class="rating">4.7</p>
+                                                    <p class="rating" th:number="${item.avgStar}">4.7</p>
                                                     <div class="column-line"></div>
-                                                    <p class="countReview">리뷰 2</p>
+                                                    <p class="countReview" th:number="${item.numComment}">리뷰 2</p>
                                                 </div>
                                             </div>
                                             <div class="itemTag_wrapper">
                                                 <div class="content">
-                                                    <div>#전통주 소믈리에</div>
+<!--                                                    <div th:text="${item.detail}">#전통주 소믈리에</div>-->
                                                     <div>#전통주 입문자 용</div>
                                                 </div>
                                             </div>

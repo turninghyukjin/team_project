@@ -19,7 +19,8 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/")
+
+
 public class MainController {
 
     private final MemberService memberService;

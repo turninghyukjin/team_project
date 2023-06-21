@@ -179,9 +179,6 @@
 <!--                    <div th:unless="${not #strings.isEmpty(itemFormDto.itemImgDto)}">-->
 <!--                        <div class="itemUpdateForm_inputLabel" th:each="itemImgDto">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)-->
                         <div class="itemUpdateForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
-                            <label class="custom-file-label" th:text="${itemFormDto.itemImgDtoList[0].imgName}"></label>
-                            <label class="custom-file-label" th:text="${itemFormDto.itemImgDtoList[0].oriImgName}"></label>
-                            <label class="custom-file-label" th:text="${itemFormDto.itemImgDtoList[0].imgUrl}"></label>
                             <img
                                     src="/images/global/icon-asterisk.png"
                                     alt="icon"
