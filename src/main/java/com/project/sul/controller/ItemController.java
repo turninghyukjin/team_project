@@ -1,5 +1,6 @@
 package com.project.sul.controller;
 
+import com.project.sul.dto.ItemDto;
 import com.project.sul.dto.ItemFormDto;
 import com.project.sul.dto.ItemSearchDto;
 import com.project.sul.entity.Item;
@@ -56,7 +57,7 @@ public class ItemController {
             model.addAttribute("errorMessage", "상품 등록 중 에러가 발생했습니다.");
             return "pages/item/admin/itemRegisterForm";
         }
-        return "redirect:/admin/item/register";
+        return "redirect:/";
     }
 
     // 수정목록 조회
@@ -126,14 +127,12 @@ public class ItemController {
     // 전체 상품 페이지
     @GetMapping(value = "/item/total")
     public String itemTotal(ItemSearchDto itemSearchDto, Model model) {
-        model.addAttribute("itemSearchDto", itemSearchDto);
+        Pageable pageable = PageRequest.of( 0, 10);
+        Page<ItemDto> data = itemService.getMainItemPage(itemSearchDto, pageable);
+        model.addAttribute("itemSearchDto", data);
 
         return "pages/item/user/itemTotal";
     }
-
-
-
-
 
 
 }

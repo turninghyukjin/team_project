@@ -28,8 +28,8 @@ public class ItemImgService {
 
         if(!StringUtils.isEmpty(oriImgName)){
             imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
-//            imgUrl= "/images/" + imgName;
-            imgUrl= "/items/" + imgName;
+//            imgUrl= "/item/" + imgName;
+            imgUrl= "/images/item/" + imgName;
         }
         itemImg.updateItemImg(oriImgName, imgName, imgUrl);
         itemImgRepository.save(itemImg);
@@ -49,7 +49,7 @@ public class ItemImgService {
             String oriImgName = itemImgFile.getOriginalFilename();
             String imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
 //            String imgUrl = "/images/" + imgName;
-            String imgUrl = "/items/" + imgName;
+            String imgUrl = "/images/item/" + imgName;
             savedItemImg.updateItemImg(oriImgName, imgName, imgUrl);
         }
     }

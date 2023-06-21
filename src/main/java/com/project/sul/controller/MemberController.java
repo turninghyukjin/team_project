@@ -8,6 +8,7 @@ import com.project.sul.repository.MemberRepository;
 import com.project.sul.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,8 +19,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RequestMapping("/")
 @Controller
@@ -54,46 +57,32 @@ public class MemberController {
 //        }
 //    }
 
-//    @GetMapping("/member/{id}")
-//    public String findById(@PathVariable Long id, Model model) {
-//        RegisterSocialFormDto formDto = memberService.findById(id);
-//        model.addAttribute("member", formDto);
-//        return "detail";
-//    }
 
-//    @GetMapping("/member/update")
-//    public String updateForm(HttpSession session, Model model) {
-//        String myEmail = (String) session.getAttribute("loginEmail");
-//        MemberDTO memberDTO = memberService.updateForm(myEmail);
-//        model.addAttribute("updateMember", memberDTO);
-//        return "update";
-//    }
 
-//    @GetMapping("/member/logout")
-//    public String logout(HttpSession session) {
-//        session.invalidate();
-//        return "index";
-//    }
 
-//    @GetMapping("/member/delete/{id}")
-//    public String deleteById(@PathVariable Long id) {
-//        memberService.deleteById(id);
-//        return "redirect:/member/";
-//    }
+
+    @GetMapping("/member/{id}")
+    public String findById(@PathVariable Long id, Model model) {
+        System.out.println("아이디 받아지니?" + id);
+        RegisterSocialFormDto formDto = memberService.findById(id);
+        System.out.println("폼 통해 아이디 들어왔니? " + formDto.getId());
+        model.addAttribute("registerSocialFormDto", formDto);
+        return "pages/main/update_social";
+    }
+
+
+
+    @GetMapping("/member/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "/";
+    }
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model) {
         model.addAttribute("loginErrorMsg","아이디 또는 비밀번호를 확인해주세요");
         return "pages/main/login";
     }
-
-//    @GetMapping(value = "/updateMember")
-//    public String updateMember(@RequestParam(name = "email") String email, Model model) {
-//        RegisterSocialFormDto formDto = memberService.
-//
-//
-//    }
-
 
     // 닉네임 중복 체크 sout 는 확인용
     @PostMapping(value = "register/social/nicknameDuplicate")

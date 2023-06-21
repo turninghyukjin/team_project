@@ -23,7 +23,10 @@
                 <div class="itemDetail_box">
                     <div class="img_itemWrapper">
                         <span class="img_box">
-                            <img src="/images/items/탁주_담은_대표.jpg" alt="담은_탁주">
+<!--                            <img th:src="${item.itemFormDto." alt="담은_탁주">-->
+<!--                             <p th:text="'C:/team_project' + ${item.itemImgDtoList[0].imgUrl}"></p>-->
+<!--                             <img th:src="'C://team_project' + ${item.itemImgDtoList[0].imgUrl}">-->
+                            <img th:src="'/display/img?fileName='+${item.itemImgDtoList[0].imgUrl}">
                         </span>
                     </div>
                 </div>
@@ -40,8 +43,8 @@
                             </div>
                             <div class="itemRating">
                                 <span class="star"></span>
-                                <div class="score">4.9</div>
-                                <span class="reviewCount">[490 리뷰]</span>
+                                <div class="score">4.5</div>
+                                <span class="reviewCount">[2 리뷰]</span>
                             </div>
                         </div>
                         <div class="content_bottom">
@@ -144,14 +147,11 @@
 
             <!--  상세 그림-->
             <div class="main">
-                <img src="${itemFormDto.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
-                <img th:src="'d:'+${item.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
-                <img th:src="'d:/'+${item.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
-                <p th:text="'d:'+${item.itemImgDtoList[0].imgUrl}">
-<!--            <img th:if="${not #strings.isEmpty(item.itemImgDto.imgUrl)}" th:src="${item.itemImgDtoList[0].imgUrl}" class="rounded mgb-15" width="800">-->
+                <img class="mw-100" th:src="'/display/img?fileName='+${item.itemImgDtoList[1].imgUrl}">
+                <img class="mw-100" th:src="'/display/img?fileName='+${item.itemImgDtoList[2].imgUrl}">
+                <img class="mw-100" th:src="'/display/img?fileName='+${item.itemImgDtoList[3].imgUrl}">
+                <img class="mw-100" th:src="'/display/img?fileName='+${item.itemImgDtoList[4].imgUrl}">
             </div>
-
-
 
 
 
