@@ -7,19 +7,28 @@ import com.project.sul.entity.Member;
 import com.project.sul.repository.MemberRepository;
 import com.project.sul.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/")
+@Slf4j
 public class MainController {
 
     private final MemberService memberService;
@@ -27,16 +36,30 @@ public class MainController {
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping(value = "/")
-    public String main() {
+    public String main(HttpSession session) {
+        String nickname = (String) session.getAttribute("nickname");
         return "pages/main/main";
     }
 
-    @GetMapping(value = "login/email")
-    public String loginSucces(@RequestParam("email") String email, @RequestParam("password") String password) {
-
+    @PostMapping(value = "login/email")
+    public String loginSucces(@RequestParam("email") String email, @RequestParam("password") String password, RedirectAttributes redirectAttributes,HttpSession session) {
+        UserDetails userDetails = memberService.loadUserByUsername(email);
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+            // 비밀번호가 일치하지 않을 경우 처리
+            return "redirect:/login?error";
+        }
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         // 필요한 동작을 수행한 후 로그인 결과에 따라 적절한 응답을 반환.
 
-        return "pages/main/main"; // 로그인 후 이동할 페이지.
+        PrincipalDetails principalDetails = (PrincipalDetails) userDetails;
+        String nickname = principalDetails.getNickname();
+        session.setAttribute("nickname", nickname);
+        redirectAttributes.addFlashAttribute("nickname", nickname);
+
+
+        log.info("닉네임: {}", nickname);
+        return "redirect:/"; // 로그인 후 이동할 페이지.
     }
 
     @GetMapping(value = "register/agreement")

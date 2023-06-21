@@ -1,6 +1,13 @@
 .divider {
     border-bottom: 1px solid rgb(243, 243, 243);
 }
+.flex {
+    display: flex;
+}
+button img {
+    width:100%;
+    height:100%;
+}
 /* contentHeader */
 .contentHeader_wrapper {
     width: 100%;
@@ -129,11 +136,11 @@
     margin: 0px auto;
     padding-bottom: 15px;
 }
-.filterStyle_wrapper .filter_wrapper {
+.filterStyle_wrapper .filterStyleInner_wrapper {
     flex-wrap: wrap;
     display: flex;
 }
-.filter_wrapper .filter_container {
+.filterStyleInner_wrapper .filter_container {
     position: relative;
 }
 .filter_container .filter {
@@ -159,4 +166,49 @@
     width:20px;
     pointer-events: none;
 }
-
+.filter_container button.clicked {
+    border: 1px solid rgb(81, 151, 242);
+}
+.filter_container button.clicked img {
+    transform: rotate(180deg);
+}
+.filter_container .popUpFilterBox_wrapper {
+    width: 350px;
+    padding: 15px 20px 0px;
+    position: absolute;
+    top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px 0px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    z-index: 200;
+}
+.popUpFilterBox_wrapper .multiGridBox {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+.multiGridBox .MultiGrid {
+    flex-basis: 50%;
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+    max-width: 50%;
+}
+.MultiGrid .checkBox {
+    margin-bottom: 22px;
+}
+.checkBoxStyle_wrapper .checkBoxStyle {
+    padding: 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.MultiGrid .button_text {
+    margin-left: 15px;
+}
