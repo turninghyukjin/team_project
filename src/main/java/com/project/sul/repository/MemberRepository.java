@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 public interface MemberRepository extends JpaRepository<Member, Long> {
     Member findByEmail(String email);
 
@@ -20,4 +22,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Query(value = "INSERT INTO member (name, nickname, email, password, phone, age, role) " +
             "VALUES ('admin', '관리자', 'admin@naver.com', '123456789', '01012341234', 20, ADMIN)", nativeQuery = true)
     void addAdmin();
+
+//    Optional<Member> findByMemberEmail(String email);
+
 }

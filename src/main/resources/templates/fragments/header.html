@@ -21,7 +21,9 @@
                 </div>
                 <ul class="landing_list">
                     <li class="">구독</li>
-                    <li class="selected">스토어</li>
+                    <li class="selected">
+                        <a href="/">스토어</a>
+                    </li>
                     <li class="header_search">
                         <div class="inner">
                             <img
@@ -49,7 +51,7 @@
                         />
                     </li>
                     <li class="username" th:text="${nickname}" sec:authorize="isAuthenticated()"></li>
-                    <li sec:authorize="isAuthenticated()">님
+                    <li sec:authorize="isAuthenticated()"><a href="/">님 회원정보</a>
                         <img
                                 src="/images/header/icon-arrow-right-blue.png"
                                 alt="우측 화살표 아이콘"

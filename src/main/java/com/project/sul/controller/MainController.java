@@ -31,24 +31,7 @@ public class MainController {
         return "pages/main/main";
     }
 
-
-
-    @GetMapping(value = "/login")
-    public String login() {
-        return "pages/main/login";
-    }
-
-
-
-    @GetMapping(value = "/login/error")
-    public String loginError(Model model) {
-        model.addAttribute("loginErrorMsg","아이디 또는 비밀번호를 확인해주세요");
-        return "pages/main/login";
-    }
-
-
-
-    @GetMapping(value = "/login/email")
+    @GetMapping(value = "login/email")
     public String loginSucces(@RequestParam("email") String email, @RequestParam("password") String password) {
 
         // 필요한 동작을 수행한 후 로그인 결과에 따라 적절한 응답을 반환.
@@ -56,43 +39,36 @@ public class MainController {
         return "pages/main/main"; // 로그인 후 이동할 페이지.
     }
 
-
-
-
-
-    @GetMapping(value = "/register/agreement")
+    @GetMapping(value = "register/agreement")
     public String   agreement() {
         return "pages/main/agreement";
     }
 
-    @GetMapping(value = "/register")
+    @GetMapping(value = "register")
     public String register() {
         return "pages/main/register";
     }
 
-    @GetMapping(value = "/register/email")
+    @GetMapping(value = "register/email")
     public String registerEmail() {
         return "pages/main/register_email";
     }
 
 
-
-
-
     // form 로그인 시
-    @GetMapping(value = "/form/loginInfo")
-    @ResponseBody
-    public String formLoginInfo(Authentication authentication, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-
-        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
-        Member member = principal.getMember();
-        System.out.println(member);
-
-//        Member member1 = principalDetails.getMember();
-//        System.out.println(member1);
-
-        return member.toString();
-    }
+//    @GetMapping(value = "/form/loginInfo")
+//    @ResponseBody
+//    public String formLoginInfo(Authentication authentication, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+//
+//        PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+//        Member member = principal.getMember();
+//        System.out.println(member);
+//
+////        Member member1 = principalDetails.getMember();
+////        System.out.println(member1);
+//
+//        return member.toString();
+//    }
 
     // oauth2 로그인 시
     @GetMapping(value = "/oauth/loginInfo")

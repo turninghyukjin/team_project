@@ -56,7 +56,7 @@ public class ItemController {
             model.addAttribute("errorMessage", "상품 등록 중 에러가 발생했습니다.");
             return "pages/item/admin/itemRegisterForm";
         }
-        return "redirect:/";
+        return "redirect:/admin/item/register";
     }
 
     // 수정목록 조회
@@ -67,6 +67,8 @@ public class ItemController {
             model.addAttribute("itemFormDto", itemFormDto);
             System.out.println(itemId);
             System.out.println("나의 이름은" + itemFormDto.getItemNm());
+            System.out.println("이미지" + itemFormDto.getItemImgIds()); // 안나옴
+            System.out.println("이미지" + itemFormDto.getItemImgDtoList());
         } catch (EntityNotFoundException e) {
             model.addAttribute("errorMessage", "존재하지 않는 상품입니다.");
             model.addAttribute("itemFormDto", new ItemFormDto());
@@ -95,25 +97,43 @@ public class ItemController {
         return "redirect:/";
     }
 
+
+    // 관리자조회
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page")
     Optional<Integer> page, Model model) {
+
         // 페이지번호가 있으면 get, 없으면 0,   + 한페이지당 게시물은 100개 할당(페이지의 크기)
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 100);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 5);
         Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
 
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);
-        // model.addAttribute("maxPage", 5);
+        model.addAttribute("maxPage", 5);
 
-        return "pages/item/admin/itemMng";
+        return "item/admin/itemMng";
     }
 
+    // 아이템 상세페이지
     @GetMapping(value = "/item/{itemId}")
     public String itemDtl(Model model, @PathVariable("itemId") Long itemId) {
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
         model.addAttribute("item", itemFormDto);
         return "item/user/itemDetail";
     }
+
+    // 전체 상품 페이지
+    @GetMapping(value = "/item/total")
+    public String itemTotal(ItemSearchDto itemSearchDto, Model model) {
+        model.addAttribute("itemSearchDto", itemSearchDto);
+
+        return "pages/item/user/itemTotal";
+    }
+
+
+
+
+
+
 }
 

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "orders")
@@ -48,7 +49,7 @@ public class Order extends BaseEntity{
     private String paymentMethod;  // 결제 수단
     private double paymentAmount;  // 결제 금액
 
-    public static Order createOrder(Member member,List<OrderItem> orderItemList){
+    public static Order createOrder(Member member, List<OrderItem> orderItemList){
         Order order = new Order();
         order.setMember(member);
         for(OrderItem orderItem : orderItemList){

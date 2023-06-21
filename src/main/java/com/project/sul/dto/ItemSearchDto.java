@@ -1,5 +1,6 @@
 package com.project.sul.dto;
 
+import com.project.sul.constant.ItemSellStatus;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,8 @@ public class ItemSearchDto { // 검색할 것들
     private int sourness;
     private int sparkling;
     private String itemNm;
+    private ItemSellStatus itemSellStatus;
+    private int stockNumber;
     private String searchQuery= "";
 }
 

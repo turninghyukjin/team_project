@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+      layout:decorate="~{layouts/base_layout}"
+>
+
+<!-- main.html 고유 css 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/itemTotal.css}">
+</th:block>
+
+<!-- main.html 고유 js 추가 -->
+<th:block layout:fragment="script">
+    <script th:src="@{/slick/slick.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="divider"></div>
+    <div class="contentHeader_wrapper">
+        <div class="mt-64"></div>
+        <div class="menuList_wrapper">
+            <ul class="menuList">
+                <li class="">
+                    <a href="">
+                        <div>
+                            홈
+                        </div>
+                    </a>
+                </li>
+                <li class="selected">
+                    <a href="">
+                        <div>
+                            전체상품
+                        </div>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        <div>
+                            신상품
+                        </div>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        <div>
+                            베스트
+                        </div>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        <div>
+                            담화배송
+                        </div>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        <div>
+                            이벤트
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="underLine"></div>
+        </div>
+    </div>
+    <div class="content_wrapper">
+        <div class="contentTopImg_wrapper">
+            <div class="contentTopImgStyle">
+                <div class="left">
+                    <div class="contentTopImgStyleTitle">전체상품</div>
+                    <div class="contentTopImgStyleContent">담화마켓의 모든 술을 만나보세요!</div>
+                </div>
+                <div class="right">
+                    <div class="img_wrapper">
+                        <img src="/images/itemTotal/icon-total.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="padding_divider"></div>
+        <div class="contentItems_wrapper">
+            <div class="filter_wrapper">
+                <div class="filterStyle_wrapper">
+                    <div class="filter_wrapper">
+                        <div class="filter_container">
+                            <button class="filter">
+                                <span>주종</span>
+                                <img src="/images/itemTotal/arrow-down.png" alt="" class="imgPointer">
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+</th:block>
+
+</html>
