@@ -348,7 +348,7 @@
                     </div>
                 </div>
                 <div class="itemLists_wrapper">
-                    <th:block class="itemMultiGrid_wrapper">
+                    <div class="itemMultiGrid_wrapper">
                         <th:block th:each="itemSearchDto : ${itemList}"  class="itemMultiGrid">
                             <input type="hidden" th:${item.id}>
                             <div class="itemMultiGridStyle">
@@ -384,10 +384,8 @@
                                         </div>
                                     </div>
                                 </a>
-
                             </div>
                         </th:block>
-
                     </div>
                 </div>
             </div>
