@@ -35,79 +35,116 @@ function handleAdultCertification() {
       }
     }
   );
+
+
 }
+function toggleCheckbox(element) {
+  if (element && element.querySelector) {
+    var checkbox = element.querySelector('.checkbox');
+    var checkboxIcon = element.querySelector('.checkboxIcon');
 
+    if (checkbox && checkboxIcon) {
+      checkbox.classList.toggle('active');
+      checkbox.style.display = checkbox.classList.contains('active') ? 'none' : 'block';
+      checkboxIcon.style.display = checkbox.classList.contains('active') ? 'block' : 'none';
 
-function toggleCheckbox(checkboxWrapper) {
-  const checkbox = checkboxWrapper.querySelector('#checkbox');
-  const checkboxIcon = checkboxWrapper.querySelector('#checkboxIcon');
-
-  if (checkbox.checked) {
-    checkboxIcon.style.display = 'block';
-    // 여기에 버튼 활성화에 대한 로직을 추가하세요.
-    // 예를 들어, 버튼의 disabled 속성을 false로 설정하여 활성화할 수 있습니다.
-  } else {
-    checkboxIcon.style.display = 'none';
-    // 여기에 버튼 비활성화에 대한 로직을 추가하세요.
-    // 예를 들어, 버튼의 disabled 속성을 true로 설정하여 비활성화할 수 있습니다.
-  }
-}
-
-
-// 필수 동의 체크박스 요소들의 부모 래퍼 요소를 선택합니다.
-const checkBoxWrapper = document.querySelectorAll('.checkbox-wrapper');
-
-// 필수 동의 체크박스 요소들을 선택합니다.
-const requiredCheckboxes = checkBoxWrapper.querySelectorAll('.checkbox-wrapper input[type="checkbox"]');
-
-// 동의하기 버튼 요소를 선택합니다.
-const agreeButton = document.getElementById('adultCertButton');
-
-// 필수 동의 체크박스의 개수를 저장하기 위한 변수를 초기화합니다.
-let requiredCheckedCount = 0;
-
-// 필수 동의 체크박스의 변경 이벤트를 처리하는 함수입니다.
-function handleRequiredCheckboxChange() {
-  // 체크된 필수 동의 개수를 초기화합니다.
-  requiredCheckedCount = 0;
-
-  // 필수 동의 체크박스 요소들을 순회하면서 체크 상태를 확인합니다.
-  requiredCheckboxes.forEach(checkbox => {
-    if (checkbox.checked) {
-      requiredCheckedCount++;
+      if (element.classList.contains('signUp_agree_checkboxForm_wrapper')) {
+        toggleAllCheckboxes(checkbox.classList.contains('active'));
+      } else {
+        toggleAllCheckboxes();
+      }
     }
-  });
-
-  // 필수 동의 체크박스 2개가 체크되었을 때만 버튼을 활성화합니다.
-  if (requiredCheckedCount === 2) {
-    agreeButton.disabled = false;
-  } else {
-    agreeButton.disabled = true;
   }
 }
 
-// 필수 동의 체크박스들에 이벤트 리스너를 등록합니다.
-requiredCheckboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', handleRequiredCheckboxChange);
+function toggleAllCheckboxes(allChecked) {
+  var allCheckbox = document.querySelector('.signUp_agree_checkboxForm_wrapper .checkbox');
+  var allCheckboxIcon = document.querySelector('.signUp_agree_checkboxForm_wrapper .checkboxIcon');
+  var individualCheckboxes = document.querySelectorAll('.checkbox:not(.all)');
+
+  if (allChecked !== undefined) {
+    // 모두 동의 체크박스의 상태를 변경
+    allCheckbox.classList.toggle('active');
+    allCheckbox.style.display = allCheckbox.classList.contains('active') ? 'none' : 'block';
+    allCheckboxIcon.style.display = allCheckbox.classList.contains('active') ? 'block' : 'none';
+  }
+
+  if (allCheckbox.classList.contains('active')) {
+    // 개별 체크박스들을 모두 선택한 상태로 변경
+    for (var i = 0; i < individualCheckboxes.length; i++) {
+      var checkbox = individualCheckboxes[i];
+      var checkboxIcon = checkbox.nextElementSibling;
+
+      checkbox.classList.add('active');
+      checkbox.style.display = 'none';
+      checkboxIcon.style.display = 'block';
+    }
+  } else {
+    // 개별 체크박스들을 선택하지 않은 상태로 변경
+    for (var i = 0; i < individualCheckboxes.length; i++) {
+      var checkbox = individualCheckboxes[i];
+      var checkboxIcon = checkbox.nextElementSibling;
+
+      checkbox.classList.remove('active');
+      checkbox.style.display = 'block';
+      checkboxIcon.style.display = 'none';
+    }
+  }
+}
+
+// 개별 체크박스 클릭 시 toggleCheckbox 함수 호출
+var individualCheckboxes = document.querySelectorAll('.checkbox:not(.all)');
+for (var i = 0; i < individualCheckboxes.length; i++) {
+  var checkboxWrapper = individualCheckboxes[i].parentNode;
+  checkboxWrapper.addEventListener('click', function() {
+    toggleCheckbox(this);
+  });
+}
+
+
+
+
+var adultCertButton = document.getElementById('adultCertButton');
+var requiredCheckboxes = document.querySelectorAll('.checkbox.required');
+
+// 버튼 초기 비활성화
+adultCertButton.disabled = true;
+
+// 개별 체크박스 클릭 시 toggleCheckbox 함수 호출
+var individualCheckboxes = document.querySelectorAll('.checkbox:not(.all)');
+for (var i = 0; i < individualCheckboxes.length; i++) {
+  var checkboxWrapper = individualCheckboxes[i].parentNode;
+  checkboxWrapper.addEventListener('click', function() {
+    toggleCheckbox(this);
+    updateButtonState();
+  });
+}
+
+// 모두 동의 체크박스 클릭 시 toggleAllCheckboxes 함수 호출
+var allCheckboxWrapper = document.querySelector('.signUp_agree_checkboxForm_wrapper');
+allCheckboxWrapper.addEventListener('click', function() {
+  toggleAllCheckboxes();
 });
 
-// 페이지 진입 시 동의하기 버튼을 비활성화합니다.
-agreeButton.disabled = true;
-
-function toggleCheckbox(checkboxWrapper) {
-  const checkbox = checkboxWrapper.querySelector('#checkbox');
-  const checkboxIcon = checkboxWrapper.querySelector('#checkboxIcon');
-
-  if (checkbox.style.display === 'none') {
-    checkbox.style.display = 'block';
-    checkboxIcon.style.display = 'none';
-    checkbox.checked = true;
-  } else {
-    checkbox.style.display = 'none';
-    checkboxIcon.style.display = 'block';
-    checkbox.checked = false;
-  }
-
-  // 체크 상태 변경 후 필수 동의 체크박스 변경 이벤트를 호출하여 동의하기 버튼을 업데이트합니다.
-  handleRequiredCheckboxChange();
+// 필수 체크박스 개수 체크 및 버튼 상태 업데이트 함수
+function updateButtonState() {
+  var checkedRequiredCheckboxes = document.querySelectorAll('.checkbox.required.active');
+  adultCertButton.disabled = checkedRequiredCheckboxes.length < 2;
 }
+
+// 페이지 로드 시 버튼 상태 업데이트
+window.addEventListener('load', function() {
+  updateButtonState();
+});
+
+var adultCertButton = document.getElementById('adultCertButton');
+
+// 버튼 비활성화
+adultCertButton.disabled = true;
+
+// ...
+
+// 페이지 로드 시 버튼 상태 업데이트
+window.addEventListener('load', function() {
+  updateButtonState();
+});
