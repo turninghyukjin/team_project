@@ -91,6 +91,7 @@ public class ItemController {
         try {
             itemService.updateItem(itemFormDto, itemImgFileList);
         } catch (Exception e) {
+            e.printStackTrace();
             model.addAttribute("errorMessage", "상품 수정 중 에러가 발생했습니다");
             return "pages/item/admin/itemRegisterForm";
         }

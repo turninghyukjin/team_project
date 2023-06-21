@@ -137,6 +137,9 @@
                     <!-- 이미지가 없으면 -->
                     <div th:if="${#lists.isEmpty(itemFormDto.itemImgDtoList)}">
                         <div class="itemUpdateForm_inputLabel">상품 대표 이미지 (JPG/PNG 형식만 가능, 파일 사이즈 20MB 이하)
+<!--                            <label class="custom-file-label" th:text="${itemFormDto.itemImgDtoList[0].imgName}"></label>-->
+<!--                            <label class="custom-file-label" th:text="${itemFormDto.itemImgDtoList[0].oriImgName}"></label>-->
+<!--                            <label class="custom-file-label" th:text="${itemFormDto.itemImgDtoList[0].imgUrl}"></label>-->
                             <img
                                     src="/images/global/icon-asterisk.png"
                                     alt="icon"
@@ -145,6 +148,7 @@
                         </div>
                         <div class="mt-8"></div>
                         <input
+                                src="${itemFormDto.itemImgDtoList[0].imgUrl}"
                                 type="file"
                                 accept=".jpg, .png"
                                 class="custom-file-input"
@@ -194,7 +198,7 @@
 <!--                                src="${itemFormDto.itemImgDtoList[0].imgUrl}"-->
 
 
-<!--                        <input type="hidden" name="itemImgIds" th:value="${itemImgDto.id}">-->
+                        <input type="hidden" name="itemImgIds" th:value="${itemFormDto.itemImgDtoList[0].id}">
 
                         <div class="mt-20"></div>
                         <div class="itemUpdateForm_inputLabel">상품 설명 이미지 (JPG/PNG 형식만 가능, 5개 파일로 제한, 각 파일 사이즈 20MB 이하)
@@ -212,7 +216,7 @@
                                     class="custom-file-input"
                                     name="itemImgFile"
                             >
-<!--                            <input type="hidden" name="itemImgIds" th:value="${itemImgDto.id}">-->
+                            <input type="hidden" name="itemImgIds" th:value="${itemFormDto.itemImgDtoList[num].id}">
                             <input type="hidden">
                             <div class="mt-8"></div>
                         </div>
