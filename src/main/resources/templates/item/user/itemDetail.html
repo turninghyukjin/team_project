@@ -143,33 +143,15 @@
 
 
             <!--  상세 그림-->
-            <div class="key_wrapper">
-                <div class="img_keyWrapper">
-                    <img src="${itemFormDto.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
-                    <div class="label">담화</div>
-                    <span></span>
-                </div>
-                <div class="content">
-                    <span>생쌀을 발효한 프리미엄 막걸리</span>
-                </div>
-            </div>
-
             <div class="main">
-<!--                    <div class="img_keyWrapper">-->
-                    <img src="${itemFormDto.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
-                    <span></span>
-<!--                    </div>-->
-            </div>
-
-
-
-
-            <!--  상세 그림-->
-            <div class="main">
+                <img src="${itemFormDto.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
                 <img th:src="'d:'+${item.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
                 <img th:src="'d:/'+${item.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
-                <p th:src="'d:/'+${item.itemImgDtoList[0].imgUrl}" alt="damhwa_image">
+                <p th:text="'d:'+${item.itemImgDtoList[0].imgUrl}">
+<!--            <img th:if="${not #strings.isEmpty(item.itemImgDto.imgUrl)}" th:src="${item.itemImgDtoList[0].imgUrl}" class="rounded mgb-15" width="800">-->
             </div>
+
+
 
 
 
