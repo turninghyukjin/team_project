@@ -57,18 +57,24 @@ public class MemberController {
 //        }
 //    }
 
-
-
-
-
-    @GetMapping("/member/{id}")
-    public String findById(@PathVariable Long id, Model model) {
-        System.out.println("아이디 받아지니?" + id);
-        RegisterSocialFormDto formDto = memberService.findById(id);
-        System.out.println("폼 통해 아이디 들어왔니? " + formDto.getId());
-        model.addAttribute("registerSocialFormDto", formDto);
-        return "pages/main/update_social";
+    @GetMapping("/member/delete/{id}") // /member/{id}로 할 수 있도록 공부
+    public String deleteById(@PathVariable Long id){
+        memberService.deleteById(id);
+        return "redirect:/"; // list 로 쓰면 껍데기만 보여짐
     }
+
+
+
+
+
+//    @GetMapping("/member/{id}")
+//    public String findById(@PathVariable Long id, Model model) {
+//        System.out.println("아이디 받아지니?" + id);
+//        RegisterSocialFormDto formDto = memberService.findById(id);
+//        System.out.println("폼 통해 아이디 들어왔니? " + formDto.getId());
+//        model.addAttribute("registerSocialFormDto", formDto);
+//        return "pages/main/update_social";
+//    }
 
 
 

@@ -57,7 +57,7 @@ public class ItemController {
             model.addAttribute("errorMessage", "상품 등록 중 에러가 발생했습니다.");
             return "pages/item/admin/itemRegisterForm";
         }
-        return "redirect:/";
+        return "pages/item/admin/itemRegisterForm";
     }
 
     // 수정목록 조회

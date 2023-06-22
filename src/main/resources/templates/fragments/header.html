@@ -48,18 +48,19 @@
                                 src="/images/header/icon-right-arrow.png"
                                 alt="오른쪽 화살표 아이콘"
                                 width="15"
+                                sec:authorize="isAnonymous()"
                         />
                     </li>
                     <li class="username" th:text="${nickname}" sec:authorize="isAuthenticated()" ></li>
 
-                    <li sec:authorize="isAuthenticated()"><a href="/">님 회원정보</a>
+                    <li sec:authorize="isAuthenticated()"><a href="/">회원정보</a>
                         <img
                                 src="/images/header/icon-arrow-right-blue.png"
                                 alt="우측 화살표 아이콘"
                                 width="12" height="12" style="margin-left: 2px;"
                         >
                     </li>
-                    <li class="logout" sec:authorize="isAuthenticated()">로그아웃</li>
+                    <li class="logout" sec:authorize="isAuthenticated()"><a href="/member/logout">로그아웃</a></li>
                     <div class="basket_icon" sec:authorize="isAuthenticated()">
                         <img
                                 src="/images/header/icon-header-basket.png"

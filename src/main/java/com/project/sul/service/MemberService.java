@@ -143,9 +143,9 @@ public class MemberService implements UserDetailsService {
 //        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
 //    }
 //
-//    public void deleteById(Long id) {
-//        memberRepository.deleteById(id);
-//    }
+    public void deleteById(Long id) {
+        memberRepository.deleteById(id);
+    }
 //
 //    public String emailCheck(String memberEmail) {
 //        Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberEmail);

@@ -122,7 +122,7 @@ button img {
 .content_wrapper .contentItems_wrapper {
     padding: 40px 0px;
 }
-.contentItems_wrapper .filter_wrapper {
+.contentItems_wrapper .filter_wrapper_flex {
     padding: 0px 69px;
     width: 100%;
     border-bottom: 10px solid rgb(241, 241, 241);
@@ -130,7 +130,7 @@ button img {
     font-size: 13px;
     color: rgb(62, 62, 62);
 }
-.filter_wrapper .filterStyle_wrapper {
+.filter_wrapper_flex .filterStyle_wrapper {
     width: 100%;
     max-width: 1144px;
     margin: 0px auto;
