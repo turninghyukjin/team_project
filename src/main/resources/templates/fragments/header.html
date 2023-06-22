@@ -60,7 +60,7 @@
                                 width="12" height="12" style="margin-left: 2px;"
                         >
                     </li>
-                    <li class="logout" sec:authorize="isAuthenticated()">로그아웃</li>
+                    <li class="logout" sec:authorize="isAuthenticated()"><a href="/member/logout">로그아웃</a></li>
                     <div class="basket_icon" sec:authorize="isAuthenticated()">
                         <img
                                 src="/images/header/icon-header-basket.png"

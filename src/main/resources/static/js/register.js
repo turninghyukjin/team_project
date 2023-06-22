@@ -41,15 +41,23 @@ function handleAdultCertification() {
 
 // 동의 체크박스 작업 시작
 
-$(function () {
-	let num = 0;
-	let imageName = ["p001", "p002", "p003", "p004"];
-	$("#pic").click(function() {
-		if(num == 3) num=0;
-		else 	     num++;
-		$(this).attr("src","./image/"+ imageName[num]+".jpg");
-	});
-});
+$(document).ready(function(){
+        /*웹페이지 열었을 때*/
+        $(".checkbox").show();
+        $(".checkboxIcon").hide();
+
+        /*img1을 클릭했을 때 img2를 보여줌*/
+        $("#img1").click(function(){
+            $(".checkbox").hide();
+            $(".checkboxIcon").show();
+        });
+
+        /*img2를 클릭했을 때 img1을 보여줌*/
+        $("#img2").click(function(){
+            $("#img1").show();
+            $("#img2").hide();
+        });
+    });
 
 
 
