@@ -41,26 +41,15 @@ function handleAdultCertification() {
 
 // 동의 체크박스 작업 시작
 
-
-    // DOMContentLoaded 이벤트 핸들러
-    document.addEventListener('DOMContentLoaded', function() {
-        // #allCheck 요소를 클릭할 때의 이벤트 핸들러
-        document.getElementById('allCheck').addEventListener('click', function () {
-            // 모든 .checkbox 요소를 선택
-            var checkboxes = document.querySelectorAll('.checkbox');
-
-            // 각각의 .checkbox 요소에 대해 처리
-            checkboxes.forEach(function (checkbox) {
-                // .checkbox 클래스를 .checkboxIcon 클래스로 변경
-                checkbox.classList.toggle('checkboxIcon');
-                checkbox.classList.toggle('checkbox');
-
-                // 해당 checkbox 요소 아래의 span 태그의 텍스트 변경
-                var span = checkbox.nextElementSibling;
-                span.textContent = checkbox.classList.contains('checkboxIcon') ? '동의합니다' : '모두 동의합니다';
-            });
-        });
-    });
+$(function () {
+	let num = 0;
+	let imageName = ["p001", "p002", "p003", "p004"];
+	$("#pic").click(function() {
+		if(num == 3) num=0;
+		else 	     num++;
+		$(this).attr("src","./image/"+ imageName[num]+".jpg");
+	});
+});
 
 
 

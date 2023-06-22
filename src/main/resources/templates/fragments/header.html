@@ -48,11 +48,12 @@
                                 src="/images/header/icon-right-arrow.png"
                                 alt="오른쪽 화살표 아이콘"
                                 width="15"
+                                sec:authorize="isAnonymous()"
                         />
                     </li>
                     <li class="username" th:text="${nickname}" sec:authorize="isAuthenticated()" ></li>
 
-                    <li sec:authorize="isAuthenticated()"><a href="/">님 회원정보</a>
+                    <li sec:authorize="isAuthenticated()"><a href="/">회원정보</a>
                         <img
                                 src="/images/header/icon-arrow-right-blue.png"
                                 alt="우측 화살표 아이콘"
