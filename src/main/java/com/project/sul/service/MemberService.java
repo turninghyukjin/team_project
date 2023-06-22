@@ -146,7 +146,7 @@ public class MemberService implements UserDetailsService {
 //    public void deleteById(Long id) {
 //        memberRepository.deleteById(id);
 //    }
-////
+//
 //    public String emailCheck(String memberEmail) {
 //        Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberEmail);
 //        if (byMemberEmail.isPresent()) {
